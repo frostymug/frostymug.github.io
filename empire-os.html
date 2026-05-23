@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empire OS — eOS North Star</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #1e2535;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #5ee0ff 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    header p { color: #64748b; font-size: 0.9rem; }
+    .nav-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: #5ee0ff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+    .nav-link:hover { opacity: 1; }
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin: 48px 0 20px;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+    .callout {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-left: 3px solid #a78bfa;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .functions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .function-card {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .fn-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .fn-emoji { font-size: 1.4rem; }
+    .fn-title { font-size: 1.1rem; font-weight: 700; color: #f1f5f9; }
+    .role-list { list-style: none; }
+    .role-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #1a2030;
+      font-size: 0.88rem;
+    }
+    .role-list li:last-child { border-bottom: none; }
+    .role-name { font-weight: 600; color: #cbd5e1; }
+    .role-desc { color: #64748b; font-size: 0.82rem; }
+    .role-list li.andy .role-name { color: #f97316; }
+    .trust-phases { display: flex; flex-direction: column; gap: 12px; }
+    .phase {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .phase-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1e2535;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .phase.active .phase-num { color: #5ee0ff; }
+    .phase-label { font-weight: 600; color: #f1f5f9; margin-bottom: 4px; font-size: 0.95rem; }
+    .phase-desc { color: #64748b; font-size: 0.88rem; }
+    .tension-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .tension-card {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+    }
+    .tension-pair { font-weight: 700; color: #a78bfa; margin-bottom: 4px; }
+    .tension-desc { color: #64748b; font-size: 0.82rem; }
+    .model-list { list-style: none; }
+    .model-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #1a2030;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .model-list li:last-child { border-bottom: none; }
+    .model-list strong { color: #5ee0ff; }
+    .core-loop {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .loop-step {
+      background: #1a2030;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+    .loop-arrow { color: #334155; font-size: 1rem; }
+    .loop-built { font-size: 0.8rem; color: #22c55e; margin-top: 12px; }
+    .parked-card {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-left: 3px solid #fbbf24;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .parked-card h3 { color: #fbbf24; font-size: 1rem; margin-bottom: 10px; }
+    .parked-card ul { list-style: none; }
+    .parked-card ul li {
+      padding: 5px 0;
+      font-size: 0.88rem;
+      color: #94a3b8;
+      padding-left: 16px;
+      position: relative;
+    }
+    .parked-card ul li:before { content: "·"; position: absolute; left: 4px; color: #fbbf24; }
+    .questions-list { list-style: none; }
+    .questions-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #1a2030;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      padding-left: 20px;
+      position: relative;
+    }
+    .questions-list li:before { content: "?"; position: absolute; left: 0; color: #a78bfa; font-weight: 700; }
+    .questions-list li em { color: #64748b; font-size: 0.85rem; display: block; margin-top: 2px; }
+    .questions-list li:last-child { border-bottom: none; }
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1e2535;
+      color: #334155;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Empire OS — eOS</h1>
+      <p>North Star Spec · Andy + Aspen · Started 2026-05-23 · Living document</p>
+      <a class="nav-link" href="empire.html">→ View Current Empire (all agents)</a>
+    </header>
+
+    <div class="callout">
+      <strong style="color:#a78bfa;">eOS</strong> — Empire OS. Our own flavor of EOS (Entrepreneurial Operating System). This doc defines the long-term vision for the Aspen Frost agentic empire. Andy and Aspen only. For current org state, see <a href="empire.html" style="color:#f97316;">Empire</a>.
+    </div>
+
+    <h2>Vision</h2>
+    <p style="color:#94a3b8; margin-bottom: 24px;">
+      A full agentic product development pipeline — from idea to production — organized around three core functions: Design, Product, and Engineering. Andy acts as CPO, setting direction and staying in the loop until trust is established with each agent and flow.
+    </p>
+    <p style="color:#64748b; font-size: 0.9rem;">
+      This is simultaneously a real production system for building apps <em>and</em> an experiment in how agent teams should be structured.
+    </p>
+
+    <h2>The Three Functions</h2>
+    <div class="functions">
+      <div class="function-card">
+        <div class="fn-header">
+          <span class="fn-emoji">🎨</span>
+          <span class="fn-title">Design</span>
+        </div>
+        <ul class="role-list">
+          <li><span class="role-name">Visual Designer</span><div class="role-desc">Look, feel, brand, UI components</div></li>
+          <li><span class="role-name">UX Designer</span><div class="role-desc">Flows, interaction patterns, usability</div></li>
+          <li><span class="role-name">Instructional Designer</span><div class="role-desc">Learning experience architecture</div></li>
+          <li><span class="role-name">Curriculum Specialist</span><div class="role-desc">Content structure, learning pathways</div></li>
+          <li><span class="role-name">Assessment / Psychometrics</span><div class="role-desc">Test design, mastery criteria, adaptive logic</div></li>
+        </ul>
+      </div>
+      <div class="function-card">
+        <div class="fn-header">
+          <span class="fn-emoji">📋</span>
+          <span class="fn-title">Product</span>
+        </div>
+        <ul class="role-list">
+          <li class="andy"><span class="role-name">CPO / Strategist ← Andy</span><div class="role-desc">Vision, direction, market positioning</div></li>
+          <li><span class="role-name">Thought Partner</span><div class="role-desc">Challenges assumptions, adversarial sounding board</div></li>
+          <li><span class="role-name">Product Manager</span><div class="role-desc">Roadmap, requirements, success metrics</div></li>
+          <li><span class="role-name">Product Owner</span><div class="role-desc">Backlog, sprint prioritization, acceptance criteria</div></li>
+        </ul>
+      </div>
+      <div class="function-card">
+        <div class="fn-header">
+          <span class="fn-emoji">⚙️</span>
+          <span class="fn-title">Engineering</span>
+        </div>
+        <ul class="role-list">
+          <li><span class="role-name">Architect</span><div class="role-desc">System design, tech decisions, constraints</div></li>
+          <li><span class="role-name">Engineer</span><div class="role-desc">Implementation — the core loop</div></li>
+          <li><span class="role-name">QA</span><div class="role-desc">Testing, validation, sign-off</div></li>
+          <li><span class="role-name">SRE / Build &amp; Deploy</span><div class="role-desc">CI/CD, infrastructure, reliability</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Two Axes of Evolution</h2>
+    <h3>Axis 1 — Breadth</h3>
+    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom: 20px;">Stand up the three functions. Figure out how Andy works with each one.</p>
+    <ul class="model-list" style="margin-bottom: 32px;">
+      <li>What does a good session with each role look like?</li>
+      <li>What artifacts does each role produce?</li>
+      <li>How do handoffs between functions work?</li>
+    </ul>
+
+    <h3>Axis 2 — Depth (adversarial review)</h3>
+    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom: 20px;">Introduce productive tension within and between roles.</p>
+    <div class="tension-grid">
+      <div class="tension-card">
+        <div class="tension-pair">Architect vs. Engineer</div>
+        <div class="tension-desc">Systems thinking vs. practical buildability</div>
+      </div>
+      <div class="tension-card">
+        <div class="tension-pair">Designer vs. PM</div>
+        <div class="tension-desc">User experience vs. scope and timeline</div>
+      </div>
+      <div class="tension-card">
+        <div class="tension-pair">QA vs. Engineer</div>
+        <div class="tension-desc">Quality bar vs. shipping pressure</div>
+      </div>
+      <div class="tension-card">
+        <div class="tension-pair">Strategist vs. PM</div>
+        <div class="tension-desc">Long-term vision vs. near-term roadmap</div>
+      </div>
+    </div>
+
+    <h2>Human-in-the-Loop Trust Ramp</h2>
+    <div class="trust-phases">
+      <div class="phase active">
+        <div class="phase-num">1</div>
+        <div>
+          <div class="phase-label">Andy + one agent at a time</div>
+          <div class="phase-desc">Andy is the integration layer between functions. Building intuition for which decisions actually need him.</div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">2</div>
+        <div>
+          <div class="phase-label">Agents hand off to each other</div>
+          <div class="phase-desc">Andy reviews the handoffs, not the execution.</div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">3</div>
+        <div>
+          <div class="phase-label">Adversarial pairs run autonomously</div>
+          <div class="phase-desc">Andy reviews outcomes, not process.</div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">4</div>
+        <div>
+          <div class="phase-label">Andy is CPO again</div>
+          <div class="phase-desc">Setting direction and reviewing exceptions only. Full delegation.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Model Strategy</h2>
+    <p style="color:#94a3b8; font-size:0.9rem; margin-bottom: 16px;">Different roles may use different models deliberately. A model optimized for code generation isn't necessarily best for strategic challenge or long-horizon architecture reasoning.</p>
+    <ul class="model-list">
+      <li><strong>Strategist / thought partner</strong> — different reasoning style, slightly adversarial</li>
+      <li><strong>Architect</strong> — strong at systems reasoning and constraint satisfaction</li>
+      <li><strong>Engineer</strong> — strong at code generation and instruction-following</li>
+      <li><strong>QA</strong> — strong at finding edge cases and failure modes</li>
+    </ul>
+
+    <h2>Checks &amp; Balances</h2>
+    <ul class="model-list">
+      <li><strong>Adversarial review</strong> — QA and Engineer have explicitly different incentives</li>
+      <li><strong>Cross-functional sign-off</strong> — Designer and PM must agree before Engineering starts</li>
+      <li><strong>Red team agent</strong> — dedicated agent whose only job is finding problems with everyone else's output</li>
+      <li><strong>Confidence routing</strong> — agents flag low-confidence decisions for human review</li>
+    </ul>
+
+    <h2>The Core Loop (already built ✅)</h2>
+    <div class="core-loop">
+      <span class="loop-step">Roadmap</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step">Feature selection</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step">Implementation</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step">PR</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step">Review</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step">Merge</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step">EAS Build</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step">App Store</span>
+      <div class="loop-built" style="width:100%;">✓ Operational as of 2026-05-22. Everything above is the outer loop this spec is designing.</div>
+    </div>
+
+    <h2>Open Questions</h2>
+    <ul class="questions-list">
+      <li>Do agents talk to each other directly, or route through Andy at strategy level?<em>Working hypothesis: route strategy through Andy, let execution agents talk directly</em></li>
+      <li>What's the canonical artifact format for each handoff?<em>PRD? Design spec? Architecture doc?</em></li>
+      <li>Where do artifacts live?<em>GitHub repo? Dedicated workspace? Both?</em></li>
+      <li>Which model gets which role?<em>How do we experiment with that deliberately?</em></li>
+    </ul>
+
+    <h2>Parked Decisions</h2>
+    <div class="parked-card">
+      <h3>🎨 First Agent to Add</h3>
+      <ul>
+        <li>Andy's instinct: Designer first — Instructional Designer specifically</li>
+        <li>Andy covers Product/CPO role himself for now</li>
+        <li>Maybe a lightweight product agent alongside, but not priority</li>
+        <li>Architect is likely the second agent after designer is proven out</li>
+        <li>Engineering core loop already exists (Aspen)</li>
+      </ul>
+    </div>
+    <div class="parked-card">
+      <h3>🛠 Tooling Question</h3>
+      <ul>
+        <li>As projects multiply (Frost Fitness, Frost Rocks, more...) — do we need Jira/Confluence-style tooling?</li>
+        <li>Or can we get away with files + OpenClaw workspace?</li>
+        <li>Revisit when org has more than 2 active projects in flight</li>
+      </ul>
+    </div>
+
+    <footer>
+      Aspen Frost · eOS · Andy + Aspen only · Last updated 2026-05-23
+    </footer>
+  </div>
+</body>
+</html>
