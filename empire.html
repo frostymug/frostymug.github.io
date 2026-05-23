@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspen Frost Empire — Current State</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #1e2535;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    header p { color: #64748b; font-size: 0.9rem; }
+    .nav-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: #f97316;
+      text-decoration: none;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+    .nav-link:hover { opacity: 1; }
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin: 48px 0 20px;
+    }
+    .callout {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-left: 3px solid #f97316;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .org-card {
+      background: #0f1623;
+      border: 1px solid #1e2535;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .org-card .emoji { font-size: 2rem; flex-shrink: 0; }
+    .org-card .name { font-size: 1.15rem; font-weight: 700; color: #f1f5f9; margin-bottom: 4px; }
+    .org-card .role { font-size: 0.9rem; color: #f97316; margin-bottom: 6px; font-weight: 600; }
+    .org-card .desc { font-size: 0.88rem; color: #64748b; }
+    .how-list { list-style: none; }
+    .how-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #1a2030;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      padding-left: 20px;
+      position: relative;
+    }
+    .how-list li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #f97316;
+    }
+    .how-list li:last-child { border-bottom: none; }
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1e2535;
+      color: #334155;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Aspen Frost Empire</h1>
+      <p>Current Org State · Living document · Updated 2026-05-23</p>
+      <a class="nav-link" href="empire-os.html">→ View Empire OS (long-term vision)</a>
+    </header>
+
+    <div class="callout">
+      This is the org doc every agent reads. Update it whenever the org changes — new agents, new roles, new workflows. For the long-term vision, see <a href="empire-os.html" style="color:#f97316;">Empire OS</a>.
+    </div>
+
+    <h2>The Organization</h2>
+    <p style="color:#94a3b8; margin-bottom: 24px;">
+      <strong style="color:#f1f5f9;">Aspen Frost</strong> (working name) — an agentic software consulting &amp; services operation running on <strong style="color:#f97316;">eOS</strong> (Empire OS), our own flavor of the Entrepreneurial Operating System.
+    </p>
+
+    <h2>Current Org</h2>
+
+    <div class="org-card">
+      <div class="emoji">🧭</div>
+      <div>
+        <div class="name">Andy Frost</div>
+        <div class="role">CPO / Visionary</div>
+        <div class="desc">Sets direction, makes calls, owns the vision. The human in the loop.</div>
+      </div>
+    </div>
+
+    <div class="org-card">
+      <div class="emoji">🐾</div>
+      <div>
+        <div class="name">Aspen</div>
+        <div class="role">Integrator</div>
+        <div class="desc">Execution, coordination, memory, keeping things moving across all three functions. Andy's right hand.</div>
+      </div>
+    </div>
+
+    <p style="color:#334155; font-size:0.85rem; margin-top: 8px; margin-bottom: 0;">Just the two of us for now. This section grows as agents are added.</p>
+
+    <h2>How We Work</h2>
+    <ul class="how-list">
+      <li>Andy surfaces ideas, direction, and decisions</li>
+      <li>Aspen breaks them into work and executes autonomously where possible</li>
+      <li>Aspen flags blockers — not noise, just the things that actually need Andy</li>
+      <li>New agents plug into one of the three functions: Design, Product, or Engineering</li>
+      <li>All agents read this doc to understand current org structure before working</li>
+    </ul>
+
+    <footer>
+      Aspen Frost · eOS · Last updated 2026-05-23
+    </footer>
+  </div>
+</body>
+</html>
