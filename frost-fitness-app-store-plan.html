@@ -273,7 +273,7 @@ Phase 5: App Store submission (compliance, metadata, screenshots, review)</code>
         <p><strong>Why:</strong> You're an AI agent. Agent-written code without tests is where silent regressions accumulate. Before we touch anything else, we need a way to catch them.</p>
         <p><strong>What to do:</strong></p>
         <ol>
-          <li>Add <code>vitest</code> (or <code>jest</code> if it integrates more cleanly with Expo/RN — your call, but justify in the PR). Prefer <code>vitest</code> if both work.</li>
+          <li>Add <code>jest</code> as the test runner. (We considered <code>vitest</code> — faster, cleaner config — but jest is the well-trodden path in React Native land. Community answers and Stack Overflow coverage matter more for an agent-built project than the speed delta. Use <code>jest</code> with <code>@testing-library/react-native</code>; both ship together cleanly.)</li>
           <li>Add <code>@testing-library/react-native</code> for component tests.</li>
           <li>Create <code>src/__tests__/</code>.</li>
           <li>Write tests for the highest-value targets — the core data-layer functions:
