@@ -67,5 +67,11 @@ th { background:var(--panel-2); color:#f1f5f9; font-weight:600; }
 .service-branches::before { content:""; position:absolute; top:0; left:12%; right:12%; height:1px; background:#334155; }
 .branch-node { min-height:64px; display:flex; align-items:center; justify-content:center; text-align:center; padding:12px; border:1px solid #2c3750; border-radius:8px; background:#08111f; color:#dbeafe; font-weight:650; }
 .branch-node.wide { grid-column:1 / -1; }
+.table-scroll { margin:18px 0 28px; overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.table-scroll table { margin:0; min-width:980px; border-radius:0; }
+.stack-choice-table th, .stack-choice-table td { padding:12px 14px; line-height:1.42; }
+.stack-choice-table tbody th { width:150px; color:#f8fafc; background:#101827; font-weight:700; }
+.stack-choice-table td:nth-child(2) { color:#f8fafc; }
+.stack-choice-table td:nth-child(6) { background:#101827; color:#dbeafe; }
 @media (min-width:980px) { article { max-width:980px; } .service-map { grid-template-columns:minmax(260px, 360px) 1fr; align-items:center; } .service-branches { grid-template-columns:repeat(2,minmax(150px,1fr)); padding-top:0; padding-left:24px; } .service-branches::before { top:50%; bottom:auto; left:0; right:auto; width:24px; height:1px; } }
 @media (max-width:520px) { .diagram-panel { padding:18px; } .flow-node { min-height:92px; padding:14px; } .node-label { font-size:0.94rem; } .service-branches { grid-template-columns:1fr; } .branch-node.wide { grid-column:auto; } }

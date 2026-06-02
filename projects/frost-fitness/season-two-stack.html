@@ -97,6 +97,129 @@
         </div>
       </section>
 
+      <h2>Technology Choices by Layer</h2>
+      <p>This is the practical stack menu for Season Two. The recommended column is what I would reach for first; the alternatives are real options, but only worth taking when the product pressure justifies the extra moving parts.</p>
+      <div class="table-scroll" role="region" aria-label="Technology choices by application layer" tabindex="0">
+        <table class="stack-choice-table">
+          <thead>
+            <tr>
+              <th scope="col">Layer</th>
+              <th scope="col">Recommended Choice</th>
+              <th scope="col">Good Alternatives</th>
+              <th scope="col">Pros</th>
+              <th scope="col">Cons / Watchouts</th>
+              <th scope="col">Frost Fitness Read</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Mobile client</th>
+              <td><strong>React Native / Expo</strong></td>
+              <td>Native iOS/Android, Flutter</td>
+              <td>Already in place; one app codebase; strong ecosystem; fast iteration.</td>
+              <td>Native edge cases still happen; performance-sensitive screens need care.</td>
+              <td>Keep it. This is the right client layer for the current team and product.</td>
+            </tr>
+            <tr>
+              <th scope="row">Edge gateway</th>
+              <td><strong>Cloudflare Worker</strong></td>
+              <td>AWS Lambda, Vercel Functions, API Gateway + Lambda</td>
+              <td>Low latency; cheap; already deployed; great fit for auth checks, rate limits, validation, and AI proxying.</td>
+              <td>Not ideal for heavyweight business logic or long-running jobs.</td>
+              <td>Promote it from proxy to gateway. Do not replace it when the backend arrives.</td>
+            </tr>
+            <tr>
+              <th scope="row">Backend language</th>
+              <td><strong>TypeScript</strong></td>
+              <td>Go, Python, Kotlin, Java</td>
+              <td>Same language family as app, Worker, tests, and tooling; easier hiring and agent handoffs.</td>
+              <td>Runtime failures are still possible; needs disciplined typing and tests.</td>
+              <td>Use TypeScript until a specific workload proves another language is better.</td>
+            </tr>
+            <tr>
+              <th scope="row">Backend runtime</th>
+              <td><strong>Node.js</strong></td>
+              <td>Bun, Deno, Cloudflare Containers</td>
+              <td>Mature; boring in the good way; broad package support; compatible with most TypeScript backend tools.</td>
+              <td>Can get messy without clear module boundaries; async code needs consistency.</td>
+              <td>Start here. Bun or Deno are interesting, but Node is the reliable Season Two choice.</td>
+            </tr>
+            <tr>
+              <th scope="row">API framework</th>
+              <td><strong>Hono or Fastify</strong></td>
+              <td>NestJS, Express</td>
+              <td>Hono is lightweight and Worker-friendly; Fastify is mature, fast, and plugin-rich.</td>
+              <td>NestJS adds structure but also ceremony; Express is familiar but less modern.</td>
+              <td>Hono if we stay close to Cloudflare; Fastify if we want a conventional Node backend.</td>
+            </tr>
+            <tr>
+              <th scope="row">Database</th>
+              <td><strong>Postgres</strong></td>
+              <td>Cloudflare D1, Supabase Postgres, Neon, PlanetScale</td>
+              <td>Durable source of truth; proven; great for users, subscriptions, history, plans, and admin data.</td>
+              <td>Needs migrations, backups, connection handling, and ownership discipline.</td>
+              <td>Use Postgres when durable server-side product state becomes real.</td>
+            </tr>
+            <tr>
+              <th scope="row">ORM / query layer</th>
+              <td><strong>Drizzle or Prisma</strong></td>
+              <td>Kysely, raw SQL</td>
+              <td>Drizzle is lean and type-safe; Prisma is polished and widely understood.</td>
+              <td>Prisma can feel heavy; Drizzle asks for more SQL comfort.</td>
+              <td>Drizzle if we want architectural sharpness; Prisma if developer ergonomics matter more.</td>
+            </tr>
+            <tr>
+              <th scope="row">Auth</th>
+              <td><strong>Clerk or Auth0</strong></td>
+              <td>Supabase Auth, custom auth later</td>
+              <td>Outsources login, sessions, password resets, MFA, and social identity.</td>
+              <td>Vendor coupling; pricing and user data boundaries need review.</td>
+              <td>Buy auth early. Custom auth creates avoidable production pain.</td>
+            </tr>
+            <tr>
+              <th scope="row">Billing</th>
+              <td><strong>Stripe</strong></td>
+              <td>RevenueCat, Paddle</td>
+              <td>Best-in-class subscriptions, invoices, webhooks, customer portal, and entitlement integration.</td>
+              <td>Webhooks and entitlement state must be handled carefully.</td>
+              <td>Stripe for web/backend billing; consider RevenueCat if mobile app-store subscriptions dominate.</td>
+            </tr>
+            <tr>
+              <th scope="row">Jobs / queues</th>
+              <td><strong>Cloudflare Queues</strong></td>
+              <td>BullMQ + Redis, Temporal</td>
+              <td>Good for lightweight async work; keeps us Cloudflare-native a little longer.</td>
+              <td>Complex workflows can outgrow it; Temporal is powerful but a commitment.</td>
+              <td>Start simple. Add Temporal only when workflows become the product, not before.</td>
+            </tr>
+            <tr>
+              <th scope="row">Object storage</th>
+              <td><strong>Cloudflare R2</strong></td>
+              <td>AWS S3, Supabase Storage</td>
+              <td>Cheap, S3-compatible, and naturally close to the Worker layer.</td>
+              <td>Access control and lifecycle policies need explicit design.</td>
+              <td>Use R2 for generated assets, exports, and large user files if those appear.</td>
+            </tr>
+            <tr>
+              <th scope="row">Analytics / events</th>
+              <td><strong>PostHog</strong></td>
+              <td>Segment, Amplitude, internal event table</td>
+              <td>Product analytics, funnels, feature flags, and event capture in one place.</td>
+              <td>Privacy boundaries matter, especially around health-adjacent data.</td>
+              <td>Use a privacy-conscious setup. Track product behavior, not sensitive nutrition details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Hosting</th>
+              <td><strong>Fly.io, Render, or Railway</strong></td>
+              <td>AWS ECS/Fargate, Cloudflare Containers</td>
+              <td>Fast to ship a real backend without building a full platform team.</td>
+              <td>Each has scaling, region, and operational tradeoffs.</td>
+              <td>Pick boring managed hosting first. AWS can wait until there is AWS-shaped pain.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <h2>Working Recommendation</h2>
       <p>Stay Cloudflare-native as long as possible. When user accounts, billing, durable workout history, support workflows, and usage accounting need one authoritative home, add a TypeScript backend with Postgres behind the Worker gateway.</p>
       <p>Do not reach for Java, Go, Python, or Kotlin just to feel grown-up. Those are specialization moves. For Frost Fitness, TypeScript keeps the team in one language family until the product has a specific reason to split the stack.</p>
