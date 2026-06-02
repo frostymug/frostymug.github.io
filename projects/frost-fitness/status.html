@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Fitness Status · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a aria-current="page" href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Frost Fitness &middot; Status</div>
+      <h1>Frost Fitness Status</h1>
+<p><strong>Last updated:</strong> 2026-06-02 <strong>Owner:</strong> Aspen for coordination; Andy for product gates <strong>Stage:</strong> Launched (Soft) -&gt; Productization</p>
+<h2>Current State</h2>
+<p>Frost Fitness is live in TestFlight and Andy is using it. The project is now moving through productization toward App Store readiness.</p>
+<p>The current working package is:</p>
+<ul><li>Arya architecture/productization review promoted to <a href="ARCHITECTURE.html">ARCHITECTURE.md</a>.</li><li>Arya App Store readiness execution plan promoted to <a href="PHASE-2-PLAN.html">PHASE-2-PLAN.md</a>.</li><li>Cassian Worker CI/deploy pipeline files promoted under <a href="ci-cd/">ci-cd/</a>.</li><li>Cassian rollback procedures promoted to <a href="RELEASE-PROCESS.html">RELEASE-PROCESS.md</a>.</li></ul>
+<h2>Status By Artifact</h2>
+<table><thead><tr><th>Artifact</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture review</td><td>Pending Andy final confirmation</td><td>Source was Arya's <code>ARCHITECTURE-REVIEW.md</code>; promoted as current shared architecture context.</td></tr><tr><td>Phase 2 / App Store plan</td><td>Pending Andy final confirmation</td><td>Source was Arya's <code>APP-STORE-PLAN.md</code>; serves as Jesse's execution plan unless Andy changes scope.</td></tr><tr><td>Worker CI workflow</td><td>Draft / Cassian-owned</td><td>Copied exactly from Cassian's workspace. Needs repo placement when implementation begins.</td></tr><tr><td>Worker deploy workflow</td><td>Draft / Cassian-owned</td><td>Includes production environment approval and smoke-test rollback.</td></tr><tr><td>Rollback procedures</td><td>Draft / Cassian-owned</td><td>Operational runbook for Worker and client rollback scenarios.</td></tr></tbody></table>
+<h2>Immediate Next Moves</h2>
+<ul><li>Andy confirms whether <a href="ARCHITECTURE.html">ARCHITECTURE.md</a> and <a href="PHASE-2-PLAN.html">PHASE-2-PLAN.md</a> are approved for Jesse.</li><li>Jesse starts Phase 2 implementation using the shared project folder as the official instruction set.</li><li>Cassian finishes or revises CI/CD process files, then promotes updates here.</li><li>Aspen keeps this status file current as work moves through gates.</li></ul>
+<h2>Open Questions</h2>
+<ul><li>Is the Arya App Store plan the final Phase 2 scope, or should it be split into a narrower &quot;proxy-first&quot; Phase 2 and later App Store phases?</li><li>What custom domain/subdomain should host the pretty project viewer once publishing and Cloudflare Access are added?</li><li>Should the shared project viewer eventually include only approved artifacts, or also pending review docs with visible status labels?</li></ul>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

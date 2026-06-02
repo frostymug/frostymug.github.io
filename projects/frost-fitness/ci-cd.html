@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Fitness CI/CD · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a aria-current="page" href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Frost Fitness &middot; CI/CD</div>
+      <h1>Frost Fitness CI/CD</h1>
+<p><strong>Owner:</strong> Cassian <strong>Promoted by:</strong> Aspen <strong>Last updated:</strong> 2026-06-02 <strong>Status:</strong> Draft index of Cassian's current CI/CD deliverables</p>
+<h2>Included Artifacts</h2>
+<table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><a href="ci-cd/workflows/worker-ci.yml">ci-cd/workflows/worker-ci.yml</a></td><td>Pull request CI for the Cloudflare Worker proxy: install, type check, lint, tests, secret scan, Wrangler dry run.</td></tr><tr><td><a href="ci-cd/workflows/worker-deploy.yml">ci-cd/workflows/worker-deploy.yml</a></td><td>Manual staging/production deploy and production deploy on <code>master</code>, with GitHub Environment gate and smoke-test rollback.</td></tr><tr><td><a href="ci-cd/proxy/scripts/smoke.js">ci-cd/proxy/scripts/smoke.js</a></td><td>Post-deploy smoke tests for auth, route reachability, streaming headers, and staging rate limits.</td></tr><tr><td><a href="RELEASE-PROCESS.html">RELEASE-PROCESS.md</a></td><td>Rollback procedures for bad Worker deploys, leaked client tokens, leaked upstream provider keys, and client rollback constraints.</td></tr></tbody></table>
+<h2>Intended Repo Placement</h2>
+<p>When Jesse/Cassian implement the Worker proxy in <code>frostymug/frost-fitness</code>, these files should land at:</p>
+<pre><code class="language-text">.github/workflows/worker-ci.yml
+.github/workflows/worker-deploy.yml
+proxy/scripts/smoke.js
+proxy/ROLLBACK.md</code></pre>
+<h2>Notes</h2>
+<ul><li>These files were copied from Cassian's workspace and preserved as implementation artifacts.</li><li>They assume a <code>proxy/</code> package with <code>npm ci</code>, <code>npm test</code>, <code>npm run lint</code>, <code>tsc</code>, and Wrangler environment config.</li><li>They also assume GitHub Secrets and Environments exist for Cloudflare credentials, Worker client tokens, and staging/production URLs.</li><li>Cassian owns final approval before these become production gates.</li></ul>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

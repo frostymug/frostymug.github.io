@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EMPIRE-OS — Empire Operating System · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a aria-current="page" href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Governance &middot; Empire OS</div>
+      <h1>EMPIRE-OS — Empire Operating System</h1>
+<p>&gt; The long-term vision and north star for the Aspen Frost agentic empire. Andy + Aspen only. &gt; For current org state, see EMPIRE.md (all agents).</p>
+<p><em>Started 2026-05-23. Living document.</em></p>
+<p>---</p>
+<h2>Vision</h2>
+<p>A full agentic product development pipeline — from idea to production — organized around three core functions: Design, Product, and Engineering. Andy acts as CPO, setting direction and staying in the loop until trust is established with each agent and flow.</p>
+<p>This is simultaneously a real production system for building apps <em>and</em> an experiment in how agent teams should be structured.</p>
+<p>---</p>
+<h2>The Three Functions</h2>
+<h3>🎨 Design</h3>
+<table><thead><tr><th>Role</th><th>Responsibility</th></tr></thead><tbody><tr><td>Visual Designer</td><td>Look, feel, brand, UI components</td></tr><tr><td>UX Designer</td><td>Flows, interaction patterns, usability</td></tr><tr><td>Instructional Designer</td><td>Learning experience architecture (ed-tech focus)</td></tr><tr><td>Curriculum Specialist</td><td>Content structure, learning pathways, scope &amp; sequence</td></tr><tr><td>Assessment / Psychometrics</td><td>Test design, mastery criteria, adaptive logic</td></tr></tbody></table>
+<h3>📋 Product</h3>
+<table><thead><tr><th>Role</th><th>Responsibility</th></tr></thead><tbody><tr><td>CPO / Strategist</td><td>Vision, direction, market positioning — <strong>Andy</strong> (+ thought partner agent)</td></tr><tr><td>Product Manager</td><td>Roadmap, requirements, success metrics</td></tr><tr><td>Product Owner</td><td>Backlog, sprint prioritization, acceptance criteria</td></tr></tbody></table>
+<h3>⚙️ Engineering</h3>
+<table><thead><tr><th>Role</th><th>Responsibility</th></tr></thead><tbody><tr><td>Architect</td><td>System design, tech decisions, constraints</td></tr><tr><td>Engineer</td><td>Implementation (the core loop we built on 2026-05-22)</td></tr><tr><td>QA</td><td>Testing, validation, sign-off</td></tr><tr><td>SRE / Build &amp; Deploy</td><td>CI/CD, infrastructure, reliability</td></tr></tbody></table>
+<p>---</p>
+<h2>Two Governance Ramps</h2>
+<h3>Trust Ramp</h3>
+<p>How much autonomy agents get. See the Human-in-the-Loop section below.</p>
+<h3>Safety Ramp</h3>
+<p>What <em>kinds of projects</em> we take on. Independent of trust — you can have high-trust agents and still keep the safety posture conservative because the domain demands it.</p>
+<table><thead><tr><th>Stage</th><th>Characteristics</th><th>Examples</th></tr></thead><tbody><tr><td><strong>Low stakes</strong></td><td>No PII, no personal data, no financial or health data. If something goes wrong, nobody gets hurt. User is Andy himself or a tiny trusted group.</td><td>Frost Fitness, Frost Rocks, Ice Age Trail</td></tr><tr><td><strong>Medium stakes</strong></td><td>Real users, real expectations, small blast radius. May involve friends &amp; family with real data. Requires explicit conversation before starting.</td><td>Curate Mental Health (note: mental health data is sensitive even at small scale — handle carefully)</td></tr><tr><td><strong>Higher stakes</strong></td><td>External clients, real user bases, regulated data (health records, financial data, PII at scale). Each requires explicit Andy sign-off regardless of trust level.</td><td>TBD</td></tr></tbody></table>
+<p><strong>The rule:</strong> don't let excitement about a project skip the safety ramp conversation. The early empire builds in low-stakes territory intentionally — to build the process, the tooling, and the judgment before the stakes get real.</p>
+<p>---</p>
+<h2>Two Axes of Evolution</h2>
+<h3>Axis 1 — Breadth (stand up the functions)</h3>
+<p>Build out each of the three functions and establish how Andy interacts with each one. Key questions:</p>
+<ul><li>What does a good session with each role look like?</li><li>What artifacts does each role produce?</li><li>How do handoffs between functions work?</li></ul>
+<h3>Axis 2 — Depth (adversarial review)</h3>
+<p>Introduce productive tension within and between roles. Examples:</p>
+<ul><li><strong>Architect vs. Engineer</strong> — systems thinking vs. practical buildability</li><li><strong>Designer vs. PM</strong> — user experience vs. scope and timeline</li><li><strong>QA vs. Engineer</strong> — quality bar vs. shipping pressure</li><li><strong>Strategist vs. PM</strong> — long-term vision vs. near-term roadmap</li></ul>
+<p>---</p>
+<h2>Human-in-the-Loop Philosophy</h2>
+<p>Andy stays in the loop on everything until trust is established, then gradually relaxes involvement in flows that feel safe.</p>
+<p><strong>Trust ramp (rough phases):</strong></p>
+<table><thead><tr><th>Phase</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td>Andy + one agent at a time. Andy is the integration layer between functions.</td></tr><tr><td>2</td><td>Agents hand off to each other. Andy reviews the handoffs.</td></tr><tr><td>3</td><td>Adversarial pairs run autonomously. Andy reviews outcomes, not process.</td></tr><tr><td>4</td><td>Andy is CPO again — setting direction and reviewing exceptions only.</td></tr></tbody></table>
+<p>The goal of Phase 1 isn't just execution — it's building Andy's intuition for <em>which decisions actually need him</em> and which can be delegated.</p>
+<p>---</p>
+<h2>Model Strategy</h2>
+<p>Different roles may use different models deliberately. Hypothesis: a model optimized for code generation isn't necessarily best for strategic challenge or long-horizon architecture reasoning. Experiment with model assignment per role rather than defaulting to &quot;best available.&quot;</p>
+<p>Candidate pairings to explore:</p>
+<ul><li><strong>Strategist / thought partner</strong> — a model with a different reasoning style, slightly adversarial</li><li><strong>Architect</strong> — strong at systems reasoning and constraint satisfaction</li><li><strong>Engineer</strong> — strong at code generation and instruction-following</li><li><strong>QA</strong> — strong at finding edge cases and failure modes</li></ul>
+<p>---</p>
+<h2>Checks &amp; Balances Patterns</h2>
+<p>Patterns to explore as the system matures:</p>
+<ul><li><strong>Adversarial review</strong> — QA and Engineer have explicitly different incentives in their prompts</li><li><strong>Cross-functional sign-off</strong> — Designer and PM must agree before Engineering starts</li><li><strong>Red team agent</strong> — dedicated agent whose only job is to find problems with everyone else's output</li><li><strong>Confidence routing</strong> — agents flag low-confidence decisions for human review rather than proceeding</li></ul>
+<p>---</p>
+<h2>The Core Loop (already built)</h2>
+<p>The innermost execution loop, operational as of 2026-05-22:</p>
+<pre><code>Roadmap → feature selection → implementation → PR → review → merge → EAS build → App Store submit</code></pre>
+<p>Everything above this is the outer loop this document is designing.</p>
+<p>---</p>
+<h2>Open Questions</h2>
+<p>- <em>Working hypothesis: route strategy through Andy, let execution agents talk directly</em></p>
+<ul><li>Do agents talk to each other directly, or route through Andy at strategy level?</li><li>What's the canonical artifact format for each handoff? (PRD? design spec? architecture doc?)</li><li>Where do artifacts live? (GitHub repo? dedicated workspace?)</li><li>First experiment: which role pairing to build and test first?</li></ul>
+<p>---</p>
+<h2>Next Steps</h2>
+<ul><li>[ ] Pick first role to build: PM or Architect (both have clear artifacts and natural Andy touchpoints)</li><li>[ ] Define what &quot;a good session&quot; looks like for that role</li><li>[ ] Experiment with model assignment for that role</li><li>[ ] Document what we learn</li></ul>
+<p>---</p>
+<p><em>This document is Andy's and Aspen's. Update it as the system evolves.</em></p>
+<p>---</p>
+<h2>Agent Naming</h2>
+<ul><li>Prefer <strong>gender-neutral names</strong></li><li>Sources: names Andy just likes, subtle nods to the role (e.g. Izzy → instructional designer), or pulls from favorite shows (Game of Thrones, Breaking Bad, The West Wing, others)</li><li>Names should feel like a person, not a job title</li></ul>
+<p>---</p>
+<h2>Token Economics &amp; Model Strategy</h2>
+<h3>Token Spend Tracking</h3>
+<ul><li>Andy has ~$100 in Claude API credit — meaningful threshold between &quot;hobby&quot; and &quot;real operation&quot;</li><li><strong>Aspen's responsibility:</strong> track and report on token spend across agents, surface burn rate, flag when we're approaching thresholds</li><li>Need to build a process for periodic spend updates (how much spent, by which agent, on what)</li><li>Arya's <code>ai_call_log</code> table in Frost Fitness is a good model — the empire needs something analogous at the infrastructure level</li></ul>
+<p><strong>Backlog item:</strong> Build a token spend reporting process — periodic summary of API usage by agent, burn rate trend, and cost-per-project estimates.</p>
+<h3>Model Differentiation Strategy</h3>
+<p>Two reasons to run different models per agent (not just cost):</p>
+<ul><li><strong>Cost optimization</strong> — Jesse and other execution agents should run cheaper models; strategic agents (Izzy, Arya, Petra) earn their token cost</li><li><strong>Adversarial diversity</strong> — different model providers have different reasoning patterns, blind spots, and strengths. An empire where every agent runs the same model is an empire with correlated failure modes. Provider diversity = diversity of thought = better stress-testing.</li></ul>
+<p><strong>Working hypothesis:</strong> Anthropic for strategic/design agents, experiment with other providers (OpenAI, Google, Mistral) for specific roles where their strengths align. Don't default to &quot;best available&quot; — match model to role deliberately.</p>
+<p><strong>Backlog item:</strong> As each new agent is built, make a conscious model assignment decision and document the rationale. Revisit periodically as models evolve.</p>
+<p>---</p>
+<h2>Parked Decisions (to revisit)</h2>
+<h3>First Agent to Add</h3>
+<ul><li><strong>Andy's instinct: Designer first</strong> (Instructional Designer specifically)</li><li>Andy covers Product/CPO role himself for now</li><li>Maybe a lightweight product agent alongside, but not priority</li><li><strong>Architect is likely the second agent</strong> after designer is proven out</li><li>Engineering core loop already exists (Aspen)</li></ul>
+<h3>Tooling Question</h3>
+<ul><li>As projects multiply (Frost Fitness, Frost Rocks, more...) — do we need Jira/Confluence-style tooling?</li><li>Or can we get away with files + OpenClaw workspace?</li><li><strong>Open question — revisit when org has &gt;2 active projects in flight</strong></li></ul>
+<h3>Project Pipeline &amp; Lifecycle</h3>
+<p><strong>Lifecycle stages (v1):</strong></p>
+<table><thead><tr><th>Stage</th><th>Description</th></tr></thead><tbody><tr><td><strong>Idea</strong></td><td>Anything Andy has ever thought of. Infinite backlog, zero pressure.</td></tr><tr><td><strong>Scoped</strong></td><td>We've defined what it is, what it's not, and roughly what it takes to build.</td></tr><tr><td><strong>In Development</strong></td><td>Active work happening — agents building, PRs shipping.</td></tr><tr><td><strong>Launched</strong></td><td>Live in production. Sub-stages: <em>Soft</em> (TestFlight / internal use), <em>Public</em> (App Store / real users).</td></tr><tr><td><strong>Maintained</strong></td><td>Launched and receiving ongoing updates / support.</td></tr><tr><td><strong>Sunset</strong></td><td>Retired. Kept for reference.</td></tr></tbody></table>
+<p><strong>Portfolio shape (early days):</strong></p>
+<ul><li>Start with Andy's personal passion projects (Frost Fitness, Frost Rocks, etc.)</li><li>Expand to friends &amp; family projects (e.g. Curate Mental Health app for Erik)</li><li>Eventually: external clients / consulting engagements</li></ul>
+<p><strong>On the Idea stage:</strong> the backlog is infinite and that's fine. Anything Andy has ever thought of can live there with zero commitment. The bottleneck is Scoped → In Development, not Idea → Scoped.</p>
+<p><strong>Tracking method:</strong> open question — needs a dedicated file (e.g. <code>PIPELINE.md</code>) or lightweight structured format. Revisit when we have &gt;3 active projects.</p>
+<h3>GitHub Pages Privacy</h3>
+<ul><li>Current Pages site (frostymug.github.io) is public — fine for now, content isn't sensitive</li><li>When it needs to be locked down: <strong>Cloudflare Access</strong> — free tier, puts a Google/email login gate in front of the existing Pages site. Easy to add later.</li></ul>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

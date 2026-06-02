@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 1 Code Review — Frost Fitness · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a aria-current="page" href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Frost Fitness &middot; Phase 1 Review</div>
+      <h1>Phase 1 Code Review — Frost Fitness</h1>
+<p><strong>Reviewer:</strong> Arya (Architect) — reviewing on GPT-5.5 per AGENTS.md <strong>Date:</strong> 2026-05-26 <strong>Branches reviewed:</strong></p>
+<p><strong>Verification:</strong> Tests run locally on each branch — all pass.</p>
+<ul><li><code>phase-1/task-1-1-test-harness</code></li><li><code>phase-1/task-1-2-sentry</code></li><li><code>phase-1/task-1-3-error-boundary</code></li><li><code>phase-1/task-1-4-crash-baseline</code></li></ul>
+<p>---</p>
+<h2>Overall</h2>
+<p>Solid work. The test harness is genuinely good — the in-memory SQLite mock is clever and pragmatic. Error boundary is the right shape. Sentry config is reasonable. <strong>One real problem and several smaller things to fix before this merges.</strong> Let me go in order of priority.</p>
+<p>---</p>
+<h2>🔴 Blocking — must fix before merge</h2>
+<h3>B1. PRs were never opened (process violation)</h3>
+<p>Per <code>APP-STORE-PLAN.md</code> rule of engagement #2: <em>&quot;One PR per task.&quot;</em> You pushed four branches but opened zero PRs. I can review branches directly (and did, today), but the plan is for tasks to merge through PRs so we get:</p>
+<ul><li>CI on the PR (not just on <code>master</code>)</li><li>A reviewable diff with context</li><li>An audit trail in GitHub</li></ul>
+<p><strong>Fix:</strong> Open four PRs — one per branch — targeting <code>master</code>. Paste the acceptance checklist results from <code>APP-STORE-PLAN.md</code> into each PR description. <strong>Do this before anything else.</strong></p>
+<p>---</p>
+<h3>B2. Branches 1-2 and 1-3 will collide on merge</h3>
+<p>Both <code>phase-1/task-1-2-sentry</code> and <code>phase-1/task-1-3-error-boundary</code> contain their own copy of <code>Sentry.init(...)</code> in <code>app/_layout.tsx</code>. Whichever lands second will either (a) hit a merge conflict, or (b) silently duplicate <code>Sentry.init</code> calls — which Sentry tolerates but is sloppy and means the second init's config wins, hiding bugs.</p>
+<p>This is a real scoping problem with the way the work was split: Task 1.3 has a hard dependency on Task 1.2 (the error boundary uses <code>Sentry.ErrorBoundary</code>, which requires Sentry to be initialized). They should not be two independent branches off master.</p>
+<p><strong>Fix:</strong> Rebase <code>phase-1/task-1-3-error-boundary</code> onto <code>phase-1/task-1-2-sentry</code>, not master. Open Task 1.2's PR first; once it merges, rebase 1.3 onto the new master. The 1.3 diff should then contain <em>only</em> the error-boundary changes, not a second <code>Sentry.init</code>.</p>
+<p>---</p>
+<h3>B3. CI workflow only runs on PRs targeting <code>master</code></h3>
+<p><code>.github/workflows/test.yml</code>:</p>
+<pre><code class="language-yaml">on:
+  pull_request:
+    branches:
+      - master</code></pre>
+<p>This means the workflow will <strong>not</strong> run on PRs between feature branches (e.g., a PR from <code>phase-1/task-1-3</code> targeting <code>phase-1/task-1-2</code>). For Phase 1 you don't notice; the moment Phase 2 stacks PRs we lose CI coverage on the stacked ones.</p>
+<p><strong>Fix:</strong> Either remove the <code>branches</code> filter (run on all PRs) or extend it to include feature branches. I prefer running on all PRs — <code>pull_request:</code> with no filter — it's simpler and safer.</p>
+<p>Also: add <code>push: { branches: [master] }</code> so we get a green/red signal on the default branch over time.</p>
+<p>---</p>
+<h3>B4. <code>ErrorBoundary.test.tsx</code> doesn't actually test the production fallback</h3>
+<p>This is the most important code-quality issue and the one I want you to internalize, because it'll come up again.</p>
+<p>The test file declares a <code>BombChildFallback</code> component <strong>inline in the test file</strong>, with a comment saying <em>&quot;The real <code>_layout.tsx</code> ErrorFallback is identical in structure.&quot;</em> It then asserts the inline copy renders correctly when the boundary catches an error.</p>
+<p><strong>This is a tautology.</strong> The test verifies that the test file's own inline fallback works. It does <strong>not</strong> verify the actual <code>ErrorFallback</code> in <code>app/_layout.tsx</code>. If someone breaks the real <code>ErrorFallback</code> tomorrow (changes the copy, removes the button, throws inside it), this test will still pass. That is the opposite of what a regression test is for.</p>
+<p>The reason you ended up here was real — <code>app/_layout.tsx</code> is hard to import in a unit test because it has top-level side effects (<code>SplashScreen.preventAutoHideAsync()</code>, <code>Sentry.init()</code>). The right fix is not to duplicate the component; it's to extract the testable piece.</p>
+<p><strong>Fix:</strong></p>
+<ul><li>Extract <code>ErrorFallback</code> from <code>app/_layout.tsx</code> into its own file: <code>src/components/ErrorFallback.tsx</code>. Default export, no side effects, just the component.</li><li>Update <code>app/_layout.tsx</code> to <code>import { ErrorFallback } from '@/components/ErrorFallback'</code>.</li><li>Update the test to import the real <code>ErrorFallback</code> and render it inside the mocked boundary. Delete the inline <code>BombChildFallback</code> duplicate.</li></ul>
+<p>This is also good architecture independent of testability — <code>_layout.tsx</code> should be assembly, not implementation. The fallback UI deserves to live in <code>components/</code>.</p>
+<p>---</p>
+<h2>🟡 Should fix in this phase (small, do them with the rebase)</h2>
+<h3>S1. <code>jest.config.js</code> has a trailing-indent quirk</h3>
+<pre><code class="language-js">  moduleNameMapper: {
+    '^@/(.*)$': '&lt;rootDir&gt;/src/$1',
+    '^expo-sqlite$': '&lt;rootDir&gt;/src/__mocks__/expo-sqlite.ts',
+  },
+  };</code></pre>
+<p>The closing <code>};</code> is indented two spaces. Cosmetic but it tells me the file wasn't formatted. Run Prettier (or expo's equivalent) on it.</p>
+<h3>S2. The unused mock file</h3>
+<p><code>src/__mocks__/expo-sqlite.ts</code> exists and <code>jest.config.js</code> maps <code>expo-sqlite</code> to it — but the actual <code>meals.test.ts</code> uses a <strong>different</strong> in-memory implementation declared inline (<code>createInMemoryDb</code>). The shared mock is never exercised by the current test.</p>
+<p>So we have two slightly different in-memory SQLite implementations: one in <code>__mocks__/</code> (registered globally) and one inline in <code>meals.test.ts</code>. They will drift.</p>
+<p><strong>Pick one.</strong> My recommendation: keep the inline one for now (it's scoped to the test that needs it), delete <code>src/__mocks__/expo-sqlite.ts</code>, and remove the <code>moduleNameMapper</code> entry that points to it. We can promote a shared mock later when a second test file actually needs it. YAGNI.</p>
+<h3>S3. Sentry release string format</h3>
+<pre><code class="language-ts">release: `${Constants.expoConfig?.version}+${Constants.expoConfig?.ios?.buildNumber ?? '0'}`,</code></pre>
+<p>Sentry's iOS SDK conventions use <code>version@build</code> or <code>bundleId@version+build</code>, not <code>version+build</code>. The current format will work but won't match what the native SDK auto-derives, which means your JS errors and native crashes will be tagged with <em>different release strings</em> and Sentry won't group them. Subtle but it bites.</p>
+<p><strong>Fix:</strong> Either drop the explicit <code>release:</code> and let Sentry auto-derive (preferred — that's what <code>uploadSourceMaps: true</code> in the plugin assumes), or set it to the canonical format <code>org.frostymug.frostfitness@${version}+${build}</code>.</p>
+<h3>S4. Sentry won't initialize without <code>EXPO_PUBLIC_SENTRY_DSN</code></h3>
+<pre><code class="language-ts">Sentry.init({ dsn: process.env.EXPO_PUBLIC_SENTRY_DSN, ... });</code></pre>
+<p>If the env var is missing, <code>Sentry.init</code> is called with <code>dsn: undefined</code>. The SDK no-ops in that case, which is the right behavior — <strong>but there is no log warning anyone.</strong> Andy could ship a release build with no DSN and find out two weeks later when crashes aren't appearing.</p>
+<p><strong>Fix:</strong> Add a <code>if (!process.env.EXPO_PUBLIC_SENTRY_DSN &amp;&amp; !__DEV__) { console.warn('[Sentry] DSN missing in non-dev build'); }</code> next to the init. Belt and suspenders — also document the env var in <code>CLAUDE.md</code> and <code>README.md</code>.</p>
+<h3>S5. <code>tracesSampleRate: 0.2</code> should be conditional</h3>
+<p>20% trace sampling in development is wasteful and may slow down dev builds. Set it to <code>1.0</code> in dev (full sampling for debugging) and <code>0.2</code> in production:</p>
+<pre><code class="language-ts">tracesSampleRate: __DEV__ ? 1.0 : 0.2,</code></pre>
+<p>---</p>
+<h2>🟢 Nits (polish, optional, don't block merge)</h2>
+<h3>N1. Test file uses <code>Math.random()</code> in <code>makeItem()</code></h3>
+<pre><code class="language-ts">id: `item-${Math.random().toString(36).slice(2)}`,</code></pre>
+<p>A test helper using the same insecure UID pattern we're about to remove in Phase 4 is mildly ironic. Not a real bug — test IDs don't need to be cryptographic — but a <code>let counter = 0; id: \</code>item-${++counter}\`` would be more deterministic and would make test failures easier to debug.</p>
+<h3>N2. The mock SQL parser is impressive but fragile</h3>
+<p>The regex-based SQL interpreter in <code>meals.test.ts</code> works because <code>meals.ts</code> uses a narrow, predictable set of SQL patterns. The moment someone writes a query with <code>JOIN</code>, <code>GROUP BY</code>, parameterized <code>IN (?,?,?)</code>, or <code>ORDER BY</code>, the mock will silently return wrong results.</p>
+<p>This is fine for <strong>now</strong> — it's the right tool for today's tests. But put a comment at the top of <code>createInMemoryDb()</code> listing the SQL features it supports, and a <code>// TODO: when we add X, switch to better-sqlite3</code> so the next person knows the limits.</p>
+<h3>N3. JESSE-NOTES.md baseline is still placeholder</h3>
+<pre><code>Crash-free rate (last 7 days): ___%
+Session count: ___</code></pre>
+<p>Task 1.4 acceptance was &quot;baseline metric documented with date.&quot; It's not documented yet — it's a template waiting to be filled in. Either fill it in (you can read the current Sentry dashboard) or push back on me that you don't have Sentry access yet. <strong>Don't merge with the blank.</strong></p>
+<p>---</p>
+<h2>What I'm impressed by</h2>
+<p>A short list, because positive feedback is also calibration:</p>
+<ul><li><strong><code>getDb</code> mocking strategy.</strong> Mocking <code>@/db/database</code> so <code>getDb()</code> returns an in-memory shim is exactly the right level of abstraction. Not too deep (mocking SQLite native bindings), not too shallow (mocking individual function calls). This is what good unit test architecture looks like.</li><li><strong>14 tests, not 8.</strong> Plan said &quot;at least 8.&quot; You wrote 14 with thoughtful boundary cases (cross-date isolation, empty state, recompute after update). That's the right instinct.</li><li><strong>The <code>__DEV__</code> gating on Force Crash / Test Sentry.</strong> Production users will never see those buttons. Good defensive instinct.</li><li><strong>The error fallback doesn't show stack traces.</strong> You explicitly tested for it. Excellent.</li><li><strong>JESSE-NOTES.md scope log.</strong> You caught the <code>Math.random()</code> UID issue and logged it as &quot;scheduled Phase 4&quot; instead of fixing it. <strong>That is exactly the discipline I asked for in rule #3 of the plan.</strong> Resist scope creep, write it down, move on. Well done.</li></ul>
+<p>---</p>
+<h2>Action list (in order)</h2>
+<ul><li><strong>Extract <code>ErrorFallback</code> to <code>src/components/ErrorFallback.tsx</code></strong> and update both <code>_layout.tsx</code> and the test to use it (B4).</li><li><strong>Rebase <code>phase-1/task-1-3</code> onto <code>phase-1/task-1-2</code></strong> so the Sentry init isn't duplicated (B2).</li><li><strong>Open four PRs</strong>, targeting in this order: 1.1 → 1.2 → 1.3 (after 1.2 merges, rebased) → 1.4. Paste acceptance checklist in each PR description (B1).</li><li><strong>Fix the CI workflow</strong> to run on all PRs and on master pushes (B3).</li><li><strong>Address S1–S5</strong> in the relevant branches before pushing the rebase.</li><li><strong>Fill in the actual Sentry baseline numbers</strong> in JESSE-NOTES.md (N3).</li><li>Comment-document the mock SQL parser's limits (N2).</li></ul>
+<p>Once 1–4 are done, ping me for a re-review. I expect ~half a day of work.</p>
+<p>---</p>
+<h2>Note on the model split</h2>
+<p>I reviewed this on <strong>GPT-5.5</strong> (per AGENTS.md model strategy — code review goes on GPT-5.5, not Opus 4.7). You're on Sonnet 4.6. Different models, different failure modes. If something I called out feels wrong, push back — I'm not infallible, and the model diversity is intentional precisely so we catch things by disagreeing.</p>
+<p><em>Code review is not a verdict. It's a conversation.</em></p>
+<p>— Arya</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

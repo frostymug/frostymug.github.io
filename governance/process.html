@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROCESS.md — How We Build Software · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a aria-current="page" href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Governance &middot; Process</div>
+      <h1>PROCESS.md — How We Build Software</h1>
+<p>&gt; The canonical flow from idea to production. Read this before designing any agent or workflow. &gt; Update it as the process evolves.</p>
+<p><em>Started 2026-05-23. Updated 2026-05-24 — adversarial review added.</em></p>
+<p>---</p>
+<h2>The Pipeline</h2>
+<pre><code>Idea
+  ↓
+Izzy — Design Doc
+  ↓
+Arya — Holes &amp; Gaps pass on the design (before architecture)
+  ↓
+Arya — Technical Architecture Doc
+  ↓
+Andy signs off (design + architecture in agreement)
+  ↓
+Podrick — Strategic review: does this hold together? Right problem, right scope, right person?
+  ↓
+Podrick — Stories + Acceptance Criteria
+  ↓
+Andy spot-checks (riding the trust ramp)
+  ↓
+Arya + Jesse — Build (Arya: architecture &amp; code review / Jesse: implementation)
+  ↓
+SRE Agent (TBD) — Test coverage, build safety, CI/CD, deployment veto
+  ↓
+Production</code></pre>
+<p>---</p>
+<h2>Adversarial Review — Why It's Here</h2>
+<p>AI agents produce fluent, coherent, enthusiastic output. That fluency creates a feeling of progress that isn't always real. A beautiful design doc can make a half-baked idea feel fully baked.</p>
+<p>The antidote is <strong>structural skepticism</strong> — separate roles whose job is explicitly to find gaps, not affirm the vision. This isn't confrontational. It's how good teams work: the person who built the thing shouldn't be the only one reviewing it.</p>
+<p><strong>Arya's holes &amp; gaps pass</strong> happens before she starts architecture. Her first job when reading Izzy's design doc is not to design — it's to find what's missing, what's assumed, what's underspecified, and what's going to be expensive or technically painful. Only then does she design.</p>
+<p><strong>Podrick's strategic review</strong> happens before stories. His job is to read the full design + architecture package and ask: does this actually hold together? Are we solving the right problem for the right person? Is the scope coherent? Are we building the thing we said we were building?</p>
+<p><strong>Aspen's role</strong> includes noticing when we're getting carried away — when the conversation is going well but the thinking hasn't been stress-tested. Part of the Integrator job is to surface that.</p>
+<p>---</p>
+<h2>The Agents</h2>
+<h3>🎨 Izzy — Designer</h3>
+<ul><li><strong>Input:</strong> Andy's fuzzy idea</li><li><strong>Output:</strong> Design doc — experience design, instructional design, engagement loops, open questions</li><li><strong>Does:</strong> Sharpens vague ideas into clear design intent. Asks what the user does AND what the user learns.</li><li><strong>Doesn't:</strong> Make technical decisions. Write stories. Touch code.</li><li><strong>Artifact:</strong> <code>projects/&lt;project&gt;/DESIGN.md</code> in her workspace</li></ul>
+<h3>⚙️ Arya — Architect</h3>
+<ul><li><strong>Input:</strong> Izzy's design doc</li><li><strong>Output (step 1):</strong> Holes &amp; gaps — what's missing, underspecified, or technically painful in the design</li><li><strong>Output (step 2):</strong> Technical architecture doc — stack decisions, trade-offs, how technology serves the design vision</li><li><strong>Does:</strong> Makes the hard technical decisions. Exposes trade-offs with an if/then framework. Has opinions and defends them. Reviews Jesse's code.</li><li><strong>Doesn't:</strong> Write stories. Do implementation work.</li><li><strong>Artifact:</strong> <code>projects/&lt;project&gt;/ARCHITECTURE.md</code></li><li><strong>Model:</strong> High-capability — she earns it with architectural reasoning</li></ul>
+<h3>📋 Podrick — Product Strategist <em>(not yet built)</em></h3>
+<ul><li><strong>Input:</strong> Izzy's design doc + Arya's architecture doc (both Andy-approved)</li><li><strong>Output (step 1):</strong> Strategic review — does this hold together? Right problem, right scope, right person?</li><li><strong>Output (step 2):</strong> User stories with acceptance criteria, engineering-ready scope</li><li><strong>Does:</strong> Thinks strategically about whether we're building the right thing. Holds scope tension. Pushes back on design when something is too complex to build, pushes back on engineering when something is being over-engineered. Translates design + architecture into buildable increments.</li><li><strong>Doesn't:</strong> Make design decisions. Make architectural decisions.</li><li><strong>Autonomy:</strong> Rides the trust ramp. Early on, Andy reviews stories before engineering starts.</li><li><strong>Named after:</strong> Podrick Payne, Game of Thrones</li></ul>
+<h3>🔨 Jesse — Coder <em>(not yet built)</em></h3>
+<ul><li><strong>Input:</strong> Podrick's stories + Arya's architecture</li><li><strong>Output:</strong> Code, PRs</li><li><strong>Does:</strong> Implementation. Follows Arya's architecture. Submits PRs for Arya's review.</li><li><strong>Doesn't:</strong> Make architectural decisions.</li><li><strong>Model:</strong> Lower-cost model — deliberate cost management choice.</li></ul>
+<h3>🛡️ SRE Agent — Build &amp; Reliability <em>(future)</em></h3>
+<ul><li><strong>Input:</strong> Merged code</li><li><strong>Output:</strong> Test coverage, build safety, deployment to production</li><li><strong>Does:</strong> Owns CI/CD pipeline. Has final veto on deployment to production.</li><li><strong>Doesn't:</strong> Make product or design decisions.</li></ul>
+<p>---</p>
+<h2>Andy's Role</h2>
+<p>Andy is the <strong>gate between phases</strong>, not inside every micro-handoff.</p>
+<table><thead><tr><th>Gate</th><th>Andy does</th></tr></thead><tbody><tr><td>Idea → Design</td><td>Brings the fuzzy idea to Izzy</td></tr><tr><td>Design → Architecture</td><td>Reviews Izzy's design doc before Arya starts</td></tr><tr><td>Architecture → Stories</td><td>Signs off on design + architecture together before Podrick starts</td></tr><tr><td>Stories → Build</td><td>Spot-checks Podrick's stories early (trust ramp); relaxes as trust builds</td></tr><tr><td>Build → Production</td><td>SRE agent has the deployment veto; Andy reviews outcomes not process</td></tr></tbody></table>
+<p>---</p>
+<h2>Aspen's Role</h2>
+<p>Aspen is the <strong>Integrator</strong> — she knows where everything is in the pipeline at all times.</p>
+<ul><li>Tracks what's in flight across all projects</li><li>Knows when a phase is complete and kicks off the handoff</li><li>Flags when something is stuck, off-track, or needs Andy's attention</li><li>Notices when we're getting carried away — when the conversation is going well but the thinking hasn't been stress-tested</li><li>Maintains <code>PIPELINE.md</code> with current project stages</li><li>Maintains this document as the process evolves</li><li>Builds and onboards new agents as the org grows</li></ul>
+<p>---</p>
+<h2>Model Strategy</h2>
+<table><thead><tr><th>Agent</th><th>Model tier</th><th>Rationale</th></tr></thead><tbody><tr><td>Izzy</td><td>High capability</td><td>Design reasoning requires nuance and creativity</td></tr><tr><td>Arya</td><td>High capability</td><td>Architecture reasoning requires systems thinking and constraint satisfaction</td></tr><tr><td>Podrick</td><td>Mid-high capability</td><td>Strategic thinking + scope judgment — not cheap work</td></tr><tr><td>Jesse</td><td>Lower cost</td><td>Implementation — instruction-following over open-ended reasoning</td></tr><tr><td>SRE Agent</td><td>TBD</td><td></td></tr><tr><td>Aspen</td><td>Mid-high</td><td>Coordination, memory, judgment across the whole system</td></tr></tbody></table>
+<p>---</p>
+<h2>Artifacts &amp; Handoffs</h2>
+<p>Official project artifacts live in <code>/home/ubuntu/.openclaw/workspace/projects/&lt;project&gt;/</code>. Individual agent workspaces are for drafts, scratch work, and role-specific notes. When an artifact becomes a cross-agent dependency or is ready for Andy review, promote it to the shared project folder and mark its source and approval status.</p>
+<table><thead><tr><th>Handoff</th><th>Official artifact</th><th>Owner</th></tr></thead><tbody><tr><td>Izzy → Arya</td><td><code>projects/&lt;project&gt;/DESIGN.md</code></td><td>Izzy</td></tr><tr><td>Arya → Andy</td><td><code>projects/&lt;project&gt;/ARCHITECTURE.md</code> + holes/gaps notes</td><td>Arya</td></tr><tr><td>Andy → Podrick</td><td>Approved design + architecture in shared project folder</td><td>Andy</td></tr><tr><td>Podrick → Arya+Jesse</td><td><code>projects/&lt;project&gt;/STORIES.md</code> or phase plan</td><td>Podrick</td></tr><tr><td>Jesse → Arya</td><td>Pull requests</td><td>Jesse</td></tr><tr><td>Arya → Cassian</td><td>Merged PRs + release notes</td><td>Arya</td></tr><tr><td>Cassian → Production</td><td>CI/CD, deployment, rollback, release approval</td><td>Cassian</td></tr></tbody></table>
+<p>---</p>
+<h2>Official Project Record</h2>
+<p>The shared project tree is the system of record:</p>
+<pre><code class="language-text">/home/ubuntu/.openclaw/workspace/projects/
+  &lt;project&gt;/
+    README.md
+    STATUS.md
+    DESIGN.md
+    ARCHITECTURE.md
+    PHASE-2-PLAN.md
+    CI-CD.md
+    RELEASE-PROCESS.md
+    decisions/
+    reviews/
+    archive/</code></pre>
+<p>Not every project needs every file, but every active project should have <code>README.md</code> and <code>STATUS.md</code>. The status file should say what is approved, what is draft, and what the next gate is.</p>
+<p>---</p>
+<h2>Open Questions</h2>
+<ul><li>[x] Artifact storage — shared repo vs. per-agent workspace. Decision: canonical shared project folder under <code>/home/ubuntu/.openclaw/workspace/projects/</code>; agent workspaces remain draft/scratch areas.</li><li>[ ] Agent-to-agent communication — direct handoff or routed through Andy/Aspen?</li><li>[ ] SRE agent design — standalone agent or Arya sub-agent?</li><li>[ ] Jesse's final name and model assignment</li><li>[ ] Podrick's exact story format and tooling</li></ul>
+<p>---</p>
+<p><em>Update this document whenever the process changes. Every agent reads it.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#0a0a0f; --panel:#0f1623; --panel-2:#131c2c; --line:#1e2535; --ink:#e2e8f0; --muted:#64748b; --soft:#94a3b8; --accent:#f97316; --accent-2:#fb923c; --accent-3:#fbbf24; --cool:#5ee0ff; --cool-2:#a78bfa; }
+html, body { background: var(--bg); color: var(--ink); }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif; line-height:1.6; min-height:100vh; }
+a { color: var(--cool); text-decoration: none; }
+a:hover { color: var(--accent-2); }
+aside { position:fixed; inset:0 auto 0 0; width:260px; padding:28px 20px 24px; background:#07090f; border-right:1px solid var(--line); overflow-y:auto; }
+.brand { display:block; font-size:1.25rem; font-weight:700; letter-spacing:-0.02em; background:linear-gradient(135deg,#5ee0ff 0%,#a78bfa 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:28px; }
+.brand span { -webkit-text-fill-color: initial; }
+.nav-section { margin-bottom:22px; }
+.nav-section-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); margin-bottom:8px; padding:0 8px; }
+aside a:not(.brand) { display:block; padding:7px 10px; border-radius:6px; color:#cbd5e1; font-size:0.88rem; margin-bottom:2px; }
+aside a:not(.brand):hover { background:var(--panel); color:white; }
+aside a[aria-current="page"] { background:var(--panel); color:var(--accent-2); border-left:2px solid var(--accent); padding-left:8px; }
+.aside-footer { margin-top:32px; padding-top:16px; border-top:1px solid var(--line); font-size:0.72rem; color:var(--muted); line-height:1.5; }
+main { margin-left:260px; min-height:100vh; display:flex; flex-direction:column; }
+article { max-width:880px; padding:56px 56px 40px; flex:1; }
+footer { padding:24px 56px 40px; color:var(--muted); font-size:0.75rem; border-top:1px solid var(--line); }
+.crumb { font-size:0.78rem; color:var(--muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:0.08em; }
+h1, h2, h3, h4 { color:#f1f5f9; }
+h1 { font-size:2.2rem; font-weight:700; letter-spacing:-0.03em; margin:0 0 24px; line-height:1.15; }
+article > h2 { margin-top:40px; padding-top:22px; border-top:1px solid var(--line); font-size:1.5rem; }
+article > h3 { margin-top:28px; font-size:1.15rem; }
+article p, article li { color:#cbd5e1; }
+article p { margin:14px 0; }
+article ul, article ol { margin:14px 0 14px 22px; }
+article li { margin-bottom:6px; }
+article strong { color:#f1f5f9; }
+code { background:#131c2c; border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:0.88em; color:#fbbf24; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+pre { background:#07090f; border:1px solid var(--line); border-radius:10px; padding:16px 18px; overflow-x:auto; margin:18px 0; }
+pre code { background:transparent; border:none; padding:0; color:#e2e8f0; font-size:0.85rem; }
+table { border-collapse:collapse; width:100%; margin:18px 0; background:var(--panel); border-radius:8px; overflow:hidden; font-size:0.9rem; }
+th, td { border:1px solid var(--line); padding:10px 14px; text-align:left; vertical-align:top; color:#cbd5e1; }
+th { background:var(--panel-2); color:#f1f5f9; font-weight:600; }
+.hero { margin-bottom:40px; padding-bottom:24px; border-bottom:1px solid var(--line); }
+.hero h1 { font-size:2.6rem; background:linear-gradient(135deg,#f97316 0%,#fb923c 50%,#fbbf24 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero .paw { -webkit-text-fill-color:initial; }
+.hero p { color:var(--soft); font-size:1rem; max-width:620px; }
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
+.card { background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; padding:22px 22px 18px; }
+.card h2 { font-size:1.1rem; margin-bottom:6px; color:#f1f5f9; }
+.card .blurb { color:var(--muted); font-size:0.85rem; margin-bottom:14px; }
+.card .doc-list { list-style:none; margin:0; padding:0; }
+.card .doc-list li { margin-bottom:6px; }
+.card .doc-list a { display:block; padding:7px 10px; border-radius:6px; font-size:0.9rem; color:#cbd5e1; }
+.card .doc-list a:hover { background:var(--panel-2); color:var(--accent-2); }
+@media (max-width:820px) { aside { position:static; width:100%; border-right:none; border-bottom:1px solid var(--line); } main { margin-left:0; } article { padding:32px 24px; } footer { padding:20px 24px 32px; } }
