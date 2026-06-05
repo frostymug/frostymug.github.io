@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Fitness Monitoring Plan · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a aria-current="page" href="/projects/frost-fitness/monitoring-plan.html">Monitoring Plan</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Zev Published HTML</div>
+      <a href="/zev/index.html">Index</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Frost Fitness &middot; Operations</div>
+      <h1>Frost Fitness Monitoring Plan</h1>
+      <p><strong>Prepared:</strong> 2026-06-05 <strong>Owner:</strong> Cassian <strong>Scope:</strong> production app, Cloudflare Worker, Sentry, Expo/EAS, App Store Connect, CI/CD, and vendor status.</p>
+      <p>This plan gives Andy two practical paths to a comprehensive health picture for Frost Fitness. Plan A uses Cassian as the aggregator, pulling read-only status from each platform and reporting the operational truth. Plan B evaluates a consolidated monitoring product for a single shared dashboard.</p>
+
+      <h2>Decision Summary</h2>
+      <table>
+        <thead><tr><th>Option</th><th>Best For</th><th>Tradeoff</th><th>Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>Plan A: Cassian-Assembled Monitoring</td><td>Fast setup, low cost, direct control, daily or on-demand operational reports.</td><td>Not a true live dashboard unless we build one.</td><td>Start here immediately.</td></tr>
+          <tr><td>Plan B: Sentry-Centered Monitoring</td><td>Mobile crashes, source maps, Worker errors, uptime checks, and alerting close to the current failure modes.</td><td>App Store Connect and Expo still need a small custom bridge.</td><td>Preferred first dashboard option.</td></tr>
+          <tr><td>Plan B: Datadog</td><td>One serious observability plane across many apps, services, logs, metrics, synthetic checks, and alerts.</td><td>More setup and cost than Frost Fitness needs today.</td><td>Trial when the portfolio reaches multiple production services.</td></tr>
+          <tr><td>Plan B: Grafana Cloud</td><td>Flexible engineering dashboards at a lighter price point.</td><td>More DIY glue and less polished for mobile release operations.</td><td>Fallback if Datadog is too heavy.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Plan A: Cassian-Assembled Monitoring</h2>
+      <p>This is the fastest and most controlled path. Cassian builds a small monitoring routine that pulls read-only status from each platform, normalizes it, and posts a single report on a schedule or on demand.</p>
+
+      <h3>Coverage</h3>
+      <table>
+        <thead><tr><th>Area</th><th>Source</th><th>What Cassian Pulls</th></tr></thead>
+        <tbody>
+          <tr><td>Mobile crashes</td><td>Sentry and App Store Connect</td><td>New issues, crash count, affected build/version, release/source-map status, and unresolved severity.</td></tr>
+          <tr><td>TestFlight and App Store</td><td>App Store Connect API</td><td>Build processing state, beta review state, TestFlight feedback availability, crash submissions, and app review status.</td></tr>
+          <tr><td>Cloudflare Worker</td><td>Cloudflare API and Workers Observability</td><td>Invocations, 4xx/5xx rates, latency, exceptions, route health, and recent deploy state.</td></tr>
+          <tr><td>Expo and EAS</td><td>Expo token / EAS CLI</td><td>Latest builds, submissions, update channels, project env sanity, and failed build signals.</td></tr>
+          <tr><td>CI/CD</td><td>GitHub</td><td>Failed workflows, deployment status, branch protection, release commits, and smoke-test results.</td></tr>
+          <tr><td>Vendor status</td><td>Public status pages</td><td>Cloudflare, Sentry, Apple Developer, App Store Connect, Expo/EAS, GitHub, and OpenAI/Anthropic/Gemini dependency incidents as applicable.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Access Needed</h3>
+      <ul>
+        <li><strong>Cloudflare:</strong> read-only API token with account analytics, Workers scripts/routes read, Workers observability/log read, and zone read for the Frost Fitness Worker account.</li>
+        <li><strong>Sentry:</strong> org/project token with read access to projects, releases, issues, events, alerts, and monitors.</li>
+        <li><strong>App Store Connect:</strong> API issuer ID, key ID, and <code>.p8</code> private key. Minimum role should be Developer; App Manager is better for TestFlight, app status, and review visibility.</li>
+        <li><strong>Expo/EAS:</strong> Expo token with project, build, submission, update, and environment read access.</li>
+        <li><strong>GitHub:</strong> token or installed app access if repository workflow and deployment visibility requires more than the existing local GitHub auth.</li>
+        <li><strong>Delivery target:</strong> Telegram by default; optional Notion, Slack, email, or a static HTML status page if Andy wants a second surface.</li>
+      </ul>
+
+      <h3>Report Shape</h3>
+      <ul>
+        <li>Green/yellow/red summary per system.</li>
+        <li>Latest production app build, TestFlight build, Worker deploy, and GitHub release commit.</li>
+        <li>Crash/error delta since the last check.</li>
+        <li>Worker request count, error count, latency, and route health.</li>
+        <li>Active vendor incidents that could affect production or release operations.</li>
+        <li>Concrete blockers and links to exact dashboards or logs.</li>
+      </ul>
+
+      <h3>Operational Read</h3>
+      <p>Plan A is low cost, auditable, and easy to tune to Andy's actual decision loop. Its weakness is that it is a reporting layer, not a full live observability product. If we build it cleanly, the same collectors can feed a dashboard later.</p>
+
+      <h2>Plan B: Consolidated Monitoring Tool</h2>
+      <p>This path gives the team a shared command center. The practical candidates are Sentry-centered monitoring, Datadog, and Grafana Cloud.</p>
+
+      <h3>Option 1: Sentry-Centered Monitoring</h3>
+      <p>Sentry is the preferred near-term dashboard because Frost Fitness already uses it, Expo can integrate with Sentry for React Native crash reporting, and Worker telemetry can be routed into Sentry through structured events or OpenTelemetry-style export paths.</p>
+      <table>
+        <thead><tr><th>Covers Well</th><th>Does Not Cover Cleanly</th></tr></thead>
+        <tbody>
+          <tr><td>React Native / Expo crash reports, releases, source maps, error trends, uptime monitors, alerts, and Worker error visibility.</td><td>App Store Connect build/review lifecycle, rich Cloudflare account analytics, and Expo build status without custom automation.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Verdict:</strong> best least-moving-parts option. Use Sentry as the first operational center, then add a small Apple/Expo status bridge.</p>
+
+      <h3>Option 2: Datadog</h3>
+      <p>Datadog is the grown-up consolidated observability platform. It is strongest if Aspen Frost wants one monitoring plane across many apps, Workers, APIs, logs, synthetic checks, and alert routes.</p>
+      <table>
+        <thead><tr><th>Covers Well</th><th>Weaknesses</th></tr></thead>
+        <tbody>
+          <tr><td>Cloudflare metrics and logs, synthetic health checks, dashboards, alerting, service maps, broad integrations, and multi-product scaling.</td><td>Higher cost, heavier setup, Sentry forwarding needs integration work, and App Store Connect still needs custom ingestion.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Verdict:</strong> best if the empire grows into multiple production apps and services. Too heavy for the immediate Frost Fitness gate unless we expect fast scale.</p>
+
+      <h3>Option 3: Grafana Cloud</h3>
+      <p>Grafana Cloud is the middle ground for engineering dashboards. It can work well with Cloudflare metrics, Prometheus-style collectors, logs, alerts, and custom panels.</p>
+      <table>
+        <thead><tr><th>Covers Well</th><th>Weaknesses</th></tr></thead>
+        <tbody>
+          <tr><td>Custom dashboards, Cloudflare metrics through exporters or integrations, alerting, and flexible ingestion.</td><td>More DIY glue, less polished mobile-release workflow support, and custom Apple/Expo panels still required.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Verdict:</strong> good for engineering dashboards; less good as the primary mobile app health command center.</p>
+
+      <h2>Recommended Path</h2>
+      <ol>
+        <li>Start Plan A immediately with read-only access for Cloudflare, Sentry, App Store Connect, Expo/EAS, and GitHub.</li>
+        <li>Make Sentry the first consolidated dashboard for crashes, releases, Worker errors, uptime checks, and alerting.</li>
+        <li>Add a Cassian Apple/Expo bridge for build status, TestFlight state, app review state, and EAS build/submission status.</li>
+        <li>Trial Datadog only when there are at least two or three production apps/services that need one observability plane.</li>
+        <li>Use Grafana Cloud as the lower-cost engineering-dashboard alternative if Datadog is too heavy.</li>
+      </ol>
+
+      <h2>Phase 1 Implementation Checklist</h2>
+      <table>
+        <thead><tr><th>Step</th><th>Owner</th><th>Exit Gate</th></tr></thead>
+        <tbody>
+          <tr><td>Create read-only platform tokens and store them in the Cassian secrets workspace.</td><td>Andy / Cassian</td><td>Tokens verified without write privileges.</td></tr>
+          <tr><td>Build collectors for Cloudflare, Sentry, App Store Connect, Expo/EAS, GitHub, and vendor status pages.</td><td>Cassian</td><td>On-demand report returns current data with links.</td></tr>
+          <tr><td>Add Sentry uptime monitoring for the production Worker <code>/health</code> endpoint.</td><td>Cassian</td><td>Alert fires on failed checks and resolves correctly.</td></tr>
+          <tr><td>Wire Worker error visibility into Sentry or Cloudflare Observability with structured fields.</td><td>Cassian / Jesse if code changes are needed</td><td>Worker failures are visible by route, status, and deploy.</td></tr>
+          <tr><td>Publish daily and on-demand monitoring summaries to Telegram.</td><td>Cassian</td><td>Andy can ask for status and get a current operational report.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Safety Standard</h2>
+      <p>A monitoring plan is not complete until it catches the failures we already know matter: app crashes, missing source maps, Worker upstream failures, bad deploys, build processing failures, vendor incidents, and TestFlight/App Store review blockers. Anything less is decoration. This plan starts with those failure modes and expands from there.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
