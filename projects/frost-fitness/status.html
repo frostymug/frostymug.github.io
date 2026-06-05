@@ -16,13 +16,15 @@
       <a href="/governance/empire-culture.html">Empire Culture</a>
       <a href="/governance/process.html">Process</a>
       <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/project-status.html">Project Status</a>
+      <a href="/projects/index.html">Project Index</a>
   </div>
   <div class="nav-section">
     <div class="nav-section-label">Frost Fitness</div>
       <a href="/projects/frost-fitness/index.html">Overview</a>
       <a aria-current="page" href="/projects/frost-fitness/status.html">Status</a>
       <a href="/projects/frost-fitness/architecture.html">Architecture</a>
-      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
       <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
       <a href="/projects/frost-fitness/release-process.html">Release Process</a>
       <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
@@ -38,17 +40,21 @@
     <article>
       <div class="crumb">Frost Fitness &middot; Status</div>
       <h1>Frost Fitness Status</h1>
-<p><strong>Last updated:</strong> 2026-06-02 <strong>Owner:</strong> Aspen for coordination; Andy for product gates <strong>Stage:</strong> Launched (Soft) -&gt; Productization</p>
+<p><strong>Last updated:</strong> 2026-06-05 <strong>Owner:</strong> Aspen for coordination; Andy for product gates <strong>Stage:</strong> Launched (Soft) -&gt; Productization</p>
 <h2>Current State</h2>
-<p>Frost Fitness is live in TestFlight and Andy is using it. The project is now moving through productization toward App Store readiness.</p>
+<p>Frost Fitness is live in TestFlight and now routes production traffic through the Cloudflare Worker proxy. Productization Plan Phase 2 is complete: the proxy exists, the client is migrated, CI/CD has been materially hardened, and the latest production build is live in TestFlight hitting the proxy layer.</p>
 <p>The current working package is:</p>
-<ul><li>Arya architecture/productization review promoted to <a href="ARCHITECTURE.html">ARCHITECTURE.md</a>.</li><li>Arya App Store readiness execution plan promoted to <a href="PHASE-2-PLAN.html">PHASE-2-PLAN.md</a>.</li><li>Cassian Worker CI/deploy pipeline files promoted under <a href="ci-cd/">ci-cd/</a>.</li><li>Cassian rollback procedures promoted to <a href="RELEASE-PROCESS.html">RELEASE-PROCESS.md</a>.</li></ul>
+<ul><li>Arya architecture/productization review promoted to <a href="/projects/frost-fitness/architecture.html">ARCHITECTURE.md</a>.</li><li>Arya Productization Plan promoted to <a href="/projects/frost-fitness/productization-plan.html">PRODUCTIZATION-PLAN.md</a>.</li><li>Cassian Worker CI/deploy pipeline files promoted under <a href="ci-cd/">ci-cd/</a>.</li><li>Cassian rollback procedures promoted to <a href="/projects/frost-fitness/release-process.html">RELEASE-PROCESS.md</a>.</li></ul>
+<h2>Productization Plan Progress</h2>
+<table><thead><tr><th>Phase</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>Phase 1 — Foundations</td><td>Complete</td><td>Test harness, Sentry/error boundary work, and crash baseline landed before proxy work.</td></tr><tr><td>Phase 2 — Server-side proxy</td><td>Complete</td><td>Cloudflare Worker proxy, client proxy migration, Worker deploy pipeline, and TestFlight build hitting the proxy are complete as of 2026-06-05.</td></tr><tr><td>Phase 3 — Multi-user productization</td><td>Next</td><td>Onboarding, user defaults, hardcoded Andy assumptions, and account/data expectations.</td></tr><tr><td>Phase 4 — Reliability hardening</td><td>Pending</td><td>Migration hardening, UID cleanup, image state cleanup, and remaining technical debt.</td></tr><tr><td>Phase 5 — App Store submission</td><td>Pending</td><td>Compliance docs, metadata, screenshots, HealthKit review, and final submission.</td></tr></tbody></table>
 <h2>Status By Artifact</h2>
-<table><thead><tr><th>Artifact</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture review</td><td>Pending Andy final confirmation</td><td>Source was Arya's <code>ARCHITECTURE-REVIEW.md</code>; promoted as current shared architecture context.</td></tr><tr><td>Phase 2 / App Store plan</td><td>Pending Andy final confirmation</td><td>Source was Arya's <code>APP-STORE-PLAN.md</code>; serves as Jesse's execution plan unless Andy changes scope.</td></tr><tr><td>Worker CI workflow</td><td>Draft / Cassian-owned</td><td>Copied exactly from Cassian's workspace. Needs repo placement when implementation begins.</td></tr><tr><td>Worker deploy workflow</td><td>Draft / Cassian-owned</td><td>Includes production environment approval and smoke-test rollback.</td></tr><tr><td>Rollback procedures</td><td>Draft / Cassian-owned</td><td>Operational runbook for Worker and client rollback scenarios.</td></tr></tbody></table>
+<table><thead><tr><th>Artifact</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>Architecture review</td><td>Active reference</td><td>Source was Arya's <code>ARCHITECTURE-REVIEW.md</code>; promoted as current shared architecture context.</td></tr><tr><td>Productization Plan</td><td>Active execution plan</td><td>Source was Arya's <code>APP-STORE-PLAN.md</code>; renamed from the ambiguous Phase 2 plan on 2026-06-05.</td></tr><tr><td>Worker CI workflow</td><td>Implemented in repo / Cassian-owned</td><td>GitHub Actions Worker deploy workflow exists and has successful deploy runs. Shared copy remains under <code>ci-cd/</code>.</td></tr><tr><td>Worker deploy workflow</td><td>Implemented in repo / Cassian-owned</td><td>Production deploy path is operational, with rollback procedures documented.</td></tr><tr><td>Rollback procedures</td><td>Active runbook</td><td>Operational runbook for Worker and client rollback scenarios.</td></tr></tbody></table>
+<h2>Recent Evidence</h2>
+<ul><li>GitHub PR #10 merged 2026-06-02: Cloudflare Worker proxy.</li><li>GitHub PR #11 merged 2026-06-04: client migrated to proxy and upstream API keys removed from bundle.</li><li>Worker Deploy workflow has successful production runs.</li><li>Latest <code>master</code> Test workflow has a successful run in the repo audit.</li><li>Andy confirmed on 2026-06-05 that the app is live in TestFlight hitting the Cloudflare proxy.</li></ul>
 <h2>Immediate Next Moves</h2>
-<ul><li>Andy confirms whether <a href="ARCHITECTURE.html">ARCHITECTURE.md</a> and <a href="PHASE-2-PLAN.html">PHASE-2-PLAN.md</a> are approved for Jesse.</li><li>Jesse starts Phase 2 implementation using the shared project folder as the official instruction set.</li><li>Cassian finishes or revises CI/CD process files, then promotes updates here.</li><li>Aspen keeps this status file current as work moves through gates.</li></ul>
+<ul><li>Complete this tracking/docs cleanup and republish docs.aspenfrost.com.</li><li>Begin Productization Plan Phase 3 with Jesse and Arya: multi-user productization.</li><li>Keep Cassian in the loop for release safety as Phases 3-5 touch user-facing onboarding, data behavior, and App Store readiness.</li><li>Aspen's nightly process audits recent sessions, repo state, and project docs before publishing.</li></ul>
 <h2>Open Questions</h2>
-<ul><li>Is the Arya App Store plan the final Phase 2 scope, or should it be split into a narrower &quot;proxy-first&quot; Phase 2 and later App Store phases?</li><li>What custom domain/subdomain should host the pretty project viewer once publishing and Cloudflare Access are added?</li><li>Should the shared project viewer eventually include only approved artifacts, or also pending review docs with visible status labels?</li></ul>
+<ul><li>What is the Phase 3 task breakdown Jesse should execute first: onboarding/defaults, account/data copy, or hardcoded-name cleanup?</li><li>What public URLs will host the Frost Fitness privacy policy and Terms of Service for App Store submission?</li><li>What is the oldest supported iPhone target for launch? Default in the Productization Plan is iPhone XR / iOS 17+ unless Andy overrides it.</li><li>Is App Store Connect fully ready: Apple Developer enrollment, banking, tax, and app metadata scaffolding?</li></ul>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>

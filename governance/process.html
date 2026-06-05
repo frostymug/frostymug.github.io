@@ -16,13 +16,15 @@
       <a href="/governance/empire-culture.html">Empire Culture</a>
       <a aria-current="page" href="/governance/process.html">Process</a>
       <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/project-status.html">Project Status</a>
+      <a href="/projects/index.html">Project Index</a>
   </div>
   <div class="nav-section">
     <div class="nav-section-label">Frost Fitness</div>
       <a href="/projects/frost-fitness/index.html">Overview</a>
       <a href="/projects/frost-fitness/status.html">Status</a>
       <a href="/projects/frost-fitness/architecture.html">Architecture</a>
-      <a href="/projects/frost-fitness/phase-2-plan.html">Phase 2 Plan</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
       <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
       <a href="/projects/frost-fitness/release-process.html">Release Process</a>
       <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
@@ -96,7 +98,7 @@ Production</code></pre>
 <p>---</p>
 <h2>Artifacts &amp; Handoffs</h2>
 <p>Official project artifacts live in <code>/home/ubuntu/.openclaw/workspace/projects/&lt;project&gt;/</code>. Individual agent workspaces are for drafts, scratch work, and role-specific notes. When an artifact becomes a cross-agent dependency or is ready for Andy review, promote it to the shared project folder and mark its source and approval status.</p>
-<table><thead><tr><th>Handoff</th><th>Official artifact</th><th>Owner</th></tr></thead><tbody><tr><td>Izzy → Arya</td><td><code>projects/&lt;project&gt;/DESIGN.md</code></td><td>Izzy</td></tr><tr><td>Arya → Andy</td><td><code>projects/&lt;project&gt;/ARCHITECTURE.md</code> + holes/gaps notes</td><td>Arya</td></tr><tr><td>Andy → Podrick</td><td>Approved design + architecture in shared project folder</td><td>Andy</td></tr><tr><td>Podrick → Arya+Jesse</td><td><code>projects/&lt;project&gt;/STORIES.md</code> or phase plan</td><td>Podrick</td></tr><tr><td>Jesse → Arya</td><td>Pull requests</td><td>Jesse</td></tr><tr><td>Arya → Cassian</td><td>Merged PRs + release notes</td><td>Arya</td></tr><tr><td>Cassian → Production</td><td>CI/CD, deployment, rollback, release approval</td><td>Cassian</td></tr></tbody></table>
+<table><thead><tr><th>Handoff</th><th>Official artifact</th><th>Owner</th></tr></thead><tbody><tr><td>Izzy → Arya</td><td><code>projects/&lt;project&gt;/DESIGN.md</code></td><td>Izzy</td></tr><tr><td>Arya → Andy</td><td><code>projects/&lt;project&gt;/ARCHITECTURE.md</code> + holes/gaps notes</td><td>Arya</td></tr><tr><td>Andy → Podrick</td><td>Approved design + architecture in shared project folder</td><td>Andy</td></tr><tr><td>Podrick → Arya+Jesse</td><td><code>projects/&lt;project&gt;/STORIES.md</code> or productization plan</td><td>Podrick</td></tr><tr><td>Jesse → Arya</td><td>Pull requests</td><td>Jesse</td></tr><tr><td>Arya → Cassian</td><td>Merged PRs + release notes</td><td>Arya</td></tr><tr><td>Cassian → Production</td><td>CI/CD, deployment, rollback, release approval</td><td>Cassian</td></tr></tbody></table>
 <p>---</p>
 <h2>Official Project Record</h2>
 <p>The shared project tree is the system of record:</p>
@@ -106,7 +108,7 @@ Production</code></pre>
     STATUS.md
     DESIGN.md
     ARCHITECTURE.md
-    PHASE-2-PLAN.md
+    PRODUCTIZATION-PLAN.md
     CI-CD.md
     RELEASE-PROCESS.md
     decisions/
