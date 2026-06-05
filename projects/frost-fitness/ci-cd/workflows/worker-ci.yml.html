@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>projects/frost-fitness/ci-cd/workflows/worker-ci.yml · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/project-status.html">Project Status</a>
+      <a href="/projects/index.html">Project Index</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Zev Published HTML</div>
+      <a href="/zev/index.html">Index</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Project support file</div>
+      <h1>projects/frost-fitness/ci-cd/workflows/worker-ci.yml</h1><pre><code># worker-ci.yml
+# Runs on every PR that touches the Worker or its workflow config.
+# Purpose: fast feedback loop — type safety, tests, secret scan, dry-run.
+# Does NOT deploy. Deploy is owned by worker-deploy.yml.
+#
+# Owner: Cassian (SRE)
+
+name: Worker CI
+
+on:
+  pull_request:
+    paths:
+      - 'proxy/**'
+      - '.github/workflows/worker-*.yml'
+
+jobs:
+  check:
+    name: Check (type · lint · test · scan · dry-run)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: proxy
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: proxy/package-lock.json
+
+      - name: Install dependencies (lockfile-backed)
+        run: npm ci
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Secret leak scan
+        shell: bash
+        run: |
+          echo &quot;Scanning proxy/ for leaked secrets...&quot;
+          HITS=$(grep -rEn 'sk-ant-|AIza[0-9A-Za-z_-]{35}|ANTHROPIC_API_KEY|GEMINI_API_KEY' . \
+            --include=&quot;*.ts&quot; --include=&quot;*.js&quot; --include=&quot;*.json&quot; --include=&quot;*.toml&quot; \
+            --exclude-dir=node_modules \
+            --exclude=&quot;*.test.ts&quot; --exclude=&quot;*.spec.ts&quot; \
+            || true)
+          if [ -n &quot;$HITS&quot; ]; then
+            echo &quot;&quot;
+            echo &quot;FAIL: Secret leak detected. Remove these before merging:&quot;
+            echo &quot;$HITS&quot;
+            exit 1
+          fi
+          echo &quot;PASS: No secrets found in proxy/&quot;
+
+      - name: Validate secret scan catches leaks
+        shell: bash
+        run: |
+          echo &quot;Validating scanner with injected fake key...&quot;
+          echo 'const fakeKey = &quot;sk-ant-test-cassian-validation-key-abc123&quot;;' &gt; /tmp/leak-test.ts
+          HITS=$(grep -rEn 'sk-ant-' /tmp/leak-test.ts || true)
+          if [ -z &quot;$HITS&quot; ]; then
+            echo &quot;FAIL: Scanner did not catch the injected key. Fix the scan pattern.&quot;
+            exit 1
+          fi
+          rm /tmp/leak-test.ts
+          echo &quot;PASS: Scanner correctly catches injected keys&quot;
+
+      - name: Wrangler dry run (staging config)
+        run: npx wrangler deploy --dry-run --env staging
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+</code></pre>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

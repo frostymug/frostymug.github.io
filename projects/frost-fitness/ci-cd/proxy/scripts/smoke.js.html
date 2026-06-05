@@ -1,4 +1,45 @@
-#!/usr/bin/env node
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>projects/frost-fitness/ci-cd/proxy/scripts/smoke.js · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/project-status.html">Project Status</a>
+      <a href="/projects/index.html">Project Index</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Frost Fitness</div>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Zev Published HTML</div>
+      <a href="/zev/index.html">Index</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Project support file</div>
+      <h1>projects/frost-fitness/ci-cd/proxy/scripts/smoke.js</h1><pre><code>#!/usr/bin/env node
 // smoke.js — post-deploy smoke test suite for the Frost Fitness CF Worker proxy
 //
 // Reads PROXY_URL and PROXY_TOKEN from env.
@@ -37,13 +78,13 @@ async function run() {
   console.log(`\nSmoke tests — env: ${ENV} — ${PROXY_URL}\n`);
 
   // 1. Unauthenticated request must return 401
-  await check('Auth reject (no token → 401)', async () => {
+  await check('Auth reject (no token → 401)', async () =&gt; {
     const res = await fetch(`${PROXY_URL}/v1/chat`, { method: 'POST' });
     if (res.status !== 401) throw new Error(`Expected 401, got ${res.status}`);
   });
 
   // 2. Authenticated request must not 404 (route exists)
-  await check('Auth accept (valid token → not 401/404)', async () => {
+  await check('Auth accept (valid token → not 401/404)', async () =&gt; {
     const res = await fetch(`${PROXY_URL}/v1/chat`, {
       method: 'POST',
       headers: {
@@ -58,7 +99,7 @@ async function run() {
   });
 
   // 3. Vision route reachable (auth only — no real image, just checking routing)
-  await check('Vision route reachable (not 404)', async () => {
+  await check('Vision route reachable (not 404)', async () =&gt; {
     const res = await fetch(`${PROXY_URL}/v1/vision`, {
       method: 'POST',
       headers: {
@@ -72,7 +113,7 @@ async function run() {
   });
 
   // 4. Streaming headers present on /v1/chat
-  await check('Streaming headers on /v1/chat', async () => {
+  await check('Streaming headers on /v1/chat', async () =&gt; {
     const res = await fetch(`${PROXY_URL}/v1/chat`, {
       method: 'POST',
       headers: {
@@ -86,7 +127,7 @@ async function run() {
     if (res.status === 404) throw new Error('Route not found');
     const ct = res.headers.get('content-type') || '';
     const te = res.headers.get('transfer-encoding') || '';
-    if (!ct.includes('text/event-stream') && !te.includes('chunked')) {
+    if (!ct.includes('text/event-stream') &amp;&amp; !te.includes('chunked')) {
       // Acceptable: upstream may return 4xx on smoke payload — just check headers weren't stripped
       // Only hard-fail if we got 200 without streaming headers
       if (res.status === 200) {
@@ -97,18 +138,18 @@ async function run() {
 
   // 5. Rate limit returns 429 with Retry-After (only test on staging to avoid burning prod quota)
   if (ENV === 'staging') {
-    await check('Rate limit returns 429 + Retry-After (staging only)', async () => {
+    await check('Rate limit returns 429 + Retry-After (staging only)', async () =&gt; {
       // Fire enough requests to trigger the per-minute rate limit
-      const requests = Array.from({ length: 35 }, () =>
+      const requests = Array.from({ length: 35 }, () =&gt;
         fetch(`${PROXY_URL}/v1/chat`, {
           method: 'POST',
           headers: { Authorization: `Bearer ${PROXY_TOKEN}` },
         })
       );
       const responses = await Promise.all(requests);
-      const hit429 = responses.some((r) => r.status === 429);
+      const hit429 = responses.some((r) =&gt; r.status === 429);
       if (!hit429) throw new Error('Rate limit not triggered after 35 rapid requests — check rate limit config');
-      const rateLimited = responses.find((r) => r.status === 429);
+      const rateLimited = responses.find((r) =&gt; r.status === 429);
       const retryAfter = rateLimited?.headers.get('retry-after');
       if (!retryAfter) throw new Error('429 response missing Retry-After header');
     });
@@ -117,10 +158,16 @@ async function run() {
   }
 
   console.log(`\nResults: ${passed} passed, ${failed} failed\n`);
-  if (failed > 0) process.exit(1);
+  if (failed &gt; 0) process.exit(1);
 }
 
-run().catch((err) => {
+run().catch((err) =&gt; {
   console.error('Smoke test runner error:', err);
   process.exit(1);
 });
+</code></pre>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
