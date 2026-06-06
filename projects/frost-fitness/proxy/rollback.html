@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Fitness Worker — Rollback Procedures · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a aria-current="page" href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Worker Rollback Procedures</div>
+      <h1>Frost Fitness Worker — Rollback Procedures</h1>
+<p><strong>Owner:</strong> Cassian (SRE) <strong>Last updated:</strong> 2026-06-02</p>
+<p>---</p>
+<h2>When to Roll Back</h2>
+<p>Roll back the Worker if, after a production deploy:</p>
+<ul><li>Smoke tests fail automatically (the deploy workflow handles this)</li><li>Error rate in Cloudflare dashboard spikes above baseline</li><li>5xx rate exceeds ~1% sustained over 5 minutes</li><li>Upstream provider auth failures (Worker started seeing 401s from Anthropic/Gemini)</li></ul>
+<p>Do NOT roll back for elevated 429s — that means rate limiting is working.</p>
+<p>---</p>
+<h2>Scenario 1: Bad Worker Code</h2>
+<p>The fastest path. Reverts the Worker binary to the previous Cloudflare deployment.</p>
+<pre><code class="language-bash">npx wrangler rollback --env production</code></pre>
+<p>Recovery time: <strong>&lt; 60 seconds</strong>.</p>
+<p>Verify with a manual smoke run:</p>
+<pre><code class="language-bash">SMOKE_ENV=production \
+PROXY_URL=&lt;production-url&gt; \
+PROXY_TOKEN=&lt;production-token&gt; \
+node proxy/scripts/smoke.js</code></pre>
+<p>---</p>
+<h2>Scenario 2: Compromised or Leaked Client Token</h2>
+<p>Use this when <code>WORKER_CLIENT_TOKEN_PRODUCTION</code> has been exposed (e.g., leaked in logs, screenshot, etc.).</p>
+<p>``<code>bash npx wrangler secret put WORKER_CLIENT_TOKEN --env production </code>``</p>
+<ul><li>Generate a new token (any secure random string, 32+ chars)</li><li>Update the secret in the Worker:</li><li>Update <code>WORKER_CLIENT_TOKEN_PRODUCTION</code> in GitHub Secrets</li><li>Update <code>EXPO_PUBLIC_PROXY_TOKEN</code> in the iOS client config and ship a new TestFlight build</li></ul>
+<p><strong>Effect:</strong> All existing clients using the old token are immediately locked out. This is intentional — it is the kill-switch. Coordinate with Andy on client update timing before rotating.</p>
+<p>---</p>
+<h2>Scenario 3: Compromised Upstream Provider Key</h2>
+<p>Use this when an Anthropic or Gemini key stored in the Worker has been exposed.</p>
+<p>``<code>bash npx wrangler secret put ANTHROPIC_API_KEY --env production # or npx wrangler secret put GEMINI_API_KEY --env production </code>``</p>
+<p>``<code>bash npx wrangler deploy --env production </code>``</p>
+<ul><li><strong>Andy rotates the key</strong> in the Anthropic/Google console (Cassian does not hold these credentials)</li><li>Update the Worker secret:</li><li>Redeploy the Worker (no code change needed — secrets update takes effect on next request after redeploy):</li><li>Run smoke tests to confirm upstream calls succeed with new key</li></ul>
+<p><strong>No client change needed</strong> for this scenario.</p>
+<p>---</p>
+<h2>Scenario 4: Client Rollback (iOS App)</h2>
+<p><strong>There is no fast rollback path for a submitted iOS app.</strong></p>
+<p>Once a build is live on the App Store, the only path is a new submission (another Apple review cycle). This is why Worker staging smoke tests are mandatory — the Worker and the client are behaviorally coupled.</p>
+<p>For TestFlight: a new build can be promoted in minutes. If production is on fire and the issue is client-side, prioritize a new TestFlight build as the fastest path.</p>
+<p>---</p>
+<h2>Contacts</h2>
+<table><thead><tr><th>Issue</th><th>Who to reach</th></tr></thead><tbody><tr><td>Deploy approval / veto</td><td>Cassian</td></tr><tr><td>Code fix</td><td>Jesse → Arya review</td></tr><tr><td>Architecture decision</td><td>Arya</td></tr><tr><td>Key rotation</td><td>Andy</td></tr><tr><td>Product call</td><td>Andy</td></tr></tbody></table>
+<p>---</p>
+<p><em>Cassian — Reliability Engineer, Aspen Frost Empire</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

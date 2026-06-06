@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotfix Spec — Camera Capture Silently Fails (Phase 4 / Task 4.3 regression) · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a aria-current="page" href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Camera Capture Hotfix</div>
+      <h1>Hotfix Spec — Camera Capture Silently Fails (Phase 4 / Task 4.3 regression)</h1>
+<p><strong>Author:</strong> Arya (Architect) <strong>Date:</strong> 2026-06-06 <strong>Severity:</strong> P0 — core flow broken. Photo capture does not save. <strong>Owner:</strong> Jesse (implementation) <strong>Base:</strong> <code>master</code> @ <code>6357b56</code> (post PR #13) <strong>Approval status:</strong> APPROVED to implement — hotfix forward (not a revert).</p>
+<p>---</p>
+<h2>Symptom</h2>
+<p>User takes a photo (or picks from library) → meal is not saved, no error is shown. &quot;The photo never comes back off the shelf.&quot;</p>
+<h2>Root Cause</h2>
+<p>Task 4.3 changed <code>pendingImage.set()</code> from a <strong>synchronous</strong> in-memory base64 write to an <strong>async file copy</strong> (<code>FileSystem.copyAsync</code> into <code>cacheDirectory</code>).</p>
+<p>In <code>app/log/camera.tsx</code>, that call is now <code>await</code>ed <strong>before</strong> navigation, with <strong>no try/catch</strong>:</p>
+<pre><code class="language-js">await pendingImage.set(asset.uri);   // can reject
+router.push({ pathname: '/log/confirm', params: { imageUri: asset.uri, ... } });</code></pre>
+<p>If <code>pendingImage.set()</code> rejects for any reason (copy fails on a picker/camera URI, transient native FS error, deprecated legacy FS quirk on expo-file-system@19), the <code>await</code> throws, <code>router.push</code> never runs, and the user sees nothing. The image is dropped before it ever reaches the analyze/confirm screen.</p>
+<p>The old code could not exhibit this — it was synchronous and navigation was unconditional:</p>
+<pre><code class="language-js">if (asset.base64) pendingImage.set(asset.base64);  // sync, cannot reject
+router.push(...);                                   // always ran</code></pre>
+<h3>Why tests didn't catch it</h3>
+<p>always-resolving stubs, so <code>copyAsync</code> can never fail in the suite.</p>
+<p>Result: green tests, broken capture. Mock-hides-reality gap.</p>
+<ul><li><code>src/__tests__/pendingImage.test.ts</code> <strong>mocks</strong> <code>expo-file-system/legacy</code> with</li><li>There is <strong>no test</strong> covering <code>camera.tsx</code> navigation when <code>set()</code> rejects.</li></ul>
+<p>---</p>
+<h2>Design Principle For The Fix</h2>
+<p><strong>The temp-file copy is an optimization, not a load-bearing dependency.</strong> Capture and analysis must work even if the cache copy fails. We keep the 4.3 wins (no stale-image leak, temp-file storage instead of in-memory base64) but make them <strong>best-effort</strong>: on any failure, fall back to the original picker URI. Navigation to confirm must be unconditional once we have a valid asset.</p>
+<p>---</p>
+<h2>Changes</h2>
+<h3>1. <code>src/services/pendingImage.ts</code> — <code>set()</code> must never reject; degrade to source URI</h3>
+<p>Wrap the copy in try/catch. On failure (or no cacheDirectory), store the original <code>sourceUri</code> and return it. <code>set()</code> should always resolve to a usable URI.</p>
+<pre><code class="language-ts">async set(sourceUri: string): Promise&lt;string&gt; {
+  const previousUri = _uri;
+  const cacheDirectory = FileSystem.cacheDirectory;
+  let nextUri = sourceUri;
+
+  if (cacheDirectory) {
+    const target = `${cacheDirectory}pending-meal-${uid()}.jpg`;
+    try {
+      await FileSystem.copyAsync({ from: sourceUri, to: target });
+      nextUri = target;
+    } catch (e) {
+      // Best-effort cache copy. Fall back to the original picker URI so capture
+      // still works. confirm.tsx reads whatever path it is handed.
+      console.warn('[pendingImage] cache copy failed, using source URI', e);
+      nextUri = sourceUri;
+    }
+  }
+
+  _uri = nextUri;
+  if (previousUri &amp;&amp; previousUri !== _uri) await removeIfCached(previousUri);
+  return nextUri;
+}</code></pre>
+<p>Notes:</p>
+<p>to pass to <code>remove()</code> later (it will not try to delete the user's original photo).</p>
+<ul><li><code>removeIfCached</code> already no-ops on non-cache URIs, so a source-URI fallback is safe</li><li>Keep <code>get</code>, <code>clear</code>, <code>remove</code> as-is.</li></ul>
+<h3>2. <code>app/log/camera.tsx</code> — navigation must not depend on <code>set()</code> succeeding</h3>
+<p>Apply to <strong>both</strong> <code>handleTakePhoto</code> and <code>handlePickFromLibrary</code>. Since <code>set()</code> will no longer reject after change #1, this is belt-and-suspenders, but it is required so a future regression in <code>set()</code> can never again kill navigation silently.</p>
+<pre><code class="language-js">if (!result.canceled &amp;&amp; result.assets[0]) {
+  const asset = result.assets[0];
+  try {
+    await pendingImage.set(asset.uri);
+  } catch (e) {
+    console.error('[camera] pendingImage.set failed', e);
+    Sentry.captureException(e);
+    // proceed anyway — confirm falls back to the imageUri param below
+  }
+  router.push({ pathname: '/log/confirm', params: { imageUri: asset.uri, source: 'camera' } });
+}</code></pre>
+<p>Add <code>import * as Sentry from '@sentry/react-native';</code> to camera.tsx (already a project dependency; used in settings.tsx).</p>
+<h3>3. <code>app/log/confirm.tsx</code> — already correct, verify only</h3>
+<p>confirm.tsx reads <code>pendingImage.get()</code> and <code>FileSystem.readAsStringAsync(...)</code>. With the fallback in place it may now receive the <strong>original picker URI</strong> instead of a cache path. Verify <code>readAsStringAsync</code> works against that URI; it should, since the picker URI is a readable <code>file://</code> path. <strong>If</strong> read-from-source proves unreliable on-device, add a secondary fallback: if reading <code>pendingImageUri</code> throws, retry reading the <code>imageUri</code> route param. Do NOT add this speculatively — only if the device test in the verification section shows it is needed.</p>
+<p>---</p>
+<h2>Tests (add — these are the ones that would have caught it)</h2>
+<h3><code>src/__tests__/pendingImage.test.ts</code></h3>
+<p>still <strong>resolves</strong> and returns the original source URI (<code>'file:///camera/src.jpg'</code>), and <code>get()</code> returns it.</p>
+<p><code>deleteAsync</code> (source URI is outside cacheDirectory).</p>
+<ul><li><strong>New:</strong> mock <code>FileSystem.copyAsync</code> to <strong>reject</strong>; assert <code>pendingImage.set('file:///camera/src.jpg')</code></li><li><strong>New:</strong> after a failed-copy <code>set()</code>, assert <code>remove()</code> does <strong>not</strong> call</li></ul>
+<h3><code>src/__tests__/camera.nav.test.tsx</code> (new, or fold into an existing camera test)</h3>
+<p><code>router.push</code> to <code>/log/confirm</code> is <strong>still called</strong> with the <code>imageUri</code> param.</p>
+<ul><li>Mock <code>pendingImage.set</code> to <strong>reject</strong>; render the capture handler path; assert</li><li>This is the regression guard for the actual bug: navigation must survive a <code>set()</code> failure.</li></ul>
+<p>---</p>
+<h2>Verification</h2>
+<p>Automated (must pass, paste results in PR body):</p>
+<ul><li>[ ] <code>npx tsc --noEmit</code> clean</li><li>[ ] <code>npm test -- --runInBand</code> — all suites pass, including the two new cases above</li><li>[ ] <code>npm run lint</code> — 0 errors (the one pre-existing history.tsx warning is acceptable)</li></ul>
+<p>Manual on device / TestFlight (REQUIRED before merge — this is a runtime-only bug):</p>
+<p>the TestFlight build. Report in the PR: did it use the cache path, or hit the fallback? This tells us whether the temp-file copy is viable on-device or whether we are effectively running on the source-URI fallback.</p>
+<p>leak into the new confirm screen (the original 4.3 acceptance, still must hold).</p>
+<ul><li>[ ] Take a photo with the camera → confirm screen appears → analysis runs → meal saves</li><li>[ ] Pick from library → same</li><li>[ ] <strong>Confirm whether <code>copyAsync</code> actually succeeds on a fresh camera-capture URI</strong> in</li><li>[ ] Background/kill app mid-analysis, relaunch, new capture → previous image does not</li></ul>
+<p>---</p>
+<h2>Out Of Scope</h2>
+<p>the legacy copy is fundamentally unreliable, that becomes a follow-up task, not part of the P0 fix.</p>
+<ul><li>Do not revert 4.1 (UIDs) or 4.2 (migrations) — unrelated and good.</li><li>Do not migrate off <code>expo-file-system/legacy</code> in this hotfix. If the device test shows</li></ul>
+<h2>Decision Record</h2>
+<p>gains, and the failure mode is well understood. Revert would re-introduce the in-memory-base64 stale-image leak we just closed.</p>
+<ul><li>Hotfix forward chosen over revert: the fix is ~20 lines, preserves the 4.3 reliability</li></ul>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

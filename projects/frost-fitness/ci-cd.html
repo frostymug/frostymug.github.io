@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shared Project Files · Aspen's Docs</title>
+  <title>Frost Fitness CI/CD · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -19,14 +19,14 @@
   </div>
   <div class="nav-section">
     <div class="nav-section-label">Projects</div>
-      <a aria-current="page" href="/projects/index.html">Project Index</a>
+      <a href="/projects/index.html">Project Index</a>
       <a href="/projects/status.html">Portfolio Status</a>
       <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
       <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
       <a href="/projects/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
       <a href="/projects/frost-fitness/architecture.html">Frost Fitness Architecture</a>
       <a href="/projects/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
-      <a href="/projects/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a aria-current="page" href="/projects/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
       <a href="/projects/frost-fitness/release-process.html">Frost Fitness Release Process</a>
       <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
       <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
@@ -58,17 +58,19 @@
 </aside>
   <main>
     <article>
-      <div class="crumb">Projects &middot; Project Index</div>
-      <h1>Shared Project Files</h1>
-<p>This folder is the canonical project record for the Aspen Frost agent team.</p>
-<p>Agent workspaces are for drafts, scratch work, and role-specific notes. Final deliverables that other agents should depend on live here.</p>
-<h2>Rules</h2>
-<ul><li>Use <code>projects/&lt;project&gt;/</code> for official project artifacts.</li><li>Keep source/provenance clear when promoting work from an agent workspace.</li><li>Mark approval status explicitly: <code>Draft</code>, <code>Pending Andy approval</code>, <code>Approved</code>, or <code>Archived</code>.</li><li>Do not treat files in an individual agent workspace as official unless they have been promoted here.</li><li>Archive superseded artifacts instead of deleting them when they have historical value.</li></ul>
-<h2>Current Projects</h2>
-<ul><li><a href="/projects/frost-fitness/index.html">Frost Fitness</a></li><li><a href="/projects/website/index.html">Aspen Frost Website</a></li><li><a href="/projects/frost-rocks/index.html">Frost Rocks</a></li></ul>
-<h2>Portfolio Status</h2>
-<p>This generated view tracks every project in the active pipeline, including ideas that do not yet have official shared project folders. The nightly audit sweeps recent OpenClaw sessions, repo state, and shared project docs before this section is regenerated.</p>
-<table><thead><tr><th>Project</th><th>Stage</th><th>Next Move</th></tr></thead><tbody><tr><td><strong>Frost Fitness</strong></td><td>Launched (Soft) → Productization</td><td>Productization Plan Phase 2 complete; prepare Phase 3 kickoff after docs/process cleanup.</td></tr><tr><td><strong>Aspen Frost Website</strong></td><td>Positioning Approved (v1.4, 2026-06-06)</td><td>Messaging + sitemap detail next; then hand to Izzy for design. CTA &quot;cover the tokens&quot; stays gated.</td></tr><tr><td><strong>Frost Rocks</strong></td><td>Idea → Product Framing</td><td>Andy continues with Petra on the product strategy; promote official artifacts only after the framing is settled.</td></tr><tr><td><strong>Ice Age Trail</strong></td><td>Idea</td><td>Capture call outcome before advancing beyond Idea.</td></tr><tr><td><strong>Curate Mental Health</strong></td><td>Idea / Safety-Gated</td><td>Hold until stakes/safety ramp and client transparency are explicit.</td></tr><tr><td><strong>Babycito Camp Scheduler</strong></td><td>Backlog</td><td>Await discovery call and per-project token-cost tracking.</td></tr></tbody></table>
+      <div class="crumb">Projects &middot; Frost Fitness CI/CD</div>
+      <h1>Frost Fitness CI/CD</h1>
+<p><strong>Owner:</strong> Cassian <strong>Promoted by:</strong> Aspen <strong>Last updated:</strong> 2026-06-02 <strong>Status:</strong> Draft index of Cassian's current CI/CD deliverables</p>
+<h2>Included Artifacts</h2>
+<table><thead><tr><th>File</th><th>Purpose</th></tr></thead><tbody><tr><td><a href="/projects/frost-fitness/ci-cd/workflows/worker-ci.yml.html">ci-cd/workflows/worker-ci.yml</a></td><td>Pull request CI for the Cloudflare Worker proxy: install, type check, lint, tests, secret scan, Wrangler dry run.</td></tr><tr><td><a href="/projects/frost-fitness/ci-cd/workflows/worker-deploy.yml.html">ci-cd/workflows/worker-deploy.yml</a></td><td>Manual staging/production deploy and production deploy on <code>master</code>, with GitHub Environment gate and smoke-test rollback.</td></tr><tr><td><a href="/projects/frost-fitness/ci-cd/proxy/scripts/smoke.js.html">ci-cd/proxy/scripts/smoke.js</a></td><td>Post-deploy smoke tests for auth, route reachability, streaming headers, and staging rate limits.</td></tr><tr><td><a href="/projects/frost-fitness/release-process.html">RELEASE-PROCESS.md</a></td><td>Rollback procedures for bad Worker deploys, leaked client tokens, leaked upstream provider keys, and client rollback constraints.</td></tr></tbody></table>
+<h2>Intended Repo Placement</h2>
+<p>When Jesse/Cassian implement the Worker proxy in <code>frostymug/frost-fitness</code>, these files should land at:</p>
+<pre><code class="language-text">.github/workflows/worker-ci.yml
+.github/workflows/worker-deploy.yml
+proxy/scripts/smoke.js
+proxy/ROLLBACK.md</code></pre>
+<h2>Notes</h2>
+<ul><li>These files were copied from Cassian's workspace and preserved as implementation artifacts.</li><li>They assume a <code>proxy/</code> package with <code>npm ci</code>, <code>npm test</code>, <code>npm run lint</code>, <code>tsc</code>, and Wrangler environment config.</li><li>They also assume GitHub Secrets and Environments exist for Cloudflare credentials, Worker client tokens, and staging/production URLs.</li><li>Cassian owns final approval before these become production gates.</li></ul>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
