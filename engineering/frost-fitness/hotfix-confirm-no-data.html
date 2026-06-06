@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotfix Spec — &quot;No data&quot; on Confirm Meal (photo lost between camera and confirm) · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/software-development-and-testing-principles.html">Software Principles</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/product/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/product/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/product/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+      <a href="/marketing/website/index.html">Aspen Frost Website</a>
+      <a href="/marketing/website/positioning-brief.html">Positioning Brief</a>
+      <a href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
+      <a href="/zev/index.html">Zev Published HTML</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/engineering/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/engineering/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/engineering/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/engineering/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/engineering/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a aria-current="page" href="/engineering/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/engineering/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Engineering &middot; Confirm Meal No Data Hotfix</div>
+      <h1>Hotfix Spec — &quot;No data&quot; on Confirm Meal (photo lost between camera and confirm)</h1>
+<p><strong>Author:</strong> Arya (Architect) <strong>Date:</strong> 2026-06-06 <strong>Severity:</strong> P0 — core flow still broken after PR #14. <strong>Owner:</strong> Jesse (implementation) <strong>Base:</strong> <code>master</code> @ <code>e5403a9</code> (post PR #14) <strong>Approval status:</strong> APPROVED to implement — Fix B now, Fix A as structural follow-up.</p>
+<p>---</p>
+<h2>Symptom (after PR #14)</h2>
+<p>PR #14 fixed the first bug: navigation to Confirm Meal now succeeds. But the user takes a photo, reaches the <strong>Confirm Meal</strong> screen, and gets the alert:</p>
+<p>&gt; <strong>No data</strong> — Something went wrong - no photo or query found.</p>
+<h2>Where That String Comes From</h2>
+<p><code>app/log/confirm.tsx</code> shows that alert <strong>only</strong> when <code>promise</code> is null — i.e. both <code>query</code> is empty AND <code>pendingImage.get()</code> returned null:</p>
+<pre><code class="language-ts">useEffect(() =&gt; {
+  const pendingImageUri = pendingImage.get();
+  pendingImage.clear();                 // &lt;-- cleared at mount, before read completes
+  let promise = null;
+  if (query) promise = visionService.lookupByName(query);
+  else if (pendingImageUri) promise = FileSystem.readAsStringAsync(...)...;
+  if (!promise) { Alert.alert('No data', ...); return; }   // &lt;-- this fires
+  ...
+}, []);</code></pre>
+<p>So the image is being <strong>lost between camera setting it and confirm reading it.</strong> <code>pendingImage.set()</code> always sets <code>_uri</code> to at least the source URI and resolves, so the shelf is non-null right after camera. For confirm to read null, the shelf must be <strong>cleared between camera and confirm's surviving mount.</strong></p>
+<h2>Root Cause — two compounding defects</h2>
+<h3>Defect 1 (the trigger): Phase 3 onboarding gate re-fires on every navigation</h3>
+<p><code>app/_layout.tsx</code>:</p>
+<pre><code class="language-ts">useEffect(() =&gt; {
+  getDb().then(() =&gt; isOnboardingComplete()).then((complete) =&gt; {
+    const onOnboarding = pathname === '/onboarding';
+    if (!complete &amp;&amp; !onOnboarding) router.replace('/onboarding');
+    if (complete &amp;&amp; onOnboarding) router.replace('/(tabs)');
+  });
+}, [pathname, router]);          // &lt;-- depends on pathname → runs on EVERY nav</code></pre>
+<p>Navigating camera → <code>/log/confirm</code> changes <code>pathname</code>, re-running this effect and its async DB round-trip. This churns the modal navigation stack (remount). Note: <code>isOnboardingComplete()</code> is stable-true for an existing user, so this is NOT redirecting to onboarding — the damage is the <strong>remount churn</strong>, not a wrong redirect. This bug also causes subtle remount churn on every navigation app-wide, not just the camera flow.</p>
+<h3>Defect 2 (the fragility PR #13/4.3 introduced): confirm clears the shelf at mount</h3>
+<p>4.3 moved <code>pendingImage.clear()</code> to the <strong>top</strong> of confirm's effect. So: confirm mounts → reads URI → clears shelf → begins file read. If the layout churn (Defect 1) remounts confirm, the <strong>second mount reads an already-empty shelf</strong> → null → &quot;No data.&quot; Before 4.3, <code>clear()</code> ran only AFTER analysis, so a remount mid-flow still found the image. The patch did not create the remount; it made the remount fatal.</p>
+<p>---</p>
+<h2>The Fix</h2>
+<h3>Fix B — REQUIRED NOW (highest leverage, robust to the race)</h3>
+<p><code>confirm.tsx</code> already receives <code>imageUri</code> as a <strong>route param</strong>, which survives remounts (route params are serialized into the URL). Treat <code>pendingImage</code> as a fast-path cache and fall back to the param. One-line core change:</p>
+<pre><code class="language-ts">useEffect(() =&gt; {
+  const pendingImageUri = pendingImage.get() ?? imageUri ?? null;  // fall back to route param
+  // Do NOT clear at the top. Clear/remove only after we have consumed it (see below).
+  ...
+  if (query) { promise = visionService.lookupByName(query); }
+  else if (pendingImageUri) { promise = FileSystem.readAsStringAsync(pendingImageUri, ...)... ; }
+  ...
+}, []);</code></pre>
+<p>Additional hardening in the same effect:</p>
+<p>top. Capture the URI, kick off analysis, and only <code>pendingImage.remove(pendingImageUri)</code> in <code>.finally</code> (already there) — drop the mount-time <code>clear()</code> entirely, or guard the effect against double-invocation with a <code>useRef(false)</code> ran-once flag.</p>
+<p>read works against it on-device. It is a readable <code>file://</code> URI from the picker, so it should. If <code>readAsStringAsync</code> ever throws on it, the existing <code>.catch</code> already shows &quot;Analysis failed&quot; rather than silently dying.</p>
+<ul><li><strong>Move the clear/remove to after consumption.</strong> Do not <code>pendingImage.clear()</code> at mount</li><li>Because <code>imageUri</code> (the original picker URI) may now be the source read, confirm the</li></ul>
+<h3>Fix A — REQUIRED FOLLOW-UP (structural, fixes the real Phase 3 bug)</h3>
+<p>Stop the onboarding gate from running on every navigation. It should evaluate <strong>once at cold start</strong>, not on every <code>pathname</code> change.</p>
+<p>Options (pick one, Jesse's call, document it):</p>
+<p>&quot;already checked&quot; flag so it runs once after DB init.</p>
+<p>initial mount, not on modal pushes.</p>
+<ul><li>Remove <code>pathname</code> from the dep array and gate the check behind a <code>useRef(false)</code></li><li>Or move the redirect decision into a dedicated root index guard that only evaluates on</li></ul>
+<p>Keep the <code>cancelled</code> cleanup. Ensure that after the one-time check, pushing modals like <code>/log/camera</code> and <code>/log/confirm</code> does NOT re-trigger a redirect or remount.</p>
+<p>---</p>
+<h2>Tests (add — these would have caught it)</h2>
+<h3><code>src/__tests__/confirm.*.test.tsx</code> (new or extend)</h3>
+<p>an <code>imageUri</code> route param; assert confirm uses the param, calls <code>FileSystem.readAsStringAsync(imageUri, ...)</code>, and does <strong>NOT</strong> show the &quot;No data&quot; alert.</p>
+<p>on the second run (i.e. clearing/consume order does not strand the second mount).</p>
+<ul><li><strong>New (the regression guard):</strong> mock <code>pendingImage.get</code> to return <strong>null</strong> but provide</li><li><strong>New:</strong> simulate the effect running <strong>twice</strong> (remount); assert analysis still proceeds</li></ul>
+<h3><code>_layout</code> (Fix A)</h3>
+<p><code>pathname</code> changes (e.g. re-render with a new pathname does not re-invoke <code>router.replace</code>).</p>
+<ul><li>Assert the onboarding-check effect runs the redirect logic <strong>once</strong> across multiple</li></ul>
+<p>---</p>
+<h2>Verification</h2>
+<p>Automated (paste results in PR body):</p>
+<ul><li>[ ] <code>npx tsc --noEmit</code> clean</li><li>[ ] <code>npm test -- --runInBand</code> — all pass incl. the new cases above</li><li>[ ] <code>npm run lint</code> — 0 errors (pre-existing history.tsx warning acceptable)</li></ul>
+<p>Manual on device / TestFlight (REQUIRED — runtime-only bug):</p>
+<p>(the original 4.3 acceptance still holds)</p>
+<p>bounce to onboarding or visibly reload screens (confirms Fix A)</p>
+<ul><li>[ ] Take a photo → Confirm Meal appears → analysis runs → items show → save works</li><li>[ ] Pick from library → same</li><li>[ ] No &quot;No data&quot; alert on a normal capture</li><li>[ ] Background/kill mid-analysis, relaunch, new capture → no stale image leak</li><li>[ ] Sanity: navigating between tabs and opening/closing the camera modal does NOT</li></ul>
+<p>---</p>
+<h2>Out Of Scope</h2>
+<p>Phase 3 bug that 4.3 unmasked.</p>
+<ul><li>Do not revert 4.1/4.2/4.3 or PR #14 — they are correct; this is a separate latent</li><li>Do not migrate off <code>expo-file-system/legacy</code> here.</li></ul>
+<h2>Decision Record</h2>
+<p>flow robust to remount races, gets the camera working immediately.</p>
+<p>every-navigation remount churn will keep causing subtle bugs app-wide.</p>
+<p>Lesson for the test suite: mocked-FS unit tests cannot catch navigation/remount races — the new double-invocation + null-shelf-with-param tests close that gap.</p>
+<ul><li>Fix B (route-param fallback + consume-then-clear) ships first: smallest change, makes the</li><li>Fix A (one-time onboarding gate) is the real correction and must follow, because the</li><li>Both bugs trace to the Phase 3 onboarding gate + the 4.3 mount-time clear interacting.</li></ul>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

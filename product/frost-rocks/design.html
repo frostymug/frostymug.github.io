@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost-Rocks — Design Document · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/software-development-and-testing-principles.html">Software Principles</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a aria-current="page" href="/product/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/product/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/product/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+      <a href="/marketing/website/index.html">Aspen Frost Website</a>
+      <a href="/marketing/website/positioning-brief.html">Positioning Brief</a>
+      <a href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
+      <a href="/zev/index.html">Zev Published HTML</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/engineering/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/engineering/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/engineering/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/engineering/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/engineering/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/engineering/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/engineering/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Product &middot; Frost Rocks Design</div>
+      <h1>Frost-Rocks — Design Document</h1>
+<p><strong>Project:</strong> Rock identification &amp; learning app <strong>Company:</strong> Aspen Frost Consulting <strong>Design lead:</strong> Izzy <strong>Last updated:</strong> 2026-05-23</p>
+<p>---</p>
+<h2>LOCKED DOWN</h2>
+<h3>Audience</h3>
+<ul><li>Rock hobbyists — birder energy</li><li>Intrinsic motivation, life-list mentality, real-world collection</li><li>Not students, no credentials, no formal curriculum</li></ul>
+<h3>Core Loop</h3>
+<ul><li><strong>In the field:</strong> photograph rock → attempt ID → log to location</li><li><strong>At home:</strong> flashcard practice seeded by field encounters</li><li>These feed each other — field experience shapes the practice deck</li><li>Geographic/experiential context is the <strong>primary motivational scaffold</strong> — flashcards should feel like memories, not drills</li></ul>
+<h3>Instructional Design Principles</h3>
+<ul><li><strong>Fading scaffolding:</strong> novices get perceptual + vocabulary + elimination help; seasoned users get minimal to none</li><li><strong>Perceptual scaffolding fades last</strong> — noticing the right features IS the skill</li><li><strong>Attempt first, always</strong> — generation effect; scaffolding is a reward for the attempt, not a prerequisite</li><li><strong>Error correction sequence:</strong> validate reasoning → isolate one distinguishing feature → make them look again → resurface soon</li><li><strong>Confident-wrong = highest priority re-teach event</strong></li><li><strong>Confidence rating before answer revealed</strong> (Sure / Kind of / Guessing) — feeds algorithm AND builds metacognitive calibration</li></ul>
+<h3>Spaced Repetition: FSRS (py-fsrs)</h3>
+<p>- Guessing + Wrong  → Again - Sure + Wrong      → Again (flag: high-priority re-teach) - Guessing + Right  → Hard - Kind of + Right   → Good - Sure + Right      → Easy</p>
+<ul><li>Repo: https://github.com/open-spaced-repetition/py-fsrs</li><li>Algorithm: FSRS — models stability (how long you'll remember) + difficulty (how hard this item is for you) separately</li><li>User never sees the FSRS machinery — confidence + outcome maps to FSRS ratings behind the scenes:</li><li><strong>Mastery proxy:</strong> FSRS stability value — days until forgetting. Continuous signal, not a graduation ceremony.</li></ul>
+<h3>Domain Knowledge Model (framework, details TBD)</h3>
+<p>The knowledge model has four layers:</p>
+<ul><li><strong>Taxonomy</strong> — igneous/sedimentary/metamorphic → subtypes → individual rocks; structured for learnability, not just geological correctness</li><li><strong>Identifying features per rock</strong> — which features are <em>diagnostic</em> for a given rock, not just a full attribute list</li><li><strong>Confusion graph</strong> — which rocks get confused with which, and which features resolve each specific confusion; this IS the curriculum sequence</li><li><strong>Feature salience by photo</strong> — which features are observable from an image vs. requiring physical examination; the app must be honest about this ceiling</li></ul>
+<p>---</p>
+<h2>OPEN QUESTIONS (rough priority order)</h2>
+<p>- How do we model the taxonomy in detail? - What attributes does each rock entry need? - Who/what maintains the knowledge base — curated, crowdsourced, or AI-generated?</p>
+<ul><li><strong>Content / domain knowledge model</strong></li></ul>
+<p>- Which specific rocks get confused with which? - Which features resolve each specific confusion? - What's learnable from a photo vs. requiring physical examination?</p>
+<ul><li><strong>The confusion graph</strong></li></ul>
+<p>- Where do flashcard/reference photos come from? - Multiple photos per rock? (different lighting, orientations, weathering states) - Do user-submitted field photos feed back into the shared corpus?</p>
+<ul><li><strong>Photo sourcing</strong></li></ul>
+<p>- What does &quot;knowing a rock&quot; mean in this app? (FSRS stability threshold? Explicit graduation? Visible level system?) - Do we surface mastery to the user, and if so how?</p>
+<ul><li><strong>Mastery model</strong></li></ul>
+<p>- For field use: does the app use AI vision to suggest an ID, or does the user guess cold? - If AI assist exists, how do we prevent it from short-circuiting the retrieval practice?</p>
+<ul><li><strong>AI identification assist</strong></li></ul>
+<p>- How does the app know which rocks to surface? (user location, stated interests, travel history?) - Cold start: what do we show a brand new user with no field history?</p>
+<ul><li><strong>Personalization / relevance engine</strong></li></ul>
+<p>- Is there any structured sense of progression or is it purely self-directed? - How do we show the user they're getting better over time?</p>
+<ul><li><strong>Assessment (if any)</strong></li></ul>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

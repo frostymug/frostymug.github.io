@@ -40,8 +40,8 @@
       <a href="/marketing/index.html">Marketing Index</a>
       <a href="/marketing/website/index.html">Aspen Frost Website</a>
       <a href="/marketing/website/positioning-brief.html">Positioning Brief</a>
-      <a href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
-      <a aria-current="page" href="/zev/index.html">Zev Published HTML</a>
+      <a aria-current="page" href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
+      <a href="/zev/index.html">Zev Published HTML</a>
       <a href="/zev/positioning-brief.html">Positioning Brief</a>
   </div>
   <div class="nav-section">
@@ -60,8 +60,17 @@
 </aside>
   <main>
     <article>
-      <div class="crumb">Published HTML</div>
-      <h1>Zev Published HTML</h1><p>Standalone marketing briefs and web drafts Zev has prepared for review.</p><ul><li><a href="/zev/positioning-brief.html">Positioning Brief</a></li></ul>
+      <div class="crumb">Marketing &middot; Zev Published HTML Notes</div>
+      <h1>Zev Published HTML</h1>
+<p>Drop Zev-owned standalone HTML here when Andy wants it published on the gated docs site.</p>
+<ul><li>Source folder: <code>/home/ubuntu/.openclaw/workspace/published-html/zev/</code></li><li>Published URL folder: <code>https://docs.aspenfrost.com/zev/</code></li><li>Index page: <code>https://docs.aspenfrost.com/zev/</code></li><li>Example: <code>positioning-brief.html</code> publishes to <code>https://docs.aspenfrost.com/zev/positioning-brief.html</code></li></ul>
+<p>Rules:</p>
+<ul><li>Use static files only: HTML, CSS, images, fonts, and small JavaScript when genuinely needed.</li><li>Do not put secrets, tokens, private keys, or unpublished client-sensitive data here.</li><li>Keep filenames lowercase with hyphens, e.g. <code>website-positioning-brief.html</code>.</li><li>If a page needs assets, place them in a subfolder beside the HTML, e.g. <code>assets/hero.png</code>; the publisher preserves the folder tree.</li><li>Promotion to this folder means the page is review-ready for Andy, not necessarily externally approved.</li></ul>
+<p>Publishing:</p>
+<p>The docs build copies this folder into <code>/zev/</code> and generates the <code>/zev/</code> index automatically. Manual publish is still:</p>
+<pre><code class="language-bash">cd /home/ubuntu/.openclaw/workspace/project-viewer
+./scripts/publish.sh</code></pre>
+<p>Nightly docs publishing also picks up changes automatically.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>

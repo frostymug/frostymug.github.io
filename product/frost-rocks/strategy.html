@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — Product Strategy · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/software-development-and-testing-principles.html">Software Principles</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/product/frost-rocks/design.html">Frost Rocks Design</a>
+      <a aria-current="page" href="/product/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/product/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+      <a href="/marketing/website/index.html">Aspen Frost Website</a>
+      <a href="/marketing/website/positioning-brief.html">Positioning Brief</a>
+      <a href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
+      <a href="/zev/index.html">Zev Published HTML</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/engineering/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/engineering/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/engineering/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/engineering/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/engineering/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/engineering/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/engineering/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Product &middot; Frost Rocks Strategy</div>
+      <h1>Frost Rocks — Product Strategy</h1>
+<p><em>Petra | May 2026</em></p>
+<p>---</p>
+<h2>Strategic Direction (as of 2026-05-25)</h2>
+<h3>The Bet</h3>
+<p>We are building in the <strong>off-field skill development space</strong> — not another AI photo-ID tool.</p>
+<p>The product thesis: curious adult learners (the Andy archetype) want to develop real rock identification skills, not just get answers outsourced to an app. They want to get better. No product in the market serves this need.</p>
+<p>This is a deliberate departure from the crowded AI-ID market. We are not competing with Rock Identifier: Stone ID (71K reviews). We are doing something categorically different.</p>
+<h3>Keeping Us Honest</h3>
+<p>This is a hypothesis, not a fact. The competitive landscape validates that the space is empty — it does not validate that users want what we're building. We need real user feedback before the product gets too far downstream.</p>
+<p><strong>Commitment:</strong> Get the MVP in front of real users — starting with Andy, then the Geological Society of Minnesota — before locking any major design decisions.</p>
+<p>---</p>
+<h2>Target User — The Andy Archetype</h2>
+<p><strong>Who they are:</strong></p>
+<ul><li>Empty nester, roughly 50s</li><li>Curious, educated, intrinsically motivated</li><li>Picked up a new hobby (geology, birding, hiking) in a life-transition moment</li><li>Not a student, not pursuing credentials — learning for its own sake</li><li>Already somewhat app-native (birder comparison: uses Merlin, eBird)</li><li>Willing to spend time developing a real skill, not just collect ID results</li></ul>
+<p><strong>What they want:</strong></p>
+<ul><li>To actually get better at identifying rocks — not just be told what they are</li><li>A sense of progress and mastery over time</li><li>Connection to the outdoor experiences that sparked the interest</li><li>Eventually, possibly: community with people who share the interest</li></ul>
+<p><strong>What they don't want:</strong></p>
+<ul><li>To be on their phone while they're out in nature</li><li>A drill-and-kill experience that feels like homework</li><li>An app that makes them feel dumb for not knowing things</li></ul>
+<p><strong>Andy as proxy user:</strong> Andy is the primary user for MVP. This is appropriate — it's how Frost Fitness was built, and it creates a tight feedback loop. The risk is Andy-specific bias. Mitigation: GSM beta cohort exposes the app to non-Andy geology learners early.</p>
+<p>---</p>
+<h2>The MVP — Strategic Frame</h2>
+<h3>What MVP is NOT</h3>
+<ul><li>A full-featured app with AI photo ID, community, social features, and a complete rock database</li><li>A product ready for App Store public launch at scale</li><li>A polished consumer experience</li></ul>
+<h3>What MVP IS</h3>
+<ul><li>Enough product to answer: does the skill-development loop actually work?</li><li>Testable by Andy personally, then by a small GSM cohort</li><li>Something that can get into the App Store (even with limited scope) to establish the product as real</li></ul>
+<h3>The Core Loop to Test (from Izzy's DESIGN.md)</h3>
+<ul><li>Log a rock encounter (photo + location + attempted ID)</li><li>That encounter seeds a flashcard</li><li>Flashcard practice: attempt ID, rate confidence, get feedback</li><li>Spaced repetition (FSRS) schedules the next review</li></ul>
+<p><strong>MVP success signal:</strong> Andy uses it for 2–4 weeks of actual field + review sessions and reports genuine skill development — i.e., he's getting better at identifying rocks he's seen before without looking them up.</p>
+<h3>What MVP Defers</h3>
+<ul><li>AI-assisted ID in the field (open question in Izzy's design — defer for MVP)</li><li>Community / social features</li><li>Full rock database (start with a focused, curated set — probably 30–50 common rocks)</li><li>Personalization / location-based relevance engine</li></ul>
+<p>---</p>
+<h2>Community Strategy</h2>
+<h3>Phase 1 — Andy as user zero</h3>
+<p>Tight feedback loop. Fast iteration. Learn what the core loop actually feels like in practice.</p>
+<h3>Phase 2 — GSM Beta Cohort</h3>
+<p>Andy is a paying member of the Geological Society of Minnesota. The mailing list is the beta recruitment channel. This solves the cold-start problem for initial feedback.</p>
+<p>Target: 10–20 GSM members willing to try a beta app and give honest feedback. Not a focus group — real users, real usage, real signal.</p>
+<h3>Phase 3 — Broader community (future)</h3>
+<p>Reddit (r/rockhounds, r/whatsthisrock) as distribution and research channel once the product has enough substance to show.</p>
+<p>---</p>
+<h2>Open Strategic Questions (my watch list)</h2>
+<ul><li><strong>Does the Andy archetype want skill-building or answers?</strong> The competitive data doesn't resolve this. GSM feedback will.</li></ul>
+<ul><li><strong>What's the right MVP rock set?</strong> Starting with all rocks is a content trap. We need a curated 30–50 that are common, learnable from photos, and interesting to a Midwest geology hobbyist. (GSM geography is relevant here — Midwest mineralogy.)</li></ul>
+<ul><li><strong>App Store positioning:</strong> If we're not an ID tool, how do we describe this in the App Store so the right people find it and the wrong people don't download it expecting instant answers? This is a marketing problem, not a product problem — but it needs an answer before public launch.</li></ul>
+<ul><li><strong>The ID assist question:</strong> Izzy flags this as open — does the app use AI to suggest an ID in the field, or does the user guess cold? This is a product philosophy question. My lean: offer AI assist but make it opt-in after the attempt, so it doesn't short-circuit the retrieval practice. But this needs validation.</li></ul>
+<ul><li><strong>Market size:</strong> Is the Andy archetype a real segment or just Andy? This is the existential question. GSM feedback is step one. It's okay if it's a small market — Andy said so explicitly — but we should know what we're building for.</li></ul>
+<p>---</p>
+<h2>Strategic Recommendation</h2>
+<p><strong>Go.</strong> Build the MVP. Get it in front of Andy and GSM. Learn fast.</p>
+<p>The competitive gap is real. The target user is real (we know at least one). The design thinking (Izzy's DESIGN.md) is serious and well-reasoned. The risk is not that the idea is bad — it's that the skill-development market is smaller than the ID-tool market. That's a go-to-market risk, not a product risk, and it's the kind of risk you learn your way out of.</p>
+<p>The alternative — more research before building — has diminishing returns at this stage. The product is cheap to test. Go test it.</p>
+<p>---</p>
+<p><em>v1.0 | Petra, May 2026</em></p>
+<p>---</p>
+<h2>Data &amp; Integration Landscape</h2>
+<p><em>Added 2026-05-25</em></p>
+<h3>The short answer on Cornell/eBird</h3>
+<p><strong>eBird data: open, free, and downloadable.</strong> Cornell explicitly makes all eBird observation data available as open-access downloads for research and development. An API key is required (free, tied to a Cornell Lab account) but there are no apparent commercial restrictions for app development. This is a genuine asset — billions of bird observations, expert-curated content, range maps, photos, and audio from the Macaulay Library.</p>
+<p><strong>The catch for us:</strong> eBird/Merlin is birds. The data infrastructure is bird-specific. We can't directly tap Cornell's database for rocks — but the <em>model</em> (academic institution + citizen science + open API) is instructive and points us toward the rock equivalent.</p>
+<p><strong>Merlin itself:</strong> No developer API. It's a consumer app, not a platform. Cornell hasn't opened Merlin's AI models or ID infrastructure to third parties. What they've opened is the underlying <em>data</em> (eBird), not the application layer.</p>
+<h3>The rock equivalent: Mindat</h3>
+<p><strong>Mindat.org</strong> is the mineralogy equivalent of eBird — the world's largest open database of minerals, rocks, and meteorites. It's run by the Hudson Institute of Mineralogy (a nonprofit). Key facts:</p>
+<ul><li>Has a developer API (requires registration, appears to be free for non-commercial / research use — commercial terms unclear, needs direct inquiry)</li><li>The API returns authentication errors without a key, but the endpoint is live and structured</li><li>Contains mineral properties, photos, locality data, chemical composition, and more</li><li>This is likely the content backbone for any serious rock ID or learning app — and it's what the better existing apps are probably already using</li></ul>
+<p><strong>iNaturalist:</strong> Has a robust, free, open API — but it's organism-focused. Rock/mineral taxonomy is not in its domain. Useful for the broader nature observation concept, not for geology content specifically.</p>
+<h3>Integration Strategy (phased)</h3>
+<p><strong>MVP:</strong> No external integrations needed. Build the flashcard/spaced-repetition loop with a curated internal rock set (30–50 common rocks). Fast to build, fast to test. Keeps scope tight.</p>
+<p><strong>Phase 2 — Content depth:</strong> Integrate Mindat API for rich rock data (properties, photos, locality). This gives us a legitimate geological database without having to build or maintain one ourselves. Needs API terms clarification first.</p>
+<p><strong>Phase 3 — In-field connection:</strong> The strategic options for connecting off-field learning to in-field experience:</p>
+<table><thead><tr><th>Option</th><th>Description</th><th>Complexity</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Build in-field</strong></td><td>Native camera + AI ID within Frost Rocks</td><td>High</td><td>Full control; requires ML/vision capability; competing with incumbents</td></tr><tr><td><strong>iNaturalist integration</strong></td><td>Allow users to log rock observations via iNaturalist, import into Frost Rocks for review</td><td>Medium</td><td>iNaturalist has open API; rocks are outside their core domain but possible</td></tr><tr><td><strong>Loose integration</strong></td><td>Link out to best-in-class ID tools (Rock Identifier: Stone ID) from within the app</td><td>Low</td><td>Not a true integration; lowest friction to ship</td></tr><tr><td><strong>Partnership</strong></td><td>Formal data-sharing agreement with an in-field app</td><td>Variable</td><td>Best long-term; requires relationship development</td></tr></tbody></table>
+<p><strong>My lean:</strong> Start with loose integration (link out), observe what users actually do, then build or partner based on real behavior data. Don't build the in-field layer until we know users want it enough to pay for it.</p>
+<p>---</p>
+<h2>Competitive Framing Update — In-Field Space</h2>
+<p>The in-field identification space is <strong>not quite commoditized, but it is incumbent-saturated</strong>:</p>
+<ul><li>Rock Identifier: Stone ID has 71K reviews and strong network effects (large database, user trust)</li><li>PictureThis (plants) has 1M+ reviews — shows the ceiling for a pure-ID app in a nature category</li><li>Merlin (birds) is the gold standard and not replicable without Cornell's institutional resources and citizen science network</li></ul>
+<p><strong>The implication:</strong> Competing head-to-head in the in-field ID space would require us to be significantly better than an entrenched incumbent with a large user base. That's a hard fight. Owning the off-field skill-development space and <em>connecting to</em> in-field tools (rather than replacing them) is the smarter strategic position — at least until we've validated the core product and have user leverage.</p>
+<p>This is why the off-field-first MVP is the right call. We're not ceding the in-field space permanently — we're choosing our first beachhead deliberately.</p>
+<p>---</p>
+<p><em>Strategy v1.1 — updated with data/integration landscape | Petra, May 2026</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

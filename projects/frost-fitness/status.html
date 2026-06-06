@@ -10,41 +10,63 @@
 <aside>
   <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
   <div class="nav-section">
-    <div class="nav-section-label">Governance</div>
+    <div class="nav-section-label">Corporate Governance</div>
       <a href="/governance/empire.html">Empire (Org)</a>
       <a href="/governance/empire-os.html">Empire OS</a>
       <a href="/governance/empire-culture.html">Empire Culture</a>
       <a href="/governance/process.html">Process</a>
       <a href="/governance/pipeline.html">Pipeline</a>
-      <a href="/governance/project-status.html">Project Status</a>
+      <a href="/governance/software-development-and-testing-principles.html">Software Principles</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
       <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a aria-current="page" href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
   </div>
   <div class="nav-section">
-    <div class="nav-section-label">Frost Fitness</div>
-      <a href="/projects/frost-fitness/index.html">Overview</a>
-      <a aria-current="page" href="/projects/frost-fitness/status.html">Status</a>
-      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
-      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
-      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
-      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
-      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/product/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/product/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/product/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
   </div>
   <div class="nav-section">
-    <div class="nav-section-label">Zev Published HTML</div>
-      <a href="/zev/index.html">Index</a>
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+      <a href="/marketing/website/index.html">Aspen Frost Website</a>
+      <a href="/marketing/website/positioning-brief.html">Positioning Brief</a>
+      <a href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
+      <a href="/zev/index.html">Zev Published HTML</a>
       <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/engineering/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/engineering/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/engineering/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/engineering/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/engineering/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/engineering/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/engineering/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
   </div>
   <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
 </aside>
   <main>
     <article>
-      <div class="crumb">Frost Fitness &middot; Status</div>
+      <div class="crumb">Projects &middot; Frost Fitness Status</div>
       <h1>Frost Fitness Status</h1>
 <p><strong>Last updated:</strong> 2026-06-05 <strong>Owner:</strong> Aspen for coordination; Andy for product gates <strong>Stage:</strong> Launched (Soft) -&gt; Productization</p>
 <h2>Current State</h2>
 <p>Frost Fitness is live in TestFlight and now routes production traffic through the Cloudflare Worker proxy. Productization Plan Phase 2 is complete: the proxy exists, the client is migrated, CI/CD has been materially hardened, and the latest production build is live in TestFlight hitting the proxy layer.</p>
 <p>The current working package is:</p>
-<ul><li>Arya architecture/productization review promoted to <a href="/projects/frost-fitness/architecture.html">ARCHITECTURE.md</a>.</li><li>Arya Productization Plan promoted to <a href="/projects/frost-fitness/productization-plan.html">PRODUCTIZATION-PLAN.md</a>.</li><li>Cassian Worker CI/deploy pipeline files promoted under <a href="ci-cd/">ci-cd/</a>.</li><li>Cassian rollback procedures promoted to <a href="/projects/frost-fitness/release-process.html">RELEASE-PROCESS.md</a>.</li></ul>
+<ul><li>Arya architecture/productization review promoted to <a href="/engineering/frost-fitness/architecture.html">ARCHITECTURE.md</a>.</li><li>Arya Productization Plan promoted to <a href="/product/frost-fitness/productization-plan.html">PRODUCTIZATION-PLAN.md</a>.</li><li>Cassian Worker CI/deploy pipeline files promoted under <a href="ci-cd/">ci-cd/</a>.</li><li>Cassian rollback procedures promoted to <a href="/engineering/frost-fitness/release-process.html">RELEASE-PROCESS.md</a>.</li></ul>
 <h2>Productization Plan Progress</h2>
 <table><thead><tr><th>Phase</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>Phase 1 — Foundations</td><td>Complete</td><td>Test harness, Sentry/error boundary work, and crash baseline landed before proxy work.</td></tr><tr><td>Phase 2 — Server-side proxy</td><td>Complete</td><td>Cloudflare Worker proxy, client proxy migration, Worker deploy pipeline, and TestFlight build hitting the proxy are complete as of 2026-06-05.</td></tr><tr><td>Phase 3 — Multi-user productization</td><td>Next</td><td>Onboarding, user defaults, hardcoded Andy assumptions, and account/data expectations.</td></tr><tr><td>Phase 4 — Reliability hardening</td><td>Pending</td><td>Migration hardening, UID cleanup, image state cleanup, and remaining technical debt.</td></tr><tr><td>Phase 5 — App Store submission</td><td>Pending</td><td>Compliance docs, metadata, screenshots, HealthKit review, and final submission.</td></tr></tbody></table>
 <h2>Status By Artifact</h2>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Fitness — Architectural Review · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/software-development-and-testing-principles.html">Software Principles</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/product/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/product/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/product/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+      <a href="/marketing/website/index.html">Aspen Frost Website</a>
+      <a href="/marketing/website/positioning-brief.html">Positioning Brief</a>
+      <a href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
+      <a href="/zev/index.html">Zev Published HTML</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a aria-current="page" href="/engineering/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/engineering/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/engineering/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/engineering/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/engineering/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/engineering/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/engineering/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/engineering/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Engineering &middot; Frost Fitness Architecture</div>
+      <h1>Frost Fitness — Architectural Review</h1>
+<p><strong>Author:</strong> Arya (Architect, Aspen Frost Empire) <strong>Date:</strong> 2026-05-24 <strong>Repo:</strong> frostymug/frost-fitness <strong>Status:</strong> First review — living document</p>
+<p>---</p>
+<h2>What We're Working With</h2>
+<p>Expo + React Native (SDK 54, React 19). SQLite-first local storage. Two AI backends: Gemini 2.5 Flash for meal photo vision, Claude Sonnet 4.6 for conversational coaching. iOS-only currently (EAS build config, HealthKit dependency). Single user. In production via TestFlight, version 2.0.0.</p>
+<p>---</p>
+<h2>✅ What's Strong</h2>
+<h3>1. The schema design is genuinely good</h3>
+<p>The <code>low/mid/high</code> range model for all macro values is the right call. Calorie estimation from a photo is inherently uncertain — preserving that uncertainty all the way to the UI instead of collapsing it to a fake-precise number is architecturally honest. It also pays dividends in the coach layer: the AI can reason about ranges (&quot;you're probably between 400–600 kcal today&quot;) rather than pretending a photo analysis is precise to the gram. This is the kind of decision that's much harder to add retroactively. Good call.</p>
+<h3>2. Clean service interface pattern</h3>
+<p><code>VisionService</code>, <code>ConversationService</code>, and <code>HealthKitService</code> are defined as TypeScript interfaces with concrete implementations behind them. The singletons (<code>visionService</code>, <code>conversationService</code>, <code>healthKitService</code>) export the interface type, not the implementation. Swapping model providers or adding a mock for testing is a one-file change. This is what makes the codebase sustainable as the product evolves.</p>
+<h3>3. The tool-use loop is solid</h3>
+<p>The Claude conversation service handles multi-turn tool use correctly:</p>
+<ul><li>Appends assistant + tool_result turns to the in-memory message list without persisting intermediate steps to the DB</li><li>Caps at 5 iterations and fails loudly if it hits the cap (rather than silently returning empty text)</li><li>Correctly identifies the terminal condition (<code>stop_reason !== 'tool_use'</code>)</li></ul>
+<p>A lot of implementations get this wrong. This one doesn't.</p>
+<h3>4. Local-first architecture with rich context injection</h3>
+<p><code>buildContextSummary()</code> assembles a structured Markdown block — goals, today's progress, 7-day daily history, 30-day weight trend, recent foods — and injects it into every chat system prompt. The coach only calls database tools for data <em>outside</em> that pre-loaded window. This keeps the common case fast and the uncommon case correct. Good design.</p>
+<h3>5. Transaction discipline</h3>
+<p><code>saveMeal()</code> and <code>updateMealItem()</code> are wrapped in <code>withTransactionAsync</code>. Denormalized meal totals are recomputed atomically within the same transaction. The FK <code>ON DELETE CASCADE</code> on <code>meal_items.meal_id</code> is set correctly. This is foundational and a lot of apps get it wrong.</p>
+<h3>6. AI cost instrumentation exists</h3>
+<p><code>ai_call_log</code> records token counts, latency, and success/failure for every API call. Most personal apps don't instrument this at all. Having it means cost spikes are visible before they show up on the credit card bill.</p>
+<p>---</p>
+<h2>⚠️ What's Weak</h2>
+<h3>1. API keys are in the client bundle — the biggest risk</h3>
+<p><code>EXPO_PUBLIC_CLAUDE_API_KEY</code> and <code>EXPO_PUBLIC_GEMINI_API_KEY</code> are embedded in the compiled JS bundle. The CLAUDE.md acknowledges this as &quot;acceptable for a single-user personal app distributed via TestFlight.&quot; That's true today — but TestFlight IPAs can be extracted and reverse-engineered. The Anthropic key in that bundle has write access to the account.</p>
+<p><strong>If this stays personal:</strong> manageable, monitor the AI cost logs for unexpected usage. <strong>If anyone else ever installs it:</strong> becomes a liability immediately.</p>
+<p><strong>Fix:</strong> a thin server-side proxy — a few lines of serverless function (Vercel, Cloudflare Workers, AWS Lambda) that holds the keys and forwards requests. Client sends data, proxy adds auth, forwards to AI provider. One afternoon of work, eliminates the risk permanently.</p>
+<p><strong>Priority: High if productizing. Monitor if staying personal.</strong></p>
+<p>---</p>
+<h3>2. No error boundaries on screens</h3>
+<p>Any unhandled exception in a React component tree kills the entire screen with no recovery path — user sees a blank white screen and has to force-quit. Sentry is already in the deps (<code>@sentry/react-native</code>) but there's no root-level <code>&lt;ErrorBoundary&gt;</code> wrapping the screen stack.</p>
+<p><strong>Fix:</strong> Wrap the root <code>&lt;Stack&gt;</code> in a Sentry error boundary. 20 lines of code.</p>
+<p><strong>Priority: Medium — important before real users.</strong></p>
+<p>---</p>
+<h3>3. The migration system is fragile</h3>
+<p><code>runMigrations()</code> checks the current schema version once and applies pending migrations sequentially. The fragility: if a migration fails partway through, the <code>db_version</code> table won't be updated, but some DDL may have already executed. SQLite DDL inside transactions has quirks — not all DDL is transactional in the same way DML is. For a solo app this is survivable (wipe and reinstall). For a multi-user product with real user data, a failed migration is a support nightmare.</p>
+<p><strong>Fix:</strong> Execute each migration in its own transaction with rollback on failure and explicit version bookkeeping.</p>
+<p><strong>Priority: Low now, High before multi-user.</strong></p>
+<p>---</p>
+<h3>4. <code>pendingImage</code> is a global mutable singleton</h3>
+<p><code>pendingImage</code> is a module-level variable used to pass base64 image data between <code>camera.tsx</code> and <code>confirm.tsx</code>, because Expo Router can't serialize large base64 strings in route params. The workaround is pragmatic but has a failure mode: if the user navigates away from <code>confirm.tsx</code> mid-analysis (force-quit, background app), the stale image persists in memory and may be incorrectly associated with the next camera capture.</p>
+<p><strong>Fix:</strong> Always call <code>pendingImage.clear()</code> on <code>confirm.tsx</code> mount regardless of whether a valid image is found. Could also move to a more principled async store (e.g., a temp file path rather than in-memory base64).</p>
+<p><strong>Priority: Low — minor edge case today.</strong></p>
+<p>---</p>
+<h3>5. UID generation must be runtime-compatible, not just random</h3>
+<pre><code class="language-ts">Math.random().toString(36).slice(2) + Date.now().toString(36)</code></pre>
+<p>Was used everywhere for primary keys. <code>Math.random()</code> is seeded, deterministic in some environments, and has non-negligible collision probability under rapid generation. This is a dormant landmine — harmless for a single-user local-only app, meaningful if records ever sync to a backend or get merged across devices.</p>
+<p><strong>Fix:</strong> use the strongest UUID source the deployed runtime actually provides. <code>crypto.randomUUID()</code> may exist in Node/Jest while being absent in the Expo/Hermes runtime. The current implementation should prefer <code>crypto.randomUUID()</code> when available, fall back to UUID v4 bytes from <code>crypto.getRandomValues</code>, and only then fall back to <code>Math.random()</code> as a last resort.</p>
+<p><strong>Priority: Low now, High before sync/multi-user.</strong></p>
+<p><strong>Lesson captured 2026-06-06:</strong> the production photo-submit failure was not a pure UID bug; it was a test-boundary bug. Jest proved the utility worked in Node. It did not prove the utility worked in the app runtime.</p>
+<p>---</p>
+<h3>6. Default settings hardcode personal values</h3>
+<p><code>DEFAULT_GOALS</code> in <code>settings.ts</code> has <code>displayName: 'Andy'</code> and <code>targetWeightKg: 83.9</code> baked in. Minor for a personal app. Meaningful the moment this becomes a product.</p>
+<p><strong>Fix:</strong> Replace hardcoded defaults with a first-run onboarding flow that collects these values.</p>
+<p><strong>Priority: Productization prerequisite.</strong></p>
+<p>---</p>
+<h3>7. No test coverage</h3>
+<p>Zero test files visible in the repo. The core of this app is: (a) write to SQLite correctly, and (b) call AI APIs correctly — both have fairly deterministic inputs and outputs. A small suite of unit tests on <code>saveMeal</code>, <code>recomputeMealTotals</code>, <code>getDayTotals</code>, and the AI service adapters would catch regressions cheaply and give Eddie (when he arrives) a safety net.</p>
+<p><strong>Priority: Medium — important before agent-assisted development at scale.</strong></p>
+<p>---</p>
+<h2>Testing Doctrine — Runtime Compatibility Is a First-Class Boundary</h2>
+<p>Frost Fitness is an Expo app, so Node/Jest is not the runtime. Tests that pass in Jest can still hide missing or partial APIs in Expo/Hermes, especially around platform and browser-shaped capabilities.</p>
+<p>Any code touching runtime-provided APIs needs compatibility coverage that models the deployed shape of the API, not just the convenient test shape. This includes:</p>
+<ul><li><code>crypto</code>, especially partial availability such as <code>getRandomValues</code> present while <code>randomUUID</code> is absent</li><li><code>FileSystem</code>, cache paths, and temp-file cleanup</li><li>camera/media/image manipulation APIs</li><li>storage and SQLite adapters</li><li>route params and navigation lifecycle</li><li>browser-shaped globals such as <code>Blob</code>, <code>File</code>, <code>URL</code>, <code>atob</code>, and <code>fetch</code></li></ul>
+<p>Testing rules for this project:</p>
+<ul><li>Prefer real local utilities in screen tests unless mocking is necessary for determinism.</li><li>Mock external services, network calls, permissions, and device-only integrations at the boundary.</li><li>Do not mock below the failure boundary when the behavior is cheap and stable enough to exercise directly.</li><li>For platform utilities, test multiple runtime shapes: full API exists, partial API exists, API missing, and fallback behavior.</li><li>Every production screenshot/error should become a regression test that recreates the exact missing capability or failing state.</li></ul>
+<p>The goal is not simply more tests. The goal is less flattering tests: a fake universe that resembles the deployed app closely enough to catch compatibility mistakes before Andy does QA with a real phone.</p>
+<p>---</p>
+<h2>❓ Open Questions</h2>
+<p>These can't be answered from the repo. They determine which debts above get paid first.</p>
+<p>The current architecture is explicitly calibrated for personal use. If this becomes a product — even a small beta cohort — several of the &quot;acceptable for personal use&quot; decisions become simultaneous blockers. Need to know the horizon to prioritize.</p>
+<ul><li><strong>What's the growth ambition?</strong></li></ul>
+<p>All data lives in SQLite on-device. iCloud device backup covers it implicitly, but that's implicit. If the phone is lost or wiped, nutrition history is gone. Is that acceptable? If not: iCloud Drive, CloudKit, or a backend sync are the options, each with meaningfully different complexity.</p>
+<ul><li><strong>Is there a sync or backup strategy?</strong></li></ul>
+<p>If Eddie is an AI agent (low-cost model), the absence of tests is a real problem — agent-written code without a test harness is where silent regressions accumulate. If Eddie is a human, the code is readable enough to onboard quickly. The answer shapes the urgency of item 7 above.</p>
+<ul><li><strong>Who is Eddie, and how does he work?</strong></li></ul>
+<p>The schema has a comment: <code>-- Future: add fasting_windows table for v2 fasting timer</code>. The <code>checkInTime</code> setting (morning/evening/off) suggests push notification infrastructure. <code>app.json</code> is at <code>2.0.0</code>. Understanding what's coming next would change prioritization — some debts above matter a lot more in some directions than others.</p>
+<ul><li><strong>What's the v2 feature roadmap?</strong></li></ul>
+<p>If it stays personal, most of the above is informational. If it hits the App Store: the key security issue becomes urgent, the hardcoded personal values become embarrassing, and the missing error boundaries become 1-star reviews waiting to happen.</p>
+<ul><li><strong>Any plans to publish beyond personal use?</strong></li></ul>
+<p>---</p>
+<h2>Summary Verdict</h2>
+<p>This is a well-built personal app that took its data model seriously. The macro range system, service abstractions, and coach context injection are all above-average decisions for a project of this scope. The weaknesses are almost entirely in the &quot;fine for personal use, not ready to scale&quot; category — which is the right set of weaknesses to have at this stage.</p>
+<p><strong>Most actionable item before this touches anyone other than Andy:</strong> move the API keys to a server-side proxy. Everything else is debt that can be carried.</p>
+<p>---</p>
+<p><em>Arya — Architect, Aspen Frost Empire | 2026-05-24</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

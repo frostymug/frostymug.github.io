@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software Development and Testing Principles - Aspen Frost · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a aria-current="page" href="/governance/software-development-and-testing-principles.html">Software Principles</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/product/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/product/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/product/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+      <a href="/marketing/website/index.html">Aspen Frost Website</a>
+      <a href="/marketing/website/positioning-brief.html">Positioning Brief</a>
+      <a href="/marketing/zev/notes.html">Zev Published HTML Notes</a>
+      <a href="/zev/index.html">Zev Published HTML</a>
+      <a href="/zev/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/engineering/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/engineering/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/engineering/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/engineering/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/engineering/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/engineering/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/engineering/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Corporate Governance &middot; Software Principles</div>
+      <h1>Software Development and Testing Principles - Aspen Frost</h1>
+<p>&gt; Companywide engineering doctrine for how Aspen Frost builds software. Project architecture docs can add stricter local rules, but should not weaken these principles.</p>
+<p><em>Started 2026-06-06 by Arya after the Frost Fitness Expo/Hermes <code>crypto.randomUUID</code> production failure.</em></p>
+<p>---</p>
+<h2>Why This Exists</h2>
+<p>Aspen Frost is building software with agent teams. That gives us speed, but speed without institutional memory turns every production bug into a recurring villain.</p>
+<p>This document captures durable engineering lessons that should apply across projects, agents, and repos. It is not a process checklist. It is the judgment layer underneath the process.</p>
+<p>When a project teaches us something broadly useful, capture it here and then add any project-specific version to that project's architecture, testing, or release docs.</p>
+<p>---</p>
+<h2>Principle 1: Test the Runtime, Not the Fantasy</h2>
+<p>Jest, Node, local mocks, browser devtools, simulators, and CI containers are useful approximations. They are not automatically the runtime our users actually touch.</p>
+<p>A test suite is incomplete when it proves behavior only in a convenient fake universe. For code that depends on runtime-provided APIs, tests must model the deployed runtime's capabilities, including partial availability and missing APIs.</p>
+<h3>What Triggered This</h3>
+<p>Frost Fitness hit a production failure after photo submission on 2026-06-06. The app reached Confirm Meal, then failed because <code>crypto.randomUUID</code> was available in the Node/Jest test environment but absent in the Expo/Hermes app runtime.</p>
+<p>The bug survived because the suite tested two comfortable things:</p>
+<ul><li>The UID utility worked in Jest's Node-shaped runtime.</li><li>The Confirm Meal screen worked while mocking the UID utility entirely.</li></ul>
+<p>Neither test proved the real screen could call the real utility in the real app runtime.</p>
+<h3>The Rule</h3>
+<p>Any code touching platform, browser-shaped, device, filesystem, storage, navigation, or runtime-global APIs must have compatibility coverage that models the deployed runtime shape.</p>
+<p>Examples include:</p>
+<ul><li><code>crypto</code>, especially partial availability such as <code>getRandomValues</code> present while <code>randomUUID</code> is absent</li><li>filesystem/cache APIs and cleanup behavior</li><li>camera, media picker, image manipulation, and upload paths</li><li>local storage, SQLite, secure storage, and persistence adapters</li><li>route params, navigation lifecycle, background/foreground behavior</li><li>browser-shaped globals such as <code>Blob</code>, <code>File</code>, <code>URL</code>, <code>atob</code>, <code>fetch</code>, <code>FormData</code>, and streams</li><li>serverless edge runtimes, where Node APIs may be absent or subtly different</li></ul>
+<h3>Required Testing Pattern</h3>
+<p>For platform-touching utilities, test more than the happy runtime:</p>
+<ul><li>Full API exists.</li><li>Partial API exists.</li><li>API is absent.</li><li>Fallback path behaves correctly.</li><li>Failure path fails clearly and recoverably.</li></ul>
+<p>For feature/screen tests:</p>
+<ul><li>Mock external services, network calls, secrets, permissions, and device-only integrations at the boundary.</li><li>Prefer real local utilities when they are deterministic and cheap to run.</li><li>Do not mock below the failure boundary unless the mock is the thing being tested.</li></ul>
+<p>For production bugs:</p>
+<ul><li>Every production screenshot, crash, or runtime error should become a regression test that recreates the exact missing capability or failing state.</li><li>The regression test should live as close as practical to the code that failed.</li><li>If the failure reveals a companywide lesson, update this document too.</li></ul>
+<h3>PR Review Question</h3>
+<p>Every engineering PR should be able to answer:</p>
+<p>&gt; Does this rely on runtime APIs whose availability differs between local tests, CI, and production? If yes, where is the compatibility or regression coverage?</p>
+<p>If the answer is &quot;yes, but we did not test that shape,&quot; the PR is not ready. That is not bureaucracy. That is how we stop rewarding tests for being flattering.</p>
+<p>---</p>
+<h2>Ownership</h2>
+<ul><li>Arya owns architecture doctrine and keeps this document technically honest.</li><li>Jesse owns implementation patterns and should turn these principles into repo-level testing habits.</li><li>Cassian owns release safety and should turn these principles into CI, QA, and deployment gates.</li><li>Andy owns priority and product risk tolerance.</li></ul>
+<p>When a lesson crosses project boundaries, the agent who discovered it should update this document or explicitly hand that task to Arya.</p>
+<p>---</p>
+<h2>Open Principles Backlog</h2>
+<p>Future sections should capture additional companywide rules as they harden through real work:</p>
+<ul><li>Security boundaries for client apps, serverless proxies, and secrets</li><li>Data migration discipline and rollback expectations</li><li>Observability minimums for AI calls, cost, latency, and failures</li><li>Error boundary and user recovery standards</li><li>Test pyramid expectations for agent-built software</li><li>Release gates by safety-ramp level</li></ul>
+<p>---</p>
+<p><em>Living document. Update when production teaches us something worth keeping.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
