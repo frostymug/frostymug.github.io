@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frost Fitness — Privacy Policy</title>
+<style>
+  :root { --bg:#0A0E14; --panel:#121822; --text:#E6EDF3; --muted:#9AA7B4; --accent:#5BC8FF; --line:#1E2733; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Manrope,Roboto,Helvetica,Arial,sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:760px; margin:0 auto; padding:56px 24px 96px; }
+  header { border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:32px; }
+  h1 { font-size:1.9rem; margin:0 0 6px; letter-spacing:-0.01em; }
+  h2 { font-size:1.2rem; margin:40px 0 12px; letter-spacing:-0.01em; }
+  h3 { font-size:1.02rem; margin:24px 0 8px; color:var(--text); }
+  p,li { color:var(--text); }
+  .muted { color:var(--muted); font-size:0.92rem; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  ul { padding-left:22px; }
+  li { margin:6px 0; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; margin:20px 0; }
+  .panel strong { color:var(--accent); }
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:0.95rem; }
+  th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; }
+  footer { margin-top:56px; padding-top:24px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Frost Fitness — Privacy Policy</h1>
+    <p class="muted">Last updated: 11 June 2026</p>
+  </header>
+
+  <p>Frost Fitness is a nutrition and fitness tracking app. This policy explains exactly what data the app handles, where it goes, and what it does not do. We've kept it plain on purpose — if you can't tell what's happening to your data, the policy has failed.</p>
+
+  <div class="panel">
+    <p style="margin:0"><strong>The short version.</strong> Your logs live on your phone. We have no user accounts and no central database of your data. When you ask the app to analyze a meal photo or chat with the coach, that specific content is sent to an AI provider to generate a response — and is not stored on our servers. We collect anonymous crash diagnostics to fix bugs. We do not sell your data, show ads, or track you across apps.</p>
+  </div>
+
+  <h2>1. Who we are</h2>
+  <p>Frost Fitness is built and operated by Aspen Frost Agentic Software ("we," "us"). You can reach us at <a href="mailto:privacy@aspenfrost.com">privacy@aspenfrost.com</a>.</p>
+
+  <h2>2. Data stored on your device</h2>
+  <p>The core of the app is local. The following is stored only on your device, in the app's private database, and is never uploaded to us:</p>
+  <ul>
+    <li>Your logged meals, food items, and calorie/macro estimates</li>
+    <li>Meal photos you capture or select</li>
+    <li>Your goals and app settings</li>
+    <li>Your coach chat history</li>
+    <li>Body-weight readings cached from Apple Health</li>
+  </ul>
+  <p>Because there is no account and no cloud sync, this data exists only on your device. If you delete the app, this data is deleted with it. We cannot recover it for you.</p>
+
+  <h2>3. Apple Health (HealthKit)</h2>
+  <p>If you grant permission, Frost Fitness <strong>reads</strong> your most recent body-weight readings from Apple Health so it can show weight trends alongside your nutrition logs. This data stays on your device.</p>
+  <ul>
+    <li>We only read <em>body weight</em>. We do not read any other Health data type.</li>
+    <li>We <strong>never write</strong> data to Apple Health.</li>
+    <li>We never send Apple Health data to any server or third party.</li>
+    <li>You can revoke this access at any time in iOS Settings → Privacy &amp; Security → Health.</li>
+  </ul>
+  <p>Data obtained from HealthKit is never used for advertising, marketing, or sold to anyone.</p>
+
+  <h2>4. AI features (the one time data leaves your device)</h2>
+  <p>Two features send content to third-party AI providers, through our secure relay server, to generate a result. This happens only when you actively use the feature.</p>
+
+  <table>
+    <tr><th>Feature</th><th>What is sent</th><th>Where it goes</th></tr>
+    <tr><td>Meal photo analysis</td><td>The meal photo you chose to analyze</td><td>Google Gemini, via our relay</td></tr>
+    <tr><td>Coach chat</td><td>The messages you type, plus relevant nutrition context</td><td>Anthropic Claude, via our relay</td></tr>
+  </table>
+
+  <h3>Our relay server</h3>
+  <p>Requests pass through a relay server we operate (on Cloudflare) so that API keys are never embedded in the app. The relay <strong>does not store the contents of your requests</strong> — no meal photos and no chat messages are saved. It logs only non-content operational metadata (such as the route called, response status, and timing) to keep the service running and prevent abuse.</p>
+
+  <h3>The AI providers</h3>
+  <p>The content you submit is processed by Google (Gemini) and/or Anthropic (Claude) to produce a response. Their handling of that data is governed by their own terms and privacy policies:</p>
+  <ul>
+    <li>Google AI / Gemini — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">terms &amp; privacy</a></li>
+    <li>Anthropic / Claude — <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a></li>
+  </ul>
+  <p>If you don't use the photo-analysis or coach-chat features, no content is sent off your device at all.</p>
+
+  <h2>5. Crash &amp; error diagnostics</h2>
+  <p>We use Sentry to collect anonymous crash and error reports so we can find and fix bugs. These reports include technical information such as the error, device model, and OS version. They are <strong>not linked to your identity</strong> and do not include your meals, photos, chat messages, or health data. See Sentry's <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">privacy policy</a>.</p>
+
+  <h2>6. What we do not do</h2>
+  <ul>
+    <li>We do not require an account or collect your name, email, or phone number to use the app.</li>
+    <li>We do not sell or rent your data to anyone.</li>
+    <li>We do not show third-party ads.</li>
+    <li>We do not track you across other apps or websites.</li>
+    <li>We do not build advertising profiles from your data.</li>
+  </ul>
+
+  <h2>7. Your choices and rights</h2>
+  <ul>
+    <li><strong>Delete your data:</strong> Deleting the app removes all on-device data. You can also clear data from within the app's settings.</li>
+    <li><strong>Apple Health:</strong> Revoke access any time in iOS Settings → Privacy &amp; Security → Health.</li>
+    <li><strong>Camera &amp; photos:</strong> Manage permissions in iOS Settings → Frost Fitness.</li>
+    <li><strong>AI features:</strong> Simply don't use the meal-analysis or chat features, and no content leaves your device.</li>
+  </ul>
+  <p>Depending on where you live (for example, the EU/EEA, UK, or California), you may have additional rights over your personal data. Because we hold no central account database, most data is in your direct control on your device. For anything else, contact us at <a href="mailto:privacy@aspenfrost.com">privacy@aspenfrost.com</a>.</p>
+
+  <h2>8. Children</h2>
+  <p>Frost Fitness is not directed to children under 13, and we do not knowingly collect personal information from them.</p>
+
+  <h2>9. Changes to this policy</h2>
+  <p>If we change how the app handles data, we'll update this page and revise the "Last updated" date above. Material changes will be reflected in the app.</p>
+
+  <h2>10. Contact</h2>
+  <p>Questions about this policy or your data? Email <a href="mailto:privacy@aspenfrost.com">privacy@aspenfrost.com</a>.</p>
+
+  <footer>
+    <p class="muted">Frost Fitness is a product of Aspen Frost Agentic Software. &middot; <a href="/frost-fitness/terms">Terms of Service</a></p>
+  </footer>
+</div>
+</body>
+</html>
