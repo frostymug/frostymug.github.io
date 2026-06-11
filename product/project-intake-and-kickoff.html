@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Intake &amp; Kickoff Template · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <div class="nav-section">
+    <div class="nav-section-label">Corporate Governance</div>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Projects</div>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+      <a href="/projects/frost-fitness/index.html">Frost Fitness</a>
+      <a href="/projects/frost-fitness/status.html">Frost Fitness Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Frost Fitness Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Frost Fitness Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Frost Fitness Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">Frost Fitness CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Frost Fitness Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Frost Fitness Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+      <a href="/projects/frost-rocks/index.html">Frost Rocks</a>
+      <a href="/projects/frost-rocks/design.html">Frost Rocks Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Frost Rocks Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Frost Rocks Competitive Landscape</a>
+      <a href="/projects/website/index.html">Aspen Frost Website</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Product</div>
+      <a href="/product/index.html">Product Index</a>
+      <a aria-current="page" href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Marketing</div>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Engineering</div>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </div>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Product &middot; Project Intake &amp; Kickoff</div>
+      <h1>Project Intake &amp; Kickoff Template</h1>
+<p>&gt; Reusable template for moving a project from fuzzy idea into a scoped, cross-functional project record. &gt; Project-specific filled copies belong under <code>projects/&lt;project&gt;/</code>, not in this department folder.</p>
+<p>Use this when Andy has enough signal to ask: should this become a real project, what are we committing to, and what questions have to be answered before design or engineering starts?</p>
+<p>The name can flex by stage:</p>
+<ul><li><strong>Project Intake</strong> when the question is still, &quot;Should we do this?&quot;</li><li><strong>Project Kickoff</strong> when the answer is probably yes and the work is entering the formal pipeline.</li><li><strong>Project Charter</strong> when the result becomes the durable beginning-of-project record.</li></ul>
+<h2>When To Run It</h2>
+<p>Run intake after an initial idea, stakeholder conversation, discovery call, or rough opportunity becomes concrete enough to evaluate. Do not skip this because the project feels obviously good. The point is to make the assumptions visible while the cost of changing direction is still low.</p>
+<p>Inputs can include:</p>
+<ul><li>Andy's initial thoughts</li><li>Stakeholder notes or discovery call recording</li><li>Existing product/app/repo links</li><li>Screenshots, app store listings, analytics, or user feedback</li><li>Known constraints, timelines, and non-goals</li></ul>
+<p>Outputs should include:</p>
+<ul><li>A filled <code>PROJECT-INTAKE.md</code> or <code>README.md</code> in <code>projects/&lt;project&gt;/</code></li><li>An explicit stakes-ramp declaration</li><li>Open questions by function</li><li>A recommendation: proceed, pause, research more, or reject</li><li>The next gate in the process</li></ul>
+<h2>Team Roles</h2>
+<table><thead><tr><th>Person / Agent</th><th>Intake Take</th><th>Primary Questions</th></tr></thead><tbody><tr><td><strong>Andy</strong></td><td>Vision, motivation, stakeholder context, taste, constraints, and final gate.</td><td>Why this? Why now? What would make this worth doing? What would make us walk away?</td></tr><tr><td><strong>Aspen</strong></td><td>Integrator, process owner, project record, cross-agent coordination, and stakes-ramp declaration.</td><td>What is the decision we need from intake? Who owns each next step? What has to be written down?</td></tr><tr><td><strong>Petra</strong></td><td>Customer, product, market, competitive landscape, audience segmentation, and strategic fit.</td><td>Who is this for? What job are they hiring it to do? What alternatives exist? What would make it meaningfully better?</td></tr><tr><td><strong>Izzy</strong></td><td>Experience design, instructional/behavioral design, user journey, accessibility, and design risks.</td><td>What does the user need to understand, feel, and do? Where does the current experience break down? What design questions are unanswered?</td></tr><tr><td><strong>Arya</strong></td><td>Technical feasibility, architecture shape, repo/app review, integration risks, data model, build-vs-buy.</td><td>What is technically easy, hard, risky, or unknown? What architecture options are plausible? What constraints should design know early?</td></tr><tr><td><strong>Zev</strong></td><td>Positioning, story, naming, external perception, stakeholder communication, and launch surface.</td><td>How would we explain this? Who needs to trust it? What promise should the product make, and what promise should it avoid?</td></tr><tr><td><strong>Podrick</strong></td><td>Scope discipline, product slicing, requirements quality, and story-readiness once live.</td><td>Can this become buildable increments? What is the smallest useful release? What acceptance criteria will matter?</td></tr><tr><td><strong>Cassian</strong></td><td>Reliability, operations, deployment, monitoring, data safety, and maintenance burden.</td><td>What can fail in production? How do we know it is healthy? What maintenance commitments are we accepting?</td></tr></tbody></table>
+<h2>Intake Agenda</h2>
+<ul><li><strong>Context dump</strong> - Andy provides the story, links, call notes, recordings, repo access, and initial instincts.</li><li><strong>Clarify the opportunity</strong> - Petra and Andy pressure-test user, customer, market, and stakeholder value.</li><li><strong>Map the current state</strong> - Document the existing product, workflow, data, code, ownership, and known pain points.</li><li><strong>Declare the stakes</strong> - Aspen runs the 1-5 stakes rubric and records the initial safety posture.</li><li><strong>Role questions</strong> - Petra, Izzy, Arya, Zev, and any relevant operators contribute questions before giving confident analysis.</li><li><strong>Initial analysis</strong> - Each principal gives a short take: opportunity, risks, unknowns, and recommendation.</li><li><strong>Scope the next move</strong> - Decide whether the next artifact is research, design, architecture review, prototype, or formal project charter.</li><li><strong>Gate decision</strong> - Andy decides whether to proceed, pause, gather more signal, or drop it.</li></ul>
+<h2>Stakes Ramp Rubric</h2>
+<p>Score each dimension from 1-5, then make a judgment call on the overall project level. The overall level is not an average; one high-risk dimension can set the project posture.</p>
+<table><thead><tr><th>Level</th><th>Label</th><th>Description</th><th>Examples / Notes</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>Low stakes</td><td>Public or generic data, no meaningful PII, no financial/health/legal impact, tiny blast radius, easy rollback, no serious harm if wrong.</td><td>Trail information, hobby/reference apps, internal experiments, Frost Rocks-style learning tools with no sensitive data.</td></tr><tr><td><strong>2</strong></td><td>Mild stakes</td><td>Real users and expectations, light account data or preferences, inconvenience if wrong, but no sensitive domain and no serious dependency.</td><td>Friends/family tools, small scheduling utilities, simple profile/preferences data.</td></tr><tr><td><strong>3</strong></td><td>Moderate stakes</td><td>External stakeholder, meaningful personal data, operational dependency, reputation risk, or decisions that affect real plans. Requires explicit scope and support expectations.</td><td>Camp scheduling with family logistics, small business tools, apps people rely on weekly.</td></tr><tr><td><strong>4</strong></td><td>High stakes</td><td>Sensitive personal data, health-adjacent context, financial implications, regulated workflows, or users depending on correctness for important decisions. Requires strong review, privacy posture, and reliability plan before commitment.</td><td>Curate Mental Health-style work, anything involving health, finances, children, or sensitive records.</td></tr><tr><td><strong>5</strong></td><td>Critical stakes</td><td>Regulated production systems, clinical/legal/financial decision support, high-volume PII, safety-critical workflows, or material harm if wrong. Do not enter casually; requires mature operating controls and explicit Andy sign-off.</td><td>HIPAA/clinical records, payment/financial systems, legal compliance systems, safety-critical tools.</td></tr></tbody></table>
+<h3>Stakes Dimensions</h3>
+<table><thead><tr><th>Dimension</th><th>1</th><th>3</th><th>5</th></tr></thead><tbody><tr><td><strong>Data sensitivity</strong></td><td>Public/generic data</td><td>Personal or operational data</td><td>Sensitive/regulated data</td></tr><tr><td><strong>User harm if wrong</strong></td><td>Annoyance or confusion</td><td>Meaningful inconvenience or bad decisions</td><td>Material health, financial, legal, or safety harm</td></tr><tr><td><strong>Privacy exposure</strong></td><td>No PII</td><td>Limited PII or family/business context</td><td>PII at scale or sensitive identity/context</td></tr><tr><td><strong>Financial exposure</strong></td><td>No money involved</td><td>Small indirect cost or business impact</td><td>Direct financial transactions or material loss</td></tr><tr><td><strong>Operational dependency</strong></td><td>Nice-to-have</td><td>Users plan around it</td><td>Critical workflow dependency</td></tr><tr><td><strong>Audience / blast radius</strong></td><td>Andy or tiny trusted group</td><td>External small group</td><td>Public or broad user base</td></tr><tr><td><strong>Reversibility</strong></td><td>Easy to fix/roll back</td><td>Fixable with user communication</td><td>Hard to unwind, lasting consequences</td></tr><tr><td><strong>Support burden</strong></td><td>No real support expectation</td><td>Lightweight support expected</td><td>Formal support/reliability expectation</td></tr></tbody></table>
+<h3>Required Stakes Declaration</h3>
+<p>Every intake must include:</p>
+<ul><li><strong>Proposed level:</strong> 1-5</li><li><strong>Reasoning:</strong> the 2-4 facts that drive the score</li><li><strong>Highest-risk dimension:</strong> even if the overall project is low</li><li><strong>Mitigations:</strong> what keeps the project inside the declared level</li><li><strong>Gate:</strong> what would cause the project to move up the stakes ramp</li></ul>
+<h2>Project Intake Template</h2>
+<p>Copy this section into <code>projects/&lt;project&gt;/PROJECT-INTAKE.md</code> or adapt it into the project <code>README.md</code> once the project becomes official.</p>
+<pre><code class="language-markdown"># &lt;Project Name&gt; - Project Intake
+
+&gt; Status: Draft / In Review / Approved
+&gt; Owner: Andy + Aspen
+&gt; Date opened: YYYY-MM-DD
+&gt; Current gate: Intake / Kickoff / Design / Architecture / Stories / Build
+
+## 1. Overview
+
+Short description of the project in plain English.
+
+## 2. Background
+
+Where the idea came from, who is involved, what exists today, and what prompted the conversation.
+
+## 3. Motivation
+
+Why this is worth exploring now. Include Andy's motivation and, if different, the stakeholder/user motivation.
+
+## 4. Goals
+
+Broad outcomes the project should accomplish.
+
+## 5. Objectives
+
+Specific, observable outcomes or milestones. Prefer measurable or checkable objectives.
+
+## 6. Non-Goals
+
+What this project is explicitly not trying to do right now.
+
+## 7. Current State
+
+Existing product, app, repo, workflow, data sources, users, known issues, constraints, and assets.
+
+## 8. Stakeholders &amp; Users
+
+Who owns it, who uses it, who benefits, who might be affected, and who must approve changes.
+
+## 9. Petra - Customer, Product, and Market Requirements
+
+### Analysis
+
+- Target users / customer segments:
+- Jobs to be done:
+- Current alternatives:
+- Differentiation or strategic edge:
+- Market/category context:
+- Product requirements:
+
+### Questions
+
+-
+
+### Recommendation
+
+Proceed / Pause / Research / Reject, with reasoning.
+
+## 10. Izzy - Design Questions and Experience Risks
+
+### Analysis
+
+- Primary user journeys:
+- UX/design risks:
+- Accessibility considerations:
+- Learning/onboarding needs:
+- Interaction or information architecture questions:
+
+### Questions
+
+-
+
+### Recommendation
+
+Proceed / Pause / Research / Reject, with reasoning.
+
+## 11. Arya - Initial Architecture Thoughts
+
+### Analysis
+
+- Existing technical context:
+- Plausible architecture options:
+- Data model / data source concerns:
+- Integration risks:
+- Build-vs-buy considerations:
+- Unknowns requiring repo/code review:
+
+### Questions
+
+-
+
+### Recommendation
+
+Proceed / Pause / Research / Reject, with reasoning.
+
+## 12. Zev - Positioning and Communication
+
+### Analysis
+
+- Product promise:
+- Audience trust requirements:
+- Naming/brand/story considerations:
+- Launch or stakeholder communication risks:
+
+### Questions
+
+-
+
+### Recommendation
+
+Proceed / Pause / Research / Reject, with reasoning.
+
+## 13. Cassian - Reliability and Operations
+
+### Analysis
+
+- Deployment surface:
+- Monitoring/health needs:
+- Failure modes:
+- Support and maintenance burden:
+- Data backup/recovery needs:
+
+### Questions
+
+-
+
+### Recommendation
+
+Proceed / Pause / Research / Reject, with reasoning.
+
+## 14. Stakes Ramp Declaration
+
+### Proposed Level
+
+1 / 2 / 3 / 4 / 5
+
+### Reasoning
+
+-
+
+### Highest-Risk Dimension
+
+### Mitigations
+
+-
+
+### Escalation Triggers
+
+What would move this project to a higher stakes level?
+
+## 15. Open Questions
+
+| Question | Owner | Needed By | Status |
+|---|---|---|---|
+| | | | |
+
+## 16. Initial Scope
+
+What is the smallest useful version worth designing or building?
+
+## 17. Recommendation
+
+Proceed / Pause / Research / Reject.
+
+Include the strongest reason for the recommendation and the biggest unresolved concern.
+
+## 18. Next Gate
+
+What happens next, who owns it, and what artifact should exist before the next handoff?</code></pre>
+<h2>Ice Age Trail Intake Notes To Capture</h2>
+<p>For the upcoming Ice Age Trail intake, expected inputs are:</p>
+<ul><li>GitHub repository link</li><li>Discovery call recording with Lisa</li><li>Andy's initial thoughts from the call</li><li>Current app state, ownership, users, and pain points</li><li>Any known constraints around data source, permissions, maintainership, and release process</li></ul>
+<p>Initial stakes hypothesis: <strong>Level 1 - Low stakes</strong>, assuming the project uses public/generic trail data, avoids user accounts and sensitive location tracking, has no financial workflows, and can be rolled back without serious harm. Escalation triggers would include collecting user location history, accounts/PII, payments/donations, safety-critical route guidance, or official emergency/trail condition claims.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
