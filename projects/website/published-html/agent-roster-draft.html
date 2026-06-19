@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aspen Frost Agentic Software - Draft</title>
+  <style>
+    :root {
+      --paper: #efe8d6;
+      --paper-soft: #f8f3e6;
+      --paper-deep: #ded2b7;
+      --paper-line: #c9bd9c;
+      --ink: #232019;
+      --muted: #5f594b;
+      --faint: #877d69;
+      --green: #1e4233;
+      --green-2: #2e6b4f;
+      --cyan: #2a8aac;
+      --cyan-soft: #d7eef2;
+      --pin: #c4482d;
+      --shadow: rgba(35, 32, 25, .16);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "IBM Plex Sans", "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(42, 138, 172, .11), transparent 24rem),
+        radial-gradient(circle at 82% 10%, rgba(30, 66, 51, .10), transparent 20rem),
+        linear-gradient(90deg, rgba(35,32,25,.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(35,32,25,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: auto, auto, 32px 32px, 32px 32px, auto;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; }
+    .page { min-height: 100vh; overflow: hidden; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(35,32,25,.18);
+      background: rgba(239,232,214,.88);
+      backdrop-filter: blur(16px);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+    .mark {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--green);
+      background: var(--paper-soft);
+      box-shadow: inset 0 0 0 5px rgba(42,138,172,.14);
+    }
+    .mark::before, .mark::after {
+      content: "";
+      position: absolute;
+      inset: 9px 18px;
+      border-radius: 99px;
+      background: var(--cyan);
+      box-shadow: 0 0 0 1px rgba(30,66,51,.5);
+    }
+    .mark::after { transform: rotate(90deg); background: var(--green-2); }
+    .spoke {
+      position: absolute;
+      inset: 9px 18px;
+      border-radius: 99px;
+      background: var(--cyan);
+      transform: rotate(45deg);
+      opacity: .85;
+    }
+    .spoke.two { transform: rotate(-45deg); background: var(--green-2); opacity: .8; }
+    .brand small {
+      display: block;
+      margin-top: -2px;
+      color: var(--muted);
+      font: 700 10px/1.2 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .links a, .button {
+      border: 1px solid rgba(35,32,25,.28);
+      background: rgba(248,243,230,.72);
+      border-radius: 4px;
+      padding: 9px 12px;
+      font: 800 12px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      text-transform: uppercase;
+      color: var(--ink);
+      box-shadow: 2px 2px 0 rgba(35,32,25,.12);
+    }
+    .button.primary { background: var(--green); color: var(--paper-soft); border-color: var(--green); }
+
+    .hero { padding: 72px 0 44px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+      gap: 34px;
+      align-items: center;
+    }
+    .eyebrow, .stamp {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(35,32,25,.28);
+      border-radius: 3px;
+      padding: 7px 10px;
+      background: rgba(248,243,230,.84);
+      color: var(--green);
+      font: 800 11px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.02; letter-spacing: 0; }
+    h1 {
+      margin-top: 20px;
+      max-width: 780px;
+      font: 800 clamp(46px, 7vw, 104px)/.92 "Newsreader", Georgia, serif;
+      color: var(--green);
+    }
+    .hero-copy {
+      max-width: 680px;
+      margin-top: 22px;
+      font-size: clamp(18px, 2.2vw, 24px);
+      color: #312d25;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+    .board {
+      position: relative;
+      border: 2px solid rgba(35,32,25,.6);
+      border-radius: 6px;
+      padding: 18px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.34), rgba(255,255,255,0)),
+        #d9cfba;
+      box-shadow: 0 22px 45px var(--shadow), inset 0 0 0 1px rgba(255,255,255,.45);
+      transform: rotate(.4deg);
+    }
+    .board::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      top: -11px;
+      width: 48px;
+      height: 21px;
+      background: rgba(196,72,45,.88);
+      border-radius: 2px;
+      box-shadow: 0 2px 0 rgba(35,32,25,.2);
+      transform: rotate(-4deg);
+    }
+    .board-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 12px;
+      font: 800 12px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .ticket, .note, .log-panel, .receipt, .card {
+      border: 1px solid rgba(35,32,25,.24);
+      border-radius: 5px;
+      background: rgba(248,243,230,.93);
+      box-shadow: 3px 4px 0 rgba(35,32,25,.10);
+    }
+    .ticket { padding: 14px; margin-top: 12px; }
+    .ticket strong, .receipt strong { display: block; font-size: 18px; color: var(--green); }
+    .ticket span, .meta { color: var(--muted); font-size: 14px; }
+    .signal { color: var(--cyan); font-weight: 900; }
+
+    section { padding: 64px 0; border-top: 1px solid rgba(35,32,25,.14); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(280px, .55fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+    h2 { font: 800 clamp(34px, 5vw, 64px)/.96 "Newsreader", Georgia, serif; color: var(--green); }
+    .section-head p, .lede { font-size: 18px; color: var(--muted); }
+
+    .triad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .module { padding: 18px; min-height: 220px; }
+    .module h3 { font-size: 24px; color: var(--green); margin: 10px 0 10px; }
+    .module .num {
+      font: 900 13px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--cyan);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .project { padding: 16px; position: relative; overflow: hidden; min-height: 260px; }
+    .project::after {
+      content: attr(data-stage);
+      position: absolute;
+      right: -42px;
+      top: 18px;
+      width: 150px;
+      text-align: center;
+      transform: rotate(36deg);
+      background: var(--cyan-soft);
+      border: 1px solid rgba(42,138,172,.45);
+      color: var(--green);
+      font: 800 10px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      padding: 6px 0;
+      text-transform: uppercase;
+    }
+    .project h3 { margin: 18px 0 10px; font-size: 24px; color: var(--green); }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .chip {
+      border: 1px solid rgba(35,32,25,.2);
+      border-radius: 99px;
+      padding: 5px 8px;
+      background: #fff9ec;
+      font: 800 10px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .agent { padding: 16px; display: grid; grid-template-columns: 74px 1fr; gap: 14px; min-height: 248px; }
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      background: var(--cyan-soft);
+      display: grid;
+      place-items: center;
+      position: relative;
+      box-shadow: 4px 4px 0 rgba(35,32,25,.15);
+      font: 900 25px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--green);
+    }
+    .avatar::before, .avatar::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      top: 28px;
+    }
+    .avatar::before { left: 18px; }
+    .avatar::after { right: 18px; }
+    .avatar span { transform: translateY(14px); font-size: 18px; }
+    .agent:nth-child(3n+1) .avatar { background: #dfead9; }
+    .agent:nth-child(3n+2) .avatar { background: #d7eef2; }
+    .agent:nth-child(3n) .avatar { background: #f5dfc6; }
+    .agent h3 { color: var(--green); font-size: 25px; margin-bottom: 4px; }
+    .role { font: 800 11px/1.3 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; color: var(--cyan); margin-bottom: 10px; }
+    .agent p { color: var(--muted); font-size: 15px; }
+    .quote { margin-top: 12px; color: var(--green); font-weight: 800; }
+
+    .work-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 18px; align-items: stretch; }
+    .receipt { padding: 18px; }
+    .receipt-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      padding: 11px 0;
+      border-top: 1px dashed rgba(35,32,25,.28);
+      font-size: 15px;
+    }
+    .receipt-row b { color: var(--green); font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; text-transform: uppercase; }
+    .pipeline { padding: 18px; background: rgba(248,243,230,.86); }
+    .step {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(35,32,25,.14);
+    }
+    .dot { width: 28px; height: 28px; border-radius: 50%; background: var(--green); color: var(--paper-soft); display: grid; place-items: center; font: 900 12px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .owner { color: var(--cyan); font: 900 11px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+
+    .notebook { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .note { padding: 18px; min-height: 210px; background: #fff9ec; transform: rotate(-.5deg); }
+    .note:nth-child(2) { transform: rotate(.4deg); }
+    .note:nth-child(3) { transform: rotate(-.2deg); }
+    .note h3 { color: var(--green); font-size: 22px; margin-bottom: 10px; }
+
+    footer { padding: 34px 0 52px; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; border-top: 2px solid rgba(35,32,25,.28); padding-top: 20px; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .section-head, .work-grid { grid-template-columns: 1fr; }
+      .triad, .projects, .team-grid, .notebook { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding-top: 50px; }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 24px, 1180px); }
+      .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .links { justify-content: flex-start; }
+      .links a { padding: 8px 9px; }
+      .triad, .projects, .team-grid, .notebook { grid-template-columns: 1fr; }
+      .agent { grid-template-columns: 62px 1fr; min-height: auto; }
+      .avatar { width: 58px; height: 58px; }
+      .receipt-row { grid-template-columns: 1fr; gap: 3px; }
+      footer .wrap { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <nav class="wrap nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Aspen Frost home">
+          <span class="mark"><span class="spoke"></span><span class="spoke two"></span></span>
+          <span>Aspen Frost<small>Agentic Software</small></span>
+        </a>
+        <div class="links">
+          <a href="#projects">Projects</a>
+          <a href="#team">Agents</a>
+          <a href="#work">How we work</a>
+          <a href="#notebook">Notebook</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="eyebrow">Public workshop / working software practice</span>
+            <h1>Practical custom software, built with a visible agent team.</h1>
+            <p class="hero-copy">I am building Aspen Frost as a one-person software practice with a coordinated system of agents behind me. The front room is useful software. The back wall is the system doing the work. The open notebook is what I am learning while I build it.</p>
+            <div class="cta-row">
+              <a class="button primary" href="#projects">See the work</a>
+              <a class="button" href="#team">Meet the agents</a>
+            </div>
+          </div>
+
+          <aside class="board" aria-label="Aspen Frost operating board">
+            <div class="board-title"><span>Back wall / live board</span><span class="signal">system active</span></div>
+            <div class="ticket">
+              <strong>Frost Fitness</strong>
+              <span>Soft launch, App Store submitted, proxy and CI/CD hardened.</span>
+            </div>
+            <div class="ticket">
+              <strong>Ice Age Trail</strong>
+              <span>Deployment spike queued: stabilize Lisa's ArcGIS capstone prototype.</span>
+            </div>
+            <div class="ticket">
+              <strong>Frost Rocks</strong>
+              <span>Product framing: off-field skill development, not another instant ID app.</span>
+            </div>
+            <div class="ticket">
+              <strong>Website</strong>
+              <span>Design system approved; content and agent descriptions now in draft.</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section aria-labelledby="model-heading">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="stamp">front room / back wall / open notebook</span>
+              <h2 id="model-heading">Three surfaces, one practice.</h2>
+            </div>
+            <p>The site should reassure people with projects without sanding off the weird, useful truth: the method is part of the proof.</p>
+          </div>
+          <div class="triad">
+            <article class="card module">
+              <span class="num">01</span>
+              <h3>Front room</h3>
+              <p>What I can help people build: useful apps, workflow tools, learning systems, prototypes, and small software products with enough care to become real.</p>
+            </article>
+            <article class="card module">
+              <span class="num">02</span>
+              <h3>Back wall</h3>
+              <p>The operating system behind the work: named agents, defined roles, handoffs, architecture review, implementation, CI/CD, and release gates.</p>
+            </article>
+            <article class="card module">
+              <span class="num">03</span>
+              <h3>Open notebook</h3>
+              <p>The learning record: what is working, what is still rough, and what the process teaches about building software with agent teams in public.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-heading">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="stamp">current project board</span>
+              <h2 id="projects-heading">Real projects, honest labels.</h2>
+            </div>
+            <p>Not everything is launched. Not everything should be. The point is to show the actual portfolio and the stage each project is really in.</p>
+          </div>
+          <div class="projects">
+            <article class="card project" data-stage="submitted">
+              <span class="eyebrow">live proof</span>
+              <h3>Frost Fitness</h3>
+              <p>Andy's personal fitness app, in TestFlight and submitted to the iOS App Store. It has already forced the system to grow up: proxy migration, CI/CD hardening, release runbooks, and real production safety work.</p>
+              <div class="chips"><span class="chip">TestFlight</span><span class="chip">App Store</span><span class="chip">SRE</span></div>
+            </article>
+            <article class="card project" data-stage="framing">
+              <span class="eyebrow">learning app</span>
+              <h3>Frost Rocks</h3>
+              <p>A rock identification and learning app focused on skill development, not answer outsourcing. The core bet: curious hobbyists want to get better, not just be told what they found.</p>
+              <div class="chips"><span class="chip">Petra</span><span class="chip">Izzy</span><span class="chip">MVP</span></div>
+            </article>
+            <article class="card project" data-stage="kickoff">
+              <span class="eyebrow">map prototype</span>
+              <h3>Ice Age Trail</h3>
+              <p>A path to turn Lisa Siewert's ArcGIS capstone into a maintainable natural-history and educator map. First move: deployment feasibility, ownership clarity, and a cleaner hosting plan.</p>
+              <div class="chips"><span class="chip">ArcGIS</span><span class="chip">Lisa</span><span class="chip">Spike</span></div>
+            </article>
+            <article class="card project" data-stage="drafting">
+              <span class="eyebrow">this site</span>
+              <h3>Aspen Frost Website</h3>
+              <p>The public surface for the practice: part software shop, part system proof, part learning record. The visual system is taking shape; this draft starts the content pass.</p>
+              <div class="chips"><span class="chip">Brand</span><span class="chip">Agents</span><span class="chip">Copy</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" aria-labelledby="team-heading">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="stamp">agent roster / draft descriptions</span>
+              <h2 id="team-heading">I've got your software team right here.</h2>
+            </div>
+            <p class="lede">I'm one person with a system of agents that can turn your idea into a real app. These are the current coworkers in the machine.</p>
+          </div>
+
+          <div class="team-grid">
+            <article class="card agent">
+              <div class="avatar"><span>AF</span></div>
+              <div>
+                <h3>Andy</h3>
+                <div class="role">CPO / Visionary / Human in charge</div>
+                <p>Sets direction, chooses the projects, makes the taste calls, and keeps the whole system pointed at useful software instead of agent theater.</p>
+                <p class="quote">The builder the agents report to.</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>AS</span></div>
+              <div>
+                <h3>Aspen</h3>
+                <div class="role">Integrator / Chief of Staff</div>
+                <p>Keeps the operation moving: project state, handoffs, memory, pipeline tracking, and the quiet coordination work that prevents every good idea from becoming a loose thread.</p>
+                <p class="quote">Knows where everything is.</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>IZ</span></div>
+              <div>
+                <h3>Izzy</h3>
+                <div class="role">Experience & Instructional Designer</div>
+                <p>Turns fuzzy product ideas into learnable, usable experiences. Strongest on instructional design, domain modeling, user loops, and making difficulty feel like progress.</p>
+                <p class="quote">Sharpens the idea before anyone builds it.</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>PT</span></div>
+              <div>
+                <h3>Petra</h3>
+                <div class="role">Product Strategist</div>
+                <p>Brings the customer into the room. Tests assumptions, studies alternatives, frames the market, and asks whether the product is solving a real problem for the right person.</p>
+                <p class="quote">Interesting hypothesis. How do we test it?</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>AR</span></div>
+              <div>
+                <h3>Arya</h3>
+                <div class="role">Architect</div>
+                <p>Makes the hard technical decisions. Reads the design, finds the holes, names the trade-offs, and turns product intent into architecture Jesse can actually build from.</p>
+                <p class="quote">Opinionated, precise, constraint-aware.</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>JS</span></div>
+              <div>
+                <h3>Jesse</h3>
+                <div class="role">Engineer</div>
+                <p>Builds the thing. Turns architecture and stories into clean code, PRs, bug fixes, and working software. Casual on the surface; serious about readable, tested implementation.</p>
+                <p class="quote">Yeah science, but make it production-quality.</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>CS</span></div>
+              <div>
+                <h3>Cassian</h3>
+                <div class="role">Reliability Engineer / SRE</div>
+                <p>Owns the safety gate: CI/CD, deployment risk, runbooks, rollback paths, smoke checks, and the right to say a release is not ready yet.</p>
+                <p class="quote">Prepared, not paranoid.</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>PD</span></div>
+              <div>
+                <h3>Podrick</h3>
+                <div class="role">Product Owner / TBD</div>
+                <p>The planned bridge from approved strategy and architecture into buildable stories, acceptance criteria, and scoped engineering work. Not fully live yet, so the label stays honest.</p>
+                <p class="quote">Coming when the pipeline needs him.</p>
+              </div>
+            </article>
+
+            <article class="card agent">
+              <div class="avatar"><span>ZV</span></div>
+              <div>
+                <h3>Zev</h3>
+                <div class="role">Marketing Lead</div>
+                <p>Owns the story: positioning, voice, brand, creative direction, and the occasional necessary complaint when the copy starts sounding like it could belong to anyone.</p>
+                <p class="quote">Makes the work legible to people who might care.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" aria-labelledby="work-heading">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="stamp">how the system works</span>
+              <h2 id="work-heading">The agents are not the trick. The handoffs are.</h2>
+            </div>
+            <p>A pile of agents is noise. A system with roles, review, gates, and receipts can become a small software team.</p>
+          </div>
+
+          <div class="work-grid">
+            <article class="receipt">
+              <span class="eyebrow">build receipt</span>
+              <strong>Frost Fitness productization</strong>
+              <div class="receipt-row"><b>Planned</b><span>Architecture review and productization plan promoted into the shared project record.</span></div>
+              <div class="receipt-row"><b>Built</b><span>Cloudflare Worker proxy, client migration, upstream API keys removed from bundle.</span></div>
+              <div class="receipt-row"><b>Reviewed</b><span>CI/CD materially hardened, release runbooks retained, production deploy path proven.</span></div>
+              <div class="receipt-row"><b>Shipped</b><span>TestFlight build hitting the proxy; iOS App Store submitted June 11, 2026.</span></div>
+            </article>
+            <article class="card pipeline">
+              <div class="step"><span class="dot">1</span><span>Design: shape the experience and learning loop</span><span class="owner">Izzy</span></div>
+              <div class="step"><span class="dot">2</span><span>Strategy: validate audience, wedge, and risk</span><span class="owner">Petra</span></div>
+              <div class="step"><span class="dot">3</span><span>Architecture: choose the technical path and expose trade-offs</span><span class="owner">Arya</span></div>
+              <div class="step"><span class="dot">4</span><span>Build: implement the app, fixes, and working increments</span><span class="owner">Jesse</span></div>
+              <div class="step"><span class="dot">5</span><span>Deploy: verify safety, CI/CD, rollback, and release readiness</span><span class="owner">Cassian</span></div>
+              <div class="step"><span class="dot">6</span><span>Integrate: track the pipeline and keep the work moving</span><span class="owner">Aspen</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="notebook" aria-labelledby="notebook-heading">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="stamp">open notebook</span>
+              <h2 id="notebook-heading">What the work is teaching us.</h2>
+            </div>
+            <p>The learning layer should feel like proof and transparency, not apology. This is where fellow builders get the good stuff.</p>
+          </div>
+          <div class="notebook">
+            <article class="note">
+              <h3>Model diversity matters.</h3>
+              <p>If every agent reasons the same way, the team inherits one shared blind spot. Different roles may need different models, not just different prompts.</p>
+            </article>
+            <article class="note">
+              <h3>Adversarial review is not drama.</h3>
+              <p>Arya finding holes before architecture, Petra testing assumptions, and Cassian holding the release gate are signs the system is working.</p>
+            </article>
+            <article class="note">
+              <h3>Transparency is a trust ramp.</h3>
+              <p>Showing the receipts makes the emerging practice feel more real, not less. The trick is showing enough process without making the client feel like the experiment.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p><strong>Aspen Frost Agentic Software</strong><br>Draft website content pass by Zev.</p>
+        <p>Visual direction: ecru working surface, forest green human judgment, cyan agent system, receipts on the wall.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

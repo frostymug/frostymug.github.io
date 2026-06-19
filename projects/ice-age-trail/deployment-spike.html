@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ice Age Trail App Deployment Spike · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a aria-current="page" href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Draft</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Ice Age Trail Deployment Spike</div>
+      <h1>Ice Age Trail App Deployment Spike</h1>
+<p><strong>Status:</strong> Draft <strong>Prepared by:</strong> Aspen <strong>Date:</strong> 2026-06-18 <strong>Purpose:</strong> Andy-only learning deployment, not an official Ice Age Trail Alliance app.</p>
+<h2>Goal</h2>
+<p>Prove whether Lisa Siewert's static ArcGIS prototype can be deployed from the public GitHub repo using an Andy/Aspen-controlled ArcGIS Location Platform API key, hosted somewhere we control, with enough restriction and usage visibility to stay inside the free tier.</p>
+<p>This is a technical learning spike. It should answer whether the existing project can be made visible on the web without buying the wrong Esri license, relying on Lisa's university resources, or implying Alliance ownership.</p>
+<h2>Source Repo</h2>
+<p>Lisa's repo: https://github.com/ecolville/GEOG778_Capstone</p>
+<p>Current evidence:</p>
+<ul><li>The app is a static web app: <code>index.html</code>, <code>app.js</code>, <code>style.css</code>, <code>segments.json</code>, PDFs, and supporting HTML/docs.</li><li>No deployed public URL has been found.</li><li>The webinar demo appears to run locally from <code>127.0.0.1</code>.</li><li>The app expects <code>window.ARCGIS_API_KEY</code> from <code>config.local.js</code>, which is intentionally not committed.</li></ul>
+<h2>Deployment Hypothesis</h2>
+<p>The app can probably run as a static deployment if we provide a production-safe API key config and the referenced ArcGIS services are publicly reachable with the right authentication/usage terms.</p>
+<p>Recommended first path:</p>
+<ul><li>Fork or clone Lisa's repo under an Aspen/Andy-controlled namespace.</li><li>Create an ArcGIS Location Platform API key under Andy's account.</li><li>Deploy the static app to a controlled host such as Cloudflare Pages, GitHub Pages, or Netlify.</li><li>Restrict the API key to the deployed app's referrer/domain.</li><li>Verify map load, layer load, segment interactions, POI behavior, parking layer, activity links, and mobile basics.</li><li>Confirm Esri usage metrics show requests against Andy's key and remain inside the free tier during testing.</li></ul>
+<h2>Non-Goals</h2>
+<ul><li>Do not present this as the official Ice Age Trail Alliance app.</li><li>Do not use ArcGIS for Personal Use as the assumed path for this deployment.</li><li>Do not ask Lisa or the Alliance for credentials for this spike.</li><li>Do not add public contribution/photo upload features.</li><li>Do not redesign the app during this spike unless a minimal change is required to make deployment work.</li><li>Do not commit secrets or unrestricted API keys.</li></ul>
+<h2>Success Criteria</h2>
+<p>The spike succeeds if Andy can open a private/low-visibility deployed URL and confirm:</p>
+<ul><li>The map renders in a browser without local files.</li><li>ArcGIS basemap and FeatureLayer requests succeed using Andy's API key or an explicitly documented no-key/public-layer path.</li><li>Core UI works: sidebar, segment selection, POIs, parking, activity links, and focus mode.</li><li>The API key is restricted to the deployment domain/referrer.</li><li>Esri usage telemetry is visible in Andy's account.</li><li>The repo includes enough setup/deploy notes that a future engineer can repeat the deployment.</li></ul>
+<p>The spike should also produce a clear failure answer if deployment is blocked, including the exact blocker: API key scope, private layers, licensing, CORS/referrer restriction, missing assets, hosting behavior, or code assumptions about localhost.</p>
+<h2>Preferred Hosting Options</h2>
+<h3>Option 1: Cloudflare Pages</h3>
+<p>Pros: already in Andy/Aspen orbit, easy static deploys, custom access controls possible later. Cons: needs repo connection or CLI deployment setup.</p>
+<h3>Option 2: GitHub Pages</h3>
+<p>Pros: simplest if the fork is public and the app is static. Cons: public by default, weaker control over visibility unless paired with private repo features and plan constraints.</p>
+<h3>Option 3: Netlify</h3>
+<p>Pros: simple static deployment and environment handling. Cons: another platform to manage.</p>
+<p>Default recommendation: use Cloudflare Pages if low-visibility access control matters; use GitHub Pages if speed and simplicity matter most.</p>
+<h2>Config Strategy</h2>
+<p>Current repo pattern expects a gitignored <code>config.local.js</code> that sets <code>window.ARCGIS_API_KEY</code>.</p>
+<p>For a static deployment, evaluate the smallest safe option:</p>
+<ul><li>Keep <code>config.local.js</code> for local development.</li><li>Add a committed <code>config.example.js</code> with placeholder values.</li><li>Add deployment documentation explaining how the production config is generated or injected.</li><li>Avoid committing the real API key, even if referrer-restricted.</li></ul>
+<p>Possible deployment approaches:</p>
+<ul><li>Generate <code>config.js</code> during build/deploy from an environment variable.</li><li>Use a Cloudflare Pages build command to write a tiny config file from a protected variable.</li><li>If GitHub Pages is used, consider whether the key must be public in the built artifact and whether referrer restriction makes that acceptable for a learning-only demo.</li></ul>
+<p>Important: browser-based ArcGIS API keys are inherently visible to users. The real protection is restricting allowed referrers, limiting scopes, and monitoring usage.</p>
+<h2>Agent Assignments</h2>
+<h3>Arya: Architecture Guardrails</h3>
+<p>Deliverable: short architecture note before Jesse implements.</p>
+<p>Questions:</p>
+<ul><li>Which ArcGIS services does the app call, and are they public, key-protected, Lisa-owned, university-owned, or third-party?</li><li>Is ArcGIS Location Platform API-key auth sufficient for the app's current calls?</li><li>What key scopes are minimally required?</li><li>Which host should we choose for a learning deployment?</li><li>What config injection pattern is least risky for a static app?</li></ul>
+<h3>Jesse: Deployment Prototype</h3>
+<p>Deliverable: working fork/deploy branch or deployment notes, depending on access.</p>
+<p>Tasks:</p>
+<ul><li>Clone/fork the repo into a controlled workspace.</li><li>Add <code>config.example.js</code> if missing.</li><li>Add or document a production config generation path.</li><li>Deploy to the selected static host.</li><li>Smoke-test the app manually.</li><li>Document setup, deploy steps, and observed failures.</li></ul>
+<h3>Cassian: Security and Ops Check</h3>
+<p>Deliverable: minimum ops checklist.</p>
+<p>Questions:</p>
+<ul><li>Is the API key restricted by referrer/domain?</li><li>Are key scopes minimal?</li><li>Can usage be monitored and capped or alerted?</li><li>Are any service URLs unexpectedly private, fragile, or tied to Lisa/UW accounts?</li><li>What lightweight smoke check would catch a broken map/layer after deploy?</li></ul>
+<h2>Open Questions</h2>
+<ul><li>Does Andy already have an ArcGIS Location Platform account, or does that need to be created first?</li><li>Which hosting target should we use first: Cloudflare Pages, GitHub Pages, or Netlify?</li><li>Should the deployed demo be public-but-obscure, Cloudflare Access-gated, or temporary only?</li><li>Can the Location Platform account create the right kind of API key for this app's current ArcGIS JS usage?</li><li>Are any FeatureServer layers rate-limited, private, or controlled by accounts we should not rely on?</li></ul>
+<h2>Recommended Next Action</h2>
+<p>Have Arya do a tight dependency/authentication pass on Lisa's repo first, then hand Jesse a constrained implementation task: deploy the current app with the smallest possible code changes using Andy's ArcGIS Location Platform API key.</p>
+<p>If Andy wants speed over ceremony, Jesse can run the spike directly, but Arya should still review the resulting deployment pattern before anything becomes a reusable project baseline.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

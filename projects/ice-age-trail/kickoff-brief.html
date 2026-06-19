@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ice Age Trail App Kickoff Brief · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a aria-current="page" href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Draft</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Ice Age Trail Kickoff Brief</div>
+      <h1>Ice Age Trail App Kickoff Brief</h1>
+<p><strong>Status:</strong> Draft <strong>Prepared by:</strong> Aspen <strong>Date:</strong> 2026-06-18 <strong>Sources:</strong> Andy/Lisa call transcript from 2026-06-10; Lisa's public repo: https://github.com/ecolville/GEOG778_Capstone; YouTube webinar, <code>2/23/26 Integrating GIS &amp; Geoscience: A Capstone Project on the Geology of the Ice Age Trail</code>: https://youtu.be/F7w8FFOu0qQ</p>
+<h2>Executive Read</h2>
+<p>This is not a blank-slate app idea. Lisa already has a working static ArcGIS JavaScript prototype with real educational content, geologic layers, trail segment interactions, POIs, and activity PDFs. The kickoff question is how to turn a promising capstone into something maintainable, legally clean, operationally stable, and expandable enough for the Ice Age Trail Alliance to consider adopting.</p>
+<p>The most important product shift from the call: Lisa started with a geology/educator app, but user demand points toward a broader natural-history guide. Hikers ask things like &quot;what am I looking at?&quot; and &quot;why is this burned?&quot; The long-term project may need to support geology, ecology, landscape history, trail interpretation, and educator resources without becoming a sprawling encyclopedia.</p>
+<h2>Current Prototype</h2>
+<p>Repo: <code>ecolville/GEOG778_Capstone</code></p>
+<p>The repo is a static web app:</p>
+<ul><li><code>index.html</code> loads ArcGIS JavaScript API and app UI.</li><li><code>app.js</code> creates the map, layers, sidebar tabs, trail-segment click behavior, POI layer, parking layer, and focus mode.</li><li><code>style.css</code> handles the map/sidebar/modal UI.</li><li><code>segments.json</code> contains segment-specific content: overview, bedrock, glacial story, POIs, concepts, and activities.</li><li>PDF activity sheets live at repo root and under <code>docs/</code>.</li><li><code>config.local.js</code> is expected to provide <code>window.ARCGIS_API_KEY</code>, but is not committed.</li></ul>
+<p>Observed external dependencies in code:</p>
+<ul><li>ArcGIS JS API from <code>https://js.arcgis.com/4.29/</code></li><li>ArcGIS stylesheet from <code>https://js.arcgis.com/4.25/esri/themes/light/main.css</code></li><li>ArcGIS feature services for bedrock geology, surficial geology, POIs, IAT trail segments, and parking areas.</li><li>YouTube concept links inside <code>segments.json</code>.</li><li>Ice Age Trail Alliance links in <code>about-this-map.html</code>.</li></ul>
+<p>Deployment evidence:</p>
+<ul><li>No public app URL was found in the repo.</li><li>The likely GitHub Pages URL, <code>https://ecolville.github.io/GEOG778_Capstone/</code>, returns <code>404</code>, and GitHub Pages metadata was not available for the repo during inspection.</li><li>Andy's review of Lisa's webinar found the app running from <code>127.0.0.1</code>, which supports the working assumption that the prototype has not been publicly deployed.</li></ul>
+<h2>What Lisa Wants</h2>
+<p>Lisa's stated goal is to make the app better structured so it can expand statewide and support more points of interest, more segment information, and possibly more educational content if the Alliance greenlights the project.</p>
+<p>Concrete asks and concerns from the call:</p>
+<ul><li>Move the project away from university-controlled resources where ownership/licensing may be ambiguous.</li><li>Find a hosting/API-key setup that does not depend on Lisa's personal or university accounts.</li><li>Figure out whether ArcGIS hosting/API costs are really a blocker and whether the Alliance's existing ArcGIS setup can carry the project.</li><li>Replace or outgrow the current <code>segments.json</code> approach with a better content/data model.</li><li>Create a way for people to submit photos with location metadata and notes.</li><li>Make the app more visually useful by adding POI photos.</li><li>Preserve Lisa's role and authorship while making it easier for others to help.</li><li>Keep her time burden low; she has interest and expertise, but not spare execution capacity.</li></ul>
+<h2>Audience Hypotheses</h2>
+<p>Primary likely audiences:</p>
+<ul><li>Teachers preparing classroom or field-trip activities tied to the Ice Age Trail.</li><li>Hikers and trail volunteers who want to understand what they are seeing.</li><li>Ice Age Trail Alliance staff/volunteers evaluating whether this can become an official or semi-official resource.</li><li>Lisa as content expert/steward, needing a sane way to add and review content.</li></ul>
+<p>Important tension: educator depth versus hiker simplicity. The current app leans educator/geology. The pull from real users is broader and more field-facing. Product strategy should decide whether this becomes one unified experience or two modes: educator planning and trail interpretation.</p>
+<h2>Scope Already Present</h2>
+<p>The prototype includes custom content for a small number of segments, including New Hope, Kettlebowl, Ringle, and Dells of the Eau Claire. Lisa said the broader mapped coverage is only four counties because that was what she could manage as a grad student, and even within that region not every segment has custom content.</p>
+<p>The current region is around Marathon, Lincoln, Portage, and nearby north-central Wisconsin context from the capstone effort.</p>
+<h2>Major Risks</h2>
+<h3>Ownership and Licensing</h3>
+<p>Lisa used university resources and ArcGIS licenses during creation. She is worried that university-system rules could create ambiguity around ownership. Before serious adoption, the project needs a clean position on code, data, content, photos, and hosting accounts.</p>
+<h3>ArcGIS Dependency and Cost</h3>
+<p>The app depends on ArcGIS JavaScript and ArcGIS-hosted FeatureLayers. Lisa found pricing that looked expensive when approaching ArcGIS as an individual educator. The Alliance already uses ArcGIS Online for its current interactive map, so the best path may be Alliance-owned hosting and API keys rather than a separate paid setup.</p>
+<p>Esri's ArcGIS for Personal Use license is useful for individual learning and personal noncommercial projects, but it is not a clean path for an Alliance-facing project because Esri excludes use for the benefit of third parties, including nonprofit entities. It also appears technically mismatched to Lisa's current prototype: Esri's API-key documentation says API key authentication is not available in ArcGIS Online subscriptions purchased through ArcGIS for Personal Use, while Lisa's code expects <code>window.ARCGIS_API_KEY</code>. A private Andy-only learning deployment may still be possible through a separate ArcGIS Location Platform account or a different authentication approach, but Personal Use should not be treated as the production deployment answer.</p>
+<p>There is no evidence yet of a durable public hosting setup for the application itself. Treat deployment as an open architecture/operations work item, not as an already-solved piece of the project.</p>
+<p>A separate <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a> now captures the Andy-only learning path: deploy Lisa's static app from the repo using an Andy/Aspen ArcGIS Location Platform API key, controlled hosting, referrer restrictions, and free-tier usage visibility.</p>
+<h3>Content Architecture</h3>
+<p><code>segments.json</code> was a quick way to get content into the app for graduation. It will become painful as content expands statewide, adds POIs/photos, and needs review workflows. The project needs a structured content model before large-scale content entry begins.</p>
+<h3>Contributor Photos</h3>
+<p>Photos are valuable, but they introduce metadata, permissions, moderation, storage, and privacy questions. A submission workflow should capture location, notes, contributor permission, and review status. Do not simply tell people to email photos or drop them into a personal cloud album as the long-term plan.</p>
+<h3>Alliance Adoption</h3>
+<p>The Alliance has enthusiasm around the idea, but no formal greenlight is captured here. The kickoff should separate exploratory prototype work from official Alliance commitments.</p>
+<h2>Early Direction Options</h2>
+<h3>Option A: Stabilize Current Static App</h3>
+<p>Keep the current static ArcGIS app, improve documentation, configuration, API-key handling, deployment, and content hygiene. Lowest effort and likely best first technical step.</p>
+<h3>Option B: Static App Plus Structured Content Pipeline</h3>
+<p>Keep the front end static, but move content authoring into a structured source such as Airtable, Google Sheets, Git-backed Markdown/JSON, or a small CMS. Generate app-ready JSON at build time. Good middle ground if Lisa/volunteers need easy editing without building a full backend.</p>
+<h3>Option C: Full Web App with Database and Submission Workflow</h3>
+<p>Build a hosted app with authentication, database-backed content, contributor uploads, moderation, and admin tools. Powerful, but likely too much before Alliance buy-in and operational ownership are clear.</p>
+<h3>Option D: Alliance ArcGIS-Centered Implementation</h3>
+<p>Explore whether the Alliance can host layers, API keys, and data/content workflows inside its existing ArcGIS Online environment. This may solve ownership and cost but could constrain UX and editorial workflow.</p>
+<h2>Recommended Kickoff Stance</h2>
+<p>Start with discovery and architecture framing, not coding.</p>
+<p>The first technical target should be a &quot;stewardable prototype&quot; plan: keep the current prototype working, document its dependencies, map every external service and data source, define the target content model, and identify the smallest migration that removes the scariest account/API-key risk.</p>
+<p>Do not jump straight to a full database app. The greenlight, ownership model, contributor moderation responsibility, and hosting owner are not clear enough yet.</p>
+<h2>Agent Workstreams</h2>
+<h3>Petra: Strategy and Adoption</h3>
+<p>Questions for Petra:</p>
+<ul><li>Who is the primary first audience: teachers, hikers, Alliance staff, or Lisa-as-steward?</li><li>What is the wedge that gets Alliance interest without making this feel like a burdensome new platform?</li><li>What is the smallest impressive demo or brief Andy can bring back to Lisa in July?</li><li>How should the project frame geology versus broader natural history?</li><li>What commitments should not be made before Alliance ownership/hosting is understood?</li></ul>
+<p>Deliverable: product strategy memo with audience, wedge, adoption path, and non-goals.</p>
+<h3>Izzy: Experience and Content Design</h3>
+<p>Questions for Izzy:</p>
+<ul><li>How should educator mode and trail/hiker mode relate?</li><li>What should a POI/photo page or popup contain?</li><li>What is the minimum contributor submission flow that captures useful context without overwhelming volunteers?</li><li>How should content be structured so Lisa can expand it over time?</li><li>What review states and editorial cues are needed for trust?</li></ul>
+<p>Deliverable: experience brief plus content model sketch for segments, POIs, photos, activities, and concepts.</p>
+<h3>Arya: Architecture</h3>
+<p>Questions for Arya:</p>
+<ul><li>What exactly is required to host the current app outside UW-controlled resources?</li><li>Which ArcGIS services are Lisa-owned, Alliance-owned, university-owned, or public?</li><li>Is an ArcGIS API key required for this usage, and what are realistic cost/terms implications?</li><li>What are the viable data/content storage options for the next 6-12 months?</li><li>What migration path keeps the static app viable while allowing future database-backed content?</li></ul>
+<p>Deliverable: architecture options memo with recommendation, dependency inventory, and migration plan.</p>
+<h3>Cassian: Reliability, Security, and Ops</h3>
+<p>Questions for Cassian:</p>
+<ul><li>What operational risks exist around API keys, external layers, broken links, and private config?</li><li>What backup/export strategy is needed for content and submitted photos?</li><li>What moderation and permission controls are needed before accepting public submissions?</li><li>What monitoring or smoke test would confirm the map still loads and layers still respond?</li></ul>
+<p>Deliverable: risk register and minimum ops checklist.</p>
+<h3>Jesse: Prototype Engineering</h3>
+<p>Hold Jesse until Arya frames the architecture. Likely first implementation candidates:</p>
+<ul><li>Add a local developer README and config template.</li><li>Add dependency/source inventory documentation.</li><li>Add build/deploy path for static hosting.</li><li>Extract content schema from <code>segments.json</code>.</li><li>Prototype a generated JSON pipeline from a more editor-friendly source.</li></ul>
+<h2>Open Questions for Lisa / Alliance</h2>
+<ul><li>Does Lisa want this to remain educator-first, or become a broader natural-history trail guide with educator resources inside it?</li><li>Who would own the official hosted app if the Alliance greenlights it?</li><li>Can the Alliance provide ArcGIS Online hosting/API access for this project?</li><li>Who owns or can grant rights to the current FeatureLayers, POIs, and educational content?</li><li>What license should the code and content use?</li><li>What permission language is required for submitted photos?</li><li>Should submitted photo locations preserve exact GPS data, generalized locations, or both?</li><li>Who reviews new POIs/photos/content before publication?</li><li>Is July's newsletter a realistic channel for a photo/POI contribution pilot, or should that wait?</li><li>What would make the July follow-up feel successful to Lisa?</li></ul>
+<h2>Suggested July Follow-Up Agenda</h2>
+<ul><li>Confirm project intent: educator geology map, natural-history guide, or phased blend.</li><li>Review dependency/hosting findings, especially ArcGIS API key and layer ownership.</li><li>Review content/data model recommendation.</li><li>Decide whether to pilot photo/POI contribution intake.</li><li>Decide what, if anything, to ask from the Alliance before more build work.</li><li>Pick the next concrete deliverable Andy/Aspen will provide.</li></ul>
+<h2>Aspen Recommendation</h2>
+<p>Treat this as a real project, but keep it on the low-stakes side of the safety ramp until public submissions, official Alliance branding, and long-term hosting are involved. The most valuable near-term move is not building a shiny replacement. It is giving Lisa and the Alliance confidence that the existing prototype can become durable without creating legal, cost, or volunteer-maintenance headaches.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
