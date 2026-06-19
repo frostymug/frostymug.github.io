@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>projects/website/design-system/tokens.css · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Project support file</div>
+      <h1>projects/website/design-system/tokens.css</h1><pre><code>/* Aspen Frost official visual branding tokens.
+   Source: approved homepage/design-system bundle, 2026-06-19. */
+
+:root {
+  --paper: #EFE8D6;
+  --paper-deep: #E6DDC6;
+  --paper-raised: #F6F1E3;
+  --paper-edge: #DCD2B8;
+  --paper-shadow: #C9BD9C;
+  --ink: #232019;
+  --ink-soft: #4B463B;
+  --ink-faint: #756E5D;
+  --ink-ghost: #9A917C;
+  --graphite: #2C2A24;
+  --graphite-2: #3B382F;
+  --graphite-line: #4E4B40;
+  --spruce: #1E4233;
+  --moss: #2E6B4F;
+  --moss-bright: #3C8662;
+  --sage: #79A088;
+  --green-wash: #DFE7DB;
+  --green-ink: #234C3A;
+  --frost: #2A8AAC;
+  --frost-deep: #145468;
+  --ice: #54B4CF;
+  --glow: #7FD6E4;
+  --blue-wash: #DBE7E9;
+  --frost-ink: #185265;
+  --cork: #BE9258;
+  --cork-deep: #8C6638;
+  --dry-erase: #E7ECEA;
+  --dry-erase-line: #C5D0CC;
+  --postit-yellow: #E9D98A;
+  --pin: #A8472E;
+  --stamp: #A8472E;
+  --amber: #B8791F;
+  --kraft: #C7A06A;
+  --kraft-deep: #9E7B45;
+
+  --surface: var(--paper);
+  --surface-sunken: var(--paper-deep);
+  --surface-card: var(--paper-raised);
+  --surface-dark: var(--graphite);
+  --surface-terminal: var(--graphite);
+  --text: var(--ink);
+  --text-soft: var(--ink-soft);
+  --text-muted: var(--ink-faint);
+  --text-ghost: var(--ink-ghost);
+  --text-on-dark: #EDE6D4;
+  --text-mono-dim: #B7AF9B;
+  --border: var(--paper-edge);
+  --border-strong: var(--paper-shadow);
+  --border-ink: var(--ink);
+  --human: var(--moss);
+  --human-deep: var(--spruce);
+  --human-wash: var(--green-wash);
+  --human-text: var(--green-ink);
+  --agent: var(--frost);
+  --agent-deep: var(--frost-deep);
+  --agent-glow: var(--glow);
+  --agent-wash: var(--blue-wash);
+  --agent-text: var(--frost-ink);
+  --status-ok: var(--moss);
+  --status-running: var(--frost);
+  --status-queued: var(--amber);
+  --status-blocked: var(--stamp);
+  --ring: var(--frost);
+
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semibold: 600;
+  --w-bold: 700;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-body: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 5rem;
+  --lh-tight: 1.04;
+  --lh-snug: 1.18;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+  --lh-mono: 1.55;
+  --track-tight: -0.02em;
+  --track-normal: 0;
+  --track-label: 0.02em;
+  --track-stamp: 0.14em;
+  --type-display: var(--w-medium) var(--text-5xl)/var(--lh-tight) var(--font-display);
+  --type-title: var(--w-medium) var(--text-3xl)/var(--lh-snug) var(--font-display);
+  --type-heading: var(--w-semibold) var(--text-xl)/var(--lh-snug) var(--font-sans);
+  --type-body: var(--w-regular) var(--text-body)/var(--lh-relaxed) var(--font-sans);
+  --type-ui: var(--w-regular) var(--text-base)/var(--lh-normal) var(--font-sans);
+  --type-mono: var(--w-regular) var(--text-sm)/var(--lh-mono) var(--font-mono);
+  --type-stamp: var(--w-medium) var(--text-xs)/1 var(--font-mono);
+
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --section-pad-y: var(--space-24);
+  --section-pad-x: var(--space-8);
+  --content-max: 1120px;
+  --reading-max: 660px;
+  --pad-card: var(--space-6);
+  --pad-panel: var(--space-5);
+  --pad-tight: var(--space-3);
+  --gap-xs: var(--space-2);
+  --gap-sm: var(--space-3);
+  --gap-md: var(--space-6);
+  --gap-lg: var(--space-12);
+
+  --radius-0: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-pill: 999px;
+  --rule: 1px solid var(--border);
+  --rule-strong: 1px solid var(--border-strong);
+  --rule-ink: 1.5px solid var(--ink);
+  --rule-dashed: 1px dashed var(--ink-ghost);
+  --shadow-flat: 0 1px 0 var(--paper-shadow);
+  --shadow-note: 0 1px 2px rgba(58,46,20,0.10), 0 6px 14px rgba(58,46,20,0.08);
+  --shadow-lift: 0 2px 4px rgba(58,46,20,0.10), 0 14px 28px rgba(58,46,20,0.12);
+  --shadow-stamp: inset 0 0 0 1.5px currentColor;
+  --shadow-inset: inset 0 1px 3px rgba(58,46,20,0.12);
+  --shadow-ring: 0 0 0 3px color-mix(in srgb, var(--ring) 30%, transparent);
+  --ease: cubic-bezier(0.2, 0.0, 0.1, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 360ms;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --text-5xl: 2.85rem;
+    --text-4xl: 2.4rem;
+    --text-3xl: 2rem;
+  }
+}
+</code></pre>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
