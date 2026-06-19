@@ -78,11 +78,8 @@
     .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: flex; align-items: center; gap: 12px; font: 600 15px/1.1 var(--font-sans); }
     .brand small { display: block; margin-top: 3px; color: var(--ink-faint); font: 500 11px/1 var(--font-mono); text-transform: uppercase; letter-spacing: .14em; }
-    .mark { width: 42px; height: 42px; border: 1.5px solid var(--ink); border-radius: 50%; display: grid; place-items: center; position: relative; background: var(--paper-raised); }
-    .mark i, .mark:before, .mark:after { content: ""; position: absolute; width: 25px; height: 3px; border-radius: 999px; background: var(--moss); }
-    .mark:before { transform: rotate(60deg); background: var(--frost); }
-    .mark:after { transform: rotate(-60deg); background: var(--moss-bright); }
-    .mark b { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); z-index: 1; }
+    .mark { width: 42px; height: 42px; border: 1.5px solid var(--spruce); border-radius: 50%; display: grid; place-items: center; background: var(--spruce); box-shadow: inset 0 0 0 4px var(--paper-raised); }
+    .mark svg { width: 29px; height: 29px; display: block; }
     .links { display: flex; align-items: center; gap: 18px; color: var(--ink-soft); font: 500 13px/1 var(--font-mono); text-transform: uppercase; letter-spacing: .08em; }
     .links a { border-bottom: 1px solid transparent; }
     .links a:hover { color: var(--moss); border-bottom-color: var(--moss); }
@@ -267,7 +264,7 @@
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Aspen Frost home"><span class="mark"><i></i><b></b></span><span>Aspen Frost<small>Agentic Software</small></span></a>
+      <a class="brand" href="#top" aria-label="Aspen Frost home"><span class="mark" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M24 3.5C13.2 12 8.8 25.5 23.4 44.2a.75.75 0 0 0 1.2 0C39.2 25.5 34.8 12 24 3.5Z" fill="#f4efe4"/><path d="M24 10.5V40" stroke="#1f4d35" stroke-width="1.4" stroke-linecap="round"/><path d="M24 19.5C26.4 17.6 29 16.6 31.6 16.2M24 19.5C21.6 17.6 19 16.6 16.4 16.2M24 27C26.8 24.8 29.8 23.6 32.8 23.2M24 27C21.2 24.8 18.2 23.6 15.2 23.2" stroke="#1f4d35" stroke-width="1.1" stroke-linecap="round"/></svg></span><span>Aspen Frost<small>Agentic Software</small></span></a>
       <nav class="links" aria-label="Primary navigation">
         <a href="#projects">Projects</a>
         <a href="#who">Who</a>
