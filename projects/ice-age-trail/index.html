@@ -16,6 +16,7 @@
       <a href="/governance/empire-culture.html">Empire Culture</a>
       <a href="/governance/process.html">Process</a>
       <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
   <details class="nav-section" open>
     <summary class="nav-section-label">Projects</summary>
@@ -49,10 +50,29 @@
       <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
     </details>
     <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
       <summary>Aspen Frost Website</summary>
       <a href="/projects/website/index.html">Overview</a>
       <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
       <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
       <a href="/projects/website/published-html/index.html">Website Published HTML</a>
       <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
       <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
@@ -69,6 +89,11 @@
       <a href="/marketing/index.html">Marketing Index</a>
   </details>
   <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
     <summary class="nav-section-label">Engineering</summary>
       <a href="/engineering/index.html">Engineering Index</a>
       <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
@@ -79,18 +104,18 @@
     <article>
       <div class="crumb">Projects &middot; Ice Age Trail App</div>
       <h1>Ice Age Trail App</h1>
-<p>Interactive educator/natural-history map for the Ice Age Trail. Current stage: kickoff framing.</p>
+<p>Interactive educator/natural-history map for the Ice Age Trail. Current stage: intake with deployment spike succeeded.</p>
 <h2>Status</h2>
-<ul><li><strong>Stage:</strong> Idea -&gt; Project Kickoff / Product Framing</li><li><strong>Primary stakeholder:</strong> Lisa Siewert, original author of the capstone prototype</li><li><strong>Current repo:</strong> https://github.com/ecolville/GEOG778_Capstone</li><li><strong>Current deployment evidence:</strong> No public deployment found; webinar demo appears to run locally at <code>127.0.0.1</code>.</li><li><strong>ArcGIS licensing note:</strong> Esri's ArcGIS for Personal Use license is limited to personal, noncommercial use and excludes third-party benefit. Esri's current API-key docs also say API key authentication is not available for ArcGIS Online subscriptions purchased through Personal Use, which matters because Lisa's app expects <code>window.ARCGIS_API_KEY</code>.</li><li><strong>Approval:</strong> Draft / Aspen synthesis from Andy-Lisa call on 2026-06-10</li></ul>
+<ul><li><strong>Stage:</strong> Intake -&gt; Deployment Spike Succeeded</li><li><strong>Primary stakeholder:</strong> Lisa Siewert, original author of the capstone prototype</li><li><strong>Current repo:</strong> https://github.com/ecolville/GEOG778_Capstone</li><li><strong>Current deployment evidence:</strong> Deployment spike succeeded on 2026-06-19. Lisa's static app can be deployed as a controlled Andy/Aspen prototype; keep it framed as a feasibility/demo deployment, not an official Ice Age Trail Alliance app.</li><li><strong>ArcGIS licensing note:</strong> Esri's ArcGIS for Personal Use license is limited to personal, noncommercial use and excludes third-party benefit. Esri's current API-key docs also say API key authentication is not available for ArcGIS Online subscriptions purchased through Personal Use, which matters because Lisa's app expects <code>window.ARCGIS_API_KEY</code>.</li><li><strong>Approval:</strong> Draft / Aspen synthesis from Andy-Lisa call on 2026-06-10</li></ul>
 <h2>Working Project Shape</h2>
 <p>Lisa built a static ArcGIS JavaScript app as a graduate capstone. It currently focuses on an educator geologic map for a limited north-central Wisconsin area, with trail segments, geologic layers, POIs, classroom prompts, and printable activities.</p>
 <p>The opportunity is to turn that prototype into a maintainable, expandable project that can eventually support statewide Ice Age Trail coverage, richer points of interest, contributor photos, and broader natural-history content.</p>
 <h2>Artifacts</h2>
-<table><thead><tr><th>Doc</th><th>Status</th><th>Source</th></tr></thead><tbody><tr><td><a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a></td><td>Draft</td><td>Synthesized by Aspen from Lisa call transcript and repo inspection on 2026-06-18.</td></tr><tr><td><a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a></td><td>Draft</td><td>Learning-project spike to deploy Lisa's static app with Andy/Aspen ArcGIS Location Platform API key and controlled hosting.</td></tr></tbody></table>
+<table><thead><tr><th>Doc</th><th>Status</th><th>Source</th></tr></thead><tbody><tr><td><a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a></td><td>Draft</td><td>Synthesized by Aspen from Lisa call transcript and repo inspection on 2026-06-18.</td></tr><tr><td><a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a></td><td>Succeeded</td><td>Lisa's static app was deployed successfully on 2026-06-19 as a controlled Andy/Aspen learning prototype.</td></tr></tbody></table>
 <h2>Immediate Next Move</h2>
-<p>Run the deployment spike as an Andy-only learning project:</p>
-<ul><li>Arya: do a tight dependency/authentication pass on Lisa's repo and recommend the least-risk static hosting/config pattern.</li><li>Jesse: deploy the current app with the smallest possible code changes using Andy's ArcGIS Location Platform API key.</li><li>Cassian: verify API-key restrictions, usage visibility, and minimum smoke checks.</li></ul>
-<p>Keep Petra and Izzy queued for the broader product/design framing after the basic deployment feasibility question is answered.</p>
+<p>Close out the successful deployment spike:</p>
+<ul><li>Preserve deployment URL, repo/branch, host, config-generation path, and API-key restriction notes in the deployment artifact.</li><li>Cassian: verify API-key/domain restrictions, usage visibility, and minimum smoke checks.</li><li>Arya: capture what the successful deployment implies for the longer-term architecture and which layer-hosting dependencies still need Lisa/IATA clarification.</li><li>Andy/Aspen: decide whether the next step is a Lisa-facing demo, product/design framing with Petra and Izzy, or a lightweight technical hardening pass.</li></ul>
+<p>Keep the distinction clear: this is a successful feasibility deployment, not an official Ice Age Trail Alliance launch.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>

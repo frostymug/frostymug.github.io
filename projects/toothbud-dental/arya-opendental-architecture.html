@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenDental Architecture and Repo Analysis · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a aria-current="page" href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; ToothBud Dental OpenDental Architecture</div>
+      <h1>OpenDental Architecture and Repo Analysis</h1>
+<p>&gt; Status: Preliminary public-source analysis &gt; Created: 2026-06-25 &gt; Requested role: Arya &gt; Sources: OpenDental.com, GitHub <code>OpenDental/opendental</code>, public README/repo metadata. No private practice or patient data used.</p>
+<h2>Executive Read</h2>
+<p>OpenDental appears to be a mature, self-hosted dental practice-management product with a large public source dump, a GPL-2.0 license, and a branch-per-release repository structure. The public GitHub organization currently exposes one product-critical repo: <code>OpenDental/opendental</code>.</p>
+<p>This does not look like a clean &quot;fork it and make it pediatric&quot; opportunity. The repo is useful for technical inspection, integration planning, and understanding extension points, but the README explicitly says the solution does not build out of the box, the initial database tables come from installing the trial version, and Open Dental does not accept outside code contributions. For ToothBud, the better first technical paths are discovery, configuration, reporting/integration, API/plugin evaluation, and migration-risk analysis before considering replacement or fork/customization.</p>
+<h2>Public Repo Inventory</h2>
+<table><thead><tr><th>Repo</th><th>Role</th><th>Notes</th></tr></thead><tbody><tr><td><code>OpenDental/opendental</code></td><td>Product source repository</td><td>Public GitHub metadata shows GPL-2.0 licensing. <code>main</code> contains top-level metadata; version branches such as <code>24_3</code>, <code>24_2</code>, and <code>23_3</code> contain the actual application source.</td></tr></tbody></table>
+<p>Notable directories seen on release branches include <code>OpenDental</code>, <code>OpenDentBusiness</code>, <code>OpenDentalServer</code>, <code>OpenDentalCloud</code>, <code>OpenDentHL7</code>, <code>MobileWeb</code>, <code>PluginExample</code>, <code>QueryExecutor</code>, <code>MySQLManager</code>, <code>DatabaseIntegrityCheck</code>, <code>UnitTests</code>, <code>OpenDentBusiness.Tests</code>, <code>SparksToothChart</code>, and reporting/control libraries such as <code>Rdl*</code> and <code>WpfControlsOD</code>.</p>
+<h2>Architecture Shape</h2>
+<p>The repo shape points to a .NET/Windows-heavy desktop practice-management system with business logic, server components, cloud/mobile/web-adjacent modules, HL7 support, plugins, reporting/query tools, database utilities, and test projects. The public source tree suggests a long-lived monolith with adjacent service/tools rather than a modern small-service SaaS codebase.</p>
+<p>OpenDental's README says the trial version must be installed first to create initial database tables, release branches map to major/minor versions, the solution &quot;does not build out of the box,&quot; and outside code contributions are not accepted.</p>
+<h2>Database and Deployment Posture</h2>
+<p>OpenDental appears database-centered, with public references to database documentation and repo modules such as <code>MySQLManager</code>, <code>DatabaseIntegrityCheck</code>, <code>DataConnectionBase</code>, <code>QueryExecutor</code>, and upgrade logs. Treat the database as the operational heart of the system.</p>
+<p>Technical implications:</p>
+<ul><li>Any reporting, migration, or integration work needs a careful schema/version strategy.</li><li>Direct database writes are high risk unless OpenDental explicitly supports the workflow.</li><li>Backups, restore testing, upgrade compatibility, and rollback plans are mandatory before touching production.</li><li>A read-only reporting layer may be a lower-risk first technical wedge than workflow automation.</li></ul>
+<h2>Extension and Integration Surface</h2>
+<p>Promising public signals:</p>
+<ul><li><code>PluginExample</code> suggests a plugin mechanism worth investigating.</li><li><code>OpenDentHL7</code> suggests HL7 integration capability.</li><li>OpenDental.com has public API/source-code/programming documentation areas that should be reviewed against Luc's actual license/version.</li><li><code>MobileWeb</code>, <code>OpenDentalCloud</code>, and server modules suggest optional hosted or web-adjacent surfaces, but we should not assume availability in Ann's setup.</li></ul>
+<p>Key architectural question: does Ann/Luc's current license and deployment support the API/plugin/integration surface needed for pediatric workflow improvements, or are they effectively limited to configuration, reports, and manual workflows?</p>
+<h2>License and IP Posture</h2>
+<p>The public repo is GPL-2.0. Forking/customizing is legally possible only within GPL obligations and practical support constraints. It is probably a poor first move for a live dental practice because the solution does not build out of the box, the database/install process depends on official installer/trial artifacts, upstream does not accept outside contributions, and maintaining a fork creates long-term upgrade, security, compliance, and support burden.</p>
+<h2>Operational Risks</h2>
+<ul><li>PHI/HIPAA exposure if any real patient records, imaging, forms, messages, billing, or clinical notes enter scope.</li><li>Downtime risk for scheduling, check-in/check-out, charting, claims, and payments.</li><li>Data migration risk if the project becomes replacement-oriented.</li><li>Upgrade risk if custom code or unsupported database changes are introduced.</li><li>Support risk if Aspen Frost becomes the de facto maintainer of a clinical operations system.</li><li>Security risk if integrations, automations, or reporting tools receive broad database/API credentials.</li></ul>
+<h2>Viable Technical Paths</h2>
+<ul><li><strong>Discovery/configuration first:</strong> map Ann's pediatric workflow pain to existing OpenDental settings, templates, forms, recall, family/guardian relationships, and reporting.</li><li><strong>Read-only reporting layer:</strong> if pain is visibility/analytics, build read-only reports against exports/API/replica rather than changing clinical workflows.</li><li><strong>API/plugin integration:</strong> if supported by their version/license, evaluate a narrow add-on around pediatric-specific workflow gaps.</li><li><strong>Workflow automation around the edges:</strong> reminders, intake packets, guardian communication, or internal tasking may be safer than altering charting/billing.</li><li><strong>Migration/buying analysis:</strong> if OpenDental is the wrong product, compare replacement systems and plan migration rather than forking.</li><li><strong>Fork/customization:</strong> keep as last resort. It is high burden and should require explicit Andy/Ann/Luc approval plus compliance/support planning.</li></ul>
+<h2>Questions for Luc</h2>
+<ul><li>Which OpenDental version, hosting model, database location, and license/support plan are they using?</li><li>What are the top three pediatric-specific pain points in daily order of pain?</li><li>Are the pain points clinical charting, scheduling, recall, guardian/family relationships, forms/consent, billing/claims, imaging, reporting, or communications?</li><li>Do they use OpenDental API, plugins, eServices, HL7, imaging integrations, patient portal, or third-party communications today?</li><li>What custom reports, queries, forms, sheets, templates, or automations already exist?</li><li>How are backups handled, and has restore ever been tested?</li><li>What would be unacceptable downtime during a migration or integration rollout?</li><li>Are they trying to improve OpenDental, replace it, or simply reduce staff pain around it?</li></ul>
+<h2>Recommendation</h2>
+<p>Go into the Luc interview with an integration/configuration hypothesis, not a replacement hypothesis. OpenDental's public source is valuable for understanding risk and possible extension points, but the first project bet should be a low-risk diagnostic: identify the pediatric workflow mismatch, confirm what OpenDental already supports, and only then decide whether the right answer is configuration, reporting, integration, buying, migration, or a new product concept.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

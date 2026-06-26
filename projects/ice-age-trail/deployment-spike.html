@@ -16,6 +16,7 @@
       <a href="/governance/empire-culture.html">Empire Culture</a>
       <a href="/governance/process.html">Process</a>
       <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
   <details class="nav-section" open>
     <summary class="nav-section-label">Projects</summary>
@@ -49,10 +50,29 @@
       <a aria-current="page" href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
     </details>
     <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
       <summary>Aspen Frost Website</summary>
       <a href="/projects/website/index.html">Overview</a>
       <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
       <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
       <a href="/projects/website/published-html/index.html">Website Published HTML</a>
       <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
       <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
@@ -69,6 +89,11 @@
       <a href="/marketing/index.html">Marketing Index</a>
   </details>
   <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
     <summary class="nav-section-label">Engineering</summary>
       <a href="/engineering/index.html">Engineering Index</a>
       <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
@@ -79,14 +104,21 @@
     <article>
       <div class="crumb">Projects &middot; Ice Age Trail Deployment Spike</div>
       <h1>Ice Age Trail App Deployment Spike</h1>
-<p><strong>Status:</strong> Draft <strong>Prepared by:</strong> Aspen <strong>Date:</strong> 2026-06-18 <strong>Purpose:</strong> Andy-only learning deployment, not an official Ice Age Trail Alliance app.</p>
+<p><strong>Status:</strong> Succeeded <strong>Prepared by:</strong> Aspen <strong>Date:</strong> 2026-06-18 <strong>Purpose:</strong> Andy-only learning deployment, not an official Ice Age Trail Alliance app.</p>
 <h2>Goal</h2>
 <p>Prove whether Lisa Siewert's static ArcGIS prototype can be deployed from the public GitHub repo using an Andy/Aspen-controlled ArcGIS Location Platform API key, hosted somewhere we control, with enough restriction and usage visibility to stay inside the free tier.</p>
 <p>This is a technical learning spike. It should answer whether the existing project can be made visible on the web without buying the wrong Esri license, relying on Lisa's university resources, or implying Alliance ownership.</p>
+<h2>Outcome</h2>
+<p>The deployment spike succeeded on 2026-06-19. Andy/Aspen got Lisa's static ArcGIS app deployed as a controlled learning prototype, proving the basic deployment path is feasible.</p>
+<p>This success should be treated as technical validation, not as an official Ice Age Trail Alliance launch or adoption decision. The remaining closeout work is to preserve the exact deployment URL, host, repo/branch, config-generation path, API-key restrictions, usage visibility, and smoke-test results.</p>
+<p>Immediate implications:</p>
+<ul><li>Static hosting is a viable near-term path for demo/prototype purposes.</li><li>The project can move from &quot;can we deploy it at all?&quot; to &quot;what architecture, ownership, and product shape should a serious version have?&quot;</li><li>Lisa/IATA-facing next steps should still be gated by clear language about prototype status, data/layer ownership, and API-key/account ownership.</li></ul>
 <h2>Source Repo</h2>
 <p>Lisa's repo: https://github.com/ecolville/GEOG778_Capstone</p>
-<p>Current evidence:</p>
-<ul><li>The app is a static web app: <code>index.html</code>, <code>app.js</code>, <code>style.css</code>, <code>segments.json</code>, PDFs, and supporting HTML/docs.</li><li>No deployed public URL has been found.</li><li>The webinar demo appears to run locally from <code>127.0.0.1</code>.</li><li>The app expects <code>window.ARCGIS_API_KEY</code> from <code>config.local.js</code>, which is intentionally not committed.</li></ul>
+<p>Original pre-spike evidence:</p>
+<ul><li>The app is a static web app: <code>index.html</code>, <code>app.js</code>, <code>style.css</code>, <code>segments.json</code>, PDFs, and supporting HTML/docs.</li><li>Before the spike, no deployed public URL had been found.</li><li>The webinar demo appeared to run locally from <code>127.0.0.1</code>.</li><li>The app expects <code>window.ARCGIS_API_KEY</code> from <code>config.local.js</code>, which is intentionally not committed.</li></ul>
+<p>Post-spike evidence to preserve:</p>
+<ul><li>Deployed URL and host.</li><li>Repo/branch used for deployment.</li><li>Config-generation path for the ArcGIS key.</li><li>API-key referrer/domain restrictions.</li><li>Usage telemetry location and smoke-test results.</li></ul>
 <h2>Deployment Hypothesis</h2>
 <p>The app can probably run as a static deployment if we provide a production-safe API key config and the referenced ArcGIS services are publicly reachable with the right authentication/usage terms.</p>
 <p>Recommended first path:</p>
@@ -94,9 +126,9 @@
 <h2>Non-Goals</h2>
 <ul><li>Do not present this as the official Ice Age Trail Alliance app.</li><li>Do not use ArcGIS for Personal Use as the assumed path for this deployment.</li><li>Do not ask Lisa or the Alliance for credentials for this spike.</li><li>Do not add public contribution/photo upload features.</li><li>Do not redesign the app during this spike unless a minimal change is required to make deployment work.</li><li>Do not commit secrets or unrestricted API keys.</li></ul>
 <h2>Success Criteria</h2>
-<p>The spike succeeds if Andy can open a private/low-visibility deployed URL and confirm:</p>
+<p>The spike succeeded because Andy/Aspen got the app deployed. Closeout should still confirm and record:</p>
 <ul><li>The map renders in a browser without local files.</li><li>ArcGIS basemap and FeatureLayer requests succeed using Andy's API key or an explicitly documented no-key/public-layer path.</li><li>Core UI works: sidebar, segment selection, POIs, parking, activity links, and focus mode.</li><li>The API key is restricted to the deployment domain/referrer.</li><li>Esri usage telemetry is visible in Andy's account.</li><li>The repo includes enough setup/deploy notes that a future engineer can repeat the deployment.</li></ul>
-<p>The spike should also produce a clear failure answer if deployment is blocked, including the exact blocker: API key scope, private layers, licensing, CORS/referrer restriction, missing assets, hosting behavior, or code assumptions about localhost.</p>
+<p>If any closeout check fails, record the exact blocker: API key scope, private layers, licensing, CORS/referrer restriction, missing assets, hosting behavior, or code assumptions about localhost.</p>
 <h2>Preferred Hosting Options</h2>
 <h3>Option 1: Cloudflare Pages</h3>
 <p>Pros: already in Andy/Aspen orbit, easy static deploys, custom access controls possible later. Cons: needs repo connection or CLI deployment setup.</p>
@@ -128,8 +160,8 @@
 <h2>Open Questions</h2>
 <ul><li>Does Andy already have an ArcGIS Location Platform account, or does that need to be created first?</li><li>Which hosting target should we use first: Cloudflare Pages, GitHub Pages, or Netlify?</li><li>Should the deployed demo be public-but-obscure, Cloudflare Access-gated, or temporary only?</li><li>Can the Location Platform account create the right kind of API key for this app's current ArcGIS JS usage?</li><li>Are any FeatureServer layers rate-limited, private, or controlled by accounts we should not rely on?</li></ul>
 <h2>Recommended Next Action</h2>
-<p>Have Arya do a tight dependency/authentication pass on Lisa's repo first, then hand Jesse a constrained implementation task: deploy the current app with the smallest possible code changes using Andy's ArcGIS Location Platform API key.</p>
-<p>If Andy wants speed over ceremony, Jesse can run the spike directly, but Arya should still review the resulting deployment pattern before anything becomes a reusable project baseline.</p>
+<p>Close the spike with evidence: deployment URL, host, repo/branch, config-generation path, API-key restrictions, usage telemetry, and a minimum smoke-test checklist.</p>
+<p>After closeout, decide whether the next move is a Lisa-facing demo, product/design framing with Petra and Izzy, or a light hardening pass before anyone outside Andy/Aspen reviews it.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>

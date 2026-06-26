@@ -16,6 +16,7 @@
       <a href="/governance/empire-culture.html">Empire Culture</a>
       <a href="/governance/process.html">Process</a>
       <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
   <details class="nav-section" open>
     <summary class="nav-section-label">Projects</summary>
@@ -48,11 +49,30 @@
       <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
       <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
     </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
     <details class="nav-subsection" open>
       <summary>Aspen Frost Website</summary>
       <a href="/projects/website/index.html">Overview</a>
       <a aria-current="page" href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
       <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
       <a href="/projects/website/published-html/index.html">Website Published HTML</a>
       <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
       <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
@@ -67,6 +87,11 @@
   <details class="nav-section">
     <summary class="nav-section-label">Marketing</summary>
       <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
   </details>
   <details class="nav-section">
     <summary class="nav-section-label">Engineering</summary>
@@ -113,7 +138,7 @@
 <p>---</p>
 <h2>5. Voice &amp; Register</h2>
 <p><strong>Serious about the craft. Humble and open about the process. Genuinely enjoying the build.</strong></p>
-<ul><li><strong>Confident about the work</strong>, never boastful. We show receipts instead of adjectives.</li><li><strong>Humble and open about the process — &quot;humilosity.&quot;</strong> This is an experiment in public. &quot;We've gotten good results, and we're still refining how we get them.&quot; The emotional core isn't humility alone — it's humility <em>fused with</em> curiosity: we don't assume we're right, and we're genuinely curious where we're wrong. That fusion has a name internally — <em>humilosity</em> — and it's strong enough to become a brand object on the site (see §7, Culture). This is fun, fascinating, and might genuinely turn out to be useful to people. We don't need to oversell it past that.</li><li><strong>The delight is in the situation, never in the software.</strong> We never make jokes about the product. We let the premise (one person, a team of agents, a marketing fish) be charming on its own and play it <em>straight</em>. Restraint is the sophistication. Anyone can be cute about AI; almost nobody has the confidence to just show the real thing and let it land.</li><li><strong>Plain sentence discipline.</strong> When the sentence has landed, stop. Avoid mirrored punchlines, rhythmic repetition, and clever second clauses that restate the point. Prefer the direct noun over the polished abstraction: &quot;Frost Fitness&quot; beats &quot;a real product in real use.&quot; Cut soft qualifiers that sound like strategy-deck filler, especially when the sentence is stronger without them.</li></ul>
+<ul><li><strong>Confident about the work</strong>, never boastful. We show receipts instead of adjectives.</li><li><strong>Humble and open about the process — &quot;humilosity.&quot;</strong> This is an experiment in public. &quot;We've gotten good results, and we're still refining how we get them.&quot; The emotional core isn't humility alone — it's humility <em>fused with</em> curiosity: we don't assume we're right, and we're genuinely curious where we're wrong. That fusion has a name internally — <em>humilosity</em> — and it's strong enough to become a brand object on the site (see §7, Culture). This is fun, fascinating, and might genuinely turn out to be useful to people. We don't need to oversell it past that.</li><li><strong>The delight is in the situation, never in the software.</strong> We never make jokes about the product. We let the premise (one person, a team of agents, a marketing fish) be charming on its own and play it <em>straight</em>. Restraint is the sophistication. Anyone can be cute about AI; almost nobody has the confidence to just show the real thing and let it land.</li><li><strong>Plain sentence discipline.</strong> When the sentence has landed, stop. Avoid mirrored punchlines, rhythmic repetition, and clever second clauses that restate the point. Prefer the direct noun over the polished abstraction: &quot;Frost Fitness&quot; beats &quot;a real product in real use.&quot; Cut soft qualifiers that sound like strategy-deck filler, especially when the sentence is stronger without them.</li><li><strong>AI-scent check.</strong> Watch for polished-but-empty model cadence: <code>not just X, it's Y</code>, tidy mirrored clauses, five-paragraph gravity, relentless positivity, assistant boilerplate, and paragraphs that scan well but make no claim. This is now captured in <code>BRAND-VOICE-GUIDELINES.md</code> as a standing review pass.</li></ul>
 <p><strong>Anti-brand (what would make Andy close the tab):</strong></p>
 <ul><li>Buzzword soup. Too many mentions of &quot;AI.&quot; &quot;Leverage,&quot; &quot;synergy,&quot; &quot;transformation,&quot; &quot;revolutionize.&quot;</li><li>Trying too hard to be cute or clever.</li><li>Corporate fog — copy that sounds like it could belong to any company.</li><li>AI-ish rhetorical symmetry: &quot;X, not Y&quot; flourishes, repeated adjectives, and neat little echo phrases that sound written instead of said.</li><li>Overselling — claiming to be a company we're not yet, or dressing up the feeling past &quot;this is fun and might be useful.&quot;</li></ul>
 <p><strong>The read-aloud test applies to every line on this site.</strong> If you can't say it the way a human says it, it's not done.</p>

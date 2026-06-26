@@ -16,6 +16,7 @@
       <a href="/governance/empire-culture.html">Empire Culture</a>
       <a aria-current="page" href="/governance/process.html">Process</a>
       <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
   <details class="nav-section">
     <summary class="nav-section-label">Projects</summary>
@@ -49,10 +50,29 @@
       <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
     </details>
     <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
       <summary>Aspen Frost Website</summary>
       <a href="/projects/website/index.html">Overview</a>
       <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
       <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
       <a href="/projects/website/published-html/index.html">Website Published HTML</a>
       <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
       <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
@@ -67,6 +87,11 @@
   <details class="nav-section">
     <summary class="nav-section-label">Marketing</summary>
       <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
   </details>
   <details class="nav-section">
     <summary class="nav-section-label">Engineering</summary>
@@ -141,6 +166,13 @@ Production</code></pre>
 <p>---</p>
 <h2>Artifacts &amp; Handoffs</h2>
 <p>Official project artifacts live in <code>/home/ubuntu/.openclaw/workspace/projects/&lt;project&gt;/</code>. Individual agent workspaces are for drafts, scratch work, and role-specific notes. When an artifact becomes a cross-agent dependency or is ready for Andy review, promote it to the shared project folder and mark its source and approval status.</p>
+<p>For fuzzy, high-stakes, or open-ended delegated work, add a lightweight <strong>appetite</strong> and <strong>stopping rule</strong> to the handoff. This is most useful for research loops, strategy loops, architecture investigations, competitive scans, safety reviews, and agent-development routines. Do not make it ceremony for tiny deterministic tasks.</p>
+<ul><li><strong>Appetite:</strong> how much effort/time/depth belongs in this pass.</li><li><strong>Stopping rule:</strong> what makes the loop complete enough to hand back, or what condition should stop the work early.</li></ul>
+<h3>&quot;Share This With Another Agent&quot; Protocol</h3>
+<p>When Andy says to share a document, artifact, PRD, brief, plan, review, or similar work product with another agent, that means make it available through the shared project record, not just save it in the producing agent's personal workspace.</p>
+<p>The producing agent should:</p>
+<ul><li>Identify the project slug under <code>/home/ubuntu/.openclaw/workspace/projects/&lt;project&gt;/</code>, creating the project folder only if the project is real enough to have a shared record.</li><li>Copy or promote the document into the shared project folder using the canonical filename when one exists (<code>DESIGN.md</code>, <code>PRD.md</code>, <code>ARCHITECTURE.md</code>, <code>STORIES.md</code>, <code>STATUS.md</code>, etc.). If the document is exploratory or role-specific, use a clear subfolder such as <code>strategy/</code>, <code>reviews/</code>, <code>decisions/</code>, or <code>archive/</code>.</li><li>Preserve provenance at the top or bottom of the document: source agent, original workspace path if useful, date, and status (<code>Draft</code>, <code>Review-ready</code>, <code>Andy-approved</code>, or <code>Superseded</code>).</li><li>Update <code>STATUS.md</code> or <code>README.md</code> when the shared document changes the project state, next gate, owner, or open questions.</li><li>Tell the receiving agent the exact shared path and what kind of response is expected: review, holes/gaps pass, architecture, copy critique, implementation, reliability check, or FYI.</li><li>Keep personal-workspace copies only as drafts/scratch. If a personal copy diverges after sharing, either promote the newer version or clearly mark the shared one as stale/superseded.</li></ul>
+<p>Do not treat direct agent-to-agent messaging as the system of record. The handoff is the shared file path plus a concise instruction about what the receiving agent should do with it.</p>
 <table><thead><tr><th>Handoff</th><th>Official artifact</th><th>Owner</th></tr></thead><tbody><tr><td>Izzy → Arya</td><td><code>projects/&lt;project&gt;/DESIGN.md</code></td><td>Izzy</td></tr><tr><td>Arya → Andy</td><td><code>projects/&lt;project&gt;/ARCHITECTURE.md</code> + holes/gaps notes</td><td>Arya</td></tr><tr><td>Andy → Podrick</td><td>Approved design + architecture in shared project folder</td><td>Andy</td></tr><tr><td>Podrick → Arya+Jesse</td><td><code>projects/&lt;project&gt;/STORIES.md</code> or productization plan</td><td>Podrick</td></tr><tr><td>Jesse → Arya</td><td>Pull requests</td><td>Jesse</td></tr><tr><td>Arya → Cassian</td><td>Merged PRs + release notes</td><td>Arya</td></tr><tr><td>Cassian → Production</td><td>CI/CD, deployment, rollback, release approval</td><td>Cassian</td></tr></tbody></table>
 <p>---</p>
 <h2>Official Project Record</h2>

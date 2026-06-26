@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EMR Landscape and Osmind Integration Options · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a aria-current="page" href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Structured Intake Assistant EMR Landscape</div>
+      <h1>EMR Landscape and Osmind Integration Options</h1>
+<p>&gt; Status: Draft research overview &gt; Project: Structured Intake Assistant &gt; Date: 2026-06-24 &gt; Author: Arya &gt; Scope: Osmind, EMR API standards, healthcare data storage, integration services, and architecture options for a structured psychiatric intake/assessment product.</p>
+<h2>Executive Read</h2>
+<p>Build the Structured Intake Assistant as an EMR-adjacent clinical workflow product first, not as an EMR-integrated product on day one.</p>
+<p>Osmind appears to be a specialty psychiatry EHR/practice platform, especially strong in interventional psychiatry workflows such as Spravato, TMS, ketamine, VNS, billing, prior authorization, measurement-based care, patient engagement, intake forms, rating scales, charting templates, e-prescribing, telehealth, and outcomes tracking. Public material shows a serious product, but I did not find public Osmind developer/API documentation, a SMART-on-FHIR app marketplace, or a documented third-party write-back API. That does not mean no integration exists. It means we should assume integration requires one of: Osmind partnership, practice-specific export/import workflow, a healthcare integration broker, or user-mediated workflow.</p>
+<p>For this project, the clean first architecture is:</p>
+<ul><li>Clinician-supervised intake assistant with its own data model and strict PHI controls.</li><li>Export outputs as clinician-reviewed PDF/HTML/structured JSON, optionally formatted for copy/paste or attachment into Osmind.</li><li>Design internal data around FHIR-compatible concepts where it helps, but do not force a full FHIR server too early.</li><li>Add official EMR integration only after Erik confirms the actual workflow, Osmind account capabilities, compliance posture, and whether Osmind supports approved integration access.</li></ul>
+<p>FHIR is the center of gravity for modern healthcare APIs, but it is not a magic key to every EMR workflow. Read APIs are more standardized than write APIs. Clinical notes, custom intake forms, psychiatry rating scales, appointment workflows, and write-back are still vendor-specific more often than architecture diagrams admit.</p>
+<h2>Osmind Snapshot</h2>
+<h3>What Osmind Is</h3>
+<p>From public Osmind pages, Osmind positions itself as an AI-powered EHR, billing/RCM, prior authorization, patient engagement, and practice network platform for interventional psychiatry. It claims a large network of independent psychiatry practices and emphasizes Spravato, TMS, ketamine, VNS, and other psychiatric treatments.</p>
+<p>Relevant public product capabilities:</p>
+<ul><li>Psychiatry-specific EHR and charting templates.</li><li>Customizable patient intake and charting templates.</li><li>Patient intake forms that update the face sheet and can be imported into evaluation notes.</li><li>A patient mobile app for surveys, questionnaires, screenings, goal tracking, mood journaling, Apple Health sync, and patient engagement programs.</li><li>Library of validated patient questionnaires/rating scales and outcome graphs.</li><li>Scheduling, reminders, task management, telehealth, e-prescribing, PDMP access, integrated fax, labs, billing, prior auth, and compliance workflows.</li><li>AI features marketed around patient context, visit summaries, prior authorization, and future/native AI scribe.</li></ul>
+<p>Primary sources:</p>
+<ul><li>https://www.osmind.org/</li><li>https://www.osmind.org/psychiatry-ehr</li><li>https://www.osmind.org/terms-of-service</li></ul>
+<h3>What I Did Not Find Publicly</h3>
+<p>I did not find, in public search results and Osmind marketing/docs pages:</p>
+<ul><li>Public Osmind API reference.</li><li>Public SMART App Launch / SMART on FHIR app registration docs.</li><li>Public FHIR endpoint documentation.</li><li>Public webhook documentation.</li><li>Public third-party developer portal.</li><li>Publicly documented write-back API for intake/note creation.</li></ul>
+<p>There are third-party marketing pages claiming Osmind integration and write-back workflows, but those should be treated as vendor claims until verified directly. The useful signal is that Osmind integration may exist through partner-specific/proprietary routes rather than a self-serve public API.</p>
+<h3>Osmind-Specific Implication</h3>
+<p>If Erik's private practice uses Osmind, the fastest useful path is probably not API integration. It is:</p>
+<ul><li>Generate a clinician-reviewed intake summary that can be attached or pasted into Osmind.</li><li>Generate structured sections matching Erik's note workflow, not necessarily Osmind's internal schema.</li><li>Explore Osmind custom intake builder/forms manually before writing software against it.</li><li>Ask Osmind support whether they support third-party intake integrations, API access, SFTP/import, webhooks, FHIR/SMART, or partner programs.</li></ul>
+<h2>EMR API Standards Lay Of The Land</h2>
+<h3>FHIR</h3>
+<p>FHIR, or Fast Healthcare Interoperability Resources, is the current dominant standard for modern healthcare data exchange. It represents healthcare data as resources such as Patient, Practitioner, Encounter, Condition, Observation, Questionnaire, QuestionnaireResponse, DocumentReference, DiagnosticReport, MedicationRequest, CarePlan, ServiceRequest, Appointment, Claim, and ExplanationOfBenefit.</p>
+<p>FHIR matters for this project because psychiatric intake can map naturally to:</p>
+<ul><li><code>Patient</code> for demographics and identifiers.</li><li><code>Practitioner</code> / <code>Organization</code> for clinician and practice.</li><li><code>Encounter</code> for the assessment visit.</li><li><code>Questionnaire</code> and <code>QuestionnaireResponse</code> for structured assessment instruments.</li><li><code>Observation</code> for scored measurements, screening results, and individual findings.</li><li><code>Condition</code> for clinician-confirmed problems/diagnoses, not AI-inferred diagnoses.</li><li><code>DocumentReference</code> and/or <code>Composition</code> for generated clinical documents.</li><li><code>Provenance</code> and <code>AuditEvent</code> for who created/reviewed what and when.</li></ul>
+<p>FHIR has versions. In U.S. production, FHIR R4 remains the safest target because major U.S. implementation guides and certification requirements are built around R4. FHIR R5 exists and is published, but R4 is the practical baseline for integration.</p>
+<p>Primary source: https://www.hl7.org/fhir/overview.html</p>
+<h3>USCDI and US Core</h3>
+<p>USCDI is the U.S. Core Data for Interoperability: the standardized set of health data classes/elements for nationwide interoperable exchange. It includes demographics, problems, medications, allergies, clinical notes, labs, vitals, procedures, care team, goals, assessment/plan, provenance, and more.</p>
+<p>US Core is the HL7 FHIR implementation guide that defines the U.S. baseline profiles and REST interactions for representing and accessing that data. US Core is the practical profile layer on top of FHIR for U.S. EHR access.</p>
+<p>For us: USCDI/US Core is useful as a compatibility target, but SCID-style intake content is more specific than core interoperability data. We should expect to store richer internal assessment state and then export a smaller, standards-shaped clinical artifact.</p>
+<p>Primary sources:</p>
+<ul><li>https://www.healthit.gov/isp/united-states-core-data-interoperability-uscdi</li><li>https://hl7.org/fhir/us/core/</li></ul>
+<h3>SMART on FHIR</h3>
+<p>SMART on FHIR is the OAuth-based app launch and authorization framework used to embed or launch apps in EHR contexts. It defines patterns for:</p>
+<ul><li>User-facing app launch from an EHR or portal.</li><li>Backend service access without an interactive user.</li><li>OAuth scopes like <code>user/Encounter.rs</code> or <code>system/Encounter.rs</code>.</li><li>Discovery at <code>.well-known/smart-configuration</code>.</li></ul>
+<p>If Osmind supported SMART App Launch, this would be the cleanest embedded-app route. I did not find public evidence that Osmind exposes this to third-party developers.</p>
+<p>Primary sources:</p>
+<ul><li>https://docs.smarthealthit.org/</li><li>https://www.hl7.org/fhir/smart-app-launch/</li></ul>
+<h3>HL7 v2</h3>
+<p>HL7 v2 is the older but still heavily used messaging standard. It is common for ADT feeds, orders, results, scheduling, and hospital integration. It is pipe-delimited and operationally entrenched.</p>
+<p>For this project: HL7 v2 is unlikely to be the first path unless Erik's large employer/Brightside has an internal integration team or we use an integration broker. It is more hospital/institution integration than small-practice Osmind integration.</p>
+<h3>CDA / C-CDA</h3>
+<p>CDA and Consolidated CDA are XML document standards used for clinical summaries, continuity of care documents, referrals, and record exchange. Many networks and older workflows still move C-CDA documents.</p>
+<p>For this project: a clinician-reviewed intake note could be exported as a human-readable document, possibly with structured sections. Full C-CDA generation is usually unnecessary for an early product unless a receiving system requires it.</p>
+<h3>X12</h3>
+<p>X12 covers administrative/claims transactions: eligibility, claims, remittance, prior-auth-adjacent workflows, etc. It matters to billing and RCM, not to the core structured interview product unless we enter insurance/prior-auth workflows.</p>
+<h3>TEFCA, Carequality, CommonWell, HIE Networks</h3>
+<p>TEFCA and nationwide exchange networks are about cross-organization health information exchange. They are useful for record retrieval and patient history aggregation, not usually for writing a niche intake result into a private-practice EHR.</p>
+<p>For this project: services like Zus, Particle, Redox, Health Gorilla, or similar may provide network data access, but they solve a different problem than Osmind write-back. They help retrieve external medical history, normalize records, and monitor events.</p>
+<h2>Data Storage Options</h2>
+<h3>Option A: App-Native Relational Model With FHIR-Compatible Mapping</h3>
+<p>Use Postgres or equivalent as the source of truth. Model the product domain directly: assessment sessions, questions, branches, answers, clinician notes, risk flags, review status, exports, audit log, and user access.</p>
+<p>Pros:</p>
+<ul><li>Fastest to build correctly.</li><li>Easier to enforce workflow rules and clinician review.</li><li>Easier to avoid pretending assessment state is standard FHIR when it is not.</li><li>Good fit for a narrow product.</li></ul>
+<p>Cons:</p>
+<ul><li>Requires mapping work later for EMR integration.</li><li>Not a plug-and-play FHIR product.</li></ul>
+<p>My recommendation: choose this first.</p>
+<h3>Option B: Store FHIR Resources Directly</h3>
+<p>Run a FHIR server or store FHIR-shaped JSON resources as the primary model. Assessment content becomes <code>Questionnaire</code> / <code>QuestionnaireResponse</code> plus <code>Observation</code>, <code>DocumentReference</code>, <code>Provenance</code>, and related resources.</p>
+<p>Pros:</p>
+<ul><li>Standards alignment from the start.</li><li>Easier to expose a FHIR API later.</li><li>Good if integration is the product.</li></ul>
+<p>Cons:</p>
+<ul><li>More complexity before product shape is known.</li><li>FHIR can be awkward for rich interview branching, drafts, partial states, UI behavior, and proprietary instruments.</li><li>Does not automatically solve PHI, consent, audit, or vendor access.</li></ul>
+<p>Use this only if we decide the product is a healthcare data platform, not just an intake workflow assistant.</p>
+<h3>Option C: Hybrid App DB + FHIR Projection</h3>
+<p>Use an app-native database as source of truth, then produce FHIR resources as a projection/export layer.</p>
+<p>Pros:</p>
+<ul><li>Best long-term shape for this project.</li><li>Keeps product workflow clean while preserving integration optionality.</li><li>Lets us support PDF, JSON, FHIR Bundle, or EMR-specific formats from the same reviewed session.</li></ul>
+<p>Cons:</p>
+<ul><li>Requires discipline around versioning and mapping.</li><li>FHIR projection must be tested carefully before integration claims.</li></ul>
+<p>My recommendation: design for this, but do not build the full projection until an integration need is real.</p>
+<h3>Option D: No PHI Storage / Ephemeral Local Tool</h3>
+<p>For earliest discovery, build a local or ephemeral prototype that does not store real patient data and outputs only a downloadable review artifact.</p>
+<p>Pros:</p>
+<ul><li>Lowest compliance and blast-radius risk.</li><li>Good for workflow validation.</li></ul>
+<p>Cons:</p>
+<ul><li>Not a production architecture.</li><li>Limited clinical utility.</li></ul>
+<p>This is the correct posture for initial experimentation if Erik wants to test the interaction model.</p>
+<h2>Integration Services And Platforms</h2>
+<h3>Redox</h3>
+<p>Redox is a healthcare interoperability platform with EHR connections, FHIR API support, Redox data models, cloud connectivity, network onramps, security/compliance posture, and managed integration services. Public docs mention FHIR API, app launch/authentication, patients, visit/scheduling, clinical networks, Carequality, and TEFCA/CommonWell onramps.</p>
+<p>Use Redox when:</p>
+<ul><li>We need to connect to multiple provider systems.</li><li>We need HL7/FHIR normalization and managed integration work.</li><li>The buyer has budget and compliance appetite.</li></ul>
+<p>Do not assume Redox solves Osmind specifically until its connection network confirms Osmind support.</p>
+<p>Sources:</p>
+<ul><li>https://www.redoxengine.com/</li><li>https://docs.redoxengine.com/</li></ul>
+<h3>Zus Health</h3>
+<p>Zus aggregates patient records into a longitudinal profile from EHR networks, pharmacy, ADT, and labs; normalizes to FHIR; offers APIs, GraphQL, embedded UI, data marts, and EHR integrations.</p>
+<p>Use Zus when:</p>
+<ul><li>We want external patient history retrieval and summarization.</li><li>The product needs richer context before intake.</li><li>We are serving provider organizations with treatment relationships and consent/legal basis.</li></ul>
+<p>Source: https://docs.zushealth.com/</p>
+<h3>Particle Health</h3>
+<p>Particle provides APIs/data products for accessing medical records from large healthcare networks, including FHIR R4 or C-CDA via RESTful API, with focus on record retrieval and insights.</p>
+<p>Use Particle when:</p>
+<ul><li>We need national record search/retrieval.</li><li>We need history data, not EHR write-back.</li></ul>
+<p>Source: https://www.particlehealth.com/</p>
+<h3>Other Buckets</h3>
+<ul><li>Network/interoperability APIs: Health Gorilla, 1upHealth, Particle, Zus, Redox.</li><li>Developer-friendly EHR/platforms: Medplum, Canvas, Healthie, Elation.</li><li>Large enterprise EHR ecosystems: Epic, Oracle Health/Cerner, athenahealth.</li><li>API capability references/comparison: Cobalt's EHR API Explorer is useful for understanding what public EHR APIs actually support.</li></ul>
+<p>For this project, these are not first-step dependencies. They become relevant if the strategy shifts from &quot;help Erik's practice&quot; to &quot;build an EMR-integrated product category.&quot;</p>
+<h2>Architecture Options For This Project</h2>
+<h3>Option 1: EMR-Adjacent Intake Assistant</h3>
+<p>Build a standalone clinician-supervised intake assistant. Outputs are PDF/HTML/structured JSON and a concise note body. Erik manually attaches or pastes the output into Osmind.</p>
+<p>Best for:</p>
+<ul><li>Early validation.</li><li>Avoiding premature vendor dependency.</li><li>Keeping SCID/licensing and clinical safety questions isolated.</li><li>Working with both Osmind and Brightside-style in-house EMRs.</li></ul>
+<p>Architecture:</p>
+<ul><li>Web app for clinician-supervised session.</li><li>App-native DB, or no-PHI prototype mode at first.</li><li>Strict auth, audit log, encryption, role-based access if PHI enters scope.</li><li>Export renderer for clinician-reviewed intake summary.</li><li>Optional FHIR-shaped internal export later.</li></ul>
+<p>Verdict: recommended first real path.</p>
+<h3>Option 2: Osmind Manual Workflow Enhancer</h3>
+<p>Use Osmind's existing custom intake builder, forms, rating scales, templates, and note import features as much as possible. Aspen builds only the missing piece around structured branching, interview assistance, summarization, or clinician review.</p>
+<p>Best for:</p>
+<ul><li>Erik's private practice if Osmind already covers intake basics.</li><li>Reducing integration surface.</li></ul>
+<p>Architecture:</p>
+<ul><li>Structured assistant produces output intentionally shaped for Osmind note sections.</li><li>No direct API.</li><li>Human-in-the-loop transfer.</li></ul>
+<p>Verdict: likely fastest practical path for Erik.</p>
+<h3>Option 3: Official Osmind Partner/API Integration</h3>
+<p>Contact Osmind and pursue approved API, import, webhook, SMART/FHIR, or partner access.</p>
+<p>Best for:</p>
+<ul><li>Production use in Erik's Osmind practice.</li><li>Reducing duplicate entry.</li><li>Real commercial product if Osmind practices are the wedge.</li></ul>
+<p>Unknowns:</p>
+<ul><li>Does Osmind offer third-party API access?</li><li>Can we create/update patients, questionnaires, notes, attachments, appointments, tasks?</li><li>Can we write to chart notes or only read/export?</li><li>Are there fees, security reviews, BAAs, partner contracts, sandbox access?</li></ul>
+<p>Verdict: worth exploring, but not a blocker for discovery.</p>
+<h3>Option 4: Integration Broker Route</h3>
+<p>Use Redox or a similar service if they support the target EHR/workflow.</p>
+<p>Best for:</p>
+<ul><li>Multi-EMR product strategy.</li><li>Enterprise/provider customers.</li><li>Avoiding one-off HL7/FHIR plumbing.</li></ul>
+<p>Cons:</p>
+<ul><li>Cost and sales/onboarding overhead.</li><li>Does not guarantee Osmind support.</li><li>May still require practice/EHR approval and interface setup.</li></ul>
+<p>Verdict: viable later if this becomes a commercial healthcare integration product.</p>
+<h3>Option 5: SMART on FHIR App</h3>
+<p>Build an app that launches inside an EHR context using SMART App Launch and reads/writes FHIR resources.</p>
+<p>Best for:</p>
+<ul><li>Certified EHRs with SMART app ecosystems.</li><li>Large-employer or health-system workflows.</li></ul>
+<p>Cons:</p>
+<ul><li>Requires target EHR support and app registration.</li><li>Write capabilities vary sharply.</li><li>Osmind support unknown.</li></ul>
+<p>Verdict: good architectural pattern for Brightside/in-house EMR discussions, not assumed for Osmind.</p>
+<h3>Option 6: Become The EMR / Clinical System Of Record</h3>
+<p>Build a full mental-health EHR or assessment-record platform.</p>
+<p>Best for:</p>
+<ul><li>A company-level strategic bet, not Erik's current request.</li></ul>
+<p>Cons:</p>
+<ul><li>Huge compliance, product, support, certification, billing, e-prescribing, scheduling, and liability scope.</li><li>Competes with Osmind instead of integrating.</li></ul>
+<p>Verdict: not recommended. This is full plate armor to make toast.</p>
+<h2>Recommended Decision Framework</h2>
+<p>If the goal is to help Erik's private practice soon, choose Option 1 + Option 2.</p>
+<p>If the goal is to build a product for many psychiatry practices using Osmind, start with Option 1, then validate Option 3 directly with Osmind.</p>
+<p>If the goal is to integrate with Brightside or large employers, investigate Option 5 and/or Option 4, because in-house or enterprise EMRs may expose internal APIs, FHIR endpoints, HL7 feeds, or sanctioned app frameworks.</p>
+<p>If the goal is to build in the EMR data network space, look at Redox/Zus/Particle-style services and expect this to become a healthcare infrastructure company, not a lightweight intake tool.</p>
+<h2>Security, Compliance, And Clinical Guardrails</h2>
+<p>Assume Level 5 stakes if real patient data, diagnosis-adjacent outputs, clinical notes, PHI, suicidality/risk, or treatment workflow are involved.</p>
+<p>Minimum production controls if PHI is in scope:</p>
+<ul><li>HIPAA posture and Business Associate Agreements with all vendors touching PHI.</li><li>Encryption in transit and at rest.</li><li>Strong authentication and role-based access.</li><li>Audit logs for access, changes, exports, review, and deletion.</li><li>Data retention/deletion policy.</li><li>Separate production, staging, and test data.</li><li>No real patient data in development logs, prompts, screenshots, or shared workspaces.</li><li>Clinician review before anything becomes part of the chart.</li><li>Explicit &quot;not autonomous diagnosis&quot; product boundary.</li><li>Incident response and backup/restore plan.</li><li>Vendor review for LLM providers if any PHI is processed.</li></ul>
+<p>For the SCID-specific side, keep the existing IP/licensing gate: do not encode prompts, branching, wording, scoring, or structure from proprietary clinical instruments until rights are clear.</p>
+<h2>Immediate Next Steps</h2>
+<ul><li>Ask Erik what he wants from Osmind integration: attach a PDF, paste note text, populate intake forms, create a note, update face sheet, schedule follow-up, create tasks, or sync questionnaires.</li><li>Ask Erik to inspect Osmind admin/settings for export/import/API/integration options and whether custom forms can approximate the workflow.</li><li>Contact Osmind support with a narrow integration question: &quot;Can a third-party tool create or attach clinician-reviewed intake summaries or structured questionnaire responses to a patient chart? If yes, what approved integration paths exist?&quot;</li><li>Keep prototype work no-PHI until Andy explicitly clears a privacy posture.</li><li>Design the data model app-native, with FHIR-compatible export concepts in mind.</li><li>Revisit integration architecture only after Osmind answers the API/partner question.</li></ul>
+<h2>Bottom Line</h2>
+<p>The right first move is not to bet the project on Osmind integration. Build the intake-assessment workflow so it produces a clinically reviewable artifact that can live outside any one EMR. Then integrate only where the workflow and vendor access justify it.</p>
+<p>For Erik, that means: make something useful even if the only Osmind path is &quot;attach this reviewed summary to the chart.&quot; For a future product, keep the architecture clean enough that FHIR, SMART, Redox, or an Osmind partner API can be added without ripping the core system apart.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
