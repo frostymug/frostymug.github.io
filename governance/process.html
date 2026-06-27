@@ -40,8 +40,14 @@
       <summary>Frost Rocks</summary>
       <a href="/projects/frost-rocks/index.html">Overview</a>
       <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
       <a href="/projects/frost-rocks/strategy.html">Strategy</a>
       <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
     </details>
     <details class="nav-subsection">
       <summary>Ice Age Trail</summary>
@@ -166,6 +172,16 @@ Production</code></pre>
 <p>---</p>
 <h2>Artifacts &amp; Handoffs</h2>
 <p>Official project artifacts live in <code>/home/ubuntu/.openclaw/workspace/projects/&lt;project&gt;/</code>. Individual agent workspaces are for drafts, scratch work, and role-specific notes. When an artifact becomes a cross-agent dependency or is ready for Andy review, promote it to the shared project folder and mark its source and approval status.</p>
+<h3>Visual And Experience Prototypes</h3>
+<p>For product design work where Andy needs to react to visual hierarchy, mobile feel, interaction flow, or screen-to-screen experience, the designer owns the prototype artifact.</p>
+<p>Telegram is the conversation layer, not the design surface. The default design surface is a clickable, responsive HTML prototype stored in the shared project folder and published through <code>docs.aspenfrost.com</code>.</p>
+<p>Project-owned prototype files live under:</p>
+<pre><code class="language-text">projects/&lt;project&gt;/published-html/&lt;prototype-version&gt;/</code></pre>
+<p>After publish, they are available at:</p>
+<pre><code class="language-text">https://docs.aspenfrost.com/projects/&lt;project&gt;/published-html/&lt;prototype-version&gt;/</code></pre>
+<p>When Andy asks a designer for &quot;the prototype,&quot; that means:</p>
+<ul><li>Clarify the design question being tested.</li><li>Create or update the experience sketch when needed.</li><li>Build the clickable HTML prototype directly; do not require an implementation agent for early design prototypes.</li><li>Include realistic fake data, mobile-first layout, and visible review anchors.</li><li>Add a review page or section with what Andy should react to, what is intentionally fake, known rough edges, decisions, and open questions.</li><li>Publish through the docs pipeline or ask Aspen to publish if the designer cannot publish directly.</li><li>Return the published URL and the review anchors/prompts.</li></ul>
+<p>Use the lowest fidelity that can answer the question. Use Markdown for unsettled flows, HTML for visual/interaction review, and native Expo/TestFlight only when the question depends on device APIs such as camera, location permissions, offline storage, gestures, or push notifications.</p>
 <p>For fuzzy, high-stakes, or open-ended delegated work, add a lightweight <strong>appetite</strong> and <strong>stopping rule</strong> to the handoff. This is most useful for research loops, strategy loops, architecture investigations, competitive scans, safety reviews, and agent-development routines. Do not make it ceremony for tiny deterministic tasks.</p>
 <ul><li><strong>Appetite:</strong> how much effort/time/depth belongs in this pass.</li><li><strong>Stopping rule:</strong> what makes the loop complete enough to hand back, or what condition should stop the work early.</li></ul>
 <h3>&quot;Share This With Another Agent&quot; Protocol</h3>
