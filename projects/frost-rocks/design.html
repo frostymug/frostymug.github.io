@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Frost-Rocks — Design Document · Aspen's Docs</title>
+  <title>Frost Rocks — Design Document · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -109,38 +109,139 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Design</div>
-      <h1>Frost-Rocks — Design Document</h1>
-<p><strong>Project:</strong> Rock identification &amp; learning app <strong>Company:</strong> Aspen Frost Consulting <strong>Design lead:</strong> Izzy <strong>Last updated:</strong> 2026-05-23</p>
+      
+      <h1>Frost Rocks — Design Document</h1>
+<p><strong>Project:</strong> Geology and place-based learning app <strong>Company:</strong> Aspen Frost Consulting <strong>Design lead:</strong> Izzy <strong>Last updated:</strong> 2026-06-27 <strong>Status:</strong> Unlocked working frame</p>
 <p>---</p>
-<h2>LOCKED DOWN</h2>
-<h3>Audience</h3>
-<ul><li>Rock hobbyists — birder energy</li><li>Intrinsic motivation, life-list mentality, real-world collection</li><li>Not students, no credentials, no formal curriculum</li></ul>
-<h3>Core Loop</h3>
-<ul><li><strong>In the field:</strong> photograph rock → attempt ID → log to location</li><li><strong>At home:</strong> flashcard practice seeded by field encounters</li><li>These feed each other — field experience shapes the practice deck</li><li>Geographic/experiential context is the <strong>primary motivational scaffold</strong> — flashcards should feel like memories, not drills</li></ul>
-<h3>Instructional Design Principles</h3>
-<ul><li><strong>Fading scaffolding:</strong> novices get perceptual + vocabulary + elimination help; seasoned users get minimal to none</li><li><strong>Perceptual scaffolding fades last</strong> — noticing the right features IS the skill</li><li><strong>Attempt first, always</strong> — generation effect; scaffolding is a reward for the attempt, not a prerequisite</li><li><strong>Error correction sequence:</strong> validate reasoning → isolate one distinguishing feature → make them look again → resurface soon</li><li><strong>Confident-wrong = highest priority re-teach event</strong></li><li><strong>Confidence rating before answer revealed</strong> (Sure / Kind of / Guessing) — feeds algorithm AND builds metacognitive calibration</li></ul>
-<h3>Spaced Repetition: FSRS (py-fsrs)</h3>
-<p>- Guessing + Wrong  → Again - Sure + Wrong      → Again (flag: high-priority re-teach) - Guessing + Right  → Hard - Kind of + Right   → Good - Sure + Right      → Easy</p>
-<ul><li>Repo: https://github.com/open-spaced-repetition/py-fsrs</li><li>Algorithm: FSRS — models stability (how long you'll remember) + difficulty (how hard this item is for you) separately</li><li>User never sees the FSRS machinery — confidence + outcome maps to FSRS ratings behind the scenes:</li><li><strong>Mastery proxy:</strong> FSRS stability value — days until forgetting. Continuous signal, not a graduation ceremony.</li></ul>
-<h3>Domain Knowledge Model (framework, details TBD)</h3>
-<p>The knowledge model has four layers:</p>
-<ul><li><strong>Taxonomy</strong> — igneous/sedimentary/metamorphic → subtypes → individual rocks; structured for learnability, not just geological correctness</li><li><strong>Identifying features per rock</strong> — which features are <em>diagnostic</em> for a given rock, not just a full attribute list</li><li><strong>Confusion graph</strong> — which rocks get confused with which, and which features resolve each specific confusion; this IS the curriculum sequence</li><li><strong>Feature salience by photo</strong> — which features are observable from an image vs. requiring physical examination; the app must be honest about this ceiling</li></ul>
+<h2>Current Design Read</h2>
+<p>Frost Rocks began as a rock identification skill-development app: field encounters seed at-home practice, and the user gets better at identifying rocks over time.</p>
+<p>That thesis still matters.</p>
+<p>The Finland prototype adds a sharper near-term test: can a real trip seed durable geology/place learning without making the trip feel like homework?</p>
+<p>For now, Frost Rocks should be treated as:</p>
+<p>&gt; A field notebook with memory, built around geology learning and place-based curiosity.</p>
+<p>The app should help the user notice, capture, revisit, and consolidate what they are learning about rocks, landforms, and the geological story of a place. It should not become a generic travel journal, and it should not compete head-on with instant rock ID tools.</p>
 <p>---</p>
-<h2>OPEN QUESTIONS (rough priority order)</h2>
-<p>- How do we model the taxonomy in detail? - What attributes does each rock entry need? - Who/what maintains the knowledge base — curated, crowdsourced, or AI-generated?</p>
-<ul><li><strong>Content / domain knowledge model</strong></li></ul>
-<p>- Which specific rocks get confused with which? - Which features resolve each specific confusion? - What's learnable from a photo vs. requiring physical examination?</p>
-<ul><li><strong>The confusion graph</strong></li></ul>
-<p>- Where do flashcard/reference photos come from? - Multiple photos per rock? (different lighting, orientations, weathering states) - Do user-submitted field photos feed back into the shared corpus?</p>
-<ul><li><strong>Photo sourcing</strong></li></ul>
-<p>- What does &quot;knowing a rock&quot; mean in this app? (FSRS stability threshold? Explicit graduation? Visible level system?) - Do we surface mastery to the user, and if so how?</p>
+<h2>Audience</h2>
+<ul><li>Curious adult rock/geology hobbyists — birder energy</li><li>Intrinsically motivated, self-directed, and not pursuing credentials</li><li>Often in a life-transition stage with time and appetite for deeper hobbies</li><li>Interested in nature, travel, place, memory, and real-world learning</li><li>Comfortable with phones, but does not want the phone to dominate time outdoors</li><li>Wants to get better, not just outsource every answer to an app</li></ul>
+<p>Andy remains user zero for the Finland prototype.</p>
+<p>---</p>
+<h2>Product Spine</h2>
+<h3>Durable Frost Rocks Thesis</h3>
+<p>The durable product thesis is still off-field skill development:</p>
+<ul><li><strong>In the field:</strong> photograph a rock/geology encounter -&gt; attempt an observation or ID -&gt; log to place</li><li><strong>At home:</strong> encounter becomes practice, reflection, comparison, or review</li><li><strong>Over time:</strong> field experience shapes the learning deck and learning changes future noticing</li><li><strong>Motivation:</strong> geographic and experiential context make practice feel like memory, not drills</li></ul>
+<h3>Finland Prototype Iteration</h3>
+<p>For the Finland user-zero prototype, soften the loop:</p>
+<ul><li><strong>Notice:</strong> the user sees a place, rock, landform, built stone, or geological clue that sparks curiosity</li><li><strong>Capture:</strong> photo, location, timestamp, event, and a quick note</li><li><strong>Commit:</strong> the user records what they notice, guess, or wonder before receiving help</li><li><strong>Scaffold:</strong> the app offers a small prompt that directs attention</li><li><strong>Connect:</strong> the encounter is linked to a Finland geology/place theme</li><li><strong>Reconstruct:</strong> later review starts with memory and original thinking</li><li><strong>Refine:</strong> the user updates what they learned and what remains uncertain</li></ul>
+<p>The prototype should feel like a field notebook with memory, not a quiz app with photos.</p>
+<p>---</p>
+<h2>Instructional Design Principles</h2>
+<ul><li><strong>Notice first, explain second.</strong> The first learning move is not &quot;what is this?&quot; but &quot;what do you notice?&quot;</li><li><strong>Attempt first, always.</strong> The user should generate an observation, guess, or question before the app explains. This supports the generation effect and makes learning active.</li><li><strong>Use recognition for app mechanics.</strong> Controls, states, available actions, and review modes should be visible. Do not make users remember how the interface works.</li><li><strong>Use recall deliberately for learning.</strong> Memory, retrieval, comparison, and explanation are useful learning difficulty when they target the concept being learned.</li><li><strong>Fading scaffolding.</strong> Novices get perceptual, vocabulary, and elimination help; more experienced users get less.</li><li><strong>Perceptual scaffolding fades last.</strong> Noticing the right feature is the skill.</li><li><strong>Uncertainty is respectable.</strong> &quot;Likely,&quot; &quot;possible,&quot; and &quot;unknown&quot; are valid states. A thoughtful unknown is better than a fake answer.</li><li><strong>Error correction sequence.</strong> Validate reasoning -&gt; isolate one distinguishing feature -&gt; make the user look again -&gt; resurface soon.</li><li><strong>Confident-wrong matters.</strong> Confident wrong answers are high-priority re-teach events.</li><li><strong>Confidence before reveal.</strong> Sure / Kind of / Guessing supports both scheduling and metacognitive calibration.</li><li><strong>Field capture must be light.</strong> In-field interaction should increase connection to place, not steal attention from it.</li></ul>
+<p>---</p>
+<h2>Useful Learning Difficulty</h2>
+<p>Friction is not automatically bad design.</p>
+<p>Remove friction that interferes with capture, navigation, saving, offline use, or emotional connection to the place.</p>
+<p>Preserve or introduce friction when it creates:</p>
+<ul><li>Retrieval</li><li>Discrimination</li><li>Reflection</li><li>Calibration</li><li>Mental model building</li><li>Consolidation of previous knowledge</li></ul>
+<p>For the Finland prototype, the desirable difficulty should live mainly in:</p>
+<ul><li>Writing what was noticed</li><li>Naming uncertainty</li><li>Making a guess</li><li>Reconstructing the moment later</li><li>Comparing current understanding to the original observation</li></ul>
+<p>It should not live in:</p>
+<ul><li>Finding the save button</li><li>Completing too many fields outdoors</li><li>Waiting on connectivity</li><li>Being forced through a formal quiz while traveling</li></ul>
+<p>---</p>
+<h2>Finland Prototype Design Direction</h2>
+<h3>Trigger To Open The App</h3>
+<p>Andy said the strongest triggers are:</p>
+<ul><li>A place he wants to remember</li><li>A question he cannot answer</li><li>A question he has about the place</li><li>Something beautiful or curiosity-provoking that makes him want to know more</li></ul>
+<p>This means the product should orient around curiosity and memory, not just identification.</p>
+<h3>Scope Boundary</h3>
+<p>Keep the prototype focused on geology.</p>
+<p>Lakes, forests, buildings, roads, churches, monuments, and broader natural-history context may appear when they explain or enrich the geological story, but they should not become the primary object of the prototype.</p>
+<p>Expansion vision to preserve:</p>
+<p>&gt; A generalized naturalist field journal for place-based learning.</p>
+<p>That is adjacent future territory, not the Finland prototype center.</p>
+<h3>Offline / AI Fallback</h3>
+<p>Bad signal is the most important named trip constraint.</p>
+<p>The app should support offline capture even if AI-generated context requires connectivity later.</p>
+<p>Minimum fallback:</p>
+<ul><li>Save photo, timestamp, location, event, note, guess/question, and confidence locally</li><li>Mark the encounter as needing later context</li><li>Allow the user to return to the place instead of waiting on the app</li><li>Generate or fetch learning notes when connectivity returns</li></ul>
+<p>Open issue:</p>
+<p>&gt; What happens when the user wants AI help but has no connectivity?</p>
+<h3>End-Of-Day Reflection</h3>
+<p>Andy likes a short end-of-day reflection.</p>
+<p>Purpose:</p>
+<ul><li>Consolidate the day's learning</li><li>Preserve questions</li><li>Surface patterns across encounters</li><li>Plant seeds for later review after the trip</li></ul>
+<h3>Export / Journal Artifact</h3>
+<p>Andy wants an exportable trip artifact.</p>
+<p>He already uses Diarium for journaling/diary. Frost Rocks should explore export or integration paths so encounters and reflections can flow into that existing journaling practice.</p>
+<p>---</p>
+<h2>Primary Surfaces</h2>
+<h3>1. Trip Notebook</h3>
+<p>Purpose: orient the user around the current trip.</p>
+<p>Core elements:</p>
+<ul><li>Trip title, e.g. Finland 2026</li><li>Timeline of encounters</li><li>Map/list toggle</li><li>Today's captures</li><li>Event labels</li><li>Prompt of the day</li><li>Quiet review count</li><li>Theme filters</li></ul>
+<p>Design stance: calm field notebook, not dashboard.</p>
+<h3>2. Quick Capture</h3>
+<p>Purpose: capture quickly without killing the moment.</p>
+<p>Required:</p>
+<ul><li>Photo</li><li>Auto location</li><li>Auto timestamp</li><li>&quot;What did you notice?&quot;</li></ul>
+<p>Optional:</p>
+<ul><li>Initial guess or question</li><li>Confidence: Sure / Kind of / Guessing</li><li>Event tag</li><li>Ask me later toggle</li><li>Offline save indicator</li></ul>
+<p>Target: useful capture in under 30 seconds.</p>
+<h3>3. Encounter Detail</h3>
+<p>Purpose: connect a logged moment to learning.</p>
+<p>Core elements:</p>
+<ul><li>Photo gallery</li><li>Place/time/event</li><li>Original observation or guess</li><li>Original confidence</li><li>Uncertainty status: unknown / possible / likely / identified</li><li>Short learning note</li><li>Observation prompts</li><li>&quot;What I learned later&quot;</li><li>Theme tags</li></ul>
+<p>Design stance: this is the memory object.</p>
+<h3>4. Review At Home</h3>
+<p>Purpose: turn trip memories into durable knowledge.</p>
+<p>Review should combine:</p>
+<ul><li>A little quiz, for retrieval</li><li>A little interview, for reflection</li><li>A little story reconstruction, for place memory</li></ul>
+<p>Reveal sequence:</p>
+<ul><li>Photo and place prompt</li><li>Memory question</li><li>Original note</li><li>Feature or concept prompt</li><li>Learning note</li><li>Reflection: what changed?</li><li>Scheduling: Review soon / Review later / I know this now</li></ul>
+<p>Design stance: returning to the trip, not being assigned homework.</p>
+<p>---</p>
+<h2>Spaced Repetition: FSRS (Future-Relevant)</h2>
+<p>The Finland prototype does not need a full spaced repetition implementation if that slows learning, but FSRS remains relevant for the durable Frost Rocks skill loop.</p>
+<p>Reference:</p>
+<ul><li>Repo: https://github.com/open-spaced-repetition/py-fsrs</li><li>Algorithm: FSRS — models stability, how long the user will remember, and difficulty, how hard an item is for the user, separately</li></ul>
+<p>Possible mapping:</p>
+<ul><li>Guessing + Wrong -&gt; Again</li><li>Sure + Wrong -&gt; Again, flagged as high-priority re-teach</li><li>Guessing + Right -&gt; Hard</li><li>Kind of + Right -&gt; Good</li><li>Sure + Right -&gt; Easy</li></ul>
+<p>Important design constraint:</p>
+<p>The user should not see the FSRS machinery. Confidence, recall, correctness, and review behavior can feed scheduling behind the scenes.</p>
+<p>Possible mastery proxy:</p>
+<ul><li>FSRS stability value: days until forgetting</li><li>Continuous signal, not a graduation ceremony</li></ul>
+<p>For Finland, a simpler scheduling model may be enough:</p>
+<ul><li>Review soon</li><li>Review later</li><li>I know this now</li></ul>
+<p>---</p>
+<h2>Domain Knowledge Model</h2>
+<p>The knowledge model still needs four layers:</p>
+<ul><li><strong>Taxonomy</strong> — igneous/sedimentary/metamorphic -&gt; subtypes -&gt; individual rocks, structured for learnability rather than pure geological completeness</li><li><strong>Identifying features per rock</strong> — diagnostic features, not just full attribute lists</li><li><strong>Confusion graph</strong> — which rocks get confused with which, and which features resolve each confusion</li><li><strong>Feature salience by photo</strong> — what can be seen in a photo versus what requires physical examination</li></ul>
+<p>For Finland, add a prototype-level content layer:</p>
+<ul><li>Geological themes: glaciation, ancient bedrock, granite/gneiss, erratics, lakes/shorelines, exposed rock, built stone</li><li>Encounter types: bedrock, loose stone, shoreline, landform, building stone, memorial/monument, road/path</li><li>Review prompts: memory, feature noticing, uncertainty, mental model building</li></ul>
+<p>The domain model is the curriculum. The confusion graph remains especially important for long-term rock ID skill.</p>
+<p>---</p>
+<h2>Open Questions</h2>
+<p>- Is the decisive signal capture frequency, review return rate, quality of observations, emotional connection to Finland, or improved geology discrimination?</p>
+<ul><li><strong>Finland success metric</strong></li></ul>
+<p>- How far can the app lean into place/natural-history context before it stops being Frost Rocks?</p>
+<ul><li><strong>Landscape learning boundary</strong></li></ul>
+<p>- Should AI draft learning notes after the user's observation? - How do we prevent AI from short-circuiting the attempt-first learning loop? - What is the offline fallback when AI is unavailable?</p>
+<ul><li><strong>AI assist</strong></li></ul>
+<p>- Should the Finland starter pack be organized by geology concept, encounter type, place/event, or a hybrid?</p>
+<ul><li><strong>Content model</strong></li></ul>
+<p>- What is the right blend of quiz, interview, and story reconstruction?</p>
+<ul><li><strong>Review mode</strong></li></ul>
+<p>- What export format is most useful? - Is Diarium integration possible or desirable for early prototype scope?</p>
+<ul><li><strong>Journal export</strong></li></ul>
+<p>- What does &quot;knowing a rock&quot; mean in this product? - When should FSRS or another scheduler become necessary? - How much mastery/progress should be visible to the user?</p>
 <ul><li><strong>Mastery model</strong></li></ul>
-<p>- For field use: does the app use AI vision to suggest an ID, or does the user guess cold? - If AI assist exists, how do we prevent it from short-circuiting the retrieval practice?</p>
-<ul><li><strong>AI identification assist</strong></li></ul>
-<p>- How does the app know which rocks to surface? (user location, stated interests, travel history?) - Cold start: what do we show a brand new user with no field history?</p>
-<ul><li><strong>Personalization / relevance engine</strong></li></ul>
-<p>- Is there any structured sense of progression or is it purely self-directed? - How do we show the user they're getting better over time?</p>
-<ul><li><strong>Assessment (if any)</strong></li></ul>
+<p>- Where do reference photos come from? - Should user-submitted field photos feed back into future practice?</p>
+<ul><li><strong>Photo sourcing</strong></li></ul>
+<p>- Is progression purely self-directed, or should the app show structured growth? - How do we show improvement without making the product feel like school?</p>
+<ul><li><strong>Assessment</strong></li></ul>
+<p>---</p>
+<h2>Current Recommendation</h2>
+<p>For Finland, build around encounter memory, not identification.</p>
+<p>Keep rocks and geology as the spine. Let place, curiosity, and travel memory supply the motivation. Preserve the deeper skill-development machinery, including FSRS and the confusion graph, as future layers once the field-notebook/review loop proves it has oxygen.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>

@@ -109,6 +109,7 @@
   <main>
     <article>
       <div class="crumb">Corporate Governance &middot; Process</div>
+      
       <h1>PROCESS.md — How We Build Software</h1>
 <p>&gt; The canonical flow from idea to production. Read this before designing any agent or workflow. &gt; Update it as the process evolves.</p>
 <p><em>Started 2026-05-23. Updated 2026-06-11 - added project intake/kickoff and stakes-ramp rubric.</em></p>
@@ -176,6 +177,9 @@ Production</code></pre>
 <p>Local Markdown is excellent for agent memory, drafting, and agent-to-agent handoffs. It is not, by itself, an Andy-visible artifact.</p>
 <p>Andy generally cannot see an agent's local Markdown unless it is surfaced in chat or published. If an agent wants Andy to review, approve, react to, or use anything longer-lived than a chat message, the artifact must be published to the GitHub Pages docs site at <code>docs.aspenfrost.com</code> and the agent must give Andy the published URL.</p>
 <p>Use chat for concise summaries, questions, and feedback loops. Use published docs for reviewable artifacts, project records, prototypes, briefs, design docs, architecture docs, strategy docs, status pages, and anything Andy may need to open later on mobile.</p>
+<h3>Docs Site Date Standard</h3>
+<p>Every reviewable doc on <code>docs.aspenfrost.com</code> should show a last-updated date.</p>
+<p>Generated Markdown docs get this automatically from the docs builder using the source file's modification date. Standalone published HTML files are copied as-is, so the owning agent must include a visible <code>Last updated: YYYY-MM-DD</code> line in the page itself, ideally near the top or in the footer.</p>
 <h3>Visual And Experience Prototypes</h3>
 <p>For product design work where Andy needs to react to visual hierarchy, mobile feel, interaction flow, or screen-to-screen experience, the designer owns the prototype artifact.</p>
 <p>Telegram is the conversation layer, not the design surface. The default design surface is a clickable, responsive HTML prototype stored in the shared project folder and published through <code>docs.aspenfrost.com</code>.</p>

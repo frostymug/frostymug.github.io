@@ -26,6 +26,7 @@ main { margin-left:260px; min-height:100vh; display:flex; flex-direction:column;
 article { max-width:880px; padding:56px 56px 40px; flex:1; }
 footer { padding:24px 56px 40px; color:var(--muted); font-size:0.75rem; border-top:1px solid var(--line); }
 .crumb { font-size:0.78rem; color:var(--muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:0.08em; }
+.doc-meta { margin:-6px 0 22px; color:var(--muted); font-size:0.78rem; }
 h1, h2, h3, h4 { color:#f1f5f9; }
 h1 { font-size:2.2rem; font-weight:700; letter-spacing:-0.03em; margin:0 0 24px; line-height:1.15; }
 article > h2 { margin-top:40px; padding-top:22px; border-top:1px solid var(--line); font-size:1.5rem; }

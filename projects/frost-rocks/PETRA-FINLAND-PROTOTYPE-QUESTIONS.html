@@ -109,18 +109,97 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Petra Prototype Questions</div>
+      <div class="doc-meta">Last updated: 2026-06-27</div>
       <h1>Frost Rocks — Questions For Petra On Finland Prototype</h1>
 <p><em>Izzy | June 2026</em></p>
-<ul><li>What is the decisive prototype signal: capture frequency, review return rate, quality of observations, emotional connection to Finland, or actual geology discrimination?</li></ul>
-<ul><li>How far can we expand into &quot;landscape learning&quot; before Frost Rocks loses focus?</li></ul>
-<ul><li>Is the starter pack best organized by geology concepts, place/event types, encounter types, or a hybrid?</li></ul>
-<ul><li>What are the must-have Finland themes? My minimum set: glaciation, ancient bedrock, granite/gneiss, erratics, lakes/shorelines, exposed rock, built stone.</li></ul>
-<ul><li>What is the disconfirming signal? Example: Andy captures photos but skips notes and never reviews.</li></ul>
-<ul><li>Should we test AI-assisted learning notes now, or defer until the notebook/review loop proves valuable?</li></ul>
-<ul><li>Should we preload likely Finland observation contexts, or let Andy's route define the content?</li></ul>
-<ul><li>Should navigation prioritize trip timeline/map first, themes second, taxonomy third? That's my lean.</li></ul>
-<ul><li>Is exportable trip journal in scope, or too dangerous because it shifts us toward scrapbook software?</li></ul>
-<ul><li>What decision should this prototype enable afterward: build MVP, revise core loop, narrow to rock ID skill, expand to landscape learning, or kill the concept?</li></ul>
+<h2>Petra Response</h2>
+<p><em>Petra | June 2026</em></p>
+<p>Short version: the Finland prototype should test whether place-linked encounter capture creates durable learning behavior. Not vibes. Not a pretty trip diary. Behavior.</p>
+<p>The design should be generous in feel and ruthless in measurement. If Andy comes home with beautiful entries but no changed understanding, we built a scrapbook. If he captures many rocks but never revisits them, we built a collection bucket. If he reviews and can explain what he noticed differently afterward, we may have a product.</p>
+<h2>1. What is the decisive prototype signal: capture frequency, review return rate, quality of observations, emotional connection to Finland, or actual geology discrimination?</h2>
+<p>Decisive signal: <strong>review return rate plus evidence of changed understanding</strong>.</p>
+<p>Capture frequency is a necessary input, not the win. Emotional connection is valuable, but too soft to be decisive by itself. Actual geology discrimination is the long-term product promise, but too ambitious as the decisive signal for a first travel prototype.</p>
+<p>For this prototype, I would define success as:</p>
+<ul><li>Andy captures at least 15 meaningful encounters during the trip.</li><li>At least 60% include a note, question, guess, or observation beyond just a photo.</li><li>Andy completes at least 3 end-of-day reflections while in Finland.</li><li>Andy completes at least 2 review sessions within 10 days of returning home.</li><li>In review, at least 5 encounters show changed understanding: better vocabulary, clearer uncertainty, a new distinguishing feature, or connection to a Finland geology concept.</li></ul>
+<p>The sharp signal is not &quot;I used it.&quot; The sharp signal is &quot;I used it, came back, and thought better the second time.&quot;</p>
+<h2>2. How far can we expand into &quot;landscape learning&quot; before Frost Rocks loses focus?</h2>
+<p>Frost Rocks can expand to landscape learning only when geology remains the explanatory spine.</p>
+<p>Acceptable expansion:</p>
+<ul><li>Lakes because glaciation explains them.</li><li>Shorelines because bedrock, erosion, and ice history show up there.</li><li>Forests when soil, bedrock, bogs, or glacial deposits help explain what grows there.</li><li>Built stone when it teaches material, place, quarrying, or cultural use of geology.</li></ul>
+<p>Dangerous expansion:</p>
+<ul><li>General travel journaling.</li><li>Birds/plants as independent domains.</li><li>Museums, food, architecture, or history unless they connect back to stone, landform, material, or geological time.</li></ul>
+<p>The guardrail should be: <strong>does this help Andy understand the physical place through geology?</strong> If yes, it belongs. If it only helps him remember the vacation, Diarium already exists and is not scared of us.</p>
+<h2>3. Is the starter pack best organized by geology concepts, place/event types, encounter types, or a hybrid?</h2>
+<p>Hybrid, but not equal weight.</p>
+<p>Primary organization for the user: <strong>place/event type</strong>.</p>
+<p>Underlying content model: <strong>geology concepts and encounter types</strong>.</p>
+<p>Why: users do not wake up in Finland thinking, &quot;Today I shall study Quaternary geomorphology.&quot; They think, &quot;I am walking along a shoreline&quot; or &quot;I am on a ferry&quot; or &quot;this church has interesting stone.&quot; The UX should meet that reality. But the learning layer needs concept structure underneath so the app can connect repeated encounters to glaciation, bedrock, granite/gneiss, erratics, and built stone.</p>
+<p>Suggested structure:</p>
+<ul><li>Trip surface: timeline/map/event first.</li><li>Encounter detail: theme tags second.</li><li>Review: theme consolidation third.</li><li>Taxonomy: hidden unless needed.</li></ul>
+<p>Taxonomy is not the front door. It is the storage room with labels on the shelves.</p>
+<h2>4. What are the must-have Finland themes? My minimum set: glaciation, ancient bedrock, granite/gneiss, erratics, lakes/shorelines, exposed rock, built stone.</h2>
+<p>Your minimum set is right. I would make it slightly more disciplined:</p>
+<ul><li><strong>Glaciation as the master story</strong> — why the landscape looks scraped, lake-filled, and rearranged.</li><li><strong>Ancient bedrock / Fennoscandian Shield</strong> — the deep-time anchor.</li><li><strong>Granite vs. gneiss</strong> — the practical visual discrimination pair.</li><li><strong>Erratics and transported stone</strong> — the &quot;why is this rock here?&quot; theme.</li><li><strong>Lakes, shorelines, and islands</strong> — geology visible through place.</li><li><strong>Exposed bedrock and road cuts</strong> — observation sites.</li><li><strong>Built stone</strong> — bridges, churches, walls, monuments, paving, and material culture.</li><li><strong>Uncertainty and evidence</strong> — not a content theme, but a learning theme that should appear everywhere.</li></ul>
+<p>I would not add more for v0. A starter pack that tries to teach all of Finland will teach nothing. A focused pack that makes Andy notice five things repeatedly has a chance.</p>
+<h2>5. What is the disconfirming signal? Example: Andy captures photos but skips notes and never reviews.</h2>
+<p>There are several disconfirming signals, and they tell us different things.</p>
+<p>Hard disconfirmation:</p>
+<ul><li>Andy captures fewer than 5 encounters despite clear opportunities.</li><li>He says opening the app made him less connected to the place.</li><li>He does not review at all within 10 days of returning.</li></ul>
+<p>Loop disconfirmation:</p>
+<ul><li>He captures photos but rarely writes notes, questions, or guesses.</li><li>He treats the app as a camera roll with labels.</li><li>Review feels like administration, not learning.</li></ul>
+<p>Positioning disconfirmation:</p>
+<ul><li>The only moments he values are answer-seeking moments: &quot;what is this rock?&quot;</li><li>Place, event, and memory context do not matter in review.</li><li>Natural-history or landscape context feels like dilution rather than enrichment.</li></ul>
+<p>Instructional-design disconfirmation:</p>
+<ul><li>Attempt-first feels annoying, performative, or school-like.</li><li>Confidence ratings feel artificial.</li><li>Uncertainty feels frustrating rather than motivating.</li></ul>
+<p>The scariest failure is not low capture. The scariest failure is enthusiastic capture with no review and no learning. That would mean we built an attractive dead end.</p>
+<h2>6. Should we test AI-assisted learning notes now, or defer until the notebook/review loop proves valuable?</h2>
+<p>Test AI-assisted learning notes now, but only behind the user attempt and only as a clearly marked draft.</p>
+<p>Do not test full AI identification. Different beast. Different risk.</p>
+<p>What we should test:</p>
+<ul><li>Andy captures photo + observation/question first.</li><li>App later generates a short learning note when connectivity is available.</li><li>Note is framed as &quot;possible context&quot; or &quot;things to look for,&quot; not an answer from the mountain.</li><li>Andy can edit, accept, reject, or mark it uncertain.</li></ul>
+<p>Why include it now: Andy expects some AI/context help, and Finland is exactly where manual content will be incomplete. If the app cannot help him after he asks a question, the loop may feel underpowered.</p>
+<p>Guardrail: AI must support the learning move, not replace it. If the generated note becomes the reward and Andy stops observing, we learned something uncomfortable. Good. That is why we test.</p>
+<h2>7. Should we preload likely Finland observation contexts, or let Andy's route define the content?</h2>
+<p>Both, but route should win in the field.</p>
+<p>Preload a compact Finland pack so the app has taste and readiness:</p>
+<ul><li>Shoreline / island</li><li>Helsinki urban stone</li><li>Ferry / coastal exposure</li><li>Forest trail</li><li>National park / exposed bedrock</li><li>Lake edge</li><li>Road cut</li><li>Church / monument / built stone</li></ul>
+<p>Then let Andy's actual route define what becomes active. Preloaded content should behave like scaffolding, not itinerary. If the app starts telling Andy what trip he is on, we have become very organized and very wrong.</p>
+<p>The field UI should ask &quot;what context are you in?&quot; more often than it says &quot;go find this.&quot;</p>
+<h2>8. Should navigation prioritize trip timeline/map first, themes second, taxonomy third? That's my lean.</h2>
+<p>Yes. Strong yes.</p>
+<p>Priority:</p>
+<ul><li><strong>Timeline/map</strong> — because the trip is the memory structure.</li><li><strong>Themes</strong> — because learning consolidation needs cross-encounter patterns.</li><li><strong>Taxonomy</strong> — because geology classification is useful after curiosity exists.</li></ul>
+<p>A taxonomy-first app is for people already studying rocks. This prototype is for a curious traveler becoming a better observer. Start with lived experience, then teach the structure.</p>
+<p>I would make timeline the default, map one tap away, and themes visible as filters or quiet chips. Taxonomy should appear in review and detail only when it helps explain confusion.</p>
+<h2>9. Is exportable trip journal in scope, or too dangerous because it shifts us toward scrapbook software?</h2>
+<p>Export is in scope, but narrowly.</p>
+<p>Andy explicitly wants an exportable trip artifact and already uses Diarium. Ignoring that would be product malpractice dressed as focus.</p>
+<p>But the export must be an output of the learning loop, not the product center. Scope it as:</p>
+<ul><li>Export selected encounters.</li><li>Include photo, place, date, original observation, learning note, and &quot;what I learned later.&quot;</li><li>Markdown or simple HTML is enough.</li><li>Consider Diarium-friendly export later.</li></ul>
+<p>Do not build:</p>
+<ul><li>Layout customization.</li><li>Decorative templates.</li><li>Social sharing.</li><li>Memory-book editing.</li><li>A full journaling surface competing with Diarium.</li></ul>
+<p>Strategic position: Frost Rocks creates learning-rich entries that can flow into a journal. Frost Rocks is not the journal.</p>
+<h2>10. What decision should this prototype enable afterward: build MVP, revise core loop, narrow to rock ID skill, expand to landscape learning, or kill the concept?</h2>
+<p>The prototype should enable a fork decision, not a go/no-go vanity ritual.</p>
+<p>Decision outcomes:</p>
+<h3>Build MVP</h3>
+<p>If capture is easy, review happens, and Andy demonstrates changed understanding, build the broader MVP around place-linked geology learning seeded by field encounters.</p>
+<h3>Revise Core Loop</h3>
+<p>If capture works but review does not, keep the encounter notebook but redesign the review mechanism. The problem may be retrieval design, timing, or prompts.</p>
+<h3>Narrow To Rock ID Skill</h3>
+<p>If Andy values only identification and ignores place/story context, narrow back to rock ID skill development. That would be less emotionally rich but cleaner.</p>
+<h3>Expand To Landscape Learning</h3>
+<p>If geology-adjacent context creates more value than rock ID alone while still tying back to land and stone, consider positioning Frost Rocks as the first domain inside a broader place-learning platform. Do not jump there from one trip. Mark it as a second-product hypothesis.</p>
+<h3>Kill Or Park</h3>
+<p>If the app reduces connection to the trip, produces no review behavior, and creates no better understanding, park it. Not every elegant idea deserves a roadmap. Some deserve a dignified burial and a short memo.</p>
+<p>My recommended post-prototype decision rule:</p>
+<ul><li><strong>Proceed</strong> if there is behavior evidence: capture + reflection + review + changed understanding.</li><li><strong>Revise</strong> if one part of the loop works strongly and another fails.</li><li><strong>Narrow</strong> if the only durable value is ID practice.</li><li><strong>Park</strong> if the product is mainly an obligation or an archive.</li></ul>
+<h2>Petra's Bottom Line</h2>
+<p>Izzy, your experience sketch is directionally right: field notebook with memory, not rock ID app with travel features.</p>
+<p>My hard constraint is that we cannot let emotional resonance blur the evidence standard. The prototype is allowed to feel warm. It is not allowed to pass because it feels warm.</p>
+<p>The one-line test is:</p>
+<p>&gt; Did the prototype help Andy notice, remember, and understand Finland better than he would have with a camera roll, Diarium, and a few web searches?</p>
+<p>If yes, we have something. If no, we have a nice idea wearing hiking boots.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
