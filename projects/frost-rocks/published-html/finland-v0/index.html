@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks Finland v0</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="kicker">Frost Rocks prototype</p>
+        <h1>Finland 2026</h1>
+      </div>
+      <button class="icon-button" type="button" data-screen="review-notes" aria-label="Open review notes" title="Review notes">?</button>
+    </header>
+
+    <main>
+      <section class="screen active" id="home" data-title="Trip Notebook">
+        <div class="review-anchor">FR-V0-01 Trip Notebook</div>
+        <section class="hero-panel stone-photo shoreline">
+          <div class="hero-overlay">
+            <p>Today</p>
+            <h2>Notice where stone explains the place.</h2>
+            <span>Shoreline, island, church, path, road cut, or exposed bedrock.</span>
+          </div>
+        </section>
+
+        <section class="metric-grid" aria-label="Prototype behavior signals">
+          <article>
+            <strong>15</strong>
+            <span>target encounters</span>
+          </article>
+          <article>
+            <strong>9</strong>
+            <span>captured so far</span>
+          </article>
+          <article>
+            <strong>3</strong>
+            <span>end-day reflections</span>
+          </article>
+        </section>
+
+        <nav class="mode-tabs" aria-label="Trip views">
+          <button class="tab active" type="button" data-view="timeline">Timeline</button>
+          <button class="tab" type="button" data-view="map">Map</button>
+          <button class="tab" type="button" data-view="themes">Themes</button>
+        </nav>
+
+        <section class="view-panel active" id="timeline-view">
+          <div class="day-heading">
+            <div>
+              <h3>Helsinki walk</h3>
+              <p>3 encounters. 2 have questions. 1 needs AI context.</p>
+            </div>
+            <button class="primary compact" type="button" data-screen="capture">+ Capture</button>
+          </div>
+
+          <article class="encounter-card" data-screen="detail">
+            <div class="thumb stone-photo gneiss"></div>
+            <div>
+              <p class="label">Shoreline bedrock</p>
+              <h4>Layered gray rock by the water</h4>
+              <p>Original note: "Maybe gneiss because of bands?"</p>
+              <div class="chips">
+                <span>Kind of</span><span>Possible</span><span>Granite vs gneiss</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="encounter-card" data-screen="detail-built">
+            <div class="thumb stone-photo built"></div>
+            <div>
+              <p class="label">Built stone</p>
+              <h4>Church steps with pink mineral grains</h4>
+              <p>Question: "Local stone or imported?"</p>
+              <div class="chips">
+                <span>Guessing</span><span>AI pending</span><span>Built stone</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiet-card">
+            <p class="label">End-of-day seed</p>
+            <h4>What pattern did you notice today?</h4>
+            <p>Exposed stone kept appearing at edges: shoreline, steps, paving, and a park path.</p>
+            <button class="secondary" type="button" data-screen="reflection">Reflect tonight</button>
+          </article>
+        </section>
+
+        <section class="view-panel" id="map-view">
+          <div class="map-card" aria-label="Sketch map of Helsinki encounters">
+            <span class="pin pin-a">1</span>
+            <span class="pin pin-b">2</span>
+            <span class="pin pin-c">3</span>
+            <div class="water"></div>
+            <div class="land"></div>
+          </div>
+          <p class="helper">Map is schematic in this prototype. React to whether place-first navigation feels right.</p>
+        </section>
+
+        <section class="view-panel" id="themes-view">
+          <div class="theme-list">
+            <button type="button" data-screen="detail">Granite vs gneiss <span>3 encounters</span></button>
+            <button type="button" data-screen="detail">Glaciation <span>2 encounters</span></button>
+            <button type="button" data-screen="detail-built">Built stone <span>2 encounters</span></button>
+            <button type="button" data-screen="detail">Uncertainty and evidence <span>5 encounters</span></button>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" id="capture" data-title="Quick Capture">
+        <div class="review-anchor">FR-V0-02 Quick Capture</div>
+        <button class="back" type="button" data-screen="home">Back</button>
+        <section class="capture-panel">
+          <div class="photo-drop stone-photo fresh">
+            <span>Photo added</span>
+          </div>
+          <div class="status-row">
+            <span>Helsinki walk</span>
+            <span>Offline ready</span>
+          </div>
+          <label>
+            What did you notice?
+            <textarea id="noticeText">Layered gray rock along the shoreline. The bands are more obvious when wet.</textarea>
+          </label>
+          <label>
+            Initial guess or question
+            <input id="guessText" value="Maybe gneiss? Why are the bands wavy?">
+          </label>
+          <fieldset>
+            <legend>Confidence before help</legend>
+            <div class="segmented">
+              <button type="button">Guessing</button>
+              <button type="button" class="active">Kind of</button>
+              <button type="button">Sure</button>
+            </div>
+          </fieldset>
+          <div class="toggle-line">
+            <span>Ask me about this later</span>
+            <button type="button" class="toggle active" aria-label="Ask me later toggle"></button>
+          </div>
+          <button class="primary full" type="button" data-screen="saved">Save encounter</button>
+        </section>
+      </section>
+
+      <section class="screen" id="saved" data-title="Saved">
+        <div class="review-anchor">FR-V0-03 Offline Fallback</div>
+        <section class="success-panel">
+          <div class="save-mark">Saved</div>
+          <h2>Encounter saved locally.</h2>
+          <p>AI context is queued until connectivity returns. You can put the phone away now.</p>
+          <div class="queued-note">
+            <strong>Later prompt</strong>
+            <span>Why do you think this might be gneiss? What would make you more certain?</span>
+          </div>
+          <button class="primary full" type="button" data-screen="home">Return to trip</button>
+          <button class="secondary full" type="button" data-screen="detail">Open detail</button>
+        </section>
+      </section>
+
+      <section class="screen" id="detail" data-title="Encounter Detail">
+        <div class="review-anchor">FR-V0-04 Encounter Detail</div>
+        <button class="back" type="button" data-screen="home">Back</button>
+        <article class="detail-card">
+          <div class="detail-photo stone-photo gneiss"></div>
+          <div class="detail-header">
+            <div>
+              <p class="label">Helsinki walk - 14:32</p>
+              <h2>Layered gray shoreline rock</h2>
+            </div>
+            <span class="uncertainty">Possible</span>
+          </div>
+          <section class="note-block">
+            <p class="label">Original observation</p>
+            <p>"Layered gray rock along the shoreline. Maybe gneiss because of bands?"</p>
+            <div class="chips"><span>Kind of</span><span>Shoreline</span><span>Granite vs gneiss</span></div>
+          </section>
+          <section class="prompt-box">
+            <p class="label">Look again</p>
+            <h3>What evidence would make this more certain?</h3>
+            <ul>
+              <li>Are the light and dark minerals arranged in bands?</li>
+              <li>Do the bands bend or stay evenly layered?</li>
+              <li>Is this bedrock in place or a placed stone?</li>
+            </ul>
+          </section>
+          <section class="ai-note">
+            <div>
+              <p class="label">Draft learning note</p>
+              <h3>Possible context, not a final answer</h3>
+            </div>
+            <p>Banding can point toward gneiss, but a photo cannot confirm the full mineral makeup. In Finland, ancient bedrock and glacially exposed surfaces make this a useful place to practice the granite/gneiss distinction.</p>
+            <div class="button-row">
+              <button type="button" class="secondary">Accept</button>
+              <button type="button" class="secondary">Edit</button>
+              <button type="button" class="secondary">Still uncertain</button>
+            </div>
+          </section>
+          <label>
+            What I learned later
+            <textarea>Look for mineral banding, not just color stripes. I still need to know what counts as true gneissic texture.</textarea>
+          </label>
+          <button class="primary full" type="button" data-screen="review">Review this memory</button>
+        </article>
+      </section>
+
+      <section class="screen" id="detail-built" data-title="Built Stone Detail">
+        <div class="review-anchor">FR-V0-05 Geology Guardrail</div>
+        <button class="back" type="button" data-screen="home">Back</button>
+        <article class="detail-card">
+          <div class="detail-photo stone-photo built"></div>
+          <div class="detail-header">
+            <div>
+              <p class="label">Helsinki urban stone - 16:10</p>
+              <h2>Pink-grained church steps</h2>
+            </div>
+            <span class="uncertainty">Unknown</span>
+          </div>
+          <section class="note-block">
+            <p class="label">Original question</p>
+            <p>"Is this local Finnish stone or imported? The grains look coarse and pink."</p>
+          </section>
+          <section class="prompt-box">
+            <p class="label">Guardrail</p>
+            <h3>This belongs only if geology explains the place.</h3>
+            <p>Built stone is in scope when it teaches material, quarrying, cultural use of stone, or the relationship between city and bedrock.</p>
+          </section>
+          <button class="primary full" type="button" data-screen="home">Back to notebook</button>
+        </article>
+      </section>
+
+      <section class="screen" id="review" data-title="Review At Home">
+        <div class="review-anchor">FR-V0-06 Review At Home</div>
+        <button class="back" type="button" data-screen="home">Back</button>
+        <article class="review-card">
+          <div class="stone-photo gneiss review-photo"></div>
+          <p class="label">Memory first</p>
+          <h2>Where were you, and what did you think this showed?</h2>
+          <textarea>Helsinki shoreline. I thought it might be gneiss because of the bands.</textarea>
+          <button class="secondary full reveal" type="button" data-reveal="original">Reveal original note</button>
+          <section class="reveal-panel" id="original">
+            <p class="label">Original note</p>
+            <p>"Maybe gneiss because of bands?" Confidence: Kind of.</p>
+          </section>
+          <button class="secondary full reveal" type="button" data-reveal="learning">Reveal learning note</button>
+          <section class="reveal-panel" id="learning">
+            <p class="label">Learning note</p>
+            <p>Better vocabulary: banding, foliation, bedrock, glacial exposure. Better uncertainty: a photo can suggest gneiss but not prove it.</p>
+          </section>
+          <fieldset>
+            <legend>What changed?</legend>
+            <div class="choice-grid">
+              <button type="button">Feature noticed</button>
+              <button type="button">Concept learned</button>
+              <button type="button">Still unknown</button>
+            </div>
+          </fieldset>
+          <div class="button-row">
+            <button type="button" class="secondary">Review soon</button>
+            <button type="button" class="secondary">Review later</button>
+            <button type="button" class="primary">I know this now</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="screen" id="reflection" data-title="End-of-Day Reflection">
+        <div class="review-anchor">FR-V0-07 End-of-Day Reflection</div>
+        <button class="back" type="button" data-screen="home">Back</button>
+        <section class="reflection-panel">
+          <p class="label">Helsinki walk - 3 encounters</p>
+          <h2>What did today make you notice about Finland?</h2>
+          <label>
+            Pattern noticed
+            <textarea>Stone kept showing up at edges: water, steps, paths, and old buildings.</textarea>
+          </label>
+          <label>
+            Question to carry forward
+            <input value="How often am I seeing exposed bedrock versus placed stone?">
+          </label>
+          <label>
+            Seed for later review
+            <input value="Granite/gneiss distinction and glacial exposure.">
+          </label>
+          <button class="primary full" type="button" data-screen="export">Save reflection</button>
+        </section>
+      </section>
+
+      <section class="screen" id="export" data-title="Journal Export">
+        <div class="review-anchor">FR-V0-08 Journal Export</div>
+        <button class="back" type="button" data-screen="home">Back</button>
+        <section class="export-panel">
+          <p class="label">Diarium-friendly artifact</p>
+          <h2>Finland geology journal draft</h2>
+          <div class="export-preview">
+            <h3>Helsinki walk</h3>
+            <p><strong>Encounter:</strong> Layered gray shoreline rock</p>
+            <p><strong>Original observation:</strong> Maybe gneiss because of bands.</p>
+            <p><strong>What I learned later:</strong> Look for mineral banding, foliation, and whether the rock is in place.</p>
+            <p><strong>Still uncertain:</strong> Photo suggests gneiss but cannot confirm mineral makeup.</p>
+          </div>
+          <button class="primary full" type="button">Export markdown</button>
+          <button class="secondary full" type="button">Copy for Diarium</button>
+        </section>
+      </section>
+
+      <section class="screen" id="review-notes" data-title="Prototype Notes">
+        <div class="review-anchor">FR-V0-09 Review Notes</div>
+        <button class="back" type="button" data-screen="home">Back</button>
+        <section class="notes-panel">
+          <h2>What this prototype tests</h2>
+          <p>Does this feel like a travel field notebook with memory, or does it feel like homework?</p>
+          <h3>React to these anchors</h3>
+          <ul>
+            <li><strong>FR-V0-01:</strong> Is timeline/map the right front door?</li>
+            <li><strong>FR-V0-02:</strong> Does capture feel quick enough for the field?</li>
+            <li><strong>FR-V0-03:</strong> Does offline AI-pending feel trustworthy?</li>
+            <li><strong>FR-V0-04:</strong> Does uncertainty feel useful rather than evasive?</li>
+            <li><strong>FR-V0-06:</strong> Does review feel like learning, not admin?</li>
+            <li><strong>FR-V0-08:</strong> Is export an output, not the product center?</li>
+          </ul>
+          <h3>Intentionally fake</h3>
+          <p>Photos are stylized placeholders. Map is schematic. AI notes are scripted. No real camera, GPS, storage, or export is wired in.</p>
+          <h3>Petra's evidence standard</h3>
+          <p>Proceed only if capture, reflection, review, and changed understanding all show behavior evidence.</p>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main">
+      <button type="button" class="active" data-screen="home">Notebook</button>
+      <button type="button" data-screen="capture">Capture</button>
+      <button type="button" data-screen="review">Review</button>
+      <button type="button" data-screen="export">Export</button>
+    </nav>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
