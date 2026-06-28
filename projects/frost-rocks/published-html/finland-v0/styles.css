@@ -602,9 +602,9 @@ textarea {
 }
 
 .prompt-action-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
   margin-bottom: 8px;
 }
@@ -615,9 +615,11 @@ textarea {
 }
 
 .compact-save {
-  flex: 0 0 auto;
+  width: auto;
+  min-width: 86px;
   min-height: 40px;
   padding: 9px 16px;
+  white-space: nowrap;
 }
 
 .big-prompt textarea {
