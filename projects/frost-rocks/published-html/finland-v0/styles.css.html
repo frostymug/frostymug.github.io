@@ -711,26 +711,38 @@ textarea {
 }
 
 .big-prompt {
+  margin: 12px 0 0;
   font-size: 18px;
 }
 
+.prompt-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.prompt-action-row label {
+  margin: 0;
+  font-size: 18px;
+}
+
+.compact-save {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 9px 16px;
+}
+
 .big-prompt textarea {
-  min-height: 112px;
+  min-height: 96px;
+  margin-top: 0;
   font-size: 16px;
   line-height: 1.45;
 }
 
 .capture-save-bar {
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  z-index: 20;
-  width: min(480px, 100vw);
-  transform: translateX(-50%);
-  padding: 10px 14px calc(12px + env(safe-area-inset-bottom));
-  background: rgba(255, 253, 248, .98);
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -10px 24px rgba(24, 32, 28, .12);
+  margin-top: 10px;
 }
 
 .save-now {
