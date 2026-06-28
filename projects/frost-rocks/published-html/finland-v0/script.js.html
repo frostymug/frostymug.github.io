@@ -123,6 +123,7 @@ function showScreen(id) {
   screens.forEach((screen) =&gt; {
     screen.classList.toggle(&quot;active&quot;, screen.id === id);
   });
+  document.body.dataset.currentScreen = id;
 
   const captureScreens = [&quot;capture-note&quot;, &quot;saved&quot;, &quot;field-guide&quot;];
   const reviewScreens = [&quot;review-picker&quot;, &quot;review-guide-pick&quot;, &quot;review&quot;];

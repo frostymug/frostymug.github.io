@@ -9,6 +9,7 @@ function showScreen(id) {
   screens.forEach((screen) => {
     screen.classList.toggle("active", screen.id === id);
   });
+  document.body.dataset.currentScreen = id;
 
   const captureScreens = ["capture-note", "saved", "field-guide"];
   const reviewScreens = ["review-picker", "review-guide-pick", "review"];
