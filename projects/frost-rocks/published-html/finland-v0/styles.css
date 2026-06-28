@@ -70,6 +70,11 @@ p {
   line-height: 1.05;
 }
 
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
+
 .kicker,
 .label,
 .review-anchor {
@@ -330,7 +335,9 @@ main {
 .detail-card,
 .review-card,
 .capture-panel,
+.capture-start,
 .success-panel,
+.guide-panel,
 .reflection-panel,
 .export-panel,
 .notes-panel {
@@ -384,7 +391,9 @@ main {
 
 .quiet-card,
 .capture-panel,
+.capture-start,
 .success-panel,
+.guide-panel,
 .reflection-panel,
 .export-panel,
 .notes-panel {
@@ -456,8 +465,62 @@ main {
   box-shadow: inset 0 -60px 80px rgba(0, 0, 0, .35);
 }
 
+.capture-hero {
+  min-height: 300px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  color: white;
+  box-shadow: inset 0 -120px 90px rgba(0, 0, 0, .44);
+}
+
+.capture-hero h2 {
+  max-width: 320px;
+  margin-top: 4px;
+  font-size: 28px;
+  line-height: 1.08;
+}
+
+.capture-hero .label {
+  color: rgba(255, 253, 248, .84);
+}
+
+.capture-actions {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.action-icon {
+  display: inline-grid;
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .18);
+  font-size: 16px;
+}
+
+.field-note {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ece7dc;
+}
+
+.field-note span,
+.optional-fields summary {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.38;
+}
+
 .status-row {
   margin: 12px 0;
+  flex-wrap: wrap;
 }
 
 label,
@@ -494,6 +557,29 @@ textarea {
 textarea {
   min-height: 92px;
   resize: vertical;
+}
+
+.big-prompt {
+  font-size: 18px;
+}
+
+.big-prompt textarea {
+  min-height: 128px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.optional-fields {
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f1eee6;
+}
+
+.optional-fields summary {
+  cursor: pointer;
+  font-weight: 850;
 }
 
 .toggle-line {
@@ -575,6 +661,60 @@ textarea {
   line-height: 1.35;
 }
 
+.mini-photo {
+  height: 150px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.guide-panel h2 {
+  margin: 3px 0 12px;
+  font-size: 23px;
+  line-height: 1.12;
+}
+
+.chat-stack {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.chat {
+  max-width: 88%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.chat.user {
+  justify-self: end;
+  background: var(--moss);
+  color: white;
+}
+
+.chat.guide {
+  justify-self: start;
+  background: #f1eee6;
+  color: var(--ink);
+}
+
+.quick-replies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 14px 0;
+}
+
+.quick-replies button {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--moss-dark);
+  font-weight: 800;
+}
+
 .detail-card,
 .review-card {
   padding: 12px;
@@ -604,6 +744,7 @@ textarea {
 .note-block,
 .prompt-box,
 .ai-note,
+.connection-panel,
 .export-preview {
   margin: 12px 0;
   padding: 12px;
@@ -631,6 +772,15 @@ ul {
 
 .ai-note {
   border-left: 4px solid var(--gold);
+}
+
+.connection-panel {
+  border-left: 4px solid var(--moss);
+}
+
+.connection-panel h3 {
+  margin: 3px 0 8px;
+  font-size: 17px;
 }
 
 .button-row {
@@ -687,7 +837,7 @@ ul {
   width: min(480px, 100vw);
   transform: translateX(-50%);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 86px 1fr;
   gap: 4px;
   padding: 8px 10px 10px;
   background: rgba(255, 253, 248, .96);
@@ -705,9 +855,28 @@ ul {
   font-weight: 850;
 }
 
+.bottom-nav .capture-nav {
+  width: 66px;
+  height: 66px;
+  min-height: 66px;
+  justify-self: center;
+  margin-top: -28px;
+  border-radius: 50%;
+  background: var(--clay);
+  color: white;
+  font-size: 34px;
+  line-height: 1;
+  box-shadow: 0 12px 24px rgba(24, 32, 28, .24);
+}
+
 .bottom-nav button.active {
   background: #e7efe5;
   color: var(--moss-dark);
+}
+
+.bottom-nav .capture-nav.active {
+  background: var(--clay);
+  color: white;
 }
 
 @media (min-width: 760px) {

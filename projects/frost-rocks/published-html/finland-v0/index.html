@@ -13,7 +13,10 @@
         <p class="kicker">Frost Rocks prototype</p>
         <h1>Finland 2026</h1>
       </div>
-      <button class="icon-button" type="button" data-screen="review-notes" aria-label="Open review notes" title="Review notes">?</button>
+      <div class="top-actions">
+        <button class="icon-button" type="button" data-screen="export" aria-label="Open export settings" title="Export">Ex</button>
+        <button class="icon-button" type="button" data-screen="review-notes" aria-label="Open review notes" title="Review notes">?</button>
+      </div>
     </header>
 
     <main>
@@ -54,7 +57,7 @@
               <h3>Helsinki walk</h3>
               <p>3 encounters. 2 have questions. 1 needs AI context.</p>
             </div>
-            <button class="primary compact" type="button" data-screen="capture">+ Capture</button>
+            <button class="primary compact" type="button" data-screen="capture">Capture</button>
           </div>
 
           <article class="encounter-card" data-screen="detail">
@@ -113,35 +116,62 @@
       <section class="screen" id="capture" data-title="Quick Capture">
         <div class="review-anchor">FR-V0-02 Quick Capture</div>
         <button class="back" type="button" data-screen="home">Back</button>
+        <section class="capture-start">
+          <div class="capture-hero stone-photo fresh">
+            <div>
+              <p class="label">Ready in the field</p>
+              <h2>Capture the thing before the moment passes.</h2>
+            </div>
+          </div>
+          <div class="capture-actions" aria-label="Capture source">
+            <button class="primary full" type="button" data-screen="capture-note">
+              <span class="action-icon">Cam</span>
+              Take photo
+            </button>
+            <button class="secondary full" type="button" data-screen="capture-note">
+              <span class="action-icon">Lib</span>
+              Choose photo
+            </button>
+          </div>
+          <div class="field-note">
+            <strong>Offline ready</strong>
+            <span>Photo, location, time, and your words can save now. The guide can wait for signal.</span>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" id="capture-note" data-title="What Did You Notice?">
+        <div class="review-anchor">FR-V0-02 Capture Prompt</div>
+        <button class="back" type="button" data-screen="capture">Back</button>
         <section class="capture-panel">
           <div class="photo-drop stone-photo fresh">
-            <span>Photo added</span>
+            <span>Photo ready</span>
           </div>
           <div class="status-row">
             <span>Helsinki walk</span>
+            <span>14:32</span>
             <span>Offline ready</span>
           </div>
-          <label>
-            What did you notice?
+          <label class="big-prompt">
+            What do you notice?
             <textarea id="noticeText">Layered gray rock along the shoreline. The bands are more obvious when wet.</textarea>
           </label>
-          <label>
-            Initial guess or question
-            <input id="guessText" value="Maybe gneiss? Why are the bands wavy?">
-          </label>
-          <fieldset>
-            <legend>Confidence before help</legend>
-            <div class="segmented">
-              <button type="button">Guessing</button>
-              <button type="button" class="active">Kind of</button>
-              <button type="button">Sure</button>
-            </div>
-          </fieldset>
-          <div class="toggle-line">
-            <span>Ask me about this later</span>
-            <button type="button" class="toggle active" aria-label="Ask me later toggle"></button>
-          </div>
-          <button class="primary full" type="button" data-screen="saved">Save encounter</button>
+          <details class="optional-fields">
+            <summary>Add a guess or question</summary>
+            <label>
+              Guess or question
+              <input id="guessText" value="Maybe gneiss? Why are the bands wavy?">
+            </label>
+            <fieldset>
+              <legend>How sure are you?</legend>
+              <div class="segmented">
+                <button type="button">Guessing</button>
+                <button type="button" class="active">Kind of</button>
+                <button type="button">Sure</button>
+              </div>
+            </fieldset>
+          </details>
+          <button class="primary full" type="button" data-screen="saved">Save and get back outside</button>
         </section>
       </section>
 
@@ -149,14 +179,41 @@
         <div class="review-anchor">FR-V0-03 Offline Fallback</div>
         <section class="success-panel">
           <div class="save-mark">Saved</div>
-          <h2>Encounter saved locally.</h2>
-          <p>AI context is queued until connectivity returns. You can put the phone away now.</p>
+          <h2>Encounter saved.</h2>
+          <p>You have the photo, place, time, and what caught your eye. You can put the phone away now.</p>
           <div class="queued-note">
-            <strong>Later prompt</strong>
-            <span>Why do you think this might be gneiss? What would make you more certain?</span>
+            <strong>Later, if you want</strong>
+            <span>Ask the guide what your observation might suggest, or save the question for review at home.</span>
           </div>
           <button class="primary full" type="button" data-screen="home">Return to trip</button>
-          <button class="secondary full" type="button" data-screen="detail">Open detail</button>
+          <button class="secondary full" type="button" data-screen="field-guide">Ask a little more</button>
+        </section>
+      </section>
+
+      <section class="screen" id="field-guide" data-title="Ask A Little More">
+        <div class="review-anchor">FR-V0-03 Optional AI Guide</div>
+        <button class="back" type="button" data-screen="saved">Back</button>
+        <section class="guide-panel">
+          <div class="mini-photo stone-photo fresh"></div>
+          <p class="label">Calm field guide</p>
+          <h2>Let us look at the observation first.</h2>
+          <div class="chat-stack">
+            <article class="chat user">
+              <p>Layered gray rock along the shoreline. The bands are more obvious when wet.</p>
+            </article>
+            <article class="chat guide">
+              <p>Good eye. Bands are worth noticing. Before naming it, look for whether light and dark minerals form real layers, or whether you are seeing cracks, wet streaks, or weathering.</p>
+            </article>
+            <article class="chat guide">
+              <p>If you have ten more seconds, check one thing: do the bands bend and flow around each other?</p>
+            </article>
+          </div>
+          <div class="quick-replies">
+            <button type="button">They bend</button>
+            <button type="button">Mostly straight</button>
+            <button type="button">Not sure</button>
+          </div>
+          <button class="primary full" type="button" data-screen="home">Done for now</button>
         </section>
       </section>
 
@@ -249,6 +306,12 @@
             <p class="label">Learning note</p>
             <p>Better vocabulary: banding, foliation, bedrock, glacial exposure. Better uncertainty: a photo can suggest gneiss but not prove it.</p>
           </section>
+          <section class="connection-panel">
+            <p class="label">Connection</p>
+            <h3>This connects to something else you learned earlier.</h3>
+            <p>The same “banding is evidence, not proof” idea showed up at the church steps. You were separating real mineral texture from surface pattern there too.</p>
+            <button class="secondary full" type="button" data-screen="detail-built">Compare the two</button>
+          </section>
           <fieldset>
             <legend>What changed?</legend>
             <div class="choice-grid">
@@ -314,8 +377,8 @@
           <h3>React to these anchors</h3>
           <ul>
             <li><strong>FR-V0-01:</strong> Is timeline/map the right front door?</li>
-            <li><strong>FR-V0-02:</strong> Does capture feel quick enough for the field?</li>
-            <li><strong>FR-V0-03:</strong> Does offline AI-pending feel trustworthy?</li>
+            <li><strong>FR-V0-02:</strong> Does capture behave like a fast field action?</li>
+            <li><strong>FR-V0-03:</strong> Does save-first, optional guide-later feel trustworthy?</li>
             <li><strong>FR-V0-04:</strong> Does uncertainty feel useful rather than evasive?</li>
             <li><strong>FR-V0-06:</strong> Does review feel like learning, not admin?</li>
             <li><strong>FR-V0-08:</strong> Is export an output, not the product center?</li>
@@ -330,9 +393,8 @@
 
     <nav class="bottom-nav" aria-label="Main">
       <button type="button" class="active" data-screen="home">Notebook</button>
-      <button type="button" data-screen="capture">Capture</button>
+      <button type="button" class="capture-nav" data-screen="capture" aria-label="Capture">+</button>
       <button type="button" data-screen="review">Review</button>
-      <button type="button" data-screen="export">Export</button>
     </nav>
   </div>
   <script src="script.js"></script>

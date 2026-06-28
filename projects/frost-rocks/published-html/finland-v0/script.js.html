@@ -124,8 +124,10 @@ function showScreen(id) {
     screen.classList.toggle(&quot;active&quot;, screen.id === id);
   });
 
+  const navState = [&quot;capture-note&quot;, &quot;saved&quot;, &quot;field-guide&quot;].includes(id) ? &quot;capture&quot; : id;
+
   bottomButtons.forEach((button) =&gt; {
-    button.classList.toggle(&quot;active&quot;, button.dataset.screen === id);
+    button.classList.toggle(&quot;active&quot;, button.dataset.screen === navState);
   });
 
   const title = next.dataset.title || &quot;Finland 2026&quot;;

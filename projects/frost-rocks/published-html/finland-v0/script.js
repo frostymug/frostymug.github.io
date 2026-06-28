@@ -10,8 +10,10 @@ function showScreen(id) {
     screen.classList.toggle("active", screen.id === id);
   });
 
+  const navState = ["capture-note", "saved", "field-guide"].includes(id) ? "capture" : id;
+
   bottomButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.screen === id);
+    button.classList.toggle("active", button.dataset.screen === navState);
   });
 
   const title = next.dataset.title || "Finland 2026";
