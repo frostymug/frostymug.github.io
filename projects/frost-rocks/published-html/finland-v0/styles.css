@@ -338,6 +338,7 @@ main {
 .capture-start,
 .success-panel,
 .guide-panel,
+.review-entry-panel,
 .reflection-panel,
 .export-panel,
 .notes-panel {
@@ -394,6 +395,7 @@ main {
 .capture-start,
 .success-panel,
 .guide-panel,
+.review-entry-panel,
 .reflection-panel,
 .export-panel,
 .notes-panel {
@@ -486,6 +488,32 @@ main {
   color: rgba(255, 253, 248, .84);
 }
 
+.modal-sheet {
+  position: relative;
+  margin-top: 34vh;
+  border-radius: 16px 16px 8px 8px;
+  box-shadow: 0 -18px 48px rgba(24, 32, 28, .22);
+}
+
+.modal-sheet h2 {
+  margin: 4px 42px 8px 0;
+  font-size: 24px;
+  line-height: 1.12;
+}
+
+.sheet-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--moss-dark);
+  font-weight: 900;
+}
+
 .capture-actions {
   display: grid;
   gap: 8px;
@@ -494,13 +522,14 @@ main {
 
 .action-icon {
   display: inline-grid;
-  width: 28px;
+  width: 34px;
   height: 28px;
   margin-right: 8px;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 999px;
   background: rgba(255, 255, 255, .18);
-  font-size: 16px;
+  font-size: 11px;
+  font-weight: 900;
 }
 
 .field-note {
@@ -729,11 +758,108 @@ textarea {
 
 .detail-header h2,
 .review-card h2,
+.review-entry-panel h2,
 .reflection-panel h2,
 .export-panel h2,
 .notes-panel h2 {
   font-size: 22px;
   line-height: 1.12;
+}
+
+.review-entry-panel > p:not(.label),
+.review-entry-choice span,
+.review-list em,
+.knowledge-map p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.review-entry-grid {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.review-entry-choice,
+.review-list button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  text-align: left;
+}
+
+.review-entry-choice {
+  display: grid;
+  gap: 5px;
+  min-height: 94px;
+  padding: 13px;
+}
+
+.review-entry-choice strong {
+  font-size: 17px;
+}
+
+.knowledge-map {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f1eee6;
+  border-left: 4px solid var(--water);
+}
+
+.knowledge-map h3 {
+  margin: 3px 0 10px;
+  font-size: 17px;
+}
+
+.map-ladder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.map-ladder span {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--moss-dark);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.review-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.review-list button {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+}
+
+.review-list strong,
+.review-list em {
+  display: block;
+}
+
+.review-list em {
+  margin-top: 3px;
+  font-style: normal;
+}
+
+.mini-thumb {
+  height: 58px;
+  border-radius: 7px;
 }
 
 .uncertainty {

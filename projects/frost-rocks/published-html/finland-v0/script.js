@@ -10,7 +10,13 @@ function showScreen(id) {
     screen.classList.toggle("active", screen.id === id);
   });
 
-  const navState = ["capture-note", "saved", "field-guide"].includes(id) ? "capture" : id;
+  const captureScreens = ["capture-note", "saved", "field-guide"];
+  const reviewScreens = ["review-picker", "review-guide-pick", "review"];
+  const navState = captureScreens.includes(id)
+    ? "capture"
+    : reviewScreens.includes(id)
+      ? "review-start"
+      : id;
 
   bottomButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.screen === navState);

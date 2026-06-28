@@ -115,14 +115,11 @@
 
       <section class="screen" id="capture" data-title="Quick Capture">
         <div class="review-anchor">FR-V0-02 Quick Capture</div>
-        <button class="back" type="button" data-screen="home">Back</button>
-        <section class="capture-start">
-          <div class="capture-hero stone-photo fresh">
-            <div>
-              <p class="label">Ready in the field</p>
-              <h2>Capture the thing before the moment passes.</h2>
-            </div>
-          </div>
+        <section class="capture-start modal-sheet">
+          <button class="sheet-close" type="button" data-screen="home" aria-label="Close capture">x</button>
+          <p class="label">New encounter</p>
+          <h2>Add a photo first.</h2>
+          <p class="helper">Use the familiar phone move: take one now, or pick one you already shot. Then attach the quick field note.</p>
           <div class="capture-actions" aria-label="Capture source">
             <button class="primary full" type="button" data-screen="capture-note">
               <span class="action-icon">Cam</span>
@@ -288,9 +285,86 @@
         </article>
       </section>
 
-      <section class="screen" id="review" data-title="Review At Home">
-        <div class="review-anchor">FR-V0-06 Review At Home</div>
+      <section class="screen" id="review-start" data-title="Review">
+        <div class="review-anchor">FR-V0-06 Review Entry</div>
         <button class="back" type="button" data-screen="home">Back</button>
+        <section class="review-entry-panel">
+          <p class="label">Review</p>
+          <h2>Where do you want to begin?</h2>
+          <p>Start from a memory you choose, or let the guide pick a thread that is ready to connect.</p>
+          <div class="review-entry-grid">
+            <button class="review-entry-choice" type="button" data-screen="review-picker">
+              <strong>I will choose</strong>
+              <span>Pick a place, photo, question, or recent encounter.</span>
+            </button>
+            <button class="review-entry-choice" type="button" data-screen="review-guide-pick">
+              <strong>Guide chooses</strong>
+              <span>Start with the most useful connection from your notebook.</span>
+            </button>
+          </div>
+          <section class="knowledge-map">
+            <div>
+              <p class="label">Geology map</p>
+              <h3>What you are building</h3>
+            </div>
+            <div class="map-ladder" aria-label="Learning map">
+              <span>Observation</span>
+              <span>Texture</span>
+              <span>Rock type</span>
+              <span>Process</span>
+              <span>Finland story</span>
+            </div>
+            <p>Today's shoreline note is not just one memory. It is evidence toward texture vocabulary, metamorphic clues, glacial exposure, and the granite/gneiss distinction.</p>
+            <p class="helper">Spaced repetition can attach later to the specific confusions inside this map, not to random flashcards.</p>
+          </section>
+        </section>
+      </section>
+
+      <section class="screen" id="review-picker" data-title="Choose Review Start">
+        <div class="review-anchor">FR-V0-06 Review Branch A</div>
+        <button class="back" type="button" data-screen="review-start">Back</button>
+        <section class="review-entry-panel">
+          <p class="label">Choose a starting point</p>
+          <h2>Pick the memory you want to work with.</h2>
+          <div class="review-list">
+            <button type="button" data-screen="review">
+              <span class="mini-thumb stone-photo gneiss"></span>
+              <span><strong>Layered shoreline rock</strong><em>Granite vs gneiss. Confidence: kind of.</em></span>
+            </button>
+            <button type="button" data-screen="detail-built">
+              <span class="mini-thumb stone-photo built"></span>
+              <span><strong>Pink-grained church steps</strong><em>Local stone or imported?</em></span>
+            </button>
+            <button type="button" data-screen="reflection">
+              <span class="mini-thumb stone-photo shoreline"></span>
+              <span><strong>End-of-day pattern</strong><em>Stone at edges: water, paths, steps.</em></span>
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" id="review-guide-pick" data-title="Guide Picks Review">
+        <div class="review-anchor">FR-V0-06 Review Branch B</div>
+        <button class="back" type="button" data-screen="review-start">Back</button>
+        <section class="review-entry-panel">
+          <p class="label">Guide chooses</p>
+          <h2>I would start with the shoreline rock.</h2>
+          <p>You have seen banding twice now: once in bedrock, once in built stone. That is a useful place to separate surface pattern from mineral texture.</p>
+          <section class="knowledge-map">
+            <p class="label">Why this matters</p>
+            <h3>One confusion connects several lessons.</h3>
+            <div class="chips">
+              <span>Banding</span><span>Foliation</span><span>Weathering</span><span>Metamorphic clues</span>
+            </div>
+          </section>
+          <button class="primary full" type="button" data-screen="review">Start here</button>
+          <button class="secondary full" type="button" data-screen="review-picker">Choose something else</button>
+        </section>
+      </section>
+
+      <section class="screen" id="review" data-title="Review At Home">
+        <div class="review-anchor">FR-V0-06 Review From Encounter</div>
+        <button class="back" type="button" data-screen="review-start">Back</button>
         <article class="review-card">
           <div class="stone-photo gneiss review-photo"></div>
           <p class="label">Memory first</p>
@@ -394,7 +468,7 @@
     <nav class="bottom-nav" aria-label="Main">
       <button type="button" class="active" data-screen="home">Notebook</button>
       <button type="button" class="capture-nav" data-screen="capture" aria-label="Capture">+</button>
-      <button type="button" data-screen="review">Review</button>
+      <button type="button" data-screen="review-start">Review</button>
     </nav>
   </div>
   <script src="script.js"></script>

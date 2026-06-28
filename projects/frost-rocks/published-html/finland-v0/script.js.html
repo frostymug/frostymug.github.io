@@ -124,7 +124,13 @@ function showScreen(id) {
     screen.classList.toggle(&quot;active&quot;, screen.id === id);
   });
 
-  const navState = [&quot;capture-note&quot;, &quot;saved&quot;, &quot;field-guide&quot;].includes(id) ? &quot;capture&quot; : id;
+  const captureScreens = [&quot;capture-note&quot;, &quot;saved&quot;, &quot;field-guide&quot;];
+  const reviewScreens = [&quot;review-picker&quot;, &quot;review-guide-pick&quot;, &quot;review&quot;];
+  const navState = captureScreens.includes(id)
+    ? &quot;capture&quot;
+    : reviewScreens.includes(id)
+      ? &quot;review-start&quot;
+      : id;
 
   bottomButtons.forEach((button) =&gt; {
     button.classList.toggle(&quot;active&quot;, button.dataset.screen === navState);
