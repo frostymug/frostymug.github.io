@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — Finland Prototype Architecture · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a aria-current="page" href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Finland Architecture</div>
+      <div class="doc-meta">Last updated: 2026-07-01</div>
+      <h1>Frost Rocks — Finland Prototype Architecture</h1>
+<p><em>Arya (Architect) | 2026-07-01 | Status: <strong>DRAFT — awaiting Andy + Izzy sign-off</strong></em></p>
+<p>&gt; <strong>Provenance.</strong> This doc is the architecture answer to the five build-readiness questions in &gt; <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html"><code>ARYA-FINLAND-BUILD-QUESTIONS.md</code></a>, which Andy answered on &gt; 2026-07-01. It is written as a <strong>delta against</strong> the &gt; <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a> — it does not re-decide &gt; the platform, proxy, CI/CD, or release process. Where this doc is silent, <strong>the playbook is the &gt; spec.</strong> Product framing lives in <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html"><code>FINLAND-PROTOTYPE-BRIEF.md</code></a> &gt; (Petra) and <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html"><code>ANDY-FINLAND-PROTOTYPE-ANSWERS.md</code></a> (Izzy). &gt; &gt; <strong>Pipeline position:</strong> Design (done) → <strong>Architecture (this doc)</strong> → Andy + Izzy sign-off → &gt; Podrick stories → Jesse/Eddie build → Arya code review → Cassian ships.</p>
+<p>---</p>
+<h2>0. TL;DR</h2>
+<p>The stack is inherited, not chosen: Expo + TypeScript + expo-sqlite + Cloudflare Worker AI proxy + EAS → TestFlight, exactly as the playbook prescribes. <strong>Everything genuinely Frost-Rocks-specific comes down to five decisions</strong>, all now resolved:</p>
+<p>enrichment is queued with an idempotency key and drained when connectivity returns. <em>(Andy Q1: yes — feature, not bug.)</em></p>
+<p>are deferred. Knowledge layer = theme tags + uncertainty status + a 3-state review flag. <em>(Andy Q2: defer.)</em></p>
+<p>primary content engine; the scaffold exists only to keep the app alive when there's no signal. <em>(Andy Q3: challenged the pack — reconciled below.)</em></p>
+<p>Andy will <em>try</em> to land AI before Finland, so the proxy route is built early but off the critical path. <em>(Andy Q4.)</em></p>
+<ul><li><strong>Offline AI = a real outbox queue, not a spinner.</strong> Capture is instant and network-free; AI</li><li><strong>No domain/knowledge model for v0.</strong> Rich encounter record, but the confusion graph and FSRS</li><li><strong>Content pack shrinks to a thin offline scaffold</strong>, not the full curated pack. Robust AI is the</li><li><strong>AI is a fast-follow, not a first-build blocker</strong> — capture + review ship bulletproof first.</li><li><strong>Data-loss safety net is in v0:</strong> photos to camera roll + one-tap trip export. <em>(Andy Q5: yes.)</em></li></ul>
+<p>If AI slips, Andy still flies with a notebook that never drops an encounter. That is the whole design stance: <strong>reliability beats cleverness.</strong></p>
+<p>---</p>
+<h2>1. What we inherit (do not re-litigate)</h2>
+<p>Straight from the playbook, no changes:</p>
+<p><code>aspen-frost</code>.</p>
+<p>holds only <code>EXPO_PUBLIC_PROXY_URL</code> + <code>EXPO_PUBLIC_PROXY_TOKEN</code>. Worker caps model + <code>max_tokens</code>, rate-limits by IP + token, logs <code>{route, status, latencyMs, ts, reqId}</code> and <strong>never payloads</strong> (no photos, no notes leave as logs).</p>
+<p>the playbook chain (<code>crypto.randomUUID()</code> → <code>getRandomValues</code> v4 → <em>never</em> <code>Math.random()</code> for any key that could ever sync). This matters here because the outbox uses idempotency keys (§3).</p>
+<ul><li><strong>Expo (managed RN) + TypeScript strict, expo-router.</strong> Bundle id <code>com.frostrocks.app</code>, EAS owner</li><li><strong>expo-sqlite</strong> for all persistence (<code>src/db/</code>), local-first.</li><li><strong>Cloudflare Worker AI proxy</strong> the moment AI is involved — keys never in the client bundle. Client</li><li><strong>expo-camera + expo-image-picker</strong>, <strong>expo-secure-store</strong>, <strong>Sentry</strong>, <strong>expo-updates</strong>.</li><li><strong>EAS Build/Submit → TestFlight → App Store.</strong> CI/CD + rollback owned by Cassian, copied in.</li><li><strong>Testing doctrine:</strong> the Hermes-vs-Jest runtime boundary is first-class. UID generation follows</li></ul>
+<p><strong>Productization rung:</strong> this is <strong>Rung 1 — personal / single-user (TestFlight).</strong> Andy is user zero. Hardcoded personal defaults are fine; no auth, no onboarding, no multi-user migration hardening. That framing is what licenses most of the &quot;defer it&quot; calls below.</p>
+<p>---</p>
+<h2>2. What's different about Frost Rocks (the five decisions)</h2>
+<h3>2.1 Offline AI contract — the one architecture-shaping call <em>(Q1: confirmed)</em></h3>
+<p><strong>The whole app is used in the field, and Andy named bad signal as the #1 constraint.</strong> So the offline contract isn't a nice-to-have edge case — it's the spine. See §3 for the concrete design. Headline: <strong>capture is a synchronous local write that can never fail on connectivity; AI enrichment is an asynchronous queued job.</strong> UI copy is honest and calm (&quot;Saved. I'll add geology context when you're back online&quot;), never a spinner or an error. The instructional design <em>wants</em> this gap — attempt-first means Andy observes and guesses before the guide explains.</p>
+<h3>2.2 No knowledge model for v0 <em>(Q2: defer)</em></h3>
+<p>The design doc gestures at a hidden user-knowledge model (concepts, confusion pairs, diagnostic features, FSRS). <strong>Deferred.</strong> For a one-user trip prototype, that graph is premature — we don't yet know if review even happens (it's a core learning goal to <em>test</em>, not assume). The v0 knowledge layer is deliberately flat:</p>
+<p>ecology-context).</p>
+<p>state (Andy Q5 — uncertainty is a teaching moment).</p>
+<p>FSRS, no confusion matrix.</p>
+<ul><li><strong>Theme tags</strong> on an encounter (glacial landform / bedrock / shoreline / erratic / built stone /</li><li><strong>Uncertainty status:</strong> <code>unknown | possible | likely | identified</code>. First-class, never a failure</li><li><strong>Review state:</strong> a 3-way flag — <code>soon | later | know-it</code>. That's the entire scheduler for v0. No</li></ul>
+<p>When a real MVP earns it, the confusion graph + FSRS slot <em>on top of</em> this record without a migration rewrite (see §4 schema — the encounter table is intentionally rich even though the knowledge layer is thin).</p>
+<h3>2.3 Content pack → thin offline scaffold <em>(Q3: Andy challenged — here's the reconciliation)</em></h3>
+<p><strong>Andy's question was the right one:</strong> &quot;if we have robust AI, why a content pack? Can't the user just capture a photo and dialogue with the AI?&quot; The honest answer is that a big curated pack is <em>not</em> needed, but a <strong>thin offline scaffold is</strong> — for two reasons the &quot;just dialogue with AI&quot; model can't cover:</p>
+<p>nothing — the call is queued for tonight. Something has to make the <em>in-the-moment</em> capture feel alive and keep the attempt-first prompt working while the guide is asleep. That's the scaffold: a handful of generic observation prompts (&quot;Look for texture, layering, crystal size. Is this bedrock, a transported erratic, or human-placed?&quot;) + a tiny glossary. It runs with zero network.</p>
+<p>Finnish geology. Andy's Q5 answer explicitly wants <em>honest uncertainty</em>. A small curated Finland context, injected into the proxy prompt, gives the model something to stay anchored to instead of freelancing a confident wrong ID.</p>
+<ul><li><strong>Offline is the default field state (Q1/Q7).</strong> With no signal, &quot;dialogue with AI&quot; produces</li><li><strong>Grounding keeps the AI honest.</strong> A raw frontier model will confidently hallucinate specific</li></ul>
+<p><strong>Decision:</strong> <strong>thin offline scaffold (≈6–8 observation prompts + small glossary) = REQUIRED in v0. Full curated 20–30-card pack = deferred to should-have.</strong> This also removes the biggest non-code critical-path risk before the trip — nobody has to author a big pack to ship. Format per playbook: Markdown/JSON bundled at build time, no runtime fetch. Ownership: Petra authors the thin scaffold, Izzy reviews; small enough to not gate the build.</p>
+<h3>2.4 AI is a fast-follow <em>(Q4: confirmed, with Andy's caveat)</em></h3>
+<p><strong>First TestFlight build = capture + review, bulletproof and AI-free.</strong> The AI learning-note path (proxy route + enrichment worker + drain loop) is the <em>immediate</em> next build. Andy will try to land it before Finland; architecture supports that by building the proxy route early and keeping it off the release-blocking path. Because AI enrichment is already an async queued job (§3), adding it later is <em>additive</em> — no refactor of the capture path. That decoupling is exactly what makes the fast-follow cheap.</p>
+<p>Also deferred out of the first build (should/could, per Petra's ladder): prompt-of-the-day, compare-two-encounters, heavy analytics, and a separate end-of-day-reflection surface (the reflection <em>field</em> exists on the encounter; the dedicated surface is later).</p>
+<h3>2.5 Data-loss safety net <em>(Q5: confirmed — in v0)</em></h3>
+<p>Local-first means the device is the only copy, and the brief calls data loss &quot;the one thing we can't do to your vacation.&quot; Playbook's cheap mitigations, both in v0:</p>
+<p>the app is deleted or corrupts.</p>
+<p>human-readable Markdown/HTML journal). This <em>also</em> serves Andy's Q9/Diarium ask: the export is the seam through which encounters can flow into his existing journaling. <strong>Diarium integration itself is out of scope for v0</strong> — we ship a clean, documented export format and treat any Diarium-specific import as a fast-follow once we see the real file Diarium wants.</p>
+<ul><li><strong>Photos written to the device camera roll</strong> on capture — so they survive in iCloud Photos even if</li><li><strong>One-tap &quot;Export my trip&quot;</strong> → a self-contained bundle (JSON manifest + photos + a</li></ul>
+<p>Real cross-device backup (iCloud/CloudKit/backend sync) stays deferred — that's a Rung-3 decision a single-user trip prototype hasn't earned.</p>
+<p>---</p>
+<h2>3. The offline enrichment queue (the concrete design)</h2>
+<p>This is the only genuinely novel mechanism in the app, so it gets specced properly.</p>
+<p><strong>Two independent write paths:</strong></p>
+<p>location + timestamp + event tag + theme tags → one <code>INSERT</code> into <code>encounters</code> in local SQLite. No network in this path <em>at all</em>. This is the promise: capture cannot fail because of signal.</p>
+<p><code>enrichment_jobs</code> row referencing the encounter, status <code>queued</code>. We do <strong>not</strong> block the UI.</p>
+<ul><li><strong>Capture (synchronous, always succeeds):</strong> photo(s) + note + guess/question + confidence +</li><li><strong>Enrichment (asynchronous, queued):</strong> if Andy asks for AI help (&quot;ask the guide&quot;), we enqueue an</li></ul>
+<p><strong>The drain loop:</strong></p>
+<p>where status ∈ {<code>queued</code>, <code>failed</code> and <code>attempts &lt; N</code>}, oldest first.</p>
+<p>scaffold context<strong> (§2.3), carrying an </strong>idempotency key** = the job's UUID.</p>
+<p>failure (network/5xx/429): leave <code>queued</code>/<code>failed</code>, increment <code>attempts</code>, honor <code>Retry-After</code>; <strong>never</strong> retry-storm. On permanent failure (4xx that isn't 429): mark <code>dead</code>, surface a quiet &quot;couldn't add context — tap to retry.&quot;</p>
+<ul><li>A background task (on app foreground + on connectivity-regained event) selects <code>enrichment_jobs</code></li><li>For each, it calls the Worker proxy <code>/enrich</code> route with the encounter payload **+ the grounding</li><li>On success: write the returned learning note to the encounter, set job <code>done</code>. On transient</li></ul>
+<p><strong>Why the idempotency key matters here:</strong> the drain loop can fire on a flaky connection that succeeds server-side but drops the response before the client sees it. Without idempotency, the next drain double-charges the AI call and can double-write the note. The Worker dedupes on the key (short-lived cache is enough at single-user scale). This is <em>the</em> correctness subtlety of the whole app, which is why the playbook's UID rule (§1) is load-bearing, not ceremony: the idempotency key is a key that could one day sync, so it must never come from <code>Math.random()</code>.</p>
+<p><strong>Ordering / conflict:</strong> single user, single device for v0 → no merge/CRDT concerns. If Andy edits his own note while a job is in flight, the enrichment writes only to the AI-note field, never Andy's note field — the two never collide by construction.</p>
+<p>---</p>
+<h2>4. Data model (v0)</h2>
+<p>Deliberately <strong>rich record, thin knowledge layer</strong> — so the deferred FSRS/graph can land later without a schema rewrite.</p>
+<pre><code>trips
+  id (uuid) | title | start_date | end_date | created_at
+
+encounters
+  id (uuid) | trip_id -&gt; trips.id
+  captured_at | lat | lng | location_label
+  event_tag                       -- &quot;Helsinki walk&quot;, &quot;ferry day&quot;, etc.
+  note                            -- Andy's &quot;what did you notice?&quot; (his words, never AI-written)
+  initial_guess                   -- attempt-first
+  confidence                      -- sure | kind_of | guessing
+  uncertainty_status              -- unknown | possible | likely | identified
+  ai_learning_note                -- filled by enrichment; nullable; never overwrites `note`
+  learned_later                   -- Andy's &quot;what I learned later&quot; reflection
+  review_state                    -- soon | later | know_it
+  created_at | updated_at
+
+encounter_photos
+  id (uuid) | encounter_id -&gt; encounters.id
+  local_uri | camera_roll_asset_id   -- proves the camera-roll safety net (§2.5)
+  width | height | created_at
+
+encounter_theme_tags
+  encounter_id -&gt; encounters.id | theme   -- glacial | bedrock | shoreline | erratic | built_stone | ecology
+
+enrichment_jobs                    -- the outbox (§3)
+  id (uuid)                        -- doubles as the AI idempotency key
+  encounter_id -&gt; encounters.id
+  status                           -- queued | done | failed | dead
+  attempts | last_error | retry_after_ts | created_at | updated_at
+
+ai_call_log                        -- per playbook cost instrumentation (proxy-side mirror optional)
+  id | route | model | tokens_in | tokens_out | latency_ms | status | ts</code></pre>
+<p><strong>Explicitly NOT in v0 (deferred to MVP):</strong> <code>concepts</code>, <code>confusion_pairs</code>, <code>diagnostic_features</code>, FSRS scheduling columns (<code>due_at</code>, <code>stability</code>, <code>difficulty</code>, <code>reps</code>, <code>lapses</code>). The 3-state <code>review_state</code> stands in for the scheduler.</p>
+<p>---</p>
+<h2>5. Screens (maps to Petra's four surfaces + Andy's answers)</h2>
+<table><thead><tr><th>Surface</th><th>v0 build</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Trip Home</strong></td><td>Timeline + simple map toggle of encounters; today's captures; quiet review count</td><td>Andy Q1 trigger is &quot;a place/question that sparks curiosity&quot; — Home is a field notebook, not a dashboard.</td></tr><tr><td><strong>Capture</strong></td><td>Photo → auto location/timestamp → &quot;What did you notice?&quot; → optional guess/question → confidence → event tag → theme tags. <strong>&lt; 30s, fully offline.</strong></td><td>The non-negotiable path (§3.1). Also writes photo to camera roll (§2.5).</td></tr><tr><td><strong>Encounter Detail</strong></td><td>Photo gallery, map context, Andy's note+guess, <code>ai_learning_note</code> (or queued state), observation prompts (offline scaffold), &quot;what I learned later&quot;, uncertainty status</td><td>Uncertainty first-class. AI note shows queued/absent honestly when offline.</td></tr><tr><td><strong>Review (at home)</strong></td><td>Memory-first prompt → reveal → 3-state review flag → small &quot;what changed?&quot; reflection</td><td>Andy Q6: quiz/interview/story mix left open for testing — v0 supports all three lightly, none dominates. No streaks/confetti.</td></tr></tbody></table>
+<p>End-of-day reflection (Andy Q8): v0 = a reflection field reachable from Trip Home, <strong>not</strong> a separate ceremony surface. Full end-of-day flow is a fast-follow.</p>
+<p>---</p>
+<h2>6. What we are explicitly NOT building for Finland</h2>
+<ul><li>Full AI rock identification / a complete rock database.</li><li>The user knowledge graph, confusion matrix, FSRS scheduling.</li><li>Public community, social feed, gamified streaks, heavy onboarding curriculum.</li><li>Multi-user auth, cross-device sync, cloud backup (Rung 3+).</li><li>Diarium <em>integration</em> (we ship a clean export; integration is a fast-follow).</li><li>Natural-history/POI content as primary (Andy Q4: geology-focused; other context stays background).</li><li>Prompt-of-the-day, compare-two-encounters, heavy analytics dashboards (should/could, post-v0).</li></ul>
+<p>---</p>
+<h2>7. Timeline reality</h2>
+<p>Finland is ~4 weeks out. The platform being inherited makes it <em>possible</em>, not <em>free</em>. The way we hit it:</p>
+<p>thing Andy can fly with no matter what.</p>
+<p>learning notes + grounding scaffold. Additive — no capture-path refactor (that's the payoff of the async queue).</p>
+<ul><li><strong>Build 1 (bulletproof, AI-free):</strong> capture + review + camera-roll safety + export. This is the</li><li><strong>Build 2 (fast-follow, target: before Finland):</strong> proxy <code>/enrich</code> route + drain loop + AI</li></ul>
+<p>Biggest residual risks: (a) the enrichment queue's idempotency/retry correctness — mitigated by speccing it here and by the playbook's runtime-shape testing doctrine; (b) the thin scaffold authorship — small, Petra-owned, but must exist before Build 2 ships.</p>
+<p>---</p>
+<h2>8. Open questions for sign-off</h2>
+<p>journal. If Andy already knows the shape Diarium imports cleanly, name it and I'll target it.</p>
+<p>simple saved-coordinate list/pin view enough for v0? My lean: <strong>pin/list view for Build 1</strong>, real offline tiles deferred unless Andy wants the map to be emotional-architecture from day one.</p>
+<p>is cheaper for vision-heavy photo enrichment. Lean: Gemini for photo+context, revisit on quality.</p>
+<ul><li><strong>Export format for Diarium seam (Q9):</strong> I'm proposing JSON manifest + photos + Markdown/HTML</li><li><strong>Map dependency:</strong> do we want real map tiles offline (heavier — bundled/cached tiles) or is a</li><li><strong>AI provider choice</strong> for the enrich route (Anthropic vs Gemini) — proxy supports either; Gemini</li></ul>
+<p>---</p>
+<p><em>Source: Arya's architecture pass over the shared Frost Rocks folder, the Aspen Mobile App Playbook, and Andy's 2026-07-01 answers to the five build-readiness questions. Delta doc against the playbook; where silent, the playbook governs. <strong>Status: DRAFT — awaiting Andy + Izzy sign-off before Podrick writes stories.</strong></em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
