@@ -117,7 +117,7 @@
   <main>
     <article>
       <div class="crumb">Corporate Governance &middot; Process</div>
-      <div class="doc-meta">Last updated: 2026-06-27</div>
+      <div class="doc-meta">Last updated: 2026-07-01</div>
       <h1>PROCESS.md — How We Build Software</h1>
 <p>&gt; The canonical flow from idea to production. Read this before designing any agent or workflow. &gt; Update it as the process evolves.</p>
 <p><em>Started 2026-05-23. Updated 2026-06-11 - added project intake/kickoff and stakes-ramp rubric.</em></p>
@@ -163,9 +163,9 @@ Production</code></pre>
 <ul><li><strong>Input:</strong> Izzy's design doc</li><li><strong>Output (step 1):</strong> Holes &amp; gaps — what's missing, underspecified, or technically painful in the design</li><li><strong>Output (step 2):</strong> Technical architecture doc — stack decisions, trade-offs, how technology serves the design vision</li><li><strong>Does:</strong> Makes the hard technical decisions. Exposes trade-offs with an if/then framework. Has opinions and defends them. Reviews Jesse's code.</li><li><strong>Doesn't:</strong> Write stories. Do implementation work.</li><li><strong>Artifact:</strong> <code>projects/&lt;project&gt;/ARCHITECTURE.md</code></li><li><strong>Model:</strong> High-capability — she earns it with architectural reasoning</li></ul>
 <h3>📋 Podrick — Product Strategist <em>(not yet built)</em></h3>
 <ul><li><strong>Input:</strong> Izzy's design doc + Arya's architecture doc (both Andy-approved)</li><li><strong>Output (step 1):</strong> Strategic review — does this hold together? Right problem, right scope, right person?</li><li><strong>Output (step 2):</strong> User stories with acceptance criteria, engineering-ready scope</li><li><strong>Does:</strong> Thinks strategically about whether we're building the right thing. Holds scope tension. Pushes back on design when something is too complex to build, pushes back on engineering when something is being over-engineered. Translates design + architecture into buildable increments.</li><li><strong>Doesn't:</strong> Make design decisions. Make architectural decisions.</li><li><strong>Autonomy:</strong> Rides the trust ramp. Early on, Andy reviews stories before engineering starts.</li><li><strong>Named after:</strong> Podrick Payne, Game of Thrones</li></ul>
-<h3>🔨 Jesse — Coder <em>(not yet built)</em></h3>
+<h3>🔨 Jesse — Engineer</h3>
 <ul><li><strong>Input:</strong> Podrick's stories + Arya's architecture</li><li><strong>Output:</strong> Code, PRs</li><li><strong>Does:</strong> Implementation. Follows Arya's architecture. Submits PRs for Arya's review.</li><li><strong>Doesn't:</strong> Make architectural decisions.</li><li><strong>Model:</strong> Lower-cost model — deliberate cost management choice.</li></ul>
-<h3>🛡️ SRE Agent — Build &amp; Reliability <em>(future)</em></h3>
+<h3>🛡️ Cassian — Reliability Engineer / SRE</h3>
 <ul><li><strong>Input:</strong> Merged code</li><li><strong>Output:</strong> Test coverage, build safety, deployment to production</li><li><strong>Does:</strong> Owns CI/CD pipeline. Has final veto on deployment to production.</li><li><strong>Doesn't:</strong> Make product or design decisions.</li></ul>
 <p>---</p>
 <h2>Andy's Role</h2>
@@ -177,7 +177,7 @@ Production</code></pre>
 <ul><li>Tracks what's in flight across all projects</li><li>Knows when a phase is complete and kicks off the handoff</li><li>Flags when something is stuck, off-track, or needs Andy's attention</li><li>Notices when we're getting carried away — when the conversation is going well but the thinking hasn't been stress-tested</li><li>Maintains <code>PIPELINE.md</code> with current project stages</li><li>Maintains this document as the process evolves</li><li>Builds and onboards new agents as the org grows</li></ul>
 <p>---</p>
 <h2>Model Strategy</h2>
-<table><thead><tr><th>Agent</th><th>Model tier</th><th>Rationale</th></tr></thead><tbody><tr><td>Izzy</td><td>High capability</td><td>Design reasoning requires nuance and creativity</td></tr><tr><td>Arya</td><td>High capability</td><td>Architecture reasoning requires systems thinking and constraint satisfaction</td></tr><tr><td>Podrick</td><td>Mid-high capability</td><td>Strategic thinking + scope judgment — not cheap work</td></tr><tr><td>Jesse</td><td>Lower cost</td><td>Implementation — instruction-following over open-ended reasoning</td></tr><tr><td>SRE Agent</td><td>TBD</td><td></td></tr><tr><td>Aspen</td><td>Mid-high</td><td>Coordination, memory, judgment across the whole system</td></tr></tbody></table>
+<table><thead><tr><th>Agent</th><th>Model tier</th><th>Rationale</th></tr></thead><tbody><tr><td>Izzy</td><td>High capability</td><td>Design reasoning requires nuance and creativity</td></tr><tr><td>Arya</td><td>High capability</td><td>Architecture reasoning requires systems thinking and constraint satisfaction</td></tr><tr><td>Podrick</td><td>Mid-high capability</td><td>Strategic thinking + scope judgment — not cheap work</td></tr><tr><td>Jesse</td><td>Lower cost</td><td>Implementation — instruction-following over open-ended reasoning</td></tr><tr><td>Cassian</td><td>Mid-high</td><td>Reliability, CI/CD, release safety, and operational judgment.</td></tr><tr><td>Aspen</td><td>Mid-high</td><td>Coordination, memory, judgment across the whole system</td></tr></tbody></table>
 <p>---</p>
 <h2>Artifacts &amp; Handoffs</h2>
 <p>Official project artifacts live in <code>/home/ubuntu/.openclaw/workspace/projects/&lt;project&gt;/</code>. Individual agent workspaces are for drafts, scratch work, and role-specific notes. When an artifact becomes a cross-agent dependency or is ready for Andy review, promote it to the shared project folder and mark its source and approval status.</p>
