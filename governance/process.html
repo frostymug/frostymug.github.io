@@ -117,7 +117,7 @@
   <main>
     <article>
       <div class="crumb">Corporate Governance &middot; Process</div>
-      <div class="doc-meta">Last updated: 2026-07-02</div>
+      <div class="doc-meta">Last updated: 2026-07-04</div>
       <h1>PROCESS.md — How We Build Software</h1>
 <p>&gt; The canonical flow from idea to production. Read this before designing any agent or workflow. &gt; Update it as the process evolves.</p>
 <p><em>Started 2026-05-23. Updated 2026-06-11 - added project intake/kickoff and stakes-ramp rubric.</em></p>
@@ -161,7 +161,7 @@ Production</code></pre>
 <ul><li><strong>Input:</strong> Andy's fuzzy idea</li><li><strong>Output:</strong> Design doc — experience design, instructional design, engagement loops, open questions</li><li><strong>Does:</strong> Sharpens vague ideas into clear design intent. Asks what the user does AND what the user learns.</li><li><strong>Doesn't:</strong> Make technical decisions. Write stories. Touch code.</li><li><strong>Artifact:</strong> <code>projects/&lt;project&gt;/DESIGN.md</code> in her workspace</li></ul>
 <h3>⚙️ Arya — Architect</h3>
 <ul><li><strong>Input:</strong> Izzy's design doc</li><li><strong>Output (step 1):</strong> Holes &amp; gaps — what's missing, underspecified, or technically painful in the design</li><li><strong>Output (step 2):</strong> Technical architecture doc — stack decisions, trade-offs, how technology serves the design vision</li><li><strong>Does:</strong> Makes the hard technical decisions. Exposes trade-offs with an if/then framework. Has opinions and defends them. Reviews Jesse's code.</li><li><strong>Doesn't:</strong> Write stories. Do implementation work.</li><li><strong>Artifact:</strong> <code>projects/&lt;project&gt;/ARCHITECTURE.md</code></li><li><strong>Model:</strong> High-capability — she earns it with architectural reasoning</li></ul>
-<h3>📋 Podrick — Product Strategist <em>(not yet built)</em></h3>
+<h3>📋 Podrick — Product Owner <em>(not yet built)</em></h3>
 <ul><li><strong>Input:</strong> Izzy's design doc + Arya's architecture doc (both Andy-approved)</li><li><strong>Output (step 1):</strong> Strategic review — does this hold together? Right problem, right scope, right person?</li><li><strong>Output (step 2):</strong> User stories with acceptance criteria, engineering-ready scope</li><li><strong>Does:</strong> Thinks strategically about whether we're building the right thing. Holds scope tension. Pushes back on design when something is too complex to build, pushes back on engineering when something is being over-engineered. Translates design + architecture into buildable increments.</li><li><strong>Doesn't:</strong> Make design decisions. Make architectural decisions.</li><li><strong>Autonomy:</strong> Rides the trust ramp. Early on, Andy reviews stories before engineering starts.</li><li><strong>Named after:</strong> Podrick Payne, Game of Thrones</li></ul>
 <h3>🔨 Jesse — Engineer</h3>
 <ul><li><strong>Input:</strong> Podrick's stories + Arya's architecture</li><li><strong>Output:</strong> Code, PRs</li><li><strong>Does:</strong> Implementation. Follows Arya's architecture. Submits PRs for Arya's review.</li><li><strong>Doesn't:</strong> Make architectural decisions.</li><li><strong>Model:</strong> Lower-cost model — deliberate cost management choice.</li></ul>
@@ -224,7 +224,7 @@ Production</code></pre>
 <p>Not every project needs every file, but every active project should have <code>README.md</code> and <code>STATUS.md</code>. The status file should say what is approved, what is draft, and what the next gate is.</p>
 <p>---</p>
 <h2>Open Questions</h2>
-<ul><li>[x] Artifact storage — shared repo vs. per-agent workspace. Decision: canonical shared project folder under <code>/home/ubuntu/.openclaw/workspace/projects/</code>; agent workspaces remain draft/scratch areas.</li><li>[ ] Agent-to-agent communication — direct handoff or routed through Andy/Aspen?</li><li>[ ] SRE agent design — standalone agent or Arya sub-agent?</li><li>[ ] Jesse's final name and model assignment</li><li>[ ] Podrick's exact story format and tooling</li></ul>
+<ul><li>[x] Artifact storage — shared repo vs. per-agent workspace. Decision: canonical shared project folder under <code>/home/ubuntu/.openclaw/workspace/projects/</code>; agent workspaces remain draft/scratch areas.</li><li>[ ] Agent-to-agent communication — direct runtime messaging is still held for a later trust-ramp phase; shared project files are the system of record for handoffs.</li><li>[x] SRE agent design — Cassian is the standalone Reliability Engineer / SRE.</li><li>[x] Jesse's final name and model assignment — Jesse is the Engineer on Sonnet 4.6</li><li>[ ] Podrick's exact story format and tooling</li></ul>
 <p>---</p>
 <p><em>Update this document whenever the process changes. Every agent reads it.</em></p>
     </article>
