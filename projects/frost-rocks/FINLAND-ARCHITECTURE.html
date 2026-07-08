@@ -49,6 +49,10 @@
       <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
       <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
       <a aria-current="page" href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
       <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
@@ -117,10 +121,10 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Finland Architecture</div>
-      <div class="doc-meta">Last updated: 2026-07-01</div>
+      <div class="doc-meta">Last updated: 2026-07-08</div>
       <h1>Frost Rocks — Finland Prototype Architecture</h1>
-<p><em>Arya (Architect) | 2026-07-01 | Status: <strong>DRAFT — awaiting Andy + Izzy sign-off</strong></em></p>
-<p>&gt; <strong>Provenance.</strong> This doc is the architecture answer to the five build-readiness questions in &gt; <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html"><code>ARYA-FINLAND-BUILD-QUESTIONS.md</code></a>, which Andy answered on &gt; 2026-07-01. It is written as a <strong>delta against</strong> the &gt; <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a> — it does not re-decide &gt; the platform, proxy, CI/CD, or release process. Where this doc is silent, <strong>the playbook is the &gt; spec.</strong> Product framing lives in <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html"><code>FINLAND-PROTOTYPE-BRIEF.md</code></a> &gt; (Petra) and <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html"><code>ANDY-FINLAND-PROTOTYPE-ANSWERS.md</code></a> (Izzy). &gt; &gt; <strong>Pipeline position:</strong> Design (done) → <strong>Architecture (this doc)</strong> → Andy + Izzy sign-off → &gt; Podrick stories → Jesse/Eddie build → Arya code review → Cassian ships.</p>
+<p><em>Arya (Architect) | 2026-07-01; updated 2026-07-08 | Status: <strong>IMPLEMENTED BASELINE — reconcile against TestFlight feedback</strong></em></p>
+<p>&gt; <strong>Provenance.</strong> This doc is the architecture answer to the five build-readiness questions in &gt; <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html"><code>ARYA-FINLAND-BUILD-QUESTIONS.md</code></a>, which Andy answered on &gt; 2026-07-01. It is written as a <strong>delta against</strong> the &gt; <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a> — it does not re-decide &gt; the platform, proxy, CI/CD, or release process. Where this doc is silent, <strong>the playbook is the &gt; spec.</strong> Product framing lives in <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html"><code>FINLAND-PROTOTYPE-BRIEF.md</code></a> &gt; (Petra) and <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html"><code>ANDY-FINLAND-PROTOTYPE-ANSWERS.md</code></a> (Izzy). &gt; &gt; <strong>Pipeline position update (2026-07-08):</strong> this is no longer a pre-build gate. Andy authorized Arya's &gt; 2026-07-02 autonomous one-shot build, which created the private repo <code>aspen-frost/frost-rocks</code>, &gt; shipped Build 1 into the EAS/TestFlight lane, and gave Andy a real prototype to test. The next &gt; move is feedback capture + reconciliation, not Podrick stories. Podrick is not live yet.</p>
 <p>---</p>
 <h2>0. TL;DR</h2>
 <p>The stack is inherited, not chosen: Expo + TypeScript + expo-sqlite + Cloudflare Worker AI proxy + EAS → TestFlight, exactly as the playbook prescribes. <strong>Everything genuinely Frost-Rocks-specific comes down to five decisions</strong>, all now resolved:</p>
@@ -222,20 +226,17 @@ ai_call_log                        -- per playbook cost instrumentation (proxy-s
 <h2>6. What we are explicitly NOT building for Finland</h2>
 <ul><li>Full AI rock identification / a complete rock database.</li><li>The user knowledge graph, confusion matrix, FSRS scheduling.</li><li>Public community, social feed, gamified streaks, heavy onboarding curriculum.</li><li>Multi-user auth, cross-device sync, cloud backup (Rung 3+).</li><li>Diarium <em>integration</em> (we ship a clean export; integration is a fast-follow).</li><li>Natural-history/POI content as primary (Andy Q4: geology-focused; other context stays background).</li><li>Prompt-of-the-day, compare-two-encounters, heavy analytics dashboards (should/could, post-v0).</li></ul>
 <p>---</p>
-<h2>7. Timeline reality</h2>
-<p>Finland is ~4 weeks out. The platform being inherited makes it <em>possible</em>, not <em>free</em>. The way we hit it:</p>
-<p>thing Andy can fly with no matter what.</p>
-<p>learning notes + grounding scaffold. Additive — no capture-path refactor (that's the payoff of the async queue).</p>
-<ul><li><strong>Build 1 (bulletproof, AI-free):</strong> capture + review + camera-roll safety + export. This is the</li><li><strong>Build 2 (fast-follow, target: before Finland):</strong> proxy <code>/enrich</code> route + drain loop + AI</li></ul>
-<p>Biggest residual risks: (a) the enrichment queue's idempotency/retry correctness — mitigated by speccing it here and by the playbook's runtime-shape testing doctrine; (b) the thin scaffold authorship — small, Petra-owned, but must exist before Build 2 ships.</p>
+<h2>7. Timeline Reality</h2>
+<p>Finland is close enough that the architecture has already been tested by a real build. On 2026-07-02, Arya implemented Build 1 and pushed it through the EAS/TestFlight lane. Build 1 covered capture, review, camera-roll safety, export, and a dormant enrichment outbox. At handoff, the repo had 40 tests green, TypeScript clean, and Expo lint clean.</p>
+<p>The timeline question is now <strong>what Build 2 should be</strong>, not whether Build 1 can exist. My lean: make Build 2 a tight trip-readiness update driven by Andy's TestFlight feedback, then enable AI enrichment only if it does not threaten reliability.</p>
+<p>Known Build 1 deltas from the original architecture:</p>
+<ul><li>No Sentry yet; Arya used a simpler error boundary because org credentials were not available during the autonomous run.</li><li>No map tiles; the app stays closer to list/timeline than map-led exploration.</li><li>Export is Markdown journal + JSON manifest + photo copies, shared as artifacts.</li><li>Day reflection is folded into reviewing today's encounters, not a separate ceremony.</li><li>Scaffold content exists, but Arya authored it as a placeholder. Petra/Izzy should approve or replace it.</li></ul>
+<p>Biggest residual risks: (a) the enrichment queue's idempotency/retry correctness once live AI is enabled; (b) whether the current capture/review flow feels good enough on Andy's phone; (c) the thin scaffold's product voice and factual quality.</p>
 <p>---</p>
-<h2>8. Open questions for sign-off</h2>
-<p>journal. If Andy already knows the shape Diarium imports cleanly, name it and I'll target it.</p>
-<p>simple saved-coordinate list/pin view enough for v0? My lean: <strong>pin/list view for Build 1</strong>, real offline tiles deferred unless Andy wants the map to be emotional-architecture from day one.</p>
-<p>is cheaper for vision-heavy photo enrichment. Lean: Gemini for photo+context, revisit on quality.</p>
-<ul><li><strong>Export format for Diarium seam (Q9):</strong> I'm proposing JSON manifest + photos + Markdown/HTML</li><li><strong>Map dependency:</strong> do we want real map tiles offline (heavier — bundled/cached tiles) or is a</li><li><strong>AI provider choice</strong> for the enrich route (Anthropic vs Gemini) — proxy supports either; Gemini</li></ul>
+<h2>8. Open Questions After TestFlight</h2>
+<ul><li><strong>Andy feedback:</strong> what broke, what felt clunky, what felt promising, and what changed Andy's view of the product?</li><li><strong>Build 1 baseline:</strong> which one-shot shortcuts should become canon, and which need correction before Finland?</li><li><strong>Build 2 scope:</strong> trip-readiness polish only, or AI enrichment before Finland?</li><li><strong>Export/Diarium seam:</strong> current implementation is Markdown journal + JSON manifest + photo copies. Is that enough for Finland, or should Diarium compatibility shape Build 2?</li><li><strong>Map dependency:</strong> Build 1 effectively chose list/timeline over offline map tiles. Does Andy miss the map emotionally or practically?</li><li><strong>Scaffold ownership:</strong> Petra/Izzy should approve or replace the placeholder scaffold before it becomes product voice.</li></ul>
 <p>---</p>
-<p><em>Source: Arya's architecture pass over the shared Frost Rocks folder, the Aspen Mobile App Playbook, and Andy's 2026-07-01 answers to the five build-readiness questions. Delta doc against the playbook; where silent, the playbook governs. <strong>Status: DRAFT — awaiting Andy + Izzy sign-off before Podrick writes stories.</strong></em></p>
+<p><em>Source: Arya's architecture pass over the shared Frost Rocks folder, the Aspen Mobile App Playbook, Andy's 2026-07-01 answers, and the 2026-07-02 one-shot TestFlight build recorded in <code>workspace-arya/memory/2026-07-02-frost-rocks-build.md</code>. Delta doc against the playbook; where silent, the playbook governs. <strong>Status: IMPLEMENTED BASELINE — reconcile against Andy's TestFlight feedback before Build 2.</strong></em></p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
