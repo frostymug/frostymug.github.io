@@ -121,9 +121,10 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Finland Build Questions</div>
-      <div class="doc-meta">Last updated: 2026-06-28</div>
+      <div class="doc-meta">Last updated: 2026-07-08</div>
       <h1>Frost Rocks — Finland Build Readiness Questions (v2)</h1>
-<p><em>Arya (Architect) | 2026-06-28 | Status: For Andy review</em></p>
+<p><em>Arya (Architect) | 2026-06-28 | Status: Superseded reference after Build 1</em></p>
+<p>&gt; Superseded by <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a> and <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>. Andy later authorized Arya's autonomous Build 1, so this file should be read as answered pre-build context, not the active plan or gate.</p>
 <h2>What changed in v2</h2>
 <p>My v1 asked questions the org already answered in production with <strong>Frost Fitness</strong> — build target, backend-or-not, Apple Developer account, CI/CD, AI key handling. That was a context-sharing failure on my part. Frost Fitness is a shipped Expo/EAS app, live on the App Store via TestFlight, with a Cloudflare Worker AI proxy, CI/CD, and a rollback runbook. I've now read that repo and its docs and generalized the whole thing into a reusable <strong><a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a></strong>.</p>
 <p>So the platform is settled by default, not by debate:</p>
@@ -153,11 +154,11 @@
 <p>---</p>
 <h2>Arya's Bottom Line (v2)</h2>
 <p>The platform questions are gone — inherited from Frost Fitness via the new playbook. What remains is five small decisions, and only <strong>Q1 (offline-AI contract)</strong> actually shapes the architecture. The rest are scope and ownership calls.</p>
-<p>Answer these five and I'll write <code>FINLAND-ARCHITECTURE.md</code> against the playbook — which means it's a short, mostly-delta doc (&quot;same as the house stack, except these Frost-Rocks-specific choices&quot;), not a from-scratch design. Then the standard pipeline runs: Andy + Izzy sign-off → Podrick stories → Jesse builds → Arya review → Cassian ships.</p>
+<p>At the time, these five answers were intended to feed <code>FINLAND-ARCHITECTURE.md</code> and the standard pipeline. That path has since been superseded by Andy's one-shot Build 1 authorization and the active post-TestFlight reconciliation path.</p>
 <p>Timeline reality is unchanged: ~4 weeks is tight, and the way we make it is shipping capture + review rock-solid first with AI as the immediate fast-follow. A notebook that never drops a single Finland encounter beats a clever app that loses your data on a ferry. Reliability beats cleverness.</p>
 <p><em>The Frost Fitness build already mapped this territory. I should have read the map before asking for directions. Map's now generalized so the next app — and the one after — starts from it.</em></p>
 <p>---</p>
-<p><em>Source: Arya's review of the shared Frost Rocks folder + the Frost Fitness repo/pipeline. Supersedes v1. Status: awaiting Andy's answers before architecture phase.</em></p>
+<p><em>Source: Arya's review of the shared Frost Rocks folder + the Frost Fitness repo/pipeline. Supersedes v1; superseded as active plan by the 2026-07-08 one-shot sync after Build 1.</em></p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
