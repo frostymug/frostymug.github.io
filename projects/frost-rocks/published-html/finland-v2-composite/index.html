@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frost Rocks — Finland v2 (Composite)</title>
+<style>
+:root{
+  --paper:#e9e0cc;--paper2:#f2ead8;--card:#f7f1e2;
+  --ink:#2b2116;--ink2:#6b5a41;--ink3:#93805f;
+  --line:#cdbf9f;--line2:#b6a37c;
+  --forest:#3d5a3a;--forest2:#2c4429;--rust:#a4491f;--ochre:#b9812e;--slate:#4a6470;--stamp:#8a3a1d;
+  --sans:"Helvetica Neue",Arial,sans-serif;--serif:"Iowan Old Style",Palatino,Georgia,serif;--mono:"Courier New",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+body{background:#1c1712;font-family:var(--sans);color:var(--ink);display:flex;justify-content:center}
+.phone{width:100%;max-width:440px;min-height:100vh;background:var(--paper);position:relative;overflow:hidden;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.045'/></svg>");}
+.screen{display:none;padding-bottom:96px;animation:fade .25s}.screen.active{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+i[data-rock],i[data-ico]{display:block;line-height:0}i[data-rock] svg{width:100%;height:100%}
+
+/* --- Field-guide header (A) --- */
+.hd{padding:14px 18px 10px;border-bottom:2px solid var(--ink);background:var(--paper2);position:sticky;top:0;z-index:6}
+.kick{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink3)}
+.h1{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1;margin-top:3px}
+.hd .row{display:flex;justify-content:space-between;align-items:flex-end}
+.hd .sub{font-size:12px;color:var(--ink2);margin-top:5px}
+.stamp{border:2px solid var(--stamp);color:var(--stamp);font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1px;padding:4px 7px;border-radius:3px;transform:rotate(-5deg);text-align:center;line-height:1.3}
+.back{background:none;border:none;font-family:var(--mono);font-size:11px;color:var(--rust);font-weight:700;letter-spacing:1px;padding:0;cursor:pointer}
+
+/* --- Compact map card (B bones, A skin) --- */
+.mapcard{margin:14px 18px 0;border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;background:#dfe6df;box-shadow:2px 3px 0 rgba(43,33,22,.12)}
+.mapcard svg{display:block;width:100%;height:auto}
+.mapcap{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:var(--paper2);border-top:1.5px solid var(--ink)}
+.mapcap .lab{font-family:var(--mono);font-size:10px;letter-spacing:.5px;color:var(--ink2)}.mapcap .lab b{color:var(--ink)}
+.mapcap a{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1px;color:var(--rust);text-decoration:none;cursor:pointer}
+.pin{cursor:pointer}.pinlabel{font-family:var(--mono);font-size:9px;fill:var(--ink)}
+
+/* --- Revisit banner (A skin) --- */
+.revisit{background:var(--card);border:2px solid var(--ochre);border-left-width:6px;border-radius:4px;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;margin:16px 18px 0;cursor:pointer}
+.revisit .n{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--ochre);line-height:1}
+.revisit .lab{font-size:12px;color:var(--ink2)}.revisit .go{font-family:var(--mono);font-size:11px;color:var(--rust);font-weight:700}
+
+/* --- Timeline (B bones, A skin) --- */
+.timelab{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line);padding-bottom:5px;margin:22px 18px 12px}
+.tl{position:relative;margin:0 18px;padding-left:22px}
+.tl:before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line2)}
+.tevent{position:relative;margin-bottom:6px}
+.tevent .dot{position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--forest);border:3px solid var(--paper)}
+.tevent .ename{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink2);margin:6px 0 8px}
+.entry{background:var(--card);border:1.5px solid var(--line2);border-radius:5px;margin-bottom:10px;overflow:hidden;display:flex;cursor:pointer;box-shadow:2px 3px 0 rgba(43,33,22,.12)}
+.entry i[data-rock]{width:84px;flex:none}.entry .bd{padding:9px 12px;flex:1;min-width:0}
+.entry .no{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:1px}
+.entry .ti{font-family:var(--serif);font-size:16px;font-weight:600;margin:2px 0 5px;line-height:1.15}
+.badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border-radius:2px;border:1px solid;font-weight:700}
+.b-possible{color:var(--ochre);border-color:var(--ochre)}.b-likely{color:var(--forest);border-color:var(--forest)}
+.b-unknown{color:var(--slate);border-color:var(--slate)}.b-identified{color:var(--rust);border-color:var(--rust)}
+
+.sec{padding:14px 18px}
+.sectitle{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line);padding-bottom:5px;margin-bottom:12px;display:flex;justify-content:space-between}
+.chip{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line2);color:var(--ink2);padding:3px 7px;border-radius:2px;margin:0 5px 5px 0}
+.anchor{font-family:var(--mono);font-size:9px;color:#fff;background:var(--stamp);display:inline-block;padding:2px 6px;border-radius:2px;letter-spacing:1px}
+
+/* --- Bottom nav (A skin) --- */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;height:74px;background:var(--paper2);border-top:2px solid var(--ink);display:flex;align-items:center;justify-content:space-around;z-index:20;padding:0 8px}
+.nav button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink3);font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;flex:1;padding:6px 0;cursor:pointer}
+.nav button.on{color:var(--ink)}.nav button i[data-ico]{width:22px;height:22px}
+.nav .cap{flex:none;margin-top:-26px}
+.nav .cap .ring{width:60px;height:60px;border-radius:50%;background:var(--forest);border:3px solid var(--paper2);box-shadow:0 4px 10px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
+.nav .cap .ring i[data-ico]{width:26px;height:26px;color:#f7f1e2}.nav .cap span{color:var(--forest2);margin-top:4px}
+
+/* --- Camera-first capture (NEW) --- */
+#camera{position:fixed;inset:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:#141210;display:none;flex-direction:column;z-index:40;animation:fade .18s}
+#camera.active{display:flex}
+.cam-view{flex:1;position:relative;overflow:hidden;background:#20211f}
+.cam-view i[data-rock]{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.cam-view .grid{position:absolute;inset:0;background:
+  linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px) 0 33.3%/100% 33.3%,
+  linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px) 33.3% 0/33.3% 100%;pointer-events:none}
+.cam-view .sim{position:absolute;top:12px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.65)}
+.cam-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:14px 16px}
+.cam-top button{background:rgba(20,18,16,.55);border:1px solid rgba(255,255,255,.35);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1px;padding:7px 11px;border-radius:20px;display:flex;align-items:center;gap:6px;cursor:pointer}
+.cam-top button i[data-ico]{width:16px;height:16px}
+.cam-bar{background:#141210;padding:16px 22px calc(20px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between}
+.cam-bar .lib{width:52px;height:52px;border-radius:10px;border:2px solid rgba(255,255,255,.5);overflow:hidden;cursor:pointer;position:relative;background:#2a2723}
+.cam-bar .lib i[data-rock]{width:100%;height:100%}
+.cam-bar .lib .tag{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-family:var(--mono);font-size:7px;letter-spacing:1px;text-align:center;padding:1px 0}
+.shutter{width:74px;height:74px;border-radius:50%;background:#fff;border:none;cursor:pointer;position:relative;box-shadow:0 0 0 4px #141210,0 0 0 7px rgba(255,255,255,.85)}
+.shutter:active{transform:scale(.93)}
+.cam-hint{width:52px;text-align:center;color:rgba(255,255,255,.55);font-family:var(--mono);font-size:8px;letter-spacing:1px;line-height:1.4}
+
+/* --- Review-after-shutter (enrichment) --- */
+.offline{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--forest2);margin-bottom:14px}
+.offline .dot{width:8px;height:8px;border-radius:50%;background:var(--forest)}
+.shot-preview{height:170px;border:2px solid var(--ink);border-radius:5px;overflow:hidden;margin-bottom:14px;position:relative}
+.shot-preview i[data-rock]{width:100%;height:100%}
+.shot-preview .saved-flag{position:absolute;top:8px;left:8px;background:var(--forest);color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:3px}
+.cap-mode{display:flex;border:2px solid var(--ink);border-radius:5px;overflow:hidden;margin-bottom:16px}
+.cap-mode button{flex:1;background:none;border:none;padding:10px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink2);cursor:pointer}
+.cap-mode button.on{background:var(--ink);color:var(--paper2)}
+.fl{margin-bottom:13px}
+.fl label{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:5px}
+.fl input,.fl textarea{width:100%;background:var(--paper2);border:1.5px solid var(--line2);border-radius:4px;padding:11px;font-family:var(--serif);font-size:15px;color:var(--ink);resize:none}.fl textarea{min-height:60px}
+.conf{display:flex;gap:8px}
+.conf button{flex:1;padding:9px;border:1.5px solid var(--line2);background:var(--paper2);border-radius:4px;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink2);cursor:pointer}
+.conf button.on{background:var(--forest);border-color:var(--forest);color:var(--paper2)}
+.more{border-top:1px dashed var(--line2);margin:6px 0 14px;padding-top:14px}.more.hide{display:none}
+.disclose{width:100%;background:none;border:none;font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--rust);padding:10px 0;font-weight:700;cursor:pointer}.disclose.hide{display:none}
+.save{width:100%;padding:15px;background:var(--rust);border:2px solid var(--stamp);border-radius:5px;color:#fff;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer}
+
+/* --- Detail --- */
+.detail-note{font-family:var(--serif);font-size:15px;line-height:1.5}
+.lookagain{font-size:13px;color:var(--ink2);line-height:1.6;background:var(--paper2);border-left:4px solid var(--ochre);padding:10px 12px;border-radius:0 4px 4px 0}
+.detail-review{width:100%;margin-top:14px;padding:13px;background:var(--forest);border:2px solid var(--forest2);border-radius:5px;color:var(--paper2);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
+
+/* --- Review --- */
+.rev-hd{background:var(--forest2);color:var(--paper2);padding:18px;border-bottom:2px solid var(--ink)}
+.rev-hd .k{font-family:var(--mono);font-size:10px;letter-spacing:2px;opacity:.8}.rev-hd .t{font-family:var(--serif);font-size:22px;margin-top:4px}
+.rev-hd .src{font-family:var(--mono);font-size:9px;letter-spacing:1px;opacity:.7;margin-top:6px;text-transform:uppercase}
+.revcard{background:var(--card);border:1.5px solid var(--line2);border-radius:5px;overflow:hidden;margin:14px 0;box-shadow:2px 3px 0 rgba(43,33,22,.12)}
+.revcard i[data-rock]{height:150px}.revcard .bd{padding:14px}
+.revq{font-family:var(--serif);font-size:17px;font-weight:600;margin:10px 0 12px}
+.reveal{background:var(--paper2);border-left:4px solid var(--ochre);padding:10px 12px;font-size:13px;color:var(--ink2);border-radius:0 4px 4px 0;margin-bottom:12px;display:none;line-height:1.55}.reveal.show{display:block}.reveal b{color:var(--ink);font-family:var(--serif)}
+.revbtns{display:flex;gap:8px}
+.revbtns button{flex:1;padding:11px 6px;border:1.5px solid var(--line2);background:var(--paper2);border-radius:4px;font-family:var(--mono);font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--ink2);cursor:pointer}
+.revbtns button.pri{background:var(--forest);border-color:var(--forest);color:var(--paper2)}
+/* Histogram knowledge rep (B) in A skin */
+.progress{margin-top:6px}
+.prow{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.prow .plab{width:96px;font-family:var(--serif);font-size:14px;font-weight:600}
+.pbar{flex:1;height:9px;background:var(--paper2);border:1px solid var(--line2);border-radius:0;overflow:hidden}.pbar span{display:block;height:100%;background:var(--forest)}
+.pct{font-family:var(--mono);font-size:11px;color:var(--ink3);width:34px;text-align:right}
+
+/* --- Telemetry panel (NEW, prototype-only) --- */
+.telem-toggle{position:fixed;top:10px;left:50%;transform:translateX(calc(-50% + 168px));z-index:60;background:var(--ink);color:var(--paper2);border:none;border-radius:20px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.4)}
+.telem-toggle i[data-ico]{width:20px;height:20px}
+.telem-toggle .badge-count{position:absolute;top:-4px;right:-4px;background:var(--rust);color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;border-radius:10px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.telem{position:fixed;inset:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:#141210;color:#d8cfba;z-index:55;display:none;flex-direction:column;font-family:var(--mono)}
+.telem.active{display:flex}
+.telem-hd{padding:16px 18px;border-bottom:1px solid #3a352c;display:flex;justify-content:space-between;align-items:center}
+.telem-hd .t{font-size:14px;letter-spacing:1px;color:#f2ead8}
+.telem-hd .sub{font-size:9px;color:#8a7f68;letter-spacing:1px;margin-top:3px}
+.telem-hd button{background:none;border:1px solid #3a352c;color:#d8cfba;border-radius:6px;padding:6px 8px;cursor:pointer}
+.telem-hd button i[data-ico]{width:16px;height:16px}
+.metrics{padding:14px 18px;border-bottom:1px solid #3a352c;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.metric{background:#1e1b17;border:1px solid #3a352c;border-radius:6px;padding:10px}
+.metric .mv{font-size:20px;color:#f2ead8}.metric .ml{font-size:9px;color:#8a7f68;letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.metric.wide{grid-column:1 / -1}
+.doors{display:flex;gap:8px;margin-top:6px}
+.door{flex:1;text-align:center;background:#26221c;border-radius:5px;padding:6px 4px}
+.door .dv{font-size:16px;color:#f2ead8}.door .dl{font-size:8px;color:#8a7f68;letter-spacing:1px;text-transform:uppercase}
+.telem-actions{padding:12px 18px;display:flex;gap:8px;border-bottom:1px solid #3a352c}
+.telem-actions button{flex:1;background:#26221c;border:1px solid #3a352c;color:#d8cfba;border-radius:6px;padding:9px;font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.telem-log{flex:1;overflow-y:auto;padding:10px 18px 30px}
+.ev{border-bottom:1px solid #2a2620;padding:7px 0;font-size:10px;display:flex;gap:8px}
+.ev .ty{color:#c98a2b;min-width:82px}.ev .dt{color:#8a7f68;flex:1;word-break:break-word}.ev .ti{color:#5f5847;min-width:52px;text-align:right}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- ============ HOME: timeline spine + compact map + revisit banner ============ -->
+  <section class="screen active" id="home">
+    <div class="hd"><div class="row">
+      <div><div class="kick">Field Guide · Vol. 1</div><div class="h1">Finland 2026</div>
+        <div class="sub">Day 3 · Koli National Park · 9 encounters</div></div>
+      <div class="stamp">DAY 3<br>KOLI NP</div></div></div>
+
+    <!-- Compact map card: emotional architecture, present but shrunk (Q6) -->
+    <div class="mapcard">
+      <svg viewBox="0 0 440 150" role="img" aria-label="Compact Finland trip map">
+        <defs><pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#c3d0c3" stroke-width="1.4"/></pattern></defs>
+        <rect width="440" height="150" fill="#dfe6df"/><rect width="440" height="150" fill="url(#hatch)" opacity=".5"/>
+        <path d="M150,14 C205,8 255,20 268,52 C282,92 262,120 232,134 C198,146 156,140 134,118 C112,94 106,66 120,44 C128,26 135,20 150,14 Z" fill="#cdd8c4" stroke="#2b2116" stroke-width="2"/>
+        <path d="M182,58 C204,52 214,70 202,82 C186,94 170,82 176,66 Z" fill="#a9c3cc" stroke="#4a6470" stroke-width="1.2"/>
+        <path d="M150,112 L172,80 L196,60 L206,40" fill="none" stroke="#a4491f" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+        <g class="pin" onclick="openReview('map','FR-V2-DOOR-MAP')"><circle cx="150" cy="112" r="6" fill="#a4491f" stroke="#2b2116" stroke-width="1.5"/></g>
+        <g class="pin" onclick="openReview('map','FR-V2-DOOR-MAP')"><circle cx="196" cy="60" r="6" fill="#b9812e" stroke="#2b2116" stroke-width="1.5"/></g>
+        <g class="pin" onclick="openReview('map','FR-V2-DOOR-MAP')"><circle cx="206" cy="40" r="8" fill="#3d5a3a" stroke="#2b2116" stroke-width="2"/><text class="pinlabel" x="206" y="28" text-anchor="middle" font-weight="700">Koli · today</text></g>
+      </svg>
+      <div class="mapcap"><div class="lab"><b>Koli</b> · your route so far · tap a pin to revisit</div><a onclick="openReview('map','FR-V2-DOOR-MAP')">Open map ›</a></div>
+    </div>
+
+    <!-- Revisit banner: ambient nudge, keeps the "to revisit" counter (Q7) -->
+    <div class="revisit" onclick="openReview('nav','FR-V2-REVISIT')"><div><div class="n">4</div><div class="lab">entries to revisit — a calm minute tonight keeps today sharp</div></div><div class="go">REVIEW →</div></div>
+
+    <div class="timelab">Today</div>
+    <div class="tl">
+      <div class="tevent"><div class="dot"></div><div class="ename">Koli ridge trail · afternoon</div>
+        <div class="entry" onclick="openDetail()"><i data-rock="0"></i><div class="bd"><div class="no">№ 009 · 14:32</div><div class="ti">Banded gray outcrop</div><span class="badge b-possible">Possible · gneiss</span></div></div>
+        <div class="entry" onclick="openDetail()"><i data-rock="1"></i><div class="bd"><div class="no">№ 008 · 13:10</div><div class="ti">Lone boulder in a clearing</div><span class="badge b-unknown">Unknown · erratic?</span></div></div>
+      </div>
+      <div class="tevent"><div class="dot" style="background:var(--ink3)"></div><div class="ename">Morning · visitor centre</div>
+        <div class="entry" onclick="openDetail()"><i data-rock="2"></i><div class="bd"><div class="no">№ 007 · 11:48</div><div class="ti">Pink coarse-grained rock</div><span class="badge b-likely">Likely · granite</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DETAIL: with review DOOR 2 (via timeline entry) ============ -->
+  <section class="screen" id="detail">
+    <div class="hd"><div class="row"><div><div class="kick">Entry № 009</div><div class="h1">Banded outcrop</div>
+      <div class="sub">Koli ridge trail · 14:32 · 63.1°N</div></div><button class="back" onclick="FR.go('home')">← BACK</button></div></div>
+    <i data-rock="0" style="height:190px"></i>
+    <div class="sec">
+      <span class="badge b-possible">Possible · gneiss</span>
+      <p class="detail-note" style="margin:14px 0 12px">“Layered gray rock along the ridge. Light and dark stripes. Maybe gneiss?”</p>
+      <div class="lookagain"><b style="font-family:var(--serif);color:var(--ink)">Look again →</b> Do you see continuous <b>bands</b>, or scattered crystals? Bands = gneiss. Even speckle = granite.</div>
+      <div style="margin-top:12px"><span class="chip">bedrock</span><span class="chip">granite/gneiss</span><span class="chip">glaciation</span></div>
+      <!-- REVIEW DOOR 2: serendipitous re-encounter via a timeline entry -->
+      <button class="detail-review" onclick="openReview('timeline','FR-V2-DOOR-TIMELINE')">↻ Revisit this one now</button>
+    </div>
+  </section>
+
+  <!-- ============ REVIEW: honest histogram + one card. Door recorded by opener. ============ -->
+  <section class="screen" id="review">
+    <div class="rev-hd"><button class="back" style="color:#e9e0cc;margin-bottom:8px" onclick="FR.go('home')">← FIELD GUIDE</button>
+      <div class="k">EVENING REVIEW · KOLI · DAY 3</div><div class="t">What did the ground tell you today?</div>
+      <div class="src" id="reviewSrc">arrived via —</div></div>
+    <div class="sec">
+      <div class="revcard" data-revealwrap><i data-rock="0"></i><div class="bd"><span class="anchor">FR-V2-REV</span>
+        <div class="revq">Where were you when you saw this — and what did you think it showed?</div>
+        <div class="revbtns"><button class="pri" onclick="FR.reveal(this);FR.log('revisit_done',{card:'009',recalled:true})">Remembered</button><button onclick="FR.reveal(this);FR.log('revisit_done',{card:'009',recalled:false})">Not sure</button></div>
+        <div class="reveal"><b>Koli ridge, 14:32.</b> Your note: “layered gray, maybe gneiss.” The banding is the tell — separate light/dark <b>mineral bands</b>. Granite has crystals but no bands. → connects to <b>Erratic №008</b> you logged an hour earlier.</div></div></div>
+
+      <div class="sectitle"><span>Your knowledge, growing</span></div>
+      <div class="progress">
+        <div class="prow"><div class="plab">Granite</div><div class="pbar"><span style="width:72%"></span></div><div class="pct">72%</div></div>
+        <div class="prow"><div class="plab">Gneiss</div><div class="pbar"><span style="width:44%"></span></div><div class="pct">44%</div></div>
+        <div class="prow"><div class="plab">Glaciation</div><div class="pbar"><span style="width:30%"></span></div><div class="pct">30%</div></div>
+      </div>
+      <p style="font-size:13px;color:var(--ink2);line-height:1.6;margin-top:8px">Progress by <b>understanding</b>, not streaks. You can tell granite from gneiss most of the time now — the lone boulder's story is the next thread.</p>
+      <div style="margin-top:10px"><span class="chip">granite</span><span class="chip">gneiss</span><span class="chip">glaciation</span><span class="chip">bedrock</span></div>
+    </div>
+  </section>
+
+  <!-- ============ BOTTOM NAV: Notebook / Map / CAPTURE / Review(Door 3) / Trip ============ -->
+  <nav class="nav">
+    <button class="on" data-nav="home" onclick="FR.go('home')"><i data-ico="book"></i><span>Notebook</span></button>
+    <button data-nav="home" onclick="FR.go('home')"><i data-ico="map"></i><span>Map</span></button>
+    <button class="cap" onclick="openCamera()"><div class="ring"><i data-ico="plus"></i></div><span>Capture</span></button>
+    <button data-nav="review" onclick="openReview('nav','FR-V2-DOOR-NAV')"><i data-ico="star"></i><span>Review</span></button>
+    <button data-nav="home" onclick="FR.go('home')"><i data-ico="user"></i><span>Trip</span></button>
+  </nav>
+</div>
+
+<!-- ============ CAMERA (full-screen overlay): camera-first, two-tap (Q4) ============ -->
+<div id="camera">
+  <div class="cam-view">
+    <i data-rock="3"></i>
+    <div class="grid"></div>
+    <div class="sim" id="camSim">SIMULATED CAMERA · LIVE VIEW</div>
+    <div class="cam-top">
+      <button onclick="closeCamera()"><i data-ico="x"></i> Back</button>
+      <button onclick="FR.log('capture',{action:'flip'})"><i data-ico="flip"></i> Flip</button>
+    </div>
+  </div>
+  <div class="cam-bar">
+    <!-- Escape hatch: library, out of the fast path -->
+    <div class="lib" onclick="pickLibrary()"><i data-rock="4"></i><div class="tag">LIBRARY</div></div>
+    <!-- The one tap that matters: shutter -->
+    <button class="shutter" onclick="shutter()" aria-label="Take photo"></button>
+    <div class="cam-hint">two taps:<br>open → shoot</div>
+  </div>
+</div>
+
+<!-- ============ ENRICHMENT (post-shutter review screen) ============ -->
+<div class="phone" id="enrichPhone" style="display:none;position:relative">
+  <section class="screen active" id="enrich">
+    <div class="hd"><div class="row"><div><div class="kick">New entry · saved</div><div class="h1">Nice catch.</div></div><button class="back" onclick="finishSave(false)">SKIP →</button></div></div>
+    <div class="sec">
+      <div class="offline"><span class="dot"></span> SAVED ON THIS DEVICE — NO SIGNAL NEEDED</div>
+      <div class="shot-preview"><i data-rock="3"></i><div class="saved-flag">✓ PHOTO SAVED</div></div>
+      <p style="font-family:var(--serif);font-size:15px;color:var(--ink2);margin:0 0 14px">The rock's in the book. Want to sit with it, or keep moving?</p>
+      <div class="cap-mode"><button class="on" id="fastBtn" onclick="setMode('fast')">Keep moving</button><button id="slowBtn" onclick="setMode('slow')">Alone / curious</button></div>
+      <div class="fl"><label>What did you notice?</label><textarea id="noticeField" placeholder="Texture, color, shape, where it sits…"></textarea></div>
+      <button class="disclose" id="discloseBtn" onclick="setMode('slow')">＋ ADD DETAIL &amp; A GUESS</button>
+      <div class="more hide" id="more">
+        <div class="fl"><label>Initial guess or question</label><textarea placeholder="Maybe gneiss? Why alone in a field?"></textarea></div>
+        <div class="fl"><label>Confidence</label><div class="conf"><button>Guessing</button><button class="on">Kind of</button><button>Sure</button></div></div>
+        <div class="fl"><label>Event / place</label><input value="Koli ridge trail"></div>
+        <div class="fl"><label>Themes</label><div><span class="chip">bedrock</span><span class="chip">glaciation</span><span class="chip">granite/gneiss</span></div></div>
+      </div>
+      <button class="save" onclick="finishSave(true)">DONE</button>
+    </div>
+  </section>
+</div>
+
+<!-- ============ TELEMETRY (prototype-only) ============ -->
+<button class="telem-toggle" onclick="toggleTelem()" aria-label="Telemetry"><i data-ico="activity"></i><span class="badge-count" id="evCount">0</span></button>
+<div class="telem" id="telem">
+  <div class="telem-hd"><div><div class="t">▲ Instrumentation</div><div class="sub">FR-V2-INSTR · prototype-only · not a real backend</div></div>
+    <button onclick="toggleTelem()"><i data-ico="x"></i></button></div>
+  <div class="metrics" id="metrics"></div>
+  <div class="telem-actions">
+    <button onclick="FR.exportEvents()">Export JSON</button>
+    <button onclick="FR.clearEvents();renderTelem()">Reset</button>
+  </div>
+  <div class="telem-log" id="telemLog"></div>
+</div>
+
+<script src="common.js"></script>
+<script>
+// ---- Capture flow (camera-first, two-tap) --------------------------------
+let camOpenedAt=0, capturedFromLibrary=false;
+function openCamera(){
+  camOpenedAt=Date.now();capturedFromLibrary=false;
+  document.getElementById('camera').classList.add('active');
+  FR.log('capture',{action:'open'});
+}
+function closeCamera(){
+  document.getElementById('camera').classList.remove('active');
+  FR.log('capture',{action:'cancel',ms:Date.now()-camOpenedAt});
+}
+function shutter(){
+  const ms=Date.now()-camOpenedAt;
+  FR.log('capture',{action:'shutter',ms:ms,source:'camera'});
+  toEnrich();
+}
+function pickLibrary(){
+  capturedFromLibrary=true;
+  FR.log('capture',{action:'library',ms:Date.now()-camOpenedAt});
+  toEnrich();
+}
+function toEnrich(){
+  document.getElementById('camera').classList.remove('active');
+  document.querySelector('.phone').style.display='none';
+  document.getElementById('enrichPhone').style.display='block';
+  window.scrollTo(0,0);
+}
+function setMode(m){
+  document.getElementById('fastBtn').classList.toggle('on',m==='fast');
+  document.getElementById('slowBtn').classList.toggle('on',m==='slow');
+  const more=document.getElementById('more'),db=document.getElementById('discloseBtn');
+  if(m==='slow'){more.classList.remove('hide');db.classList.add('hide');FR.log('capture',{action:'enrich_open'});}
+  else{more.classList.add('hide');db.classList.remove('hide');}
+}
+function finishSave(enriched){
+  const noticed=(document.getElementById('noticeField').value||'').trim().length>0;
+  const slowOpen=!document.getElementById('more').classList.contains('hide');
+  FR.log('save',{enriched:enriched && (noticed||slowOpen), fromLibrary:capturedFromLibrary, noticed:noticed});
+  // reset enrichment UI
+  document.getElementById('noticeField').value='';
+  setMode('fast');
+  document.getElementById('enrichPhone').style.display='none';
+  document.querySelector('.phone').style.display='';
+  FR.go('home');
+}
+
+// ---- Review doors (3 distinct intents) -----------------------------------
+function openReview(door,anchor){
+  document.getElementById('reviewSrc').textContent='arrived via '+door+' · '+anchor;
+  FR.log('review_open',{door:door,anchor:anchor});
+  FR.go('review');
+}
+function openDetail(){FR.log('detail_open',{});FR.go('detail');}
+
+// ---- Telemetry panel -----------------------------------------------------
+function toggleTelem(){document.getElementById('telem').classList.toggle('active');renderTelem();}
+function fmtTime(t){const d=new Date(t);return d.toLocaleTimeString([], {hour12:false,minute:'2-digit',second:'2-digit'});}
+function renderTelem(){
+  const m=FR.metrics();
+  document.getElementById('evCount').textContent=FR.allEvents().length;
+  document.getElementById('metrics').innerHTML=`
+    <div class="metric"><div class="mv">${m.avgShutterMs!=null?m.avgShutterMs+'ms':'—'}</div><div class="ml">avg tap→shutter</div></div>
+    <div class="metric"><div class="mv">${m.captures}</div><div class="ml">photos taken</div></div>
+    <div class="metric"><div class="mv">${m.libraryBails}</div><div class="ml">library bails</div></div>
+    <div class="metric"><div class="mv">${m.enrichPct!=null?m.enrichPct+'%':'—'}</div><div class="ml">enriched vs shot-&-go</div></div>
+    <div class="metric wide"><div class="ml">review door used</div>
+      <div class="doors">
+        <div class="door"><div class="dv">${m.reviewDoors.map}</div><div class="dl">map</div></div>
+        <div class="door"><div class="dv">${m.reviewDoors.timeline}</div><div class="dl">timeline</div></div>
+        <div class="door"><div class="dv">${m.reviewDoors.nav}</div><div class="dl">nav</div></div>
+      </div></div>
+    <div class="metric"><div class="mv">${m.revisitsDone}</div><div class="ml">revisits done</div></div>
+    <div class="metric"><div class="mv">${m.saves}</div><div class="ml">entries saved</div></div>`;
+  const log=document.getElementById('telemLog');
+  const evs=FR.allEvents().slice(-60).reverse();
+  log.innerHTML=evs.map(e=>`<div class="ev"><span class="ty">${e.type}</span><span class="dt">${JSON.stringify(e.data)}</span><span class="ti">${fmtTime(e.t)}</span></div>`).join('')
+    || '<div class="ev"><span class="dt">No events yet — tap around.</span></div>';
+}
+FR.onLog(function(){
+  document.getElementById('evCount').textContent=FR.allEvents().length;
+  if(document.getElementById('telem').classList.contains('active'))renderTelem();
+});
+document.addEventListener('DOMContentLoaded',function(){FR.log('session',{proto:'v2-composite'});renderTelem();});
+</script>
+</body>
+</html>
