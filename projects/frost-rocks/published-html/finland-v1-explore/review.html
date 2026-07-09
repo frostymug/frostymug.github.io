@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frost Rocks — Finland v1 Explore · Review &amp; Rationale</title>
+<style>
+:root{--bg:#f4f2ec;--ink:#1e1a14;--ink2:#5e564a;--line:#d8d2c4;--accent:#7c5a3a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Inter,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:32px 22px 90px}
+a{color:var(--accent)}
+.kick{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:28px;margin:6px 0 18px;letter-spacing:-.4px}
+h2{font-size:20px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;margin:20px 0 6px}
+p,li{font-size:15px;color:var(--ink)}
+ul{padding-left:20px}li{margin-bottom:5px}
+.q{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:14px 16px;margin:14px 0;font-size:15px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;background:#fff;border-radius:10px;overflow:hidden}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#efe9dd;font-size:12px;letter-spacing:.5px;text-transform:uppercase}
+code{background:#efe9dd;padding:1px 6px;border-radius:5px;font-size:13px}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:20px;color:#fff}
+.a{background:#8a3a1d}.b{background:#2f6f6b}.c{background:#b98a2b}.d{background:#4a6b8f}
+.back{font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="back"><a href="index.html">‹ All four directions</a></p>
+  <div class="kick">Frost Rocks · Finland v1 · Explore</div>
+  <h1>Review &amp; Rationale</h1>
+
+  <h2>The design question</h2>
+  <div class="q">Build 1 read as “too nondescript.” Before we cut Build 2 scope, which <b>visual identity and structure</b> makes Frost Rocks feel like <i>itself</i> — a field notebook with memory — without turning capture into homework or the app into a dashboard?</div>
+  <p>This round is deliberately about <b>feel</b>, not feature completeness. All four share the same substance from Petra's 2026-07-09 interview; they diverge on which idea <i>leads</i> the experience.</p>
+
+  <h2>What all four share (from your interview)</h2>
+  <ul>
+    <li><b>Map is back</b> — present in every direction, as emotional architecture, not GPS navigation.</li>
+    <li><b>Bottom nav with a central capture affordance</b> — without hard-forcing Notebook / Capture / Review.</li>
+    <li><b>Dead counters removed</b> — Build 1's three equal counters are gone; only <b>“to revisit”</b> survives, and it's a button, not decoration.</li>
+    <li><b>Fast vs. alone/curious capture</b> — photo + one note by default; guess, confidence, event, themes are progressively disclosed.</li>
+    <li><b>Uncertainty stays first-class</b> — unknown / possible / likely / identified.</li>
+    <li><b>An expanding-knowledge representation</b> — expressed differently in each (story, bars, contrast edges, literal graph).</li>
+    <li><b>Offline save confidence</b> — surfaced on the capture screen everywhere.</li>
+  </ul>
+
+  <h2>The four directions</h2>
+
+  <h3><span class="pill a">A</span> Rugged Field Guide — <em>map-led</em></h3>
+  <ul>
+    <li><b>Identity:</b> warm kraft paper, letterpress serif, mono labels, wax-stamp accents. Analog, outdoorsy, durable.</li>
+    <li><b>Structure:</b> the Finland map <i>is</i> the home. Encounters are numbered guidebook entries (№007…). Review framed as “what did the ground tell you today?”</li>
+    <li><b>Behavior it creates:</b> makes place the hook — you open it to see your route fill in.</li>
+    <li><b>Build 1 weakness it fixes:</b> the missing map + nondescript identity, hardest.</li>
+    <li><b>Tradeoff:</b> strong personality can feel “themed”; map-first can crowd the day list.</li>
+  </ul>
+
+  <h3><span class="pill b">B</span> Nordic Minimal — <em>timeline-led</em></h3>
+  <ul>
+    <li><b>Identity:</b> bright off-white, one teal accent, hairlines, generous space. Calm, modern, trustworthy.</li>
+    <li><b>Structure:</b> vertical timeline of the day grouped by event; mini-map up top; progress as quiet horizontal bars (understanding, not streaks).</li>
+    <li><b>Behavior it creates:</b> low-friction glance-and-go; capture feels weightless.</li>
+    <li><b>Build 1 weakness it fixes:</b> equal-weighted fields and dashboard residue → clear hierarchy.</li>
+    <li><b>Tradeoff:</b> safest / least distinctive; risks reading generic if we don't push type + photography.</li>
+  </ul>
+
+  <h3><span class="pill c">C</span> Analog Journal — <em>day-rhythm-led</em></h3>
+  <ul>
+    <li><b>Identity:</b> moody dark, photo-forward hero images, serif prose, amber/dusk accents. Evolves Build 1's basalt palette into something intentional.</li>
+    <li><b>Structure:</b> organized around the <b>morning/night rhythm</b> you described. Home leads with Morning/Tonight cards; review reads as a settling story with a plain-prose trip narrative.</li>
+    <li><b>Behavior it creates:</b> an evening ritual; emotional attachment via story + big photos.</li>
+    <li><b>Build 1 weakness it fixes:</b> thinness / lack of emotional pull; makes “to revisit” a nightly moment.</li>
+    <li><b>Tradeoff:</b> dark + photo-forward is beautiful but leans journal; must keep geology as the spine.</li>
+  </ul>
+
+  <h3><span class="pill d">D</span> Knowledge Graph — <em>graph-led</em></h3>
+  <ul>
+    <li><b>Identity:</b> clean dark-tech, cyan/violet, mono labels. Systemic and connective.</li>
+    <li><b>Structure:</b> your <b>knowledge graph</b> is the home surface. Captures are nodes; the app suggests edges (concept, rock type, feature, encounter). Review = “does this connection hold?” and forges contrast edges (gneiss vs. granite).</li>
+    <li><b>Behavior it creates:</b> makes “my understanding is expanding” literal and visible; leans into discrimination learning.</li>
+    <li><b>Build 1 weakness it fixes:</b> no sense of growth; directly answers your knowledge-graph ask.</li>
+    <li><b>Tradeoff:</b> most ambitious to build; risks feeling like a tool, not a companion, and could over-index on machinery in the field.</li>
+  </ul>
+
+  <h2>What's intentionally fake</h2>
+  <ul>
+    <li>The map is a <b>stylized SVG blob</b>, not accurate Finland geography or real tiles (no network calls — works offline in the docs viewer).</li>
+    <li>Rock “photos” are generated SVG placeholders.</li>
+    <li>Sample data is fixed (Koli, Day 3, 9 encounters). No real capture, save, location, or AI runs.</li>
+    <li>Progressive disclosure, mode toggles, and reveal buttons are wired; deeper flows are not.</li>
+    <li>The graph in D is hand-laid, not force-directed from real data.</li>
+  </ul>
+
+  <h2>Known rough edges</h2>
+  <ul>
+    <li>Only ~4 screens per direction (Home, Capture, Review, light Detail) — enough to feel identity + structure, not full flows.</li>
+    <li>Detail screens are lighter than home/review; that's deliberate for this round.</li>
+    <li>No transitions/gestures; this is a feel-and-hierarchy prototype, not motion design.</li>
+  </ul>
+
+  <h2>Decisions made in this round</h2>
+  <ul>
+    <li>Kept geology as the spine in all four (per your constraint), even in the journal/graph leans.</li>
+    <li>Every direction removes 2 of 3 counters and keeps a single actionable “to revisit.”</li>
+    <li>Central capture button in the bottom nav in all four — testing the affordance you missed, without locking the 3-part structure.</li>
+    <li>Progressive disclosure implemented identically (Fast default; “alone/curious” or a disclosure tap opens guess/confidence/event/themes).</li>
+  </ul>
+
+  <h2>Open questions for you</h2>
+  <table>
+    <tr><th>#</th><th>Question</th></tr>
+    <tr><td>Q1</td><td>Which <b>identity</b> feels like Frost Rocks — A rugged, B minimal, C moody-journal, D data? (You can pick a base + steal from another.)</td></tr>
+    <tr><td>Q2</td><td>Which <b>structure</b> should lead the home — map (A), timeline (B), day-rhythm (C), or knowledge graph (D)?</td></tr>
+    <tr><td>Q3</td><td>Is the knowledge graph (D) a Build-2 hero, or a “someday” view? Bars (B) may be the cheaper honest version.</td></tr>
+    <tr><td>Q4</td><td>Does the central capture button feel right, or too app-y for a field notebook?</td></tr>
+    <tr><td>Q5</td><td>Does the fast/alone split match how you'd actually capture in Finland?</td></tr>
+  </table>
+
+  <h2>How to send feedback</h2>
+  <p>Use the anchors — e.g. <code>FR-V1-C-REV: love the night ritual, hate the dark home</code>, or <code>Q2: map-led, but with B's type</code>. Mix-and-match is expected; the point is to find the combination, not crown one winner.</p>
+
+  <p style="margin-top:28px;font-size:13px;color:var(--ink2)">Izzy 🧩 · 2026-07-09 · departs from Build 1 (<code>github.com/aspen-frost/frost-rocks</code>, commit <code>3bc3b8a</code>+)</p>
+</div>
+</body>
+</html>

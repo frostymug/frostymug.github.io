@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frost Rocks — Finland v1 · Visual Direction Explore</title>
+<style>
+:root{--bg:#f4f2ec;--ink:#1e1a14;--ink2:#5e564a;--line:#d8d2c4;--accent:#7c5a3a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Inter,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:32px 22px 80px}
+.kick{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:30px;margin:6px 0 4px;letter-spacing:-.5px}
+.lede{color:var(--ink2);font-size:16px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:28px}
+.card{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:transform .12s,box-shadow .12s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(30,26,20,.12)}
+.swatch{height:96px;display:flex;align-items:center;justify-content:center;font-weight:700;letter-spacing:1px;font-size:14px}
+.card .bd{padding:16px}
+.card h3{margin:0 0 4px;font-size:18px}
+.card .id{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700}
+.card p{margin:8px 0 0;font-size:14px;color:var(--ink2)}
+.meta{margin-top:34px;border-top:1px solid var(--line);padding-top:22px;font-size:14px;color:var(--ink2)}
+.meta a{color:var(--accent);font-weight:600}
+.tag{display:inline-block;font-size:11px;background:#efe9dd;border:1px solid var(--line);border-radius:20px;padding:3px 10px;margin:2px 4px 2px 0;color:var(--ink2)}
+.note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:14px 16px;margin-top:24px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Frost Rocks · Finland · Build 2 pre-work</div>
+  <h1>Visual Direction Explore</h1>
+  <p class="lede">Four <b>different</b> takes on the same three anchor screens — Home (map + bottom nav), Capture (fast &amp; alone modes), and Review/Knowledge. They differ in <b>visual identity</b> and in <b>structure</b>. Open each on your phone, react, and tell me which feels like Frost Rocks. Feedback anchors like <code>FR-V1-A-REV</code> are in each.</p>
+
+  <div class="grid">
+    <a class="card" href="a-field-guide/">
+      <div class="swatch" style="background:#e9e0cc;color:#8a3a1d">RUGGED · KRAFT</div>
+      <div class="bd"><div class="id">Direction A</div><h3>Rugged Field Guide</h3>
+        <p><b>Map-led.</b> Warm paper, letterpress, stamped. The Finland map is the home; encounters are numbered guidebook entries.</p></div>
+    </a>
+    <a class="card" href="b-nordic-minimal/">
+      <div class="swatch" style="background:#fbfbfa;color:#2f6f6b;border-bottom:1px solid #ececec">NORDIC · MINIMAL</div>
+      <div class="bd"><div class="id">Direction B</div><h3>Nordic Minimal</h3>
+        <p><b>Timeline-led.</b> Bright, airy, one teal accent. Calm vertical timeline, mini-map up top, progress as quiet bars.</p></div>
+    </a>
+    <a class="card" href="c-analog-journal/">
+      <div class="swatch" style="background:#14161a;color:#dfa94e">ANALOG · DARK</div>
+      <div class="bd"><div class="id">Direction C</div><h3>Analog Journal</h3>
+        <p><b>Day-rhythm-led.</b> Moody, photo-forward, serif. Organized around morning/night review; the trip reads as a story.</p></div>
+    </a>
+    <a class="card" href="d-knowledge-graph/">
+      <div class="swatch" style="background:#0e1220;color:#4fd1c5">DATA · GRAPH</div>
+      <div class="bd"><div class="id">Direction D</div><h3>Knowledge Graph</h3>
+        <p><b>Graph-led.</b> Clean, systemic, techy. Your expanding knowledge is the home surface; captures become linked nodes.</p></div>
+    </a>
+  </div>
+
+  <div class="note">All four fix the same Build 1 gaps from Petra's interview: <b>map is back</b>, <b>bottom nav with a central capture affordance</b>, the two dead counters are gone (only <b>“to revisit”</b> survives), capture has a <b>fast vs. alone/curious</b> split via progressive disclosure, and each has a <b>knowledge/expanding-understanding</b> representation. They diverge on <i>which idea leads</i>.</div>
+
+  <div class="meta">
+    <p><b>Shared anchor screens per direction:</b>
+      <span class="tag">Home · map + nav</span><span class="tag">Capture · fast + alone</span><span class="tag">Review / knowledge</span>
+      <span class="tag">(+ a light Encounter detail)</span></p>
+    <p><b>What's intentionally fake:</b> stylized SVG map (not GPS-accurate), placeholder rock “photos,” fixed sample data (Koli, Day 3), no real save/AI.</p>
+    <p>Full review notes, decisions, and open questions → <a href="review.html">Review &amp; rationale ›</a></p>
+    <p style="margin-top:14px;font-size:13px">Izzy · 2026-07-09 · <code>finland-v1-explore</code></p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frost Rocks — C · Analog Journal</title>
+<style>
+:root{
+  --bg:#14161a;--bg2:#1b1e24;--panel:#20242b;--panel2:#272c34;--line:#333a44;
+  --ink:#f0ede6;--ink2:#a7adb6;--ink3:#6d7580;
+  --amber:#dfa94e;--sage:#8fb08a;--dusk:#7e8db0;--rose:#c98a86;
+  --sans:-apple-system,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Georgia",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+body{background:#000;font-family:var(--sans);color:var(--ink);display:flex;justify-content:center}
+.phone{width:100%;max-width:440px;min-height:100vh;background:var(--bg);position:relative;overflow:hidden}
+.screen{display:none;padding-bottom:100px;animation:fade .3s}.screen.active{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+i[data-rock],i[data-ico]{display:block;line-height:0}i[data-rock] svg{width:100%;height:100%}
+.hero{position:relative;height:230px;overflow:hidden}
+.hero i[data-rock]{position:absolute;inset:0;width:100%;height:100%}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,26,.25) 0%,rgba(20,22,26,.15) 40%,var(--bg) 100%)}
+.hero .cap{position:absolute;left:20px;right:20px;bottom:16px;z-index:1}
+.hero .over{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);font-weight:600}
+.hero h1{font-family:var(--serif);font-size:30px;font-weight:600;margin:5px 0 2px;line-height:1.05}
+.hero .sub{font-size:13px;color:var(--ink2)}
+.sec{padding:18px 20px}
+.rhythm{display:flex;gap:10px;margin:-30px 20px 0;position:relative;z-index:2}
+.rcard{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;cursor:pointer}
+.rcard .ic{width:26px;height:26px;color:var(--amber);margin-bottom:8px}.rcard.night .ic{color:var(--dusk)}
+.rcard .t{font-size:14px;font-weight:600}.rcard .d{font-size:11px;color:var(--ink3);margin-top:2px}
+.revisit{display:flex;align-items:center;gap:12px;background:linear-gradient(100deg,#2a2418,#20242b);border:1px solid #4a3d22;border-radius:16px;padding:15px 18px;margin:16px 20px 0;cursor:pointer}
+.revisit .n{font-family:var(--serif);font-size:30px;color:var(--amber);line-height:1}
+.revisit .tx{flex:1}.revisit .tx b{font-size:14px}.revisit .tx div{font-size:12px;color:var(--ink2)}
+.revisit .arw{color:var(--amber)}
+.mapstrip{margin:18px 20px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative}
+.mapstrip svg{display:block;width:100%;height:auto}
+.mapstrip .lab{position:absolute;left:14px;bottom:12px;font-size:12px;color:var(--ink2);background:rgba(20,22,26,.7);padding:5px 10px;border-radius:20px}
+.dayhd{font-family:var(--serif);font-size:18px;margin:26px 20px 12px;color:var(--ink)}
+.entry{display:flex;gap:14px;padding:0 20px 18px;cursor:pointer;align-items:flex-start}
+.entry i[data-rock]{width:72px;height:72px;border-radius:12px;overflow:hidden;flex:none;box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.entry .bd{flex:1;min-width:0;border-bottom:1px solid var(--line);padding-bottom:18px}
+.entry .tm{font-size:11px;color:var(--ink3);letter-spacing:.5px}
+.entry .ti{font-family:var(--serif);font-size:16px;margin:3px 0 6px}
+.entry .no{font-size:13px;color:var(--ink2);line-height:1.4;margin-bottom:7px}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+.st{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.s-possible{color:var(--amber)}.s-likely{color:var(--sage)}.s-unknown{color:var(--dusk)}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:rgba(20,22,26,.9);backdrop-filter:blur(18px);border-top:1px solid var(--line);height:80px;display:flex;align-items:flex-start;justify-content:space-around;padding-top:12px;z-index:20}
+.nav button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--ink3);font-size:10px;font-weight:600;flex:1}
+.nav button.on{color:var(--amber)}.nav button i[data-ico]{width:23px;height:23px}
+.nav .cap{flex:none;margin-top:-22px}
+.nav .cap .ring{width:58px;height:58px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(223,169,78,.4)}
+.nav .cap .ring i[data-ico]{width:26px;height:26px;color:#14161a}.nav .cap span{color:var(--amber);margin-top:6px}
+.back{background:none;border:none;font-size:14px;color:var(--amber);font-weight:600;padding:0;cursor:pointer}
+.chd{padding:20px 20px 6px}.chd h1{font-family:var(--serif);font-size:26px;margin:6px 0 0}
+.cap-seg{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px;margin:0 20px 20px}
+.cap-seg button{flex:1;border:none;background:none;padding:10px;border-radius:10px;font-size:13px;font-weight:600;color:var(--ink2)}
+.cap-seg button.on{background:var(--panel2);color:var(--ink)}
+.shot{height:220px;margin:0 20px 18px;border-radius:16px;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--ink3);cursor:pointer;overflow:hidden;position:relative}
+.shot i[data-rock]{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
+.shot .z{z-index:1;background:rgba(20,22,26,.75);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600}
+.fl{margin:0 20px 16px}
+.fl label{font-size:12px;font-weight:600;color:var(--ink2);display:block;margin-bottom:7px}
+.fl input,.fl textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px;font-size:16px;color:var(--ink);resize:none;font-family:var(--serif)}
+.fl textarea{min-height:60px}.fl input:focus,.fl textarea:focus{outline:none;border-color:var(--amber)}
+.conf{display:flex;gap:8px}
+.conf button{flex:1;padding:11px;border:1px solid var(--line);background:var(--panel);border-radius:12px;font-size:13px;font-weight:600;color:var(--ink2)}
+.conf button.on{background:rgba(143,176,138,.15);border-color:var(--sage);color:var(--sage)}
+.more{overflow:hidden;transition:max-height .35s}.more.hide{max-height:0}.more.show{max-height:600px}
+.disclose{margin:0 20px 18px;width:calc(100% - 40px);background:none;border:1px dashed var(--line);border-radius:12px;padding:13px;font-size:13px;font-weight:600;color:var(--amber);cursor:pointer}.disclose.hide{display:none}
+.offline{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sage);margin:0 20px 16px}
+.offline .d2{width:7px;height:7px;border-radius:50%;background:var(--sage)}
+.save{margin:0 20px;width:calc(100% - 40px);padding:16px;background:var(--amber);border:none;border-radius:14px;color:#14161a;font-size:16px;font-weight:700;cursor:pointer}
+.rev-hero{position:relative;height:190px;overflow:hidden}
+.rev-hero i[data-rock]{position:absolute;inset:0;width:100%;height:100%}
+.rev-hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,26,.4),var(--bg) 92%)}
+.rev-hero .cap{position:absolute;left:20px;right:20px;bottom:14px;z-index:1}
+.rev-hero .over{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dusk);font-weight:600}
+.rev-hero h1{font-family:var(--serif);font-size:24px;margin-top:4px}
+.revq{font-family:var(--serif);font-size:19px;margin:0 20px 16px;line-height:1.35}
+.reveal{margin:0 20px 18px;background:var(--panel);border-left:3px solid var(--amber);border-radius:0 12px 12px 0;padding:14px;font-size:14px;color:var(--ink2);line-height:1.55;display:none}.reveal.show{display:block}.reveal b{color:var(--ink)}
+.revbtns{display:flex;gap:8px;margin:0 20px 22px}
+.revbtns button{flex:1;padding:13px;border:1px solid var(--line);background:var(--panel);border-radius:12px;font-size:13px;font-weight:600;color:var(--ink2)}
+.revbtns button.pri{background:var(--sage);border-color:var(--sage);color:#14161a}
+.anchor{font-size:10px;font-weight:700;color:var(--amber);background:rgba(223,169,78,.12);padding:3px 8px;border-radius:6px;letter-spacing:.5px;margin:0 20px}
+.story{margin:0 20px;font-family:var(--serif);font-size:15px;color:var(--ink2);line-height:1.65}.story b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="phone">
+  <section class="screen active" id="home">
+    <div class="hero"><i data-rock="4"></i><div class="veil"></div>
+      <div class="cap"><div class="over">Field Journal · Day 3</div><h1>Koli, evening light</h1><div class="sub">9 encounters · 3 places on the map</div></div></div>
+    <div class="rhythm">
+      <div class="rcard" onclick="FR.go('review')"><i data-ico="sun" class="ic"></i><div class="t">Morning</div><div class="d">Yesterday, then today</div></div>
+      <div class="rcard night" onclick="FR.go('review')"><i data-ico="moon" class="ic"></i><div class="t">Tonight</div><div class="d">Revisit today</div></div>
+    </div>
+    <div class="revisit" onclick="FR.go('review')"><div class="n">4</div><div class="tx"><b>To revisit</b><div>Tonight's quiet minute keeps it from slipping away</div></div><div class="arw"><i data-ico="star" style="width:20px;height:20px"></i></div></div>
+    <div class="mapstrip"><svg viewBox="0 0 440 150" role="img" aria-label="Stylized Finland map">
+      <rect width="440" height="150" fill="#1b1e24"/>
+      <path d="M150,18 C205,12 262,26 276,62 C290,100 264,128 228,140 C192,150 150,146 130,120 C108,92 100,66 116,40 Z" fill="#252c30" stroke="#3a4650" stroke-width="1.5"/>
+      <path d="M150,120 L172,86 L200,60 L212,32" fill="none" stroke="#dfa94e" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+      <circle cx="150" cy="120" r="5" fill="#6d7580"/><circle cx="200" cy="60" r="5" fill="#6d7580"/><circle cx="212" cy="32" r="7" fill="#dfa94e" stroke="#14161a" stroke-width="2"/>
+    </svg><div class="lab">📍 Koli — tap to see photos on the map</div></div>
+    <div class="dayhd">Today's encounters</div>
+    <div class="entry" onclick="FR.go('detail')"><i data-rock="0"></i><div class="bd"><div class="tm">14:32 · KOLI RIDGE</div><div class="ti">Banded gray outcrop</div><div class="no">“Layered gray, light and dark stripes. Maybe gneiss?”</div><span class="st s-possible"><span class="dot" style="background:var(--amber)"></span>Possible · gneiss</span></div></div>
+    <div class="entry" onclick="FR.go('detail')"><i data-rock="1"></i><div class="bd"><div class="tm">13:10 · CLEARING</div><div class="ti">Lone boulder</div><div class="no">“Why is it sitting all alone out here?”</div><span class="st s-unknown"><span class="dot" style="background:var(--dusk)"></span>Unknown · erratic?</span></div></div>
+    <div class="entry" onclick="FR.go('detail')"><i data-rock="2"></i><div class="bd"><div class="tm">11:48 · VISITOR CENTRE</div><div class="ti">Pink coarse rock</div><div class="no">“Big crystals, flecks of black.”</div><span class="st s-likely"><span class="dot" style="background:var(--sage)"></span>Likely · granite</span></div></div>
+  </section>
+
+  <section class="screen" id="detail">
+    <div class="rev-hero"><i data-rock="0"></i><div class="veil"></div><div class="cap"><div class="over">Koli ridge · 14:32</div><h1>Banded outcrop</h1></div></div>
+    <div class="sec" style="padding-top:8px"><button class="back" onclick="FR.go('home')">‹ Back to journal</button></div>
+    <div class="revq" style="font-size:16px">“Layered gray rock along the ridge. Light and dark stripes. Maybe gneiss?”</div>
+    <div class="reveal show"><b>Look again.</b> Continuous <b>bands</b> mean gneiss; even speckle means granite. This sits an hour after the lone boulder — both may be ice-worked bedrock.</div>
+  </section>
+
+  <section class="screen" id="capture">
+    <div class="chd"><button class="back" onclick="FR.go('home')">Cancel</button><h1>New encounter</h1></div>
+    <div class="offline"><span class="d2"></span> Saved on this device — no signal needed</div>
+    <div class="cap-seg"><button class="on" id="fastBtn" onclick="setMode('fast')">Fast</button><button id="slowBtn" onclick="setMode('slow')">Alone &amp; curious</button></div>
+    <div class="shot"><i data-rock="3"></i><div class="z">Tap to photograph</div></div>
+    <div class="fl"><label>What did you notice?</label><textarea placeholder="Texture, color, shape, where it sits…"></textarea></div>
+    <button class="disclose" id="discloseBtn" onclick="setMode('slow')">＋ Add a guess &amp; detail</button>
+    <div class="more hide" id="more">
+      <div class="fl"><label>Initial guess or question</label><textarea placeholder="Maybe gneiss? Why alone in a field?"></textarea></div>
+      <div class="fl"><label>Confidence</label><div class="conf"><button>Guessing</button><button class="on">Kind of</button><button>Sure</button></div></div>
+      <div class="fl"><label>Event</label><input value="Koli ridge trail"></div>
+    </div>
+    <button class="save" onclick="FR.go('home')">Save encounter</button>
+  </section>
+
+  <section class="screen" id="review">
+    <div class="rev-hero"><i data-rock="0"></i><div class="veil"></div><div class="cap"><div class="over">Tonight · Day 3</div><h1>Let the day settle</h1></div></div>
+    <div class="sec" style="padding:14px 20px 4px"><span class="anchor">FR-V1-C-REV</span></div>
+    <div class="revq" data-revealwrap>Where were you when you saw this — and what did you think it showed?
+      <div class="revbtns"><button class="pri" onclick="FR.reveal(this)">I remember</button><button onclick="FR.reveal(this)">Not sure</button></div>
+      <div class="reveal"><b>Koli ridge, 14:32.</b> You wrote “maybe gneiss.” The <b>banding</b> is the tell. Tonight this joins the <b>lone boulder</b> and the <b>pink granite</b> — the day's stones start to rhyme: <i>old bedrock, worked by ice.</i></div>
+    </div>
+    <div class="dayhd" style="margin-top:8px">The story so far</div>
+    <p class="story">Three days in, Finland is teaching you one sentence: <b>this land is old rock the ice rearranged.</b> Granite and gneiss you can nearly tell apart now. The open question you carried down from the ridge — <i>is that boulder local or a traveler?</i> — is the thread into tomorrow.</p>
+  </section>
+
+  <nav class="nav">
+    <button class="on" data-nav="home" onclick="FR.go('home')"><i data-ico="book"></i><span>Journal</span></button>
+    <button data-nav="home" onclick="FR.go('home')"><i data-ico="map"></i><span>Map</span></button>
+    <button class="cap" onclick="FR.go('capture')"><div class="ring"><i data-ico="plus"></i></div><span>Capture</span></button>
+    <button data-nav="review" onclick="FR.go('review')"><i data-ico="moon"></i><span>Review</span></button>
+    <button data-nav="review" onclick="FR.go('review')"><i data-ico="user"></i><span>Trip</span></button>
+  </nav>
+</div>
+<script src="../common.js"></script>
+<script>
+function setMode(m){document.getElementById('fastBtn').classList.toggle('on',m==='fast');document.getElementById('slowBtn').classList.toggle('on',m==='slow');
+ const more=document.getElementById('more'),db=document.getElementById('discloseBtn');
+ if(m==='slow'){more.classList.remove('hide');more.classList.add('show');db.classList.add('hide');}else{more.classList.remove('show');more.classList.add('hide');db.classList.remove('hide');}}
+</script>
+</body>
+</html>
