@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks v2 — Arya's Feasibility Verdict + Implementation Plan · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a aria-current="page" href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks v2 Implementation Plan</div>
+      <div class="doc-meta">Last updated: 2026-07-10</div>
+      <h1>Frost Rocks v2 — Arya's Feasibility Verdict + Implementation Plan</h1>
+<p><em>Arya (Architect) | 2026-07-10 | Status: <strong>GREENLIT — ready for Jesse</strong> | Source-verified against <code>workspace-arya/repos/frost-rocks</code></em></p>
+<p>&gt; <strong>How to read this doc.</strong> &gt; <strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>---</p>
+<h2>0. Verdict — I'm good to go</h2>
+<p>Izzy's delta spec is <strong>accurate and honest</strong>. I read every file it leans on (<code>app/capture.tsx</code>, <code>app/index.tsx</code>, <code>app/review.tsx</code>, <code>app/encounter/[id].tsx</code>, <code>src/db/{schema,database,encounters,export}.ts</code>, <code>src/services/{photos,location}.ts</code>, <code>package.json</code>, <code>app.json</code>, <code>eas.json</code>) and the claims about v0 hold up. This is a <strong>screen-flow + instrumentation + skin + one-new-dependency</strong> delta on a sound data layer — not a rebuild.</p>
+<p><strong>One correction to the spec's framing</strong> (spec §1 implication, and its §2.3 &quot;enrichment edits an existing row&quot;): v0 has <code>createEncounter</code> + narrow field setters (<code>setThemes</code>, <code>setReviewState</code>, <code>setUncertainty</code>, <code>setLearnedLater</code>, <code>setAiLearningNote</code>) but <strong>no general <code>updateEncounter</code></strong> that writes note / guess / confidence / event_tag together. D1's enrich-after-shutter path needs a new <code>updateEncounter()</code> function. It's small — but it's <em>new code</em>, not a claimed-existing seam, so it gets a test (Gate #1).</p>
+<p>No blocking questions for Andy. One thing I decided that was mine to decide (D5 map) is in §5. The remaining Andy-facing item is the D4 visual sign-off, which is Izzy's lane, not a blocker for me.</p>
+<p>---</p>
+<h2>1. Feasibility answers (spec §8)</h2>
+<p><strong>Q1 — D1 capture inversion clean?</strong> Yes, with one gotcha. <code>capture.tsx</code> is registered as a <strong>modal</strong> (<code>presentation: 'modal'</code> in <code>_layout.tsx</code>). Today FAB does <code>router.push('/capture')</code>. New flow: FAB handler calls <code>takePhoto()</code> directly, then on a real photo creates a photo-only encounter and routes to <code>/capture?id=&lt;id&gt;&amp;mode=enrich</code>. The gotcha is <strong>lifecycle, not routing</strong>: <code>takePhoto()</code> is async and fires a permission prompt on first run — the FAB must show a pending state and be re-entrancy guarded (ignore taps while a capture is in flight) so a double-tap can't create two encounters. Two-way door 🚪➡️🚪.</p>
+<p><strong>Q2 — GPS sequencing (the trap Izzy flagged) — lifecycle issue kicking off from FAB?</strong> No lifecycle issue, and this is the sharpest part of the plan. Today location acquisition starts on <code>capture.tsx</code> <em>mount</em>. In the inverted flow the camera opens first, so we start it earlier — <strong>but not naively from the FAB tap.</strong> The subtlety the spec undersells: <code>takePhoto()</code> currently only requests <strong>camera</strong> permission; <code>getCurrentLocation()</code> requests <strong>location</strong> permission separately. If we fire both at the exact same instant on first run we stack two OS permission dialogs and the shutter races the fix. Solution in §3 (D1): kick <code>getCurrentLocation()</code> off from the FAB handler <em>in parallel with</em> <code>takePhoto()</code>, stash the promise, and <code>await</code> (with the existing 8s timeout) at encounter-create time — which is already <em>after</em> the shutter, so there's natural slack. Null fix = un-pinned encounter, save never blocks (offline contract holds). Two-way door 🚪➡️🚪.</p>
+<p><strong>Q3 — reuse the current capture form as the post-shutter enrich view?</strong> Yes — it's ~90% reusable and reuse is the right call. <code>capture.tsx</code> becomes two modes driven by a <code>mode</code>/<code>id</code> param: (a) <strong>enrich</strong> (has <code>id</code>, post-shutter, common path) loads the just-created encounter and its <code>save</code> becomes an <code>updateEncounter()</code>; (b) <strong>manual</strong> (no <code>id</code>, the library/back-out fallback) keeps today's create-on-save behavior. The photo-row stays as the escape hatch (add-more / library). No reason not to. Two-way door 🚪➡️🚪.</p>
+<p><strong>Q4 — <code>events</code> table + export addition — disturb the migration/test surface?</strong> No. The migration system is clean and versioned (<code>db_version</code> table, atomic per-version transactions). D3 is a <strong><code>version: 2</code> entry</strong> appended to <code>MIGRATIONS</code> — additive, never touches v1. Adds one table (<code>events</code>), one insert helper (<code>logEvent</code>), and an <code>events.json</code> builder that rides the existing pure-export seam in <code>src/db/export.ts</code>. Bumps <code>EXPORT_VERSION</code> 1→2. Migration idempotency + a round-trip logEvent/export test cover it. Two-way door 🚪➡️🚪 (see §4 for the one 🚪🧱 sub-decision: event <em>vocabulary</em> is a soft contract).</p>
+<p><strong>Q5 — D5 offline map, the big one — lightest Expo-compatible offline approach?</strong> Decided in §5. <strong><code>react-native-maps</code> with Apple Maps (iOS) is wrong for offline Finland</strong>; the right answer given this repo's constraints is <strong><code>@maplibre/maplibre-react-native</code> with a bundled offline style + a small MBTiles/PMTiles pack of Finland</strong>, OR — if we want to ship <em>this week</em> with zero native-map risk — an <strong>interim &quot;poor-man's map&quot;: a static bundled map image with GPS pins projected on top</strong>. Recommendation: ship the interim static-map for the Finland TestFlight, land MapLibre as the fast-follow. Rationale + trade-off in §5. This is the one 🚪🧱 in the delta.</p>
+<p>---</p>
+<h2>2. What's actually new code vs. reskin</h2>
+<table><thead><tr><th>Change</th><th>New code?</th><th>Schema?</th><th>Test (Gate #1)?</th><th>Risk</th></tr></thead><tbody><tr><td>D1 capture inversion</td><td><strong>Yes</strong> — new FAB handler, <code>updateEncounter()</code>, capture 2-mode</td><td>No</td><td>Yes — <code>updateEncounter</code> round-trip + photo-only create</td><td>Medium (the real work)</td></tr><tr><td>D1 GPS sequencing</td><td><strong>Yes</strong> — parallel acquire + attach-at-create</td><td>No</td><td>Yes — attach-at-create with resolved &amp; null fix</td><td>Medium (the trap)</td></tr><tr><td>D2 three doors</td><td>Small — <code>door</code> param + Door B action + Door C annotate</td><td>No</td><td>Light — param plumb; mostly instrumentation</td><td>Low</td></tr><tr><td>D3 events table</td><td><strong>Yes</strong> — migration v2, <code>logEvent</code>, export add</td><td><strong>Yes (additive)</strong></td><td>Yes — migration idempotency + logEvent/export round-trip</td><td>Low</td></tr><tr><td>D4 field-guide skin</td><td>Reskin — <code>tokens.ts</code> + <code>ui.tsx</code>/cards</td><td>No</td><td>Existing tests must stay green</td><td>Low (cosmetic)</td></tr><tr><td>D5 map</td><td><strong>Yes</strong> — new dependency + map surface + pins</td><td>No (lat/lng exist)</td><td>Yes — pin projection from known coords</td><td><strong>Medium-High (only real risk)</strong></td></tr></tbody></table>
+<p>---</p>
+<h2>3. D1 — Camera-first two-tap (build this first, TestFlight it alone)</h2>
+<p><strong>This is the thin vertical slice.</strong> It's isolatable, it's the scariest, and it's the one thing HTML can't prove (real permission prompt + real camera latency). Ship it to TestFlight before anything else so Andy feels the two-tap on a real phone in near-Finland conditions.</p>
+<p><strong>Steps for Jesse:</strong></p>
+<p>- guards re-entrancy (ignore taps while <code>capturing</code> state is true), - fires <code>const locP = getCurrentLocation()</code> <strong>and</strong> <code>const photo = await takePhoto()</code> — location promise stashed, not awaited yet, - if <code>photo</code> is null (camera cancelled / permission denied) → no-op, reset state, no orphan encounter, - if <code>photo</code> → <code>await</code> the loc promise (bounded by its own 8s timeout), <code>createEncounter({...loc}, [photo])</code>, then <code>router.push('/capture?id=&lt;id&gt;&amp;mode=enrich')</code>.</p>
+<p>- <strong>enrich</strong> (<code>id</code> present): load encounter, hydrate fields, header reframes to &quot;Saved — want to sit with it?&quot;, primary action = <code>updateEncounter</code> + one-tap <strong>Done/Skip</strong> (<code>router.back()</code> to notebook). Photo row shows the captured photo + a &quot;＋ add / library&quot; affordance. - <strong>manual</strong> (no <code>id</code>): today's behavior (create-on-save) — the library/back-out fallback.</p>
+<ul><li><strong>New <code>updateEncounter(id, patch)</code> in <code>src/db/encounters.ts</code></strong> — writes <code>note</code>, <code>initial_guess</code>, <code>confidence</code>, <code>event_tag</code>, <code>lat</code>, <code>lng</code>, <code>location_label</code>, bumps <code>updated_at</code>. Mirror the existing setter discipline (never touches <code>ai_learning_note</code> — that's the enrichment lane; §3 field-collision rule in the arch doc). <strong>Test:</strong> create photo-only → <code>updateEncounter</code> → re-read asserts every field landed and <code>ai_learning_note</code> untouched.</li><li><strong>FAB handler in <code>app/index.tsx</code></strong> — replace <code>router.push('/capture')</code> with an async handler that:</li><li><strong><code>app/capture.tsx</code> → two modes</strong> via <code>useLocalSearchParams</code>:</li><li><strong>Preserve the safety net</strong> — the photo still flows through <code>persistAsset</code> (camera-roll copy). No change to <code>photos.ts</code> required for D1; <code>takePhoto()</code> already does the copy.</li><li><strong>Instrument</strong> (needs D3, or stub the logger and wire in D3): <code>capture</code> events (<code>open</code>/<code>shutter</code>/<code>library</code>/<code>cancel</code>) with <code>ms</code> tap→shutter; <code>save</code> with <code>enriched</code>/<code>fromLibrary</code>/<code>noticed</code>.</li></ul>
+<p><strong>Gate #1 evidence Jesse must show in the PR:</strong> test output for the <code>updateEncounter</code> round-trip AND the photo-only-create-then-attach-GPS path (both resolved-fix and null-fix). Not &quot;40 tests green&quot; — <em>these</em> tests, named, with output. If I can't see the changed seam run, it's not approvable.</p>
+<p><strong>Native-truth caveat (in the PR body, honestly):</strong> &quot;two-tap&quot; is only true in steady state <em>after</em> camera permission is granted. First run injects the permission tap. That's an OS reality, not a bug — but the PR must say so, and the TestFlight validation is Andy tapping through it post-grant.</p>
+<p>---</p>
+<h2>4. D3 — Events (do this second; D1 instrumentation depends on it)</h2>
+<ul><li><strong>Migration v2</strong> appended to <code>MIGRATIONS</code>: <code>CREATE TABLE events (id TEXT PRIMARY KEY, ts TEXT NOT NULL, type TEXT NOT NULL, data_json TEXT)</code>. Additive; v1 untouched.</li><li><strong><code>logEvent(type, data)</code></strong> helper — <code>id</code> via <code>uid()</code> (playbook rule; never <code>Math.random()</code>), <code>ts = nowIso()</code>, <code>data_json = JSON.stringify(data)</code>. Offline-only, no network, fire-and-forget (must never throw into the capture path — wrap and swallow like the camera-roll net).</li><li><strong>Export:</strong> add <code>events.json</code> to the bundle; bump <code>EXPORT_VERSION</code> 1→2 in <code>src/db/export.ts</code>. Pure-function seam stays pure (pass events in, don't read the DB inside the builder).</li><li><strong>Event vocabulary is a soft contract 🚪🧱-ish:</strong> once Finland data is collected under a set of <code>type</code> strings, renaming them fragments the dataset. So we lock the vocabulary from Izzy's §4.2 table <em>now</em> and don't churn it mid-trip. Not database-irreversible, but analysis-irreversible — treat the names as a contract.</li><li><strong>Gate #1 evidence:</strong> migration-idempotency test (run migrations twice, assert v2 applied once) + logEvent→export round-trip test (log 3 events, export, assert <code>events.json</code> shape).</li></ul>
+<p>---</p>
+<h2>5. D5 — Offline map (my call, the one 🚪🧱)</h2>
+<p>**Constraint that drives everything: this is Expo <em>managed</em> workflow (CNG — no <code>ios/</code>/<code>android/</code> dirs).<strong> Any map library must ship as a config plugin and survive <code>expo prebuild</code>. And Finland means </strong>no signal** — tiles cannot be fetched live.</p>
+<p><strong>Options I considered:</strong></p>
+<table><thead><tr><th>Option</th><th>Offline-capable</th><th>Managed-workflow fit</th><th>Effort</th><th>Risk</th></tr></thead><tbody><tr><td><code>react-native-maps</code> (Apple/Google)</td><td>❌ Apple/Google tiles are online-only; offline tile support is poor/none</td><td>Plugin exists</td><td>Med</td><td><strong>Wrong tool</strong> — can't do offline Finland</td></tr><tr><td><code>@maplibre/maplibre-react-native</code> + bundled MBTiles/PMTiles</td><td>✅ True offline vector/raster</td><td>Config plugin, works with prebuild</td><td><strong>High</strong> — tile pack prep, style JSON, plugin config, real native build</td><td>Medium — the honest long-term answer</td></tr><tr><td><strong>Interim: static bundled map image + projected GPS pins</strong></td><td>✅ Trivially offline (it's an asset)</td><td>✅ Zero native deps</td><td><strong>Low</strong></td><td>Low — &quot;simple/pixelated&quot; is exactly Andy's stated bar</td></tr></tbody></table>
+<p><strong>Decision 🚪🧱: ship the interim static-map for the Finland TestFlight; land MapLibre as the fast-follow.</strong></p>
+<ul><li><strong>Why:</strong> Andy explicitly said <em>&quot;even if it's a simple pixelated whatever, a real map of real places&quot;</em> and <em>&quot;put a pin on the map.&quot;</em> A static raster of the Finland region (Helsinki + national-park areas) with encounter pins projected via a fixed lat/lng→pixel transform <strong>fully satisfies the stated intent</strong> for the trip, ships this week, and carries <strong>zero native-build risk</strong> on the timeline that matters. The pin logic is identical either way (encounters already store lat/lng) — so the interim is not throwaway; it's the pin layer we'll reuse.</li><li><strong>Why not go straight to MapLibre:</strong> it's the correct destination, but it's a real native dependency landing days before a trip. That's the exact &quot;plausible-but-unrun native slice fails on device the night before&quot; risk. We de-risk by shipping the sure thing and treating MapLibre as the earned upgrade — same discipline as the histogram (§5.0 of the spec): ship the honest-simple version, earn the heavy one.</li><li><strong>The 🚪🧱 part:</strong> the <em>decision to add a native map library</em> is the irreversible/expensive one (bundle size, prebuild, tile licensing). By deferring it we keep that door closed until after Finland tells us the map door (D2 Door A) actually gets used. If Finland telemetry shows nobody opens the map, we never pay the MapLibre cost.</li><li><strong>Tile licensing note for whoever builds MapLibre later:</strong> OpenStreetMap-derived tiles (via a provider like Protomaps/PMTiles or a self-rendered MBTiles pack) — attribution required, check the ODbL terms. Flagged so it's not a surprise at prebuild time.</li></ul>
+<p><strong>Interim build steps for Jesse:</strong></p>
+<ul><li><strong>Asset DELIVERED &amp; verified (Izzy, 2026-07-10):</strong> <code>assets/map/finland-map.png</code> (1024×1208, field-guide styled) + <code>assets/map/README.md</code> with the load-bearing bounds contract. <strong>Corner contract:</strong> NW = 64.0°N/23.0°E → px(0,0); SE = 59.5°N/31.0°E → px(1024,1208). Arya ran the 7 fixture points through the projection: <strong>all pass</strong> — projection math and stated bounds agree exactly (gate #1 for the seam, verified without a device). Jesse: bundle the PNG, mirror <code>projectCoord</code> from the asset README verbatim, use those exact fixtures as the test.</li><li><code>MapCard</code> (compact, on timeline home) + full <code>MapScreen</code> (new route <code>app/map.tsx</code>, register in <code>_layout.tsx</code>).</li><li>Project each encounter's lat/lng → pixel via linear interpolation between the known corner coords. Pin tap → <code>/encounter/[id]</code> or <code>/review?door=map</code>.</li><li><strong>Gate #1 evidence:</strong> a pure <code>projectCoord(lat, lng, bounds) → {x, y}</code> function with a test asserting known coords land at known pixels (corners + center). This is the load-bearing seam and it's trivially testable <em>without</em> a device.</li></ul>
+<p>---</p>
+<h2>6. D2 — Three doors &amp; D4 — Skin (parallel, low-risk)</h2>
+<p><strong>D2</strong> (small): <code>review.tsx</code> accepts <code>door</code> param (<code>map|timeline|nav</code>), logs <code>review_open{door}</code> (§4), same destination. Door B = &quot;↻ Revisit this one&quot; action on <code>encounter/[id].tsx</code> → <code>/review?door=timeline&amp;id=…</code>. Door C = annotate existing home stat press with <code>door=nav</code>. Door A comes free from D5's pin tap. No data change.</p>
+<p><strong>D4</strong> (cosmetic, parallelizable): retarget <code>src/theme/tokens.ts</code> + <code>src/components/ui.tsx</code>/cards to the &quot;Rugged Field Guide&quot; palette (kraft, letterpress serif, wax-stamp accents, mono labels). <strong>Hard rule: no logic in this PR.</strong> Skin-only diff so review is a pure visual check and existing 40 tests stay green untouched. If a test breaks, the skin PR touched logic it shouldn't have — that's the tripwire.</p>
+<p>---</p>
+<h2>7. Sequencing for Jesse</h2>
+<p><strong>Phase 1 — thin slice (TestFlight #1):</strong></p>
+<p>→ <strong>TestFlight.</strong> Andy validates two-tap on a real phone. <strong>This is the go/no-go gate for the flow.</strong></p>
+<ul><li>D3 events (migration v2 + logEvent + export) — <em>unblocks instrumentation.</em></li><li>D1 capture inversion + GPS sequencing + <code>updateEncounter</code> — <em>the real work, instrumented.</em></li></ul>
+<p><strong>Phase 2 — parallel after D1 lands:</strong></p>
+<p>→ <strong>TestFlight #2</strong> — full composite.</p>
+<ul><li>D2 three doors (needs D3 events, needs D5 for Door A).</li><li>D5 interim static map + pins.</li><li>D4 field-guide skin (fully parallel; touches only tokens/components).</li></ul>
+<p><strong>Phase 3 — earned, post-trip:</strong> MapLibre real offline tiles (if Door A telemetry justifies it); confusion-pair discrimination engine (if review telemetry justifies it). Both deferred, both gated on Finland data.</p>
+<p>---</p>
+<h2>8. Gate discipline for every PR (non-negotiable)</h2>
+<p>Per my standing review practice (MEMORY.md, approved 2026-07-09):</p>
+<ul><li><strong>Evidence it ran.</strong> Each PR shows <strong>test output for the changed load-bearing seam</strong> — named, not &quot;all green.&quot; D1: <code>updateEncounter</code> + attach-GPS (resolved + null). D3: migration idempotency + logEvent/export round-trip. D5: <code>projectCoord</code> corner/center. No seen-it-run = not approvable.</li><li><strong>Diff matches the story.</strong> PR body describes what the diff does — especially the native-truth caveat on two-tap (§3). Plausible-but-unrun native code is the #1 fast-LLM failure mode; that's exactly what I'm gating.</li></ul>
+<p>Style/nits are third-tier.</p>
+<p>---</p>
+<h2>9. Open items (none blocking)</h2>
+<ul><li><strong>Andy:</strong> D4 visual sign-off is Izzy's lane; not on my critical path. I don't need anything from you to greenlight the build.</li><li>~~<strong>Izzy:</strong> static Finland map raster + corner coords.~~ <strong>DELIVERED &amp; verified 2026-07-10</strong> — <code>assets/map/finland-map.png</code> + bounds contract; all 7 projection fixtures pass.</li><li><strong>Me (Arya):</strong> review Jesse's PRs against §8 gates, hold the D5 🚪🧱 line (interim now, MapLibre earned).</li></ul>
+<p>---</p>
+<p><em>Feasibility verified by reading source, not estimated. Every &quot;new code&quot; claim in §2 was checked against the repo (<code>updateEncounter</code> confirmed absent; migration system confirmed versioned/additive; managed-workflow confirmed via absent <code>ios/</code>/<code>android/</code>). The map is not the territory — so I read the territory.</em> ⚔️</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

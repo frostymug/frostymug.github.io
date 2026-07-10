@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — Finland v2 Composite: Delta Spec · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a aria-current="page" href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks v2 Delta Spec</div>
+      <div class="doc-meta">Last updated: 2026-07-10</div>
+      <h1>Frost Rocks — Finland v2 Composite: Delta Spec</h1>
+<p><em>Izzy (Design) | 2026-07-09; updated 2026-07-10 | Status: <strong>ANCHORS LOCKED — ready for Arya/Eng feasibility review</strong></em></p>
+<p>&gt; <strong>What this is.</strong> Not a from-scratch spec. This is the <strong>diff</strong> between what Arya's Build 1 &gt; (v0) already ships and what the v2 composite prototype adds. It reads the real repo &gt; (<code>workspace-arya/repos/frost-rocks</code>) and the implemented architecture &gt; (<a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html"><code>FINLAND-ARCHITECTURE.md</code></a>), then names exactly what changes. &gt; &gt; <strong>Why a delta, not a spec.</strong> Andy's correct push (2026-07-10): v0 is in TestFlight, so the &gt; data model and offline architecture already <em>exist as running code</em>. We build on that, we do &gt; not re-invent it. Confirmed by reading the source — see §1. &gt; &gt; <strong>Prototype under review:</strong> &gt; <code>https://docs.aspenfrost.com/projects/frost-rocks/published-html/finland-v2-composite/</code> &gt; Anchors: <code>FR-V2-01</code>…<code>07</code> + <code>FR-V2-INSTR</code>.</p>
+<p>---</p>
+<h2>0. TL;DR — the delta is small and sharp</h2>
+<p>v0 already has the hard parts: rich encounter record, offline-first capture write, the outbox queue, camera-roll safety net, export, review, theme/uncertainty/review-state. <strong>The composite adds exactly four things, and only one is architecturally new:</strong></p>
+<table><thead><tr><th>#</th><th>Change</th><th>Size</th><th>Schema change?</th></tr></thead><tbody><tr><td><strong>D1</strong></td><td><strong>Camera-first, two-tap capture</strong> — invert the capture screen so the shutter comes <em>before</em> the form</td><td><strong>Medium (the real work)</strong></td><td>No</td></tr><tr><td><strong>D2</strong></td><td><strong>Three review doors</strong> — add map + per-entry entry points to review; v0 has one</td><td>Small</td><td>No</td></tr><tr><td><strong>D3</strong></td><td><strong>Instrumentation event schema</strong> — v0 has none; the prototype's event names port in</td><td>Small–Medium</td><td>Yes (add <code>events</code> table)</td></tr><tr><td><strong>D4</strong></td><td><strong>Field-guide skin</strong> — v0 uses its own token theme; align to the A aesthetic</td><td>Small–Medium (cosmetic, no logic)</td><td>No</td></tr><tr><td><strong>D5</strong></td><td><strong>Real offline map + GPS-on-capture</strong> — Andy approved a real (simple/pixelated OK) map; pin encounters by GPS</td><td><strong>Medium (new dependency)</strong></td><td>No (lat/lng already exist)</td></tr></tbody></table>
+<p>Everything else in the composite (timeline home, histogram progress, honest uncertainty, offline copy) is <strong>already true in v0 or is pure visual reskin.</strong> The map (D5) is the one real new dependency — Andy approved it 2026-07-10 (v0 deliberately shipped <strong>no map tiles</strong>, arch §7).</p>
+<h3>Andy's anchor decisions (2026-07-10) — all locked</h3>
+<table><thead><tr><th>Anchor</th><th>Decision</th></tr></thead><tbody><tr><td>FR-V2-01 warmth</td><td>✅ Keep — &quot;love the feel&quot;</td></tr><tr><td>FR-V2-02 two-tap</td><td>✅ <strong>LOCKED</strong> — fast enough. Greenlights D1.</td></tr><tr><td>FR-V2-03 escape hatches</td><td>✅ Perfect as-is</td></tr><tr><td>FR-V2-04 enrich moment</td><td>✅ <strong>Enrich AFTER shutter</strong> — fork resolved; D1 inverts fully</td></tr><tr><td>FR-V2-05 histogram</td><td>✅ Keep. <strong>Andy named the real question: how do the bars get populated?</strong> See §5.0 — the door back to the deferred confusion-pair fork.</td></tr><tr><td>FR-V2-06 three doors</td><td>✅ Ship all three, measure in Finland</td></tr><tr><td>FR-V2-07 revisit counter</td><td>✅ Fine</td></tr><tr><td>FR-V2-INSTR</td><td>✅ Watching the right things</td></tr><tr><td>Map</td><td>✅ <strong>Add a real map</strong> (simple/pixelated fine). GPS on capture → pin. Promotes Door A to buildable. See D5.</td></tr></tbody></table>
+<p>---</p>
+<h2>1. What v0 already does (verified in source — do NOT rebuild)</h2>
+<p>Read from the live repo, not estimated:</p>
+<p>hold the full rich encounter record: photos (with <code>camera_roll_asset_id</code>), note, initial_guess, confidence (<code>sure|kind_of|guessing</code>), <code>uncertainty_status</code>, <code>ai_learning_note</code>, <code>learned_later</code>, <code>review_state</code> (<code>soon|later|know_it</code>), theme tags, event tag, geo, timestamps. <strong>The three-door review and enrich-after-shutter flows need zero new encounter columns.</strong></p>
+<p>SQLite insert, location captured in the background and never blocks save, <code>canSave</code> is true with just a photo <em>or</em> a note. The &quot;saves on this device — no signal&quot; copy is already there.</p>
+<p>gated behind <code>isEnrichmentEnabled()</code>. The &quot;Ask the guide&quot; affordance is already wired.</p>
+<p>timeline grouped by day with a review-count stat and theme filters.</p>
+<ul><li><strong>Data model is complete for the composite.</strong> <code>src/db/schema.ts</code> + <code>src/types/index.ts</code> already</li><li><strong>Offline-first capture write</strong> exists (<code>app/capture.tsx</code> → <code>createEncounter</code>): synchronous local</li><li><strong>Outbox / enrichment queue</strong> exists and is dormant (<code>src/db/jobs.ts</code>, <code>src/services/enrichment*</code>),</li><li><strong>Camera-roll safety net</strong> exists (<code>src/services/photos.ts</code> → best-effort <code>MediaLibrary</code>).</li><li><strong>Export</strong> exists (Markdown journal + JSON manifest + photo copies).</li><li><strong>Review</strong> exists (<code>app/review.tsx</code>) with 3-state flag; <strong>home</strong> (<code>app/index.tsx</code>) is a</li><li><strong>40 tests green, TS strict, lint clean</strong> at handoff.</li></ul>
+<p><strong>Implication:</strong> the composite is mostly a <em>screen-flow + instrumentation + skin</em> delta on top of a sound data layer. That is a much smaller job than a full spec ladder.</p>
+<p>---</p>
+<h2>2. D1 — Camera-first two-tap capture (the real work)</h2>
+<h3>2.1 What v0 does today (the gap)</h3>
+<p><code>app/capture.tsx</code> is <strong>form-first, not camera-first.</strong> On open you see a scrolling form; the photo is one field among many, offered as <strong>two equal buttons — &quot;Camera&quot; and &quot;Library&quot;</strong> (<code>addPhoto('camera')</code> vs <code>addPhoto('library')</code>). The camera only launches <em>after</em> you choose it. Then you fill fields, then tap <strong>Save</strong>. That's roughly <strong>3+ taps to a photo</strong> and a decision (camera vs library) in the fast path — exactly the friction Andy wanted gone.</p>
+<p><code>src/services/photos.ts::takePhoto()</code> already launches the device camera directly via <code>ImagePicker.launchCameraAsync</code> — so the <em>camera launch</em> primitive exists; it's just not the entry point.</p>
+<h3>2.2 Target behavior (from the prototype + Andy 2026-07-09)</h3>
+<p>&gt; &quot;Click the capture button, the next thing I click should be the take picture button… just go &gt; straight to the camera and take a picture. Maybe give me a back-out path or a way to choose a &gt; library photo, but I wanted it quick, quick, click, click.&quot;</p>
+<p><strong>Flow:</strong></p>
+<p>with it?&quot;), with everything optional and a one-tap <strong>SKIP/DONE</strong>.</p>
+<p>reachable from the camera but never on the primary tap sequence.</p>
+<ul><li>Tap <strong>Capture</strong> (FAB / center nav) → <strong>immediately</strong> launch the camera (no intermediate screen).</li><li>First and only required tap after that = <strong>shutter</strong>. Photo taken.</li><li><strong>After</strong> the shutter → the enrichment screen (the old form, reframed as &quot;saved — want to sit</li><li><strong>Escape hatches, out of the fast path:</strong> a <strong>library</strong> affordance and a <strong>back/cancel</strong>, both</li></ul>
+<p><strong>Key inversion:</strong> photo-first, form-after. The encounter is <em>saved on shutter</em> (photo-only is a valid encounter — v0 already allows this via <code>canSave</code>), and enrichment edits an existing row rather than gating creation.</p>
+<h3>2.3 Implementation notes for Eng (Arya/Jesse)</h3>
+<p>&gt; <strong>GPS SEQUENCING — new, load-bearing (Andy 2026-07-10).</strong> Andy wants every capture to carry GPS &gt; so it can be pinned on the map (D5). v0 acquires location on the <em>capture screen</em> open. But D1 &gt; makes the <strong>camera</strong> open first, before that screen exists. <strong>Kick off <code>getCurrentLocation()</code> the &gt; instant the camera launches</strong> (from the FAB handler), stash the promise, and attach the resolved &gt; fix when the photo-only encounter is created. The fast two-tap must not outrun the GPS fix and &gt; pin a rock with null coordinates. Location still never <em>blocks</em> save (offline contract holds) — &gt; a null fix is acceptable (un-pinned encounter), but we start acquisition as early as possible.</p>
+<p><code>takePhoto()</code> <strong>directly</strong>, not <code>router.push('/capture')</code>. On a real photo, create the encounter immediately (photo-only), then route to <code>/capture?id=&lt;encounterId&gt;</code> in <strong>enrich mode</strong>.</p>
+<p>(b) <em>manual/library</em> fallback. The current form is ~90% reusable — it becomes the enrich view.</p>
+<p><strong>permission prompt</strong> that can inject a tap. So &quot;two-tap&quot; is only honest <em>after</em> permission is granted (steady state). The prototype's simulated camera cannot prove this — <strong>this is the #1 thing the native slice must validate</strong> (see §6).</p>
+<ul><li><strong>Entry point:</strong> the Capture FAB (<code>app/index.tsx</code> <code>testID=&quot;capture-fab&quot;</code>) should call</li><li><strong><code>app/capture.tsx</code> becomes two modes:</strong> (a) <em>enrich existing</em> (post-shutter, the common path),</li><li><strong>Native truth Andy needs to feel:</strong> <code>ImagePicker.launchCameraAsync</code> first-run fires a</li><li><strong>No schema change.</strong> <code>createEncounter</code> already accepts photo-only. Enrichment is an <code>UPDATE</code>.</li><li><strong>Do not lose the safety net:</strong> photo still routes through <code>persistAsset</code> (camera-roll copy).</li></ul>
+<h3>2.4 Open design fork — needs Andy's anchor <code>FR-V2-04</code></h3>
+<p>Does the &quot;what did you notice?&quot; prompt belong <strong>after</strong> the shutter (prototype's current answer) or <strong>in the moment</strong>? v0 today puts it in the capture form (in-the-moment-ish). The composite moves it after. <strong>This is a real fork; I want Andy's gut from actually clicking it before we build D1.</strong></p>
+<p>---</p>
+<h2>3. D2 — Three review doors</h2>
+<h3>3.1 What v0 does today</h3>
+<p><strong>One door.</strong> Home (<code>app/index.tsx</code>) has a review-count stat that pushes <code>/review</code> (<code>testID=&quot;button-open-review&quot;</code>). <code>app/review.tsx</code> takes <strong>no source/door param</strong>. There is no map door and no per-encounter &quot;revisit this&quot; door. (Encounter detail exists at <code>app/encounter/[id].tsx</code> but doesn't launch review.)</p>
+<h3>3.2 Target</h3>
+<p>Three distinct entry points into review, each tagged as a separate event (§4):</p>
+<p>Pins come from encounter <code>lat</code>/<code>lng</code>.</p>
+<ul><li><strong>Door A — map pin</strong> (spatial recall). <strong>Now buildable</strong> — Andy approved a real map (D5).</li><li><strong>Door B — per-entry &quot;↻ Revisit this one&quot;</strong> from <code>encounter/[id].tsx</code> (temporal recall).</li><li><strong>Door C — nav/home review stat</strong> (deliberate practice). <em>Already exists — just instrument it.</em></li></ul>
+<h3>3.3 Implementation notes</h3>
+<p>(§4), otherwise identical destination. <strong>No data change.</strong></p>
+<ul><li><code>app/review.tsx</code>: accept a <code>door</code> param (<code>map|timeline|nav</code>) via <code>useLocalSearchParams</code>, log it</li><li>Door B: add a &quot;Revisit this one&quot; action on <code>encounter/[id].tsx</code> → <code>router.push('/review?door=timeline&amp;id=…')</code>.</li><li>Door C: annotate the existing home stat press with <code>door=nav</code>.</li></ul>
+<h3>3.4 Design note — these are three <em>intents</em>, not one feature with three doors</h3>
+<p>Map/timeline = <strong>serendipitous re-encounter</strong>; nav = <strong>deliberate practice</strong>. This matters downstream: deliberate practice (Door C) is the natural home for discrimination-first confusion-pair interleaving (train the eye, not quiz the memory) when Andy greenlights that fork. Not in this delta — flagged so we don't design the nav door in a way that blocks it later.</p>
+<p>**The point of shipping all three is to <em>measure</em> which Andy uses (§4), not to decide now.**</p>
+<p>---</p>
+<h2>4. D3 — Instrumentation event schema (new; small schema add)</h2>
+<h3>4.1 What v0 does today</h3>
+<p><strong>Nothing.</strong> No event log, no analytics. (<code>ai_call_log</code> exists but is proxy cost telemetry, not product-usage events.)</p>
+<h3>4.2 Target — port the prototype's schema, answer specific questions</h3>
+<p>The prototype already defines the right event vocabulary. Ship it as a local table (offline-first, same discipline as everything else — no runtime network):</p>
+<pre><code>events
+  id (uuid) | ts | type | data_json</code></pre>
+<p><strong>Event types + the question each answers (this is the whole point — not &quot;log everything&quot;):</strong></p>
+<table><thead><tr><th>Event</th><th>Fields</th><th>Question</th></tr></thead><tbody><tr><td><code>capture</code> action=<code>open</code>/<code>shutter</code>/<code>library</code>/<code>cancel</code>/<code>flip</code>/<code>enrich_open</code></td><td><code>ms</code> (tap→shutter)</td><td>How fast is fast? Library-bail rate?</td></tr><tr><td><code>save</code></td><td><code>enriched</code>, <code>fromLibrary</code>, <code>noticed</code></td><td>Enrich vs. shoot-and-go %?</td></tr><tr><td><code>review_open</code></td><td><code>door</code> (<code>map</code>/<code>timeline</code>/<code>nav</code>)</td><td>Which review door is real?</td></tr><tr><td><code>revisit_done</code></td><td><code>recalled</code> (bool)</td><td>Do flagged rocks actually get revisited?</td></tr><tr><td><code>detail_open</code>, <code>screen</code>, <code>session</code></td><td>—</td><td>Navigation baseline</td></tr></tbody></table>
+<p>existing trip-export seam** (<code>src/db/export.ts</code>) — add an <code>events.json</code> to the bundle. This is the cheapest carry-forward from the prototype and reuses infra that already exists.</p>
+<ul><li><strong>Offline-first &amp; private:</strong> local SQLite only, no payloads leave device; **export rides the</li><li><strong>UID discipline applies</strong> (playbook rule): event ids via <code>uid()</code>, never <code>Math.random()</code>.</li></ul>
+<h3>4.3 Anchor <code>FR-V2-INSTR</code></h3>
+<p>Are these the right questions for Finland? Anything missing / anything noise? (Andy's call.)</p>
+<p>---</p>
+<h2>5. D4 — Field-guide skin + D5 map (cosmetic + one new dependency)</h2>
+<h3>5.0 Histogram population — the sharp question Andy surfaced (design-owned)</h3>
+<p>Andy on FR-V2-05: <em>&quot;leave the bars as-is, but the question is how do those bars get populated?&quot;</em> This is not a UI decision — it is a measurement decision, and it is <strong>the door back into the confusion-pair / discrimination fork parked 2026-06-30.</strong></p>
+<p>The bars claim to show <em>understanding</em> of granite / gneiss / glaciation. Signal options:</p>
+<p>and it <em>is</em> the confusion-pair engine (&quot;train the eye, not quiz the memory&quot;).</p>
+<ul><li><strong>Count-based</strong> (# encounters logged per theme) — cheap, <strong>dishonest</strong> (logging ≠ understanding).</li><li><strong>Self-report</strong> (existing <code>confidence</code> + <code>review_state</code>) — better, but users are poorly calibrated.</li><li><strong>Discrimination-based</strong> (can Andy tell granite from gneiss side-by-side?) — the honest signal,</li></ul>
+<p><strong>The honest version of this histogram requires the discrimination machinery we deliberately deferred.</strong> So this bar is a fork trigger, not a small feature.</p>
+<p><strong>Recommendation for Finland (Izzy):</strong> populate the bars from the <strong>honest-but-simple</strong> signal we already have (self-report confidence + review outcomes), <strong>label them truthfully</strong> as &quot;your sense of it,&quot; NOT a hard mastery score. Then use Finland telemetry (does review actually happen? — D3 <code>review_open</code> / <code>revisit_done</code>) to <em>earn</em> the confusion-pair fork afterward. If review has oxygen on the trip, that's the evidence that justifies building the real discrimination engine. If it doesn't, we saved ourselves from over-building. <strong>No new schema needed for the interim version.</strong></p>
+<p>&gt; <strong>DECISION (Andy, 2026-07-10): interim simple signal approved for Finland.</strong> Ship the &gt; honest-but-simple bars now; do not build the discrimination engine before the trip.**</p>
+<h3>5.1 D4 — Field-guide skin (cosmetic, no logic)</h3>
+<p>v0 uses its own <code>src/theme/tokens.ts</code> palette (surface0…4, lichen500, amber500). The composite adopts the <strong>A &quot;Rugged Field Guide&quot;</strong> aesthetic (kraft paper, letterpress serif headers, wax-stamp accents, mono labels). This is a <strong>token-and-component reskin</strong>, not a logic change — retarget <code>tokens.ts</code> + the shared <code>ui.tsx</code>/card components. Timeline home and histogram progress are already structurally present in v0; they just wear the new skin.</p>
+<h3>5.2 D5 — Real offline map + GPS pins (Andy approved 2026-07-10)</h3>
+<p>Andy: <em>&quot;put a map in there, a real one, even if it's a simple pixelated whatever, a real map of real places. Make sure when we capture a photo it's got GPS attached so we can put it on the map as a pin.&quot;</em></p>
+<p>v0 shipped <strong>no map tiles</strong> (arch §7) — this is the one genuinely new dependency in the delta.</p>
+<p>pixelated&quot; is the right bar; we want <em>place truth</em>, not a polished live map. Eng picks the lightest offline-capable option (e.g. static tiles / MBTiles, or a minimal RN map lib with offline tiles). <strong>Decision owned by Arya/Eng</strong> — the main new-dependency risk.</p>
+<p>detail or the map review door (D2 Door A).</p>
+<p>camera opens, since D1 puts the camera before the old capture screen. Null fix = un-pinned encounter, never a blocked save.</p>
+<p>and a <strong>full map surface</strong> reachable from it / the Map nav tab.</p>
+<ul><li><strong>Map surface:</strong> an <strong>offline</strong> map (tiles bundled or cached — no signal in Finland). &quot;Simple /</li><li><strong>Pins:</strong> encounters already store <code>lat</code>/<code>lng</code>; pins render from those. Tapping a pin → encounter</li><li><strong>GPS-on-capture:</strong> see the <strong>GPS SEQUENCING</strong> note in §2.3 — acquisition must start when the</li><li><strong>Two placements:</strong> the <strong>compact map card</strong> on the timeline home (emotional architecture, shrunk)</li></ul>
+<p><strong>Effort:</strong> medium, driven almost entirely by the offline-tiles choice, not the pin logic.</p>
+<p>---</p>
+<h2>6. The path forward (re-sequenced for v0 reality)</h2>
+<p>Andy's correction collapsed 6 steps → 4:</p>
+<p>confirmed; map approved.</p>
+<p>+ <strong>D3 events</strong>; <strong>D5 map</strong> (main new dependency); D4 skin in parallel.</p>
+<p>can't prove — §2.3), in something like Finland conditions.</p>
+<ul><li><strong>Andy reacts to the prototype</strong> → ✅ <strong>DONE 2026-07-10.</strong> All anchors locked; enrich-after-shutter</li><li><strong>This delta spec</strong> (you're reading it) → Arya/Eng review for feasibility + effort. <em>← you are here.</em></li><li><strong>Eng implements the delta</strong> — <strong>D1 (capture inversion + GPS sequencing)</strong> + <strong>D2 all three doors</strong></li><li><strong>TestFlight the delta</strong> → Andy validates the <strong>two-tap on a real phone</strong> (the one thing HTML</li></ul>
+<p><strong>The scariest, highest-value item is D1</strong>, and it's isolatable: it touches the capture entry point, <code>photos.ts</code> is already camera-capable, and there's no schema risk. That's the natural thin vertical slice to build and TestFlight first.</p>
+<p>---</p>
+<h2>7. Questions for Andy — all resolved 2026-07-10</h2>
+<ul><li>~~<code>FR-V2-04</code> enrich moment~~ → <strong>after the shutter.</strong> Locked.</li><li>~~Map dependency~~ → <strong>yes, real offline map</strong> (simple/pixelated). Locked (D5).</li><li>~~<code>FR-V2-INSTR</code> schema~~ → <strong>right set.</strong> Locked.</li></ul>
+<p>One parked (not blocking): <strong>histogram population</strong> (§5.0). <strong>Andy decided 2026-07-10: the interim honest-but-simple signal is approved for Finland</strong> (self-report confidence + review outcomes, labeled &quot;your sense of it,&quot; not a mastery score). The real (confusion-pair) version is a post-trip fork to be <em>earned</em> by telemetry. <strong>No new schema needed.</strong></p>
+<h2>8. Questions for Arya / Eng (feasibility)</h2>
+<p>→ route to enrich mode&quot; as clean as it looks, or are there expo-router/lifecycle gotchas?</p>
+<p>attaching on encounter create — any lifecycle issue with kicking it off before the enrich screen?</p>
+<p>real Finnish places with bundled/cached tiles? This is the main new-dependency call, yours to own.</p>
+<ul><li>Effort on the <strong>capture inversion (D1)</strong> — is &quot;FAB → <code>takePhoto()</code> → create photo-only encounter</li><li><strong>GPS sequencing (§2.3):</strong> starting <code>getCurrentLocation()</code> from the FAB handler (camera-open) and</li><li>Any reason <strong>not</strong> to reuse the current capture form as the post-shutter enrich view?</li><li><code>events</code> table + export addition (D3) — trivial, or does it disturb the migration/test surface?</li><li><strong>D5 map — the big one:</strong> what's the lightest <strong>offline</strong> map/tiles approach for Expo that gives</li></ul>
+<p>---</p>
+<p><em>Sources read for this delta: <code>workspace-arya/repos/frost-rocks</code> (<code>app/capture.tsx</code>, <code>app/index.tsx</code>, <code>app/review.tsx</code>, <code>src/db/schema.ts</code>, <code>src/types/index.ts</code>, <code>src/services/photos.ts</code>), <code>FINLAND-ARCHITECTURE.md</code>, <code>README.md</code>, and the v2 composite prototype. Status: ANCHORS LOCKED (2026-07-10) — ready for Arya feasibility review. Design-owned; §3.4/§5.0 map cleanly onto the discrimination-first toolkit for when that fork opens.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
