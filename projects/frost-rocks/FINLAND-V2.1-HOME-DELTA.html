@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>projects/frost-fitness/ci-cd/proxy/scripts · Aspen's Docs</title>
+  <title>Frost Rocks — v2.1 &quot;Delta on the Delta&quot;: Home Layout + Nav · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
       <a href="/governance/pipeline.html">Pipeline</a>
       <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
-  <details class="nav-section">
+  <details class="nav-section" open>
     <summary class="nav-section-label">Projects</summary>
       <a href="/projects/index.html">Project Index</a>
       <a href="/projects/status.html">Portfolio Status</a>
@@ -36,7 +36,7 @@
       <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
       <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
     </details>
-    <details class="nav-subsection">
+    <details class="nav-subsection" open>
       <summary>Frost Rocks</summary>
       <a href="/projects/frost-rocks/index.html">Overview</a>
       <a href="/projects/frost-rocks/design.html">Design</a>
@@ -52,7 +52,7 @@
       <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
       <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
       <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
-      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a aria-current="page" href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
       <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
@@ -133,9 +133,69 @@
 </aside>
   <main>
     <article>
-      <div class="crumb">Project support files</div>
-      
-      <h1>projects/frost-fitness/ci-cd/proxy/scripts</h1><p>Published support files from the shared project folder.</p><ul><li><a href="smoke.js.html">smoke.js.html</a></li></ul>
+      <div class="crumb">Projects &middot; Frost Rocks v2.1 Home Delta</div>
+      <div class="doc-meta">Last updated: 2026-07-10</div>
+      <h1>Frost Rocks — v2.1 &quot;Delta on the Delta&quot;: Home Layout + Nav</h1>
+<p><em>Izzy (Design) | 2026-07-10 | For: Jesse (impl) + Arya (review). Follows <code>FINLAND-V2-DELTA-SPEC.md</code>.</em> <em>Status: <strong>READY — small structural diff. No new data, no new deps.</strong></em></p>
+<h2>Why this exists (owning the miss)</h2>
+<p>Jesse's v2 build shipped the <strong>hard mechanical parts perfectly</strong>: camera-first two-tap, GPS-on- camera-open (the §2.3 trap — avoided), the offline map + my raster, all three review doors, and the events table. Verified in source. Credit where due.</p>
+<p>But the <strong>home screen kept v0's layout and just got repainted</strong>, so it doesn't match the prototype. <strong>That's a spec bug on me, not an impl bug on Jesse.</strong> I wrote D4 as &quot;field-guide skin — cosmetic, no logic,&quot; and Arya (correctly, per my framing) made it a <em>skin-only, no-logic</em> PR. But the prototype's home was a <strong>layout change</strong> (timeline spine + ambient revisit banner), not just paint. I buried a structural delta inside the word &quot;skin.&quot; Jesse built exactly what the spec said.</p>
+<p>This doc fixes that — it specs the <strong>structural</strong> home delta explicitly. It is small.</p>
+<h2>What already matches the prototype (do NOT touch)</h2>
+<p>Door A map pin (<code>door:'map'</code>), Door B &quot;Revisit this one&quot; on encounter detail (<code>door:'timeline'</code>), Door C review entry (<code>door:'nav'</code>)</p>
+<ul><li>✅ Camera-first two-tap (<code>quickCapture</code> → <code>takePhoto</code> → enrich mode)</li><li>✅ GPS acquisition starts before the camera (<code>locationPromise</code> before <code>takePhoto</code>)</li><li>✅ Offline map card + full map screen + pins (my raster, <code>mapProjection</code>)</li><li>✅ <strong>All three review doors</strong>, each logging <code>review_open{door}</code>:</li><li>✅ Events table + logging + export</li><li>✅ Field-guide skin (paper/ink, letterpress serif, mono labels) — looks great</li></ul>
+<h2>The diff (home screen <code>app/index.tsx</code> + add bottom nav)</h2>
+<p>Four changes. All layout/navigation. <strong>No schema, no new dependency, no data-layer change.</strong></p>
+<h3>H1 — Kill the stat-tile dashboard header</h3>
+<p><strong>Now:</strong> three equal tiles — <code>today / encounters / to revisit</code>. This is v0's dashboard. The prototype (and the design brief's own words: <em>&quot;a calm field notebook, not a dashboard&quot;</em> — already in the file's top comment!) has <strong>no stat tiles.</strong></p>
+<p><strong>Target:</strong> remove the <code>statsRow</code>. Trip title + a quiet one-line context sub (<code>Day 3 · Koli NP · 9 encounters</code>) as a text line under the title — not tiles. <code>today</code> and <code>encounters</code> are ambient context, not scoreboard numbers.</p>
+<h3>H2 — Restore the ambient &quot;to revisit&quot; banner (FR-V2-07)</h3>
+<p><strong>Now:</strong> &quot;to revisit&quot; is one of the three tiles (a scoreboard number).</p>
+<p><strong>Target:</strong> the warm <strong>revisit banner</strong> from the prototype — full-width, ochre left-border card:</p>
+<p>&gt; <strong>[ 4 ]  entries to revisit</strong> — a calm minute tonight keeps today sharp   → REVIEW</p>
+<p>Tapping it = Door C (<code>router.push({pathname:'/review', params:{door:'nav'}})</code>). This restores the FR-V2-07 intent Andy locked: <strong>an ambient nudge, not a nag, not a scoreboard tile.</strong> Place it above the map card (prototype order: header → revisit banner → map card → timeline).</p>
+<p>&gt; Note: keep review reachable from the bottom nav too (H4). The banner and the nav slot are two &gt; paths to the same door; both log <code>door:'nav'</code>.</p>
+<h3>H3 — Replace the flat day-list with the timeline spine</h3>
+<p><strong>Now:</strong> <code>groups.map</code> renders v0's flat day-grouped <code>EncounterCard</code> list (<code>dayHeader</code> + cards).</p>
+<p><strong>Target:</strong> the prototype's <strong>timeline</strong> — a vertical rule down the left with dots, grouped by <strong>event</strong> (e.g. &quot;Koli ridge trail · afternoon&quot;, &quot;Morning · visitor centre&quot;), each event holding its encounter cards. This is the &quot;B timeline bones&quot; Andy picked as the whole structural point of the composite.</p>
+<p>falling back to a time-of-day label or &quot;Unsorted&quot; when null).</p>
+<p>event label in mono/uppercase, cards indented to the right of the rule.</p>
+<p><code>published-html/finland-v2-composite/index.html</code> (<code>.tl / .tevent / .dot / .ename / .entry</code>) — port that structure into RN. Reference for spacing/hierarchy, not literal CSS.</p>
+<ul><li>Grouping changes from <strong>by-day</strong> to <strong>by-event within day</strong> (event = <code>encounter.event_tag</code>,</li><li>Visual: left timeline rule (<code>::before</code> equivalent — a thin <code>View</code> line), a dot per event node,</li><li>The prototype's markup is in</li></ul>
+<h3>H4 — Add the bottom nav (the missing structure)</h3>
+<p><strong>Now:</strong> only a Capture FAB. No bottom nav.</p>
+<p><strong>Target:</strong> the prototype's <strong>5-slot bottom nav</strong>: <code>Notebook · Map · [Capture] · Review · Trip</code>, with the center <strong>Capture</strong> as the raised circular button (the FAB becomes the center nav slot).</p>
+<p>behavior); Review → <code>/review?door=nav</code>; Trip → home/trip (v0 has no separate Trip surface yet — point it at home for now, or drop to 4 slots if you'd rather not fake it. <strong>Izzy's call: 4 real slots &gt; 1 fake one.</strong> Ship <code>Notebook · Map · [Capture] · Review</code> and add Trip when the surface exists).</p>
+<p><code>&lt;BottomNav&gt;</code> rendered on the home/map/review surfaces is fine and lower-risk than restructuring routing into a Tabs layout. Eng's call on mechanism.)</p>
+<ul><li>Notebook → home; Map → <code>/map</code>; <strong>Capture (center, raised)</strong> → <code>quickCapture()</code> (unchanged</li><li>Implement as a persistent bottom bar component (not necessarily expo-router Tabs — a shared</li><li>This also relocates Door C from a stat tile into a real nav slot, matching the prototype.</li></ul>
+<h2>Prototype order (the target home, top to bottom)</h2>
+<pre><code>FIELD NOTEBOOK
+Finland 2026                                    [Export]
+Day 3 · Koli National Park · 9 encounters        ← H1: sub-line, not tiles
+
+[ 4 ]  entries to revisit — a calm minute…  → REVIEW   ← H2: ambient banner
+
+┌─ OFFLINE MAP · Finland field route ─ [Open] ─┐        ← (already correct)
+│  …raster + pins…                              │
+└───────────────────────────────────────────────┘
+
+[Glacial][Bedrock][Shoreline]… theme chips             ← (keep)
+
+Today                                                   ← H3: timeline
+│• Koli ridge trail · afternoon
+│    ▢ Banded gray outcrop   Possible · gneiss
+│    ▢ Lone boulder          Unknown · erratic?
+│• Morning · visitor centre
+│    ▢ Pink coarse-grained   Likely · granite
+
+[ Notebook   Map   (+Capture)   Review ]                ← H4: bottom nav</code></pre>
+<h2>Gate discipline (Arya §8 — what to show it ran)</h2>
+<p>null-tag fallback). This is the one bit of new logic; test the seam.</p>
+<p>data-layer test needed.</p>
+<p>touch capture, projection, or events logic.</p>
+<ul><li><strong>H3 timeline grouping:</strong> a test on the by-event grouping function (event_tag → grouped nodes,</li><li><strong>H1/H2/H4:</strong> visual/layout — screenshot diff against the prototype home is the evidence. No</li><li><strong>Regression:</strong> the existing capture/map/doors/events tests must stay green — this delta must not</li></ul>
+<h2>The lesson (for our process, not just this PR)</h2>
+<p><strong>&quot;Skin&quot; ≠ &quot;layout.&quot;</strong> When a prototype changes <em>structure</em> (what's on the screen and how it's arranged), that's a first-class delta item with its own spec, even if it also changes the paint. I'll separate <strong>structure</strong> from <strong>skin</strong> in future delta specs so a &quot;cosmetic, no-logic&quot; rule never silently drops a layout change again. Good catch by Andy off a single screenshot.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>

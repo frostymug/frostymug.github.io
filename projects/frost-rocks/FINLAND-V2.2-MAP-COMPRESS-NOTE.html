@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>projects/frost-fitness/ci-cd/proxy/scripts · Aspen's Docs</title>
+  <title>Frost Rocks — v2.2 note: Compress the home map card · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
       <a href="/governance/pipeline.html">Pipeline</a>
       <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
-  <details class="nav-section">
+  <details class="nav-section" open>
     <summary class="nav-section-label">Projects</summary>
       <a href="/projects/index.html">Project Index</a>
       <a href="/projects/status.html">Portfolio Status</a>
@@ -36,7 +36,7 @@
       <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
       <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
     </details>
-    <details class="nav-subsection">
+    <details class="nav-subsection" open>
       <summary>Frost Rocks</summary>
       <a href="/projects/frost-rocks/index.html">Overview</a>
       <a href="/projects/frost-rocks/design.html">Design</a>
@@ -53,7 +53,7 @@
       <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
       <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
       <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
-      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a aria-current="page" href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
@@ -133,9 +133,38 @@
 </aside>
   <main>
     <article>
-      <div class="crumb">Project support files</div>
-      
-      <h1>projects/frost-fitness/ci-cd/proxy/scripts</h1><p>Published support files from the shared project folder.</p><ul><li><a href="smoke.js.html">smoke.js.html</a></li></ul>
+      <div class="crumb">Projects &middot; Frost Rocks v2.2 Map Compress Note</div>
+      <div class="doc-meta">Last updated: 2026-07-10</div>
+      <h1>Frost Rocks — v2.2 note: Compress the home map card</h1>
+<p><em>Izzy (Design) | 2026-07-10 | For: Jesse (impl). Small follow-up to <code>FINLAND-V2.1-HOME-DELTA.md</code>.</em> <em>Status: <strong>READY — one visual change, no logic, no data, no deps.</strong></em></p>
+<h2>What's good (leave alone)</h2>
+<p>v2.1 landed the home layout the way we wanted: the stat-tile header is gone, the ambient <strong>revisit banner</strong> is in, the <strong>bottom nav</strong> is right (Notebook · Map · [Capture] · Review), and the field-guide skin looks great. Andy likes this screen. This note is one refinement only.</p>
+<h2>The one issue</h2>
+<p>The <strong>offline map card eats the whole fold.</strong> On Andy's screenshot it's ~55–60% of the viewport, so the only thing above the fold is header → banner → map. The <strong>timeline spine</strong> — the whole structural point of v2.1 — is entirely below the fold. You have to scroll past a giant map to reach the actual field notebook.</p>
+<p>That's a sizing miss, and it traces back to the prototype vs. build gap: the prototype's map was always a <strong>compact card</strong>, not the full offline map inline.</p>
+<h2>The target (from the prototype — this was always the intent)</h2>
+<p>In the composite prototype (<code>published-html/finland-v2-composite/index.html</code>) the home map is a <strong>fixed-height compact card</strong>, explicitly commented:</p>
+<pre><code>&lt;!-- Compact map card: emotional architecture, present but shrunk (Q6) --&gt;
+&lt;div class=&quot;mapcard&quot;&gt;
+  &lt;svg viewBox=&quot;0 0 440 150&quot; ...&gt;   &lt;- 440x150: a short, wide thumbnail</code></pre>
+<p>Key properties of the prototype card:</p>
+<p>route <em>thumbnail</em>, not a browsable map.</p>
+<p>grow to fill available height.</p>
+<p><code>Open map ›</code> link on the right.</p>
+<p>raster/browsable map is the <strong>Map</strong> tab / the <code>Open</code> action. We don't need the full raster on the home fold — that's what the dedicated Map surface is for.</p>
+<ul><li><strong>Short + wide.</strong> ~150px tall on a ~440px-wide phone -&gt; roughly a <strong>2.9 : 1</strong> aspect ratio. It's a</li><li><strong><code>.mapcard svg { height: auto }</code></strong> — it scales to width at that fixed short aspect; it does <strong>not</strong></li><li><strong>A caption bar</strong> under it (<code>.mapcap</code>): <code>Koli · your route so far · tap a pin to revisit</code>  +  a</li><li><strong>Full map lives behind &quot;Open&quot;.</strong> The compact card is the glanceable anchor; the real offline</li></ul>
+<h2>The change for Jesse</h2>
+<p>In <code>app/index.tsx</code>, the home map card:</p>
+<p>(width : height), i.e. roughly <strong>130-160px tall</strong> on a standard phone width. Don't let it size to the raster's natural/full height. (RN: wrap the map in a <code>View</code> with a fixed <code>height</code> or <code>aspectRatio: 2.9</code> and <code>overflow: 'hidden'</code>, and crop/scale the raster to fit — center on the route rather than showing the whole tile sheet.)</p>
+<p>unchanged; it keeps the full offline raster. We're only shrinking the <em>home preview</em>, not the map feature.</p>
+<ul><li><strong>Cap its height.</strong> Give the map view a <strong>fixed short aspect</strong> — target ~<strong>2.8-3 : 1</strong></li><li><strong>Keep the caption bar</strong> below it (<code>Koli · your route so far · tap a pin to revisit</code> + <code>Open map ›</code>).</li><li><strong>Keep the pins tappable</strong> on the compact card (Door A — <code>door:'map'</code> — unchanged).</li><li><strong>Full map stays reachable</strong> via the <strong>Map</strong> nav tab and the <code>Open</code> link — that surface is</li></ul>
+<p>Net effect: header -&gt; revisit banner -&gt; <strong>compact map (~150px)</strong> -&gt; theme chips -&gt; <strong>timeline visible above the fold.</strong> The map becomes an orienting glance, and the notebook is the hero again.</p>
+<h2>Two small things I noticed on the same screenshot (your call whether to fold in)</h2>
+<p>-&gt; map. Minor. Either reads fine now that the map is compact — flag only so you can pick one deliberately. (I'd match the prototype: compact map directly under the header, banner beneath it. Not a blocker.)</p>
+<p>That's a raw reverse-geocoded street address from the <em>dev device's</em> real GPS, not the trip place. The design intent (H1) is a <strong>place label</strong>: <code>Day 3 · Koli National Park · 9 encounters</code>. On a real Finland trip the GPS would resolve near Koli, but the field is showing a full street address, which is (a) the wrong granularity — we want park/region, not house number — and (b) obviously test data. Not part of &quot;compress the map,&quot; but worth a ticket: label should be <strong>coarse place (park/region) + day + encounter count</strong>, not a street address.</p>
+<ul><li><strong>Order:</strong> prototype is header -&gt; <strong>map</strong> -&gt; revisit banner; the build has header -&gt; revisit banner</li><li><strong>Header context line reads <code>14834 Blakeney Rd, Eden Prairie, United States · 2 encounters</code>.</strong></li></ul>
+<h2>Gate</h2>
+<p>Purely visual — screenshot-diff the home against the prototype's compact-map layout. No new logic, so no new test; existing capture/map/doors/events/timeline tests must stay green.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
