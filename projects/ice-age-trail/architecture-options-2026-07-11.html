@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ice Age Trail Architecture Options After Lisa Check-in · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a aria-current="page" href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Ice Age Trail Architecture Options</div>
+      <div class="doc-meta">Last updated: 2026-07-11</div>
+      <h1>Ice Age Trail Architecture Options After Lisa Check-in</h1>
+<p>Date: 2026-07-11 Prepared by: Aspen Source: Andy/Lisa check-in on 2026-07-10, preserved in <code>CALL-NOTES-GEMINI-2026-07-10.md</code> Status: Draft for Andy to send or adapt for Lisa</p>
+<h2>Executive Summary</h2>
+<p>The main architecture decision is not really front-end hosting anymore. The Cloudflare deployment spike proved the existing static app can be hosted under Andy/Aspen control. The real decision is where the project data layers live, who controls them, and how Lisa can keep expanding them safely while a student contributes new bedrock geology data.</p>
+<p>My recommendation is a two-track path:</p>
+<ul><li><strong>Use ArcGIS as the editing system for now</strong>, because Lisa and the student workflow are already there. Let Lisa move/copy the important project layers from UW-Stevens Point to her Minnesota State account as the near-term safer home, and have her document the steps.</li><li><strong>Add an independent backup/snapshot pipeline</strong>, not a full custom backend. Periodically export or copy the ArcGIS layers to a neutral, versioned location so the project is protected if an institution account changes, disappears, or becomes politically messy.</li></ul>
+<p>Do not build a custom geospatial backend yet. That would be too much architecture for the actual risk. The risk is data sovereignty and continuity, not query performance.</p>
+<h2>What Changed In The Lisa Conversation</h2>
+<ul><li>Lisa's priority is the data layers more than the app shell.</li><li>The current app can be deployed independently, but its real runtime dependency is still ArcGIS-hosted data.</li><li>The current geology/POI layers are tied to UW-Stevens Point infrastructure, which Lisa does not fully trust long term.</li><li>Lisa has a Minnesota State account that may be a more stable near-term destination.</li><li>A student will likely need to enter data through the university ArcGIS account for supervision/funding compliance.</li><li>The bedrock geology layer is the immediate funded work; glacial geology and POIs remain important but separate layers.</li><li><code>segments.json</code> is a separate non-georeferenced content layer linked by segment name, and it is not yet a clean long-term content model.</li></ul>
+<h2>Architecture Options</h2>
+<table><thead><tr><th>Option</th><th>What It Means</th><th>Pros</th><th>Cons</th><th>Best Use</th></tr></thead><tbody><tr><td>1. Keep UWSP ArcGIS as the working source</td><td>Student and Lisa keep using the current university-owned ArcGIS organization. App reads from those layers.</td><td>No disruption. Likely satisfies current student supervision/funding needs. Fastest.</td><td>Fragile ownership. Lisa has employment/payment instability concerns. Project assets can remain trapped in institutional infrastructure. Not a good long-term production story.</td><td>Short-term continuity only.</td></tr><tr><td>2. Move/copy Lisa layers to Minnesota State ArcGIS</td><td>Lisa uses her Minnesota State account as the safer near-term home for the educational/geology layers.</td><td>Practical and near-term. Keeps ArcGIS-native editing. Better aligned with Lisa's current confidence in institutional rights. Low technical change to app.</td><td>Still institutional, not independent. Need clarity on ownership, sharing rights, and whether the student can edit there. May not be the final official home if IATA adopts the app.</td><td>Recommended near-term data-stewardship path.</td></tr><tr><td>3. IATA-owned ArcGIS organization</td><td>Official trail/app layers live under Ice Age Trail Alliance control.</td><td>Best official governance if this becomes an IATA product. Cleanest for trail/parking authoritative data. Roles, permissions, terms, and stewardship can be explicit.</td><td>Slower. Requires institutional coordination. Board/payment conflict may complicate Lisa's role. May be too much process before the data model matures.</td><td>Production/official adoption path, not the immediate student-work path.</td></tr><tr><td>4. Andy/Aspen ArcGIS Location Platform account</td><td>Copy Lisa-owned educational layers into an Andy/Aspen-controlled ArcGIS Location Platform account for prototype/demo stability.</td><td>Good for controlled demo. Likely cheap for current small layers. Lets Aspen restrict API keys and monitor usage. Keeps app architecture close to current ArcGIS model.</td><td>Andy/Aspen should not accidentally become the long-term steward of Lisa/IATA data. Requires permission to copy. Can drift from Lisa's editing source.</td><td>Controlled prototype or emergency backup, not ideal as final owner.</td></tr><tr><td>5. Static exported snapshots on Cloudflare/R2/GitHub</td><td>Export layers to GeoJSON or similar files and host/version them outside ArcGIS.</td><td>Cheap. Durable. Good backup. Easy to diff/version. Reduces runtime dependence for read-only layers.</td><td>Not an editing system. Requires export/redeploy process. Needs permission to republish. Large/complex layers can hurt browser performance. Official trail/parking layers may not be appropriate to copy.</td><td>Backup/siphon strategy and possibly read-only educational layers.</td></tr><tr><td>6. Custom PostGIS/geospatial backend</td><td>Build our own database, APIs, auth, admin UI, import/export, backups, and monitoring.</td><td>Maximum independence and flexibility. Can support serious future geospatial product needs.</td><td>Massive overkill now. Adds ops burden, security, data migration, admin tooling, and maintenance before the project has governance clarity.</td><td>Defer until there is a real product/scale reason.</td></tr></tbody></table>
+<h2>Recommended Path</h2>
+<h3>Phase 1: Protect The Data Without Rebuilding The World</h3>
+<p>Lisa should proceed with the Minnesota State migration/copy if she is comfortable with the rights situation there. She should document:</p>
+<ul><li>Which layers were moved or copied.</li><li>Original source URLs and destination URLs.</li><li>Item owners and organization names.</li><li>Sharing settings.</li><li>Editing permissions.</li><li>Any terms-of-use or attribution text.</li><li>Whether the data was copied, exported/imported, or transferred.</li></ul>
+<p>Andy/Aspen should treat that documentation as the source for a lightweight migration playbook.</p>
+<h3>Phase 2: Add A Siphon/Backup Pipeline</h3>
+<p>Build or document a small repeatable process that exports the important ArcGIS layers on a schedule or on demand into a neutral, versioned backup location.</p>
+<p>Start with the Lisa-owned educational layers:</p>
+<ul><li>Bedrock geology.</li><li>Glacial/surficial geology.</li><li>Geological POIs.</li><li>Segment supplemental data, currently <code>segments.json</code>.</li></ul>
+<p>For official IATA trail and parking layers, do not copy/rehost without explicit permission. For those, it may be enough to record dependencies and keep them live from the official source.</p>
+<h3>Phase 3: Decide The Future Steward</h3>
+<p>After the student workflow is clearer, pick the long-term owner:</p>
+<ul><li><strong>If this stays Lisa-led educational research/content:</strong> Minnesota State ArcGIS may be acceptable as the working source, with independent backups.</li><li><strong>If this becomes an official Ice Age Trail Alliance app:</strong> IATA should own or explicitly bless the production ArcGIS organization/layers.</li><li><strong>If this remains an Andy/Lisa prototype:</strong> Andy/Aspen can host the front end and possibly prototype copies, but the docs should say clearly that Aspen is not the authoritative data owner.</li></ul>
+<h2>My Recommendation To Lisa</h2>
+<p>I would tell Lisa:</p>
+<p>&gt; The app itself can be hosted almost anywhere. The strategic choice is where the data lives. Since your immediate goal is developing the bedrock geology layer with a student, I would keep ArcGIS as the editing environment for now. Move or copy the important layers from UWSP to your Minnesota State account if that is the safer institutional home, and document exactly how that migration works. In parallel, Andy/Aspen can help design a lightweight backup/export process so the project is not dependent on any one university account. I would not build custom GIS infrastructure yet. Once the data layers mature and IATA's role is clearer, we can decide whether IATA should become the official production steward.</p>
+<h2>Pros And Cons To Send Lisa</h2>
+<h3>Recommended Near-Term Architecture: Minnesota State ArcGIS + Independent Backup</h3>
+<p>Pros:</p>
+<ul><li>Keeps Lisa and the student in familiar ArcGIS tooling.</li><li>Avoids a distracting rebuild while the bedrock layer is the priority.</li><li>Reduces dependence on UWSP if that employment/account situation is unstable.</li><li>Gives Andy/Aspen a clear way to protect the data through periodic exports.</li><li>Leaves the future IATA official path open.</li></ul>
+<p>Cons:</p>
+<ul><li>Minnesota State is still an institution account, not a neutral permanent home.</li><li>Student editing rights and funding/supervision rules still need confirmation.</li><li>Any copied layers can drift unless the source-of-truth workflow is explicit.</li><li>Permissions and terms still need cleanup before public/official launch.</li></ul>
+<h3>Longer-Term Official Architecture: IATA ArcGIS Stewardship</h3>
+<p>Pros:</p>
+<ul><li>Best fit if the app becomes official.</li><li>Cleanest ownership and continuity story for public users.</li><li>Easier to define staff/admin/editor roles.</li><li>Official trail/parking data can stay authoritative.</li></ul>
+<p>Cons:</p>
+<ul><li>Slower and more bureaucratic.</li><li>Requires IATA buy-in and account/admin details.</li><li>May complicate Lisa's role if board/payment conflict remains unresolved.</li><li>Premature before the educational data model and student workflow mature.</li></ul>
+<h3>Deferred Architecture: Custom Backend</h3>
+<p>Pros:</p>
+<ul><li>Most independent.</li><li>Could eventually support advanced features, custom editing, public contributions, offline packs, or non-Esri maps.</li></ul>
+<p>Cons:</p>
+<ul><li>Not justified yet.</li><li>Expensive to build and maintain.</li><li>Creates security, backup, admin, and migration problems immediately.</li><li>Distracts from the actual next milestone: durable data layers.</li></ul>
+<h2>Questions For Lisa</h2>
+<ul><li>Which exact ArcGIS layers are Lisa-created educational layers versus IATA/third-party official layers?</li><li>Can the student edit in Minnesota State ArcGIS, or must all funded work happen under UWSP?</li><li>Does Minnesota State allow Lisa to share/export/republish this data for a public-facing educational app?</li><li>Are there photos, text, PDFs, or external links in the POI/segment content with separate copyright constraints?</li><li>Does Lisa want the Minnesota State account to be the working source of truth, or just a backup destination?</li><li>Is IATA interested in owning the production data layer infrastructure eventually, or only reviewing/using the app?</li><li>How often should data be backed up or siphoned during the student project: weekly, after each editing session, or before each app release?</li></ul>
+<h2>Andy's Concrete Next Steps</h2>
+<ul><li>Send Lisa the options summary above, especially the recommendation to keep ArcGIS editing but add independent backup.</li><li>Ask Lisa to document her UWSP to Minnesota State migration steps as she performs them.</li><li>Ask for the exact source and destination layer URLs once she has them.</li><li>Have Arya inspect those URLs and produce a layer inventory: owner, sharing, schema, editability, terms, and app dependency.</li><li>Decide whether Aspen/Jesse should build a tiny ArcGIS export/snapshot script or just document a manual export process first.</li></ul>
+<h2>Important Caveat</h2>
+<p>These notes come from Gemini's meeting summary, not a verbatim transcript. The direction is clear enough for planning, but ownership, copyright, and institutional policy claims should be confirmed with Lisa before anyone treats them as hard requirements.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
