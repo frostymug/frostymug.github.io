@@ -142,7 +142,7 @@
       <div class="crumb">Projects &middot; Frost Fitness Status</div>
       
       <h1>Frost Fitness Status</h1>
-<p><strong>Last updated:</strong> 2026-07-16 <strong>Owner:</strong> Aspen for coordination; Andy for product gates <strong>Stage:</strong> App Store Submitted</p>
+<p><strong>Last updated:</strong> 2026-07-17 <strong>Owner:</strong> Aspen for coordination; Andy for product gates <strong>Stage:</strong> App Store Submitted</p>
 <h2>Current State</h2>
 <p>Frost Fitness has been submitted to the iOS App Store as of 2026-06-11. The app is live in TestFlight, routes production traffic through the Cloudflare Worker proxy, and Productization Plan Phase 2 is complete: the proxy exists, the client is migrated, CI/CD has been materially hardened, and the submitted build is past the internal-only milestone.</p>
 <p>The current working package is:</p>
@@ -154,7 +154,7 @@
 <h2>Recent Evidence</h2>
 <ul><li>GitHub PR #10 merged 2026-06-02: Cloudflare Worker proxy.</li><li>GitHub PR #11 merged 2026-06-04: client migrated to proxy and upstream API keys removed from bundle.</li><li>Worker Deploy workflow has successful production runs.</li><li>Latest <code>master</code> Test workflow has a successful run in the repo audit.</li><li>Andy confirmed on 2026-06-05 that the app is live in TestFlight hitting the Cloudflare proxy.</li><li>Andy confirmed on 2026-06-11 that Frost Fitness has been submitted to the iOS App Store.</li></ul>
 <h2>Immediate Next Moves</h2>
-<ul><li>Track Apple review outcome and any rejection/follow-up requirements.</li><li>Keep Cassian in the loop for release safety if Apple requests changes or a new build.</li><li>Begin post-submission productization planning with Jesse and Arya after the review outcome is known.</li><li>Aspen's nightly process audits recent sessions, repo state, and project docs before publishing.</li></ul>
+<ul><li>Track Apple review outcome and any rejection/follow-up requirements.</li><li>Keep Cassian in the loop for release safety if Apple requests changes or a new build.</li><li>Prepare the Phase 3 kickoff with Jesse and Arya after docs/process cleanup; do not let internal multi-user productization planning wait on Apple review, but route any Apple feedback into the plan if it arrives first.</li><li>Aspen's nightly process audits recent sessions, repo state, and project docs before publishing.</li></ul>
 <h2>Open Questions</h2>
 <ul><li>What is the Phase 3 task breakdown Jesse should execute first: onboarding/defaults, account/data copy, or hardcoded-name cleanup?</li><li>What is the oldest supported iPhone target for launch? Default in the Productization Plan is iPhone XR / iOS 17+ unless Andy overrides it.</li><li>What Apple review feedback, if any, needs to be turned into engineering or compliance work?</li></ul>
     </article>
