@@ -60,6 +60,12 @@
       <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
       <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
@@ -141,7 +147,7 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Aspen Mobile App Playbook</div>
-      <div class="doc-meta">Last updated: 2026-07-09</div>
+      <div class="doc-meta">Last updated: 2026-07-21</div>
       <h1>Aspen Frost Mobile App Playbook</h1>
 <p><em>Owner: Arya (Architect) | Created 2026-06-28 | Status: Active reference</em> <em>Generalized from the shipped Frost Fitness app (Expo/EAS, live on the App Store via TestFlight as of 2026-06-11).</em></p>
 <h2>Purpose</h2>
@@ -195,8 +201,8 @@
 <p>The Frost Fitness PRODUCTIZATION-PLAN.md is the worked example of climbing this ladder; reuse its phase structure.</p>
 <p>---</p>
 <h2>Agent Ownership Map (who owns what on a mobile build)</h2>
-<table><thead><tr><th>Concern</th><th>Owner</th></tr></thead><tbody><tr><td>Product direction / gates</td><td>Andy</td></tr><tr><td>Design / experience spec</td><td>Izzy</td></tr><tr><td>Product strategy / content</td><td>Petra</td></tr><tr><td>Architecture doc / tech decisions / code review</td><td>Arya</td></tr><tr><td>Stories / backlog</td><td>Podrick</td></tr><tr><td>Implementation</td><td>Jesse (and Eddie)</td></tr><tr><td>CI/CD, Worker deploy, reliability, <strong>deploy veto</strong></td><td>Cassian (SRE)</td></tr><tr><td>Provider key rotation</td><td>Andy (SRE does not hold provider creds)</td></tr></tbody></table>
-<p><strong>Standard sequence for a new app/feature:</strong> Izzy design → Arya architecture → Andy + Izzy sign-off → Podrick stories → Jesse/Eddie build → Arya code review → Cassian ships. Nobody deploys outside this pipeline.</p>
+<table><thead><tr><th>Concern</th><th>Owner</th></tr></thead><tbody><tr><td>Product direction / gates</td><td>Andy</td></tr><tr><td>Design / experience spec</td><td>Izzy</td></tr><tr><td>Product strategy / content</td><td>Petra</td></tr><tr><td>Architecture doc / tech decisions / code review</td><td>Arya</td></tr><tr><td>Stories / backlog</td><td>Podrick</td></tr><tr><td>Implementation</td><td>Jesse</td></tr><tr><td>CI/CD, Worker deploy, reliability, <strong>deploy veto</strong></td><td>Cassian (SRE)</td></tr><tr><td>Provider key rotation</td><td>Andy (SRE does not hold provider creds)</td></tr></tbody></table>
+<p><strong>Standard sequence for a new app/feature:</strong> Izzy design → Arya architecture → Andy + Izzy sign-off → Podrick stories → Jesse build → Arya code review → Cassian ships. Nobody deploys outside this pipeline.</p>
 <p>---</p>
 <h2>New-App Checklist (copy/paste for the next mobile project)</h2>
 <ul><li>[ ] <code>npx create-expo-app</code> with expo-router + TypeScript; copy <code>tsconfig</code>, <code>eslint</code>, <code>jest</code> config from Frost Fitness.</li><li>[ ] Set <code>app.json</code>: name, slug, <code>bundleIdentifier</code>/<code>package</code> = <code>com.&lt;app&gt;.app</code>, <code>owner: aspen-frost</code>, icons, permission <code>infoPlist</code> strings, <code>ITSAppUsesNonExemptEncryption: false</code>.</li><li>[ ] Create EAS project (<code>eas init</code>), copy <code>eas.json</code> profiles, set <code>ascAppId</code> after App Store Connect app creation.</li><li>[ ] If AI: scaffold <code>proxy/</code> from Frost Fitness's Worker; set model/token caps; set Worker secrets; wire client to <code>EXPO_PUBLIC_PROXY_URL</code>/<code>_TOKEN</code>.</li><li>[ ] Copy CI/CD workflows (<code>test.yml</code>, <code>worker-ci.yml</code>, <code>worker-deploy.yml</code>) + <code>proxy/scripts/smoke.js</code>; set GitHub Secrets + <code>worker-production</code> environment gate (Cassian).</li><li>[ ] App CI runs <code>npx tsc --noEmit</code>, <code>npx expo lint</code>, and <code>npm test -- --ci</code> on PRs.</li><li>[ ] Add React Native Testing Library coverage for the first golden path and all permission-denied states.</li><li>[ ] Add stable <code>testID</code>s for controls/screens that will be driven by Maestro.</li><li>[ ] Add an iOS simulator EAS build profile and Maestro flows before claiming automated native iOS coverage.</li><li>[ ] Wire Sentry: DSN as EAS secret, root error boundary.</li><li>[ ] Set <code>src/theme/tokens.ts</code> as the single design-token source.</li><li>[ ] Publish privacy + terms to <code>docs.aspenfrost.com/&lt;app&gt;/</code>.</li><li>[ ] EAS secrets for proxy URL/token + Sentry DSN.</li><li>[ ] First <code>development</code> build → device; then <code>preview</code>; then <code>production</code> → TestFlight.</li></ul>

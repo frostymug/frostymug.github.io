@@ -60,6 +60,12 @@
       <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
       <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
@@ -141,7 +147,7 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Backlog</div>
-      <div class="doc-meta">Last updated: 2026-07-20</div>
+      <div class="doc-meta">Last updated: 2026-07-21</div>
       <h1>Frost Rocks Backlog</h1>
 <p>Product backlog for follow-up work coming out of live TestFlight usage. Keep items small, evidence-linked, and scoped to the field-notebook loop unless a larger roadmap decision explicitly pulls them forward.</p>
 <p>---</p>
@@ -228,7 +234,7 @@
 <table><thead><tr><th>Belief</th><th>Signal</th><th>Disconfirming Signal</th><th>Decision</th></tr></thead><tbody><tr><td>Third-party keyboard/app handoffs can break the new encounter capture state.</td><td>Andy reports returning from Wispr Flow to Frost Rocks shows a blank screen while taking notes in a new encounter.</td><td>The issue cannot be reproduced and screenshots show a transient OS/app-switcher artifact rather than Frost Rocks rendering blank.</td><td>Log as P1 bug and collect screenshots/device details before the next bug pass.</td></tr></tbody></table>
 <p>---</p>
 <h2>P1 - Capture user questions for later AI exploration</h2>
-<p><strong>Status:</strong> Backlog - candidate for next TestFlight follow-up / tutor-loop discovery <strong>Source:</strong> Andy in-field noticing usage, 2026-07-20 <strong>Area:</strong> Capture notes / review / AI exploration <strong>Type:</strong> Product-model gap in the curiosity loop</p>
+<p><strong>Status:</strong> Backlog - candidate for next TestFlight follow-up / tutor-loop discovery <strong>Source:</strong> Andy in-field noticing usage, 2026-07-20; Andy shorthand, 2026-07-21 <strong>Area:</strong> Capture notes / review / AI exploration <strong>Type:</strong> Product-model gap in the curiosity loop</p>
 <h3>Problem</h3>
 <p>Andy is finding that the things he wants to note are not only topics, tags, or rock identifications. They are often live questions that arise while looking at a place or object: &quot;Why is it like that?&quot; &quot;Why is that boulder out in the middle?&quot; The current capture model can store a note, but it does not treat questions as first-class material that can be revisited, answered, explored, or used to shape a review session.</p>
 <p>This is a strong signal that Frost Rocks may be less about getting users to label rocks correctly in the moment and more about preserving curiosity before it evaporates. Identification is still part of the loop, but user-authored questions may be a better doorway into learning.</p>
@@ -239,9 +245,9 @@
 <h3>Acceptance Criteria</h3>
 <ul><li>The user can mark or enter a captured note as a question during encounter capture or enrichment.</li><li>Questions remain visible on the encounter detail screen and are not flattened into generic notes or tags.</li><li>The review flow can surface unanswered or recently captured questions as prompts.</li><li>The user can start an AI exploration from a saved question, either immediately or later.</li><li>Question text is preserved exactly as the user wrote it, alongside any AI response or learning note.</li><li>Questions work offline as saved local data; AI exploration can wait until connectivity exists.</li><li>Export includes questions in a stable, readable structure distinct from tags and freeform notes.</li><li>Instrument <code>question_capture</code>, <code>question_review_open</code>, and <code>question_ai_explore_start</code> if lightweight.</li></ul>
 <h3>Product Notes</h3>
-<ul><li>Do not force every note into a question. The product should support observations, labels, hypotheses, and questions as neighboring capture types.</li><li>First pass can be simple: detect or let the user mark question-like notes, then collect them into review and AI exploration surfaces.</li><li>This connects directly to the future tutor thesis. The strongest tutor prompt may be the user's own question, not a generated quiz.</li><li>Watch for the right timing: in-the-moment AI can be valuable, but it should not interrupt field attention unless the user asks for it.</li></ul>
+<ul><li>Do not force every note into a question. The product should support observations, labels, hypotheses, and questions as neighboring capture types.</li><li>First pass can be simple: detect or let the user mark question-like notes, then collect them into review and AI exploration surfaces.</li><li>This connects directly to the future tutor thesis. The strongest tutor prompt may be the user's own question, not a generated quiz.</li><li>Watch for the right timing: in-the-moment AI can be valuable, but it should not interrupt field attention unless the user asks for it.</li><li>Andy's later shorthand to revisit: <strong>noticing, remembering, connecting</strong>. Treat this as a discussion seed, not a committed framework yet.</li></ul>
 <h3>Evidence Ledger</h3>
-<table><thead><tr><th>Belief</th><th>Signal</th><th>Disconfirming Signal</th><th>Decision</th></tr></thead><tbody><tr><td>User-authored questions are a distinct and valuable capture object, not just generic note text.</td><td>Andy says he wants to note questions like &quot;Why is it like that?&quot; and revisit them with AI later.</td><td>Users mostly capture declarative observations or IDs and rarely return to questions.</td><td>Add first-class question capture/exploration to backlog as a near-term product-model candidate.</td></tr><tr><td>AI exploration may be more compelling when grounded in the user's own field questions.</td><td>Andy specifically imagines returning to questions and exploring them with AI in the moment or in review.</td><td>Users prefer app-generated explanations or quizzes over their own captured questions.</td><td>Treat saved questions as a likely tutor/review input, not only a note subtype.</td></tr></tbody></table>
+<table><thead><tr><th>Belief</th><th>Signal</th><th>Disconfirming Signal</th><th>Decision</th></tr></thead><tbody><tr><td>User-authored questions are a distinct and valuable capture object, not just generic note text.</td><td>Andy says he wants to note questions like &quot;Why is it like that?&quot; and revisit them with AI later.</td><td>Users mostly capture declarative observations or IDs and rarely return to questions.</td><td>Add first-class question capture/exploration to backlog as a near-term product-model candidate.</td></tr><tr><td>AI exploration may be more compelling when grounded in the user's own field questions.</td><td>Andy specifically imagines returning to questions and exploring them with AI in the moment or in review.</td><td>Users prefer app-generated explanations or quizzes over their own captured questions.</td><td>Treat saved questions as a likely tutor/review input, not only a note subtype.</td></tr><tr><td>The durable field-learning loop may be about noticing, remembering, and connecting more than identification alone.</td><td>Andy named those three words as something to come back to after using the app in the field.</td><td>Later discussion shows the phrase is only poetic language, not a behaviorally useful product frame.</td><td>Preserve the phrase for later discussion; do not promote it into scope or IA yet.</td></tr></tbody></table>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>

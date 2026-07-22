@@ -60,6 +60,12 @@
       <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
       <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
       <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
@@ -141,7 +147,7 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Fitness Architecture</div>
-      <div class="doc-meta">Last updated: 2026-06-06</div>
+      <div class="doc-meta">Last updated: 2026-07-21</div>
       <h1>Frost Fitness — Architectural Review</h1>
 <p><strong>Author:</strong> Arya (Architect, Aspen Frost Empire) <strong>Date:</strong> 2026-05-24 <strong>Repo:</strong> frostymug/frost-fitness <strong>Status:</strong> First review — living document</p>
 <p>---</p>
@@ -199,7 +205,7 @@
 <p><strong>Priority: Productization prerequisite.</strong></p>
 <p>---</p>
 <h3>7. No test coverage</h3>
-<p>Zero test files visible in the repo. The core of this app is: (a) write to SQLite correctly, and (b) call AI APIs correctly — both have fairly deterministic inputs and outputs. A small suite of unit tests on <code>saveMeal</code>, <code>recomputeMealTotals</code>, <code>getDayTotals</code>, and the AI service adapters would catch regressions cheaply and give Eddie (when he arrives) a safety net.</p>
+<p>Zero test files visible in the repo. The core of this app is: (a) write to SQLite correctly, and (b) call AI APIs correctly — both have fairly deterministic inputs and outputs. A small suite of unit tests on <code>saveMeal</code>, <code>recomputeMealTotals</code>, <code>getDayTotals</code>, and the AI service adapters would catch regressions cheaply and give Jesse a safety net for agent-assisted development.</p>
 <p><strong>Priority: Medium — important before agent-assisted development at scale.</strong></p>
 <p>---</p>
 <h2>Testing Doctrine — Runtime Compatibility Is a First-Class Boundary</h2>
@@ -216,8 +222,8 @@
 <ul><li><strong>What's the growth ambition?</strong></li></ul>
 <p>All data lives in SQLite on-device. iCloud device backup covers it implicitly, but that's implicit. If the phone is lost or wiped, nutrition history is gone. Is that acceptable? If not: iCloud Drive, CloudKit, or a backend sync are the options, each with meaningfully different complexity.</p>
 <ul><li><strong>Is there a sync or backup strategy?</strong></li></ul>
-<p>If Eddie is an AI agent (low-cost model), the absence of tests is a real problem — agent-written code without a test harness is where silent regressions accumulate. If Eddie is a human, the code is readable enough to onboard quickly. The answer shapes the urgency of item 7 above.</p>
-<ul><li><strong>Who is Eddie, and how does he work?</strong></li></ul>
+<p>Jesse is an AI agent, so the absence of tests is a real problem — agent-written code without a test harness is where silent regressions accumulate. This confirms the urgency of item 7 above: the test suite is Jesse's safety net, not a nice-to-have. (Originally logged when the developer's identity/nature was still open.)</p>
+<ul><li><strong>Who is the developer, and how do they work?</strong> <em>(Resolved 2026-07-21: Jesse — an AI coding agent.)</em></li></ul>
 <p>The schema has a comment: <code>-- Future: add fasting_windows table for v2 fasting timer</code>. The <code>checkInTime</code> setting (morning/evening/off) suggests push notification infrastructure. <code>app.json</code> is at <code>2.0.0</code>. Understanding what's coming next would change prioritization — some debts above matter a lot more in some directions than others.</p>
 <ul><li><strong>What's the v2 feature roadmap?</strong></li></ul>
 <p>If it stays personal, most of the above is informational. If it hits the App Store: the key security issue becomes urgent, the hardcoded personal values become embarrassing, and the missing error boundaries become 1-star reviews waiting to happen.</p>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — D3 Evening Debrief: Wedge Spec (v1) · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a aria-current="page" href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks D3 Wedge Spec</div>
+      <div class="doc-meta">Last updated: 2026-07-22</div>
+      <h1>Frost Rocks — D3 Evening Debrief: Wedge Spec (v1)</h1>
+<p><strong>Status:</strong> READY FOR ANDY REVIEW → then Arya feasibility <strong>Author:</strong> Izzy (Design) · 2026-07-22 <strong>Inputs:</strong> <code>AI-TUTOR-DESIGN-BRIEF.md</code> (decisions §0.5 locked with Andy 2026-07-22) · <code>WOZ-D3-PILOT-1-2026-07-22.md</code> (findings F1–F9, live pilot) · repo <code>aspen-frost/frost-rocks</code> @ <code>fbd81be</code> (v2.2) <strong>Spec style:</strong> delta against the shipped app. Additive only — no encounter-schema changes, capture path untouched. Structure and skin are separated throughout (v2.1 lesson: a layout change buried inside &quot;skin&quot; gets built as paint).</p>
+<p><strong>Review anchors:</strong> <code>D3-S<em></code> = structure · <code>D3-I</em></code> = interaction · <code>D3-D<em></code> = data · <code>D3-Q</em></code> = open questions.</p>
+<p>---</p>
+<h2>0. What this is</h2>
+<p>The first shipped tutor surface: the <strong>evening debrief</strong> — a tutor-guided review session over the day's encounters, entered from existing doors, producing durable residue on the notebook objects (learning notes, resolved questions, learner-model updates). D3 ships first per locked decision EMB-1; this spec covers <em>only</em> D3 plus the minimum shared substrate (knowledge tables, delta contract, tutor transport) that every later moment (T1/D1/T3) will reuse.</p>
+<p><strong>The bet being shipped</strong> (validated in WoZ pilot #1): a dialogue that starts from Andy's own noticing, teaches through it, and calls back concepts across encounters produces the &quot;it knows what I know&quot; feeling with a small curated spine + simple evidence rows — no embeddings, no knowledge tracing (H3), and the generative hunch-step feels satisfying, not like homework (H7 — supported by F2/F4).</p>
+<p>---</p>
+<h2>1. Experience — STRUCTURE</h2>
+<p><em>Everything in §1 is layout/flow/navigation. None of it is paint. Build gates test these seams, not colors.</em></p>
+<h3>D3-S1 — Entry doors (3, all existing surfaces)</h3>
+<ul><li><strong>Revisit banner, evening state.</strong> The existing home revisit banner gets a time-and-content-aware variant: when (a) local time ≥ ~17:00 and (b) ≥1 encounter captured today, copy shifts to debrief framing — <em>&quot;4 encounters today — debrief with your guide?&quot;</em> Tapping opens the D3 session (not the old review list). Outside those conditions the banner keeps its current behavior. No new nav tab (canon: no chatbot-shaped destination).</li><li><strong>Encounter detail affordance.</strong> A quiet &quot;Explore with your guide&quot; row on encounter detail opens a <strong>single-encounter</strong> D3 session scoped to that encounter. Same session machinery, agenda of one.</li><li><strong>Review flow handoff.</strong> Inside the existing staged-reveal review, after the original-note reveal, a &quot;talk it through&quot; affordance escalates into dialogue for that encounter. (The staged-reveal flow is the chassis, per brief; dialogue slots in after the note reveal, exactly where the pilot's elaborative prompt sat.)</li></ul>
+<p><strong>Optionality is sacred:</strong> all three doors are invitations. No badge, no streak, no scolding for skipped evenings (guardrail; T3 catches what days miss).</p>
+<h3>D3-S2 — Session shape</h3>
+<pre><code>OPEN      Tutor greets w/ context (day, place, count) — 1 short turn
+AGENDA    Tutor proposes 2–4 items, user can reorder/skip/add
+            priority: (1) encounters with explicit questions in notes
+                      (2) photo-only encounters (enrichment targets)
+                      (3) one cross-day consolidation thread (if material exists)
+PER-ITEM  The encounter loop (D3-S3), one encounter at a time
+THREAD    One session-spanning connection surfaced when real
+            (pilot: &quot;pink is the pigment, texture is the plot&quot; — F3/F9)
+CLOSE     Land the plane: 2–3 line recap, residue summary
+            (&quot;2 questions resolved, 1 quest opened, 3 notes written&quot;),
+            deltas applied. Target session: 5–15 min (guardrail).</code></pre>
+<p>User can bail at any point; residue for completed items persists; agenda leftovers stay <code>later</code> (no penalty).</p>
+<h3>D3-S3 — The per-encounter loop (the core rhythm, validated F9)</h3>
+<ul><li><strong>Context reinstatement.</strong> Tutor shows the photo + reads back the user's own note verbatim (quoted, honored — never paraphrased away). Pilot evidence: reading the note back was itself valued. If photo-only: tutor asks for the field memory (&quot;why did you raise the phone?&quot;) — that <em>is</em> the reinstatement.</li><li><strong>Elaborative prompt (hunch-first, INT-1).</strong> One question extending the user's own noticing — <em>&quot;tell me more about X&quot;</em>, never pop-quiz. <strong>Visible &quot;just tell me&quot; escape</strong> (went unused in pilot — keep it anyway; it's the pressure valve that makes the prompt feel safe, F2). Rule from pilot: the prompt must be <em>honest data-gathering</em> — asked because the answer genuinely informs the reveal — not quiz theater (F2).</li><li><strong>Reveal.</strong> Answer <em>through</em> what the user noticed. Error-correction sequence: validate what's right → correct via the single diagnostic feature → name it &quot;productively wrong&quot; energy, never gotcha (F5). Teach-the-term (KM-4): honor user's words, introduce curriculum vocabulary, adopt it forward. Honest uncertainty grammar mandatory: likely / can't rule out / what-would-settle-it (F6, H5-adjacent).</li><li><strong>One look-again.</strong> Every encounter closes with exactly one field-executable check for next time (&quot;tilt it in the light — what flashes is feldspar&quot;). One, not three.</li><li><strong>Residue write</strong> (D3-S4) + <strong>model delta</strong> (§4), then next agenda item.</li></ul>
+<p>Zero quiz energy in D3 (locked INT-2). Retrieval practice lives post-trip; the generative step here is the elaborative prompt only.</p>
+<h3>D3-S4 — Residue on objects (dialogue is means, notebook is the end)</h3>
+<table><thead><tr><th>Residue</th><th>Where it lands</th></tr></thead><tbody><tr><td>Learning note</td><td><code>encounters.ai_learning_note</code> (existing field; AI-owned; never touches user fields)</td></tr><tr><td>Question opened/resolved</td><td><code>questions</code> row linked to encounter (new, §3)</td></tr><tr><td>Learner-model change</td><td><code>evidence</code> + <code>user_concept_state</code> rows via delta (§4)</td></tr><tr><td>User-coined mnemonic</td><td><code>evidence</code> row, <code>kind: user_mnemonic</code>, verbatim text (F4 — first-class, it's premium encoding signal)</td></tr><tr><td>Session recap</td><td><code>tutor_sessions.summary</code> (transcript kept but backgrounded, EMB-3 lean)</td></tr></tbody></table>
+<p>The learning note is written <em>during</em> the session (user sees it land — &quot;noted on the encounter&quot;) — trust through visible bookkeeping.</p>
+<h3>D3-S5 — Skin (separate, deliberately thin here)</h3>
+<p>Field-guide visual language per shipped v2.2. Tutor turns visually distinct from user notes (the notebook stays the user's). One skin-level flag from the pilot worth designing: <strong>the tutor showing its work on the photo</strong> (zoom/crop of the diagnostic region, F7) built trust in WoZ — spec'd as a v1-optional enhancement (D3-Q4), not a gate.</p>
+<p>---</p>
+<h2>2. Interaction contract (prompt-enforced, tested in pilot)</h2>
+<ul><li><strong>Voice:</strong> the Strimpel don (locked INT-3) — warm, precise, British-register, Oxbridge-tutorial stance; inspiration not impersonation. Governed by the <strong>voice guide artifact</strong> (separate deliverable, in progress; F5/F6/F8 vocabulary folded in). Voice guide is versioned data, referenced by the system prompt — not hardcoded prose.</li><li><strong>Turn budget:</strong> 2–5 sentences default, expandable on request. Reveal turns may run longer when earning it (pilot reveals ran ~2× budget and Andy engaged — watch, don't clamp yet; F8).</li><li><strong>Grounded or silent:</strong> claims about <em>this rock</em> tie to visible photo evidence or the active place-pack; otherwise say what would settle it. No freelancing Finnish geology.</li><li><strong>User challenge handling (KM-1):</strong> a pushback on any tutor claim or model state is welcomed, may be probed for ≤2 beats, then conceded/recorded as <code>user_challenge</code> evidence. Pilot proof: the ovoid-size challenge → recalibration <em>increased</em> trust (F6). A tutor that argues past two beats is a bug.</li><li><strong>Never overwrite the user's words.</strong> AI writes only AI-owned fields. Architectural rule and prompt rule.</li><li><strong>No unprompted homework; land the plane</strong> (session budget guardrail).</li></ul>
+<p>---</p>
+<h2>3. Data model — additive tables (D3-D1)</h2>
+<p>Encounter table untouched (the v0 bet held; keep it held). All new tables are the <em>shared</em> tutor substrate — designed so T1/D1/T3 add rows, not tables. Single-trip assumption stays, but every table carries <code>trip_id</code> so multi-trip doesn't force migration.</p>
+<pre><code>concepts               -- Layer A slice, BUNDLED DATA not user data; versioned like code
+  id, slug, name, family, diagnostic_features (json),
+  confusion_pairs (json: [{other_slug, resolving_feature}]),
+  place_packs (json: [&quot;finland&quot;,&quot;north_shore&quot;]), spine_version
+
+user_concept_state     -- Layer B state, one row per touched concept
+  concept_id, state (exposed|connected|shaky|solid),
+  first_touched_at, last_evidence_at
+
+evidence               -- append-only; THE provenance rail (most important schema detail)
+  id, concept_id, kind (exposure|self_explanation|retrieval|
+       field_application|user_challenge|user_mnemonic),
+  direction (up|down|neutral), source_type (encounter|dialogue|artifact),
+  source_id, excerpt (text, e.g. verbatim mnemonic), created_at
+
+questions              -- promoted from note text to first-class
+  id, encounter_id (nullable), trip_id, text,
+  status (open|explored|resolved), resolved_by_session_id, created_at
+
+tutor_sessions         -- one per D3 session (schema moment-agnostic: `moment` field)
+  id, trip_id, moment (d3|t1|d1|t3), started_at, ended_at,
+  agenda (json), summary (text)
+
+tutor_messages         -- transcript, backgrounded
+  id, session_id, role, content, encounter_id (nullable), created_at</code></pre>
+<p>Notes:</p>
+<ul><li>**<code>evidence.source_<em></code> provenance is load-bearing</em>* — every future &quot;remember when…&quot; stands on it (brief §4.6). Do not ship without it.</li><li>Concept spine ships as bundled JSON with a <code>spine_version</code>; user rows reference concept ids stably across spine updates.</li><li>The pilot's Layer B deltas (<code>WOZ-D3-PILOT-1</code> §2) are the seed fixture for testing these tables against real data.</li></ul>
+<p>---</p>
+<h2>4. Model-delta contract (D3-D2)</h2>
+<p>Every tutor response returns <strong>prose + a structured delta block</strong>; the app applies deltas — the dialogue never free-writes the model.</p>
+<pre><code class="language-json">{
+  &quot;deltas&quot;: [
+    {&quot;concept&quot;: &quot;jointing&quot;, &quot;state&quot;: &quot;exposed-&gt;connected&quot;,
+     &quot;evidence&quot;: {&quot;kind&quot;: &quot;self_explanation&quot;, &quot;source_type&quot;: &quot;dialogue&quot;,
+                  &quot;source_id&quot;: &quot;&lt;msg&gt;&quot;, &quot;excerpt&quot;: &quot;cracks perpendicular to foliation&quot;}}
+  ],
+  &quot;questions&quot;: [{&quot;op&quot;: &quot;resolve&quot;, &quot;id&quot;: &quot;q_12&quot;, &quot;note&quot;: &quot;gaps = joints&quot;}],
+  &quot;learning_note&quot;: {&quot;encounter_id&quot;: &quot;...&quot;, &quot;text&quot;: &quot;...&quot;},
+  &quot;mnemonics&quot;: [{&quot;concept&quot;: &quot;feldspar_vs_quartz&quot;, &quot;text&quot;: &quot;flashy feldspar…&quot;, &quot;verbatim&quot;: true}]
+}</code></pre>
+<p><strong>Conservative-by-rule (structural, not vibes):</strong></p>
+<ul><li>Dialogue evidence can move state to <code>exposed</code>/<code>connected</code> only.</li><li>Only <code>retrieval</code> or <code>field_application</code> evidence can produce <code>solid</code>.</li><li><code>user_challenge</code> can move state either direction, after ≤2-beat probe.</li><li>Malformed/rejected delta → prose still renders, delta queued for retry; the conversation never blocks on bookkeeping.</li></ul>
+<p>The inspectable &quot;My geology&quot; page (KM-1) is <strong>out of D3-v1 scope</strong> but the data above is exactly what it will render — nothing here precludes it (D3-Q3).</p>
+<p>---</p>
+<h2>5. Prompt assembly (per session; brief §5.2 instantiated for D3)</h2>
+<ul><li>System/persona ← voice guide (versioned) + guardrails (§2).</li><li>Domain grounding ← Layer A slice: concepts implicated by tonight's encounters + their confusion pairs + active place-pack. Retrieval by concept-tag match, not embeddings.</li><li>Learner state ← compact Layer B rendering + open questions + user vocabulary/mnemonics.</li><li>Session objects ← today's encounters: <strong>photos (vision — required, H5)</strong>, notes verbatim, guess/confidence/uncertainty, place, time, event tag.</li><li>Task frame ← D3 job description: agenda → per-encounter loop → thread → close-out (§1).</li><li>Output contract ← prose + delta block (§4).</li></ul>
+<p>Concept-implication for block 2 (v1, honest and simple): match on user note keywords → concept slugs + place-pack default cluster; the tutor model itself proposes <code>concept_tags</code> per encounter in its first agenda turn, which then pull grounding for subsequent turns (two-pass, no embeddings).</p>
+<p>---</p>
+<h2>6. Transport (D3-D3)</h2>
+<ul><li>Generalize the dormant enrichment outbox pattern → <strong><code>/tutor</code> route on the existing Cloudflare Worker proxy</strong>: streaming responses, multi-turn (session id), <strong>accepts encounter photos</strong> (the biggest new technical requirement — vision is necessary for credibility, H5; a tutor doing stand-up about a photo it never saw breaks trust in one session).</li><li>Existing one-shot <code>/enrich</code> remains the offline-queued fallback; D3 itself is online-only by design (couch/hotel moment — offline-critical D2 is untouched, the architectures never fight).</li><li>Privacy per playbook: keys server-side, model/token caps, photos transit for the session, proxy logs metadata only.</li><li>Send-photo policy: agenda encounters' photos only, downscaled (long edge ~1280px) — enough for texture verdicts per pilot experience (zoomed crops of a 3MP frame were decisive, F7).</li></ul>
+<h2>7. Instrumentation (rides the existing events rail)</h2>
+<p><code>debrief_invite_shown{door}</code>, <code>debrief_start{door, encounter_count}</code>, <code>encounter_discussed</code>, <code>hunch_prompt_shown</code>, <code>hunch_answered | hunch_skipped(&quot;just tell me&quot;)</code>, <code>question_resolved</code>, <code>delta_applied{n}</code>, <code>mnemonic_captured</code>, <code>challenge_raised</code>, <code>debrief_complete{duration, items_done, items_skipped}</code>, <code>debrief_abandoned{at}</code>.</p>
+<p>These are H1/H7's measurement: invitation→start rate, hunch answer-vs-skip rate, completion time vs. 15-min budget.</p>
+<h2>8. Content dependency — Layer A Finland slice (blocking, mine)</h2>
+<p>D3-v1 needs only the <strong>Finland place-pack slice</strong> of the spine (~20–30 concepts), not the full 60–100. Pilot's seed cluster: jointing, mineral cleavage, foliation, migmatite, gneiss, granite, K-feldspar, quartz, feldspar-vs-quartz discrimination, rapakivi (+ ovoid diagnostic), glacial erratic/unloading, plus the confusion pairs the pilot surfaced (cleavage↔jointing, quartz↔feldspar, granite↔gneiss↔rapakivi). I own this build (Petra review pass); it ships as data, versioned.</p>
+<h2>9. Build path (sequenced; structure before skin; each step gated)</h2>
+<ul><li><strong>B1 — Substrate:</strong> tables (§3) + delta applier + fixture test using pilot deltas. <em>Gate: pilot session log replays cleanly into the tables.</em></li><li><strong>B2 — Transport:</strong> <code>/tutor</code> proxy route w/ vision + streaming; app session client. <em>Gate: round-trip a real encounter photo + note, get grounded prose + valid delta.</em></li><li><strong>B3 — Session structure:</strong> doors (D3-S1), agenda, per-encounter loop, close-out, residue writes (D3-S4). <em>Gate: full session on Finland export data end-to-end on device; residue visible on encounters.</em></li><li><strong>B4 — Skin:</strong> field-guide dress, tutor-turn styling, polish. <em>(Only after B3 gate — structure is not paint.)</em></li><li><strong>B5 — Instrumentation + TestFlight.</strong></li></ul>
+<p>Arya feasibility questions attached in D3-Q5–Q7.</p>
+<h2>10. Acceptance (what &quot;working&quot; means)</h2>
+<ul><li>A real evening on trip data: invitation → agenda → ≥2 encounters discussed → residue on objects → done in ≤15 min (H1).</li><li>Tutor references at least one prior-session/prior-encounter concept correctly from Layer B, unprompted (F3 — the magic-moment mechanic, this is the wedge's soul).</li><li>Andy answers the hunch prompt more often than he skips it across a week (H7).</li><li>Learning notes read like the pilot's (§1 of pilot log) — specific, diagnostic-feature-centered, one look-again — not generic rock facts.</li><li>No user-field ever modified by AI (audit via events + schema perms).</li></ul>
+<h2>11. Out of scope for D3-v1</h2>
+<p>T1/D1/T3 surfaces (schema-ready, not built) · &quot;My geology&quot; inspectable page (data-ready; D3-Q3) · quiz/retrieval practice &amp; FSRS · question-marking in field capture · dynamic user themes · multi-trip IA · audio · in-field AI.</p>
+<h2>12. Open questions</h2>
+<p><strong>For Andy (product):</strong></p>
+<ul><li><strong>D3-Q1 — Door 1 copy/trigger.</strong> Evening banner threshold: time-based (~17:00), or &quot;any day with ≥1 capture once you open the app after dinner&quot;? And is repurposing the revisit banner's evening state acceptable, or do you want debrief as a second line beneath it?</li><li><strong>D3-Q2 — Single-encounter sessions</strong> (door 2): same full rhythm, or an abbreviated loop (no agenda/close-out ceremony)? <em>Lean: abbreviated — ceremony scaled to session size.</em></li><li><strong>D3-Q3 — &quot;My geology&quot; page timing.</strong> Data lands in v1 regardless; page in v1.1 or sooner? <em>Lean: v1.1 — let the model accumulate before making it inspectable.</em></li><li><strong>D3-Q4 — Photo zoom &quot;showing work&quot;</strong> (F7): worth v1, or v1.1 polish? <em>Lean: v1.1 unless cheap.</em></li></ul>
+<p><strong>For Arya (feasibility):</strong></p>
+<ul><li><strong>D3-Q5 — Vision transport:</strong> photo size/format limits through the Worker proxy; streaming + images concurrently; cost/latency envelope per session (est. 2–4 photos, 8–15 turns).</li><li><strong>D3-Q6 — Structured output reliability:</strong> best seam for prose+JSON contract (tool-call vs. delimited block) on the chosen model; delta rejection/retry handling.</li><li><strong>D3-Q7 — Session state:</strong> server-side session memory on the proxy vs. client resends full context each turn? (Client-resend keeps proxy stateless per playbook; token cost is the tradeoff.)</li></ul>
+<p>---</p>
+<p><em>Provenance: authored by Izzy from AI-TUTOR-DESIGN-BRIEF.md (decisions locked with Andy 2026-07-22), WoZ pilot #1 findings (live session with Andy, same day), and repo read @ fbd81be. Approval status: awaiting Andy review. Next: Andy anchors → Arya feasibility (D3-Q5–7) → build per §9.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

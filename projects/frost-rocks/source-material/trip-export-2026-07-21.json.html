@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>projects/frost-rocks/source-material/trip-export-2026-07-21.json · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Project support file</div>
+      <div class="doc-meta">Last updated: 2026-07-21</div>
+      <h1>projects/frost-rocks/source-material/trip-export-2026-07-21.json</h1><pre><code>{
+  &quot;format&quot;: &quot;frost-rocks-export&quot;,
+  &quot;version&quot;: 2,
+  &quot;exported_at&quot;: &quot;2026-07-21T15:55:37.697Z&quot;,
+  &quot;trip&quot;: {
+    &quot;id&quot;: &quot;973cb897-e616-4b90-a7b3-9447eeb9d354&quot;,
+    &quot;title&quot;: &quot;Finland 2026&quot;,
+    &quot;start_date&quot;: null,
+    &quot;end_date&quot;: null
+  },
+  &quot;encounters&quot;: [
+    {
+      &quot;id&quot;: &quot;c791a24b-3f4d-42e9-bba6-6fe5a85d1b93&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-21T08:10:11.129Z&quot;,
+      &quot;lat&quot;: 60.203334013963534,
+      &quot;lng&quot;: 24.919079424317967,
+      &quot;location_label&quot;: &quot;Radiokatu 20, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: null,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;c791a24b-3f4d-42e9-bba6-6fe5a85d1b93-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;65FCBD63-A933-48D8-890A-53CB938790BE/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;995f7cc0-be6f-464b-8c0a-5e4703b9fd28&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T08:13:57.668Z&quot;,
+      &quot;lat&quot;: 60.29260352258867,
+      &quot;lng&quot;: 24.576601672674265,
+      &quot;location_label&quot;: &quot;Karjakaivon ulkoilualue, Espoo, Finland&quot;,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: null,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;995f7cc0-be6f-464b-8c0a-5e4703b9fd28-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;F747AB34-E88C-40D0-9731-74358D72204E/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;bdb6474a-8613-42eb-b988-37eafb212bfc&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T07:51:24.933Z&quot;,
+      &quot;lat&quot;: null,
+      &quot;lng&quot;: null,
+      &quot;location_label&quot;: null,
+      &quot;event_tag&quot;: &quot;Nuuksio hike&quot;,
+      &quot;note&quot;: &quot;Fascinating crystalline structures, more pink. Obviously it's the most common color for sure on the trip so far but I'm interested in the shapes of those. I think soon they're quartz inclusions but I don't know&quot;,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;bdb6474a-8613-42eb-b988-37eafb212bfc-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;038C7E7A-8456-40DD-B961-4F49D3812A9B/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;ef445fd0-be88-429e-879b-5b914852c275&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T07:49:25.423Z&quot;,
+      &quot;lat&quot;: null,
+      &quot;lng&quot;: null,
+      &quot;location_label&quot;: null,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: &quot;Interesting cleavage in those rocks. Why do those gaps appear in those patterns and those angles?&quot;,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;ef445fd0-be88-429e-879b-5b914852c275-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;7BD68E88-E378-43FA-A87F-9E4E035E4244/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;40e60167-1dcf-4473-8adc-21b6ad28350d&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T07:45:05.380Z&quot;,
+      &quot;lat&quot;: null,
+      &quot;lng&quot;: null,
+      &quot;location_label&quot;: null,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: &quot;Two cleaved rocks next to each other ￼&quot;,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: &quot;guessing&quot;,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;40e60167-1dcf-4473-8adc-21b6ad28350d-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;A2035781-AE73-458C-8ED3-F1505849F8BF/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;42410c6a-282d-4dc5-b273-f50a4b05ed2b&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T07:43:06.399Z&quot;,
+      &quot;lat&quot;: null,
+      &quot;lng&quot;: null,
+      &quot;location_label&quot;: null,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: &quot;Remind me the North Shore does the peekaboo rocks and lichen and moss and trees grass&quot;,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;42410c6a-282d-4dc5-b273-f50a4b05ed2b-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;D610C316-4FEB-44C1-839E-DE2D937FC649/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;7988a40b-2883-4c71-968f-b8f368b56210&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T04:12:40.927Z&quot;,
+      &quot;lat&quot;: 60.20168924028375,
+      &quot;lng&quot;: 24.912982366404837,
+      &quot;location_label&quot;: &quot;Keskuspuisto Laakson Metsäalue, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: &quot;Some kind of interesting banding there, more of that pinkish color, so it's all kind of similar. I guess that's the feldspar potassium somewhere but that stripe is interesting. I don't know what it is&quot;,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;7988a40b-2883-4c71-968f-b8f368b56210-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;ACD689A3-A2DA-4232-A5F3-CCB1E037BF25/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;68ae9b5c-1bd5-469d-8c62-83242ad60f2b&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T04:06:34.659Z&quot;,
+      &quot;lat&quot;: 60.20224259129996,
+      &quot;lng&quot;: 24.912743845207608,
+      &quot;location_label&quot;: &quot;Keskuspuisto Laakson Metsäalue, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: null,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;68ae9b5c-1bd5-469d-8c62-83242ad60f2b-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;EB9C30C6-140F-49E3-A046-F04490AB1682/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;37807d0a-ca33-470c-abe8-7daf38f162ff&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T03:54:22.125Z&quot;,
+      &quot;lat&quot;: null,
+      &quot;lng&quot;: null,
+      &quot;location_label&quot;: null,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: &quot;This one is actually more interesting than a lot of the other ones. Lighter tan brownish color, almost off-white cream. Looks like some big quartz inclusions but I can't really tell. It's kind of just popping up out of the trail&quot;,
+      &quot;initial_guess&quot;: &quot;No real clue what this one might be&quot;,
+      &quot;confidence&quot;: &quot;guessing&quot;,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;37807d0a-ca33-470c-abe8-7daf38f162ff-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;2B4D94AB-8425-4409-90A7-166EA7337877/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;b988d041-f6ff-447c-9940-6a530f0271bd&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T03:48:53.628Z&quot;,
+      &quot;lat&quot;: 60.20265296229795,
+      &quot;lng&quot;: 24.913140157734244,
+      &quot;location_label&quot;: &quot;Keskuspuisto Laakson Metsäalue, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: null,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;b988d041-f6ff-447c-9940-6a530f0271bd-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;64DDF8B5-B278-43D8-A139-5694DE66EB42/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;27cc50b9-89e2-4a4b-88bd-0122db2d7ffb&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-20T03:41:21.451Z&quot;,
+      &quot;lat&quot;: 60.203380369076044,
+      &quot;lng&quot;: 24.915363345045797,
+      &quot;location_label&quot;: &quot;Keskuspuisto Laakson Metsäalue, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: &quot;Right by MJ’s apt&quot;,
+      &quot;note&quot;: &quot;It's pretty smooth and weathered. Some large kind of off-angle banding and foliation and then some, I don't know if you call it, cleavage, cleaving kind of towards the top there \n\nIt's right under a tree root or almost embedded in a tree stump&quot;,
+      &quot;initial_guess&quot;: &quot;Honestly no idea what it is&quot;,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;27cc50b9-89e2-4a4b-88bd-0122db2d7ffb-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;57FB416F-3D1B-4427-A504-6BA10713A0E9/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;0686340a-7d0b-427e-af24-6773e914f4a7&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-19T17:33:23.221Z&quot;,
+      &quot;lat&quot;: 60.19900514617948,
+      &quot;lng&quot;: 24.92239323030761,
+      &quot;location_label&quot;: &quot;Fanninpenger 1, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: &quot;More Rapakivi … ? On the walk from the mall back to Maren's apartment, right on the edge of the park&quot;,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;0686340a-7d0b-427e-af24-6773e914f4a7-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;1601DAA5-9755-4D7C-B462-31871351C2EE/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;43a729be-5738-4914-ab0c-d8145d933bd8&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-19T16:51:47.035Z&quot;,
+      &quot;lat&quot;: 60.20454980100713,
+      &quot;lng&quot;: 24.917527870180063,
+      &quot;location_label&quot;: &quot;Kuuluttajankatu 2, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: &quot;Right by MJ’s apt&quot;,
+      &quot;note&quot;: &quot;Rapakivi? Def pink and mottled with inclusions&quot;,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: null,
+      &quot;review_state&quot;: &quot;later&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;43a729be-5738-4914-ab0c-d8145d933bd8-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;0CD616E0-1317-42CB-AC73-1CE4AE7D1AE1/L0/001&quot;
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;2e6557e7-2cea-4e22-a343-29d266d096ed&quot;,
+      &quot;captured_at&quot;: &quot;2026-07-19T16:49:41.240Z&quot;,
+      &quot;lat&quot;: 60.20441796692656,
+      &quot;lng&quot;: 24.917848878122914,
+      &quot;location_label&quot;: &quot;Kuuluttajankatu 2, Helsinki, Finland&quot;,
+      &quot;event_tag&quot;: null,
+      &quot;note&quot;: null,
+      &quot;initial_guess&quot;: null,
+      &quot;confidence&quot;: null,
+      &quot;uncertainty_status&quot;: &quot;unknown&quot;,
+      &quot;ai_learning_note&quot;: null,
+      &quot;learned_later&quot;: &quot;Okay so tons of interesting and uneven foliation. It's presumably some kind of a granitic gneiss?&quot;,
+      &quot;review_state&quot;: &quot;soon&quot;,
+      &quot;themes&quot;: [],
+      &quot;photos&quot;: [
+        {
+          &quot;filename&quot;: &quot;2e6557e7-2cea-4e22-a343-29d266d096ed-1.jpg&quot;,
+          &quot;camera_roll_asset_id&quot;: &quot;6C4D1085-3F12-4D5D-A5E3-8D93FE586238/L0/001&quot;
+        }
+      ]
+    }
+  ]
+}</code></pre>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — Field Fixes Implementation Plan (Build 2 follow-ups) · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a aria-current="page" href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Field Fixes Implementation Plan</div>
+      <div class="doc-meta">Last updated: 2026-07-21</div>
+      <h1>Frost Rocks — Field Fixes Implementation Plan (Build 2 follow-ups)</h1>
+<p><em>Arya (Architect) | 2026-07-21 | For: Jesse (implementation)</em> <em>Sources: Petra's <code>BACKLOG.md</code> (2026-07-21), Andy's scope answers (2026-07-21, msg thread), Andy's Wispr Flow screenshots, code inspection of <code>aspen-frost/frost-rocks@main</code>.</em> <em>Status: <strong>APPROVED SCOPE — Andy confirmed 2026-07-21</strong> (static map pan/zoom; photo zoom on both surfaces; Wispr bug evidence attached). Ready for implementation.</em></p>
+<p>&gt; <strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>---</p>
+<h2>0. TL;DR</h2>
+<p>Three field-driven fixes from Andy's Finland TestFlight usage, in priority order:</p>
+<ul><li><strong>Capture keyboard bug (P1 reliability):</strong> tall third-party keyboards (Wispr Flow dictation) collapse the capture screen to a blank view, and dismissal silently discards typed notes. Fix the keyboard layout AND add a dirty-state guard. Two bugs, one PR.</li><li><strong>Photo pan/zoom (both surfaces):</strong> one reusable full-screen photo viewer (pinch/pan/double-tap/dismiss), wired into review flow and encounter detail.</li><li><strong>Map pan/zoom (static approach):</strong> pinch/pan on the existing bundled map in the full map view, pins stay anchored, higher-res asset to buy zoom range. Home compact card unchanged. MapLibre explicitly deferred.</li></ul>
+<p>All gesture work shares one zoom/pan core (two real consumers arrive simultaneously — the abstraction earns its place under the rule of three's second-consumer trigger). Three PRs, sequenced. Every PR passes the two hard review gates: <strong>evidence the changed seam ran</strong> and <strong>diff matches the story</strong>.</p>
+<p>---</p>
+<h2>1. What we inherit (do not re-litigate)</h2>
+<ul><li><code>FINLAND-ARCHITECTURE.md</code> and the Aspen Mobile App Playbook govern where this doc is silent.</li><li>Stack: Expo SDK 54 / RN 0.81 / expo-router v6. <strong><code>react-native-gesture-handler</code> (~2.28) and <code>react-native-reanimated</code> (~4.1) are already dependencies</strong> — all gesture work uses these. No new libraries without a named reason.</li><li>Petra's backlog items are the product spec (problem statements, ACs, event names). This doc is the technical plan against them; where they conflict, flag it, don't guess.</li><li>Testing doctrine from frost-fitness applies: <strong>Jest is not the runtime.</strong> Runtime-shape concerns (keyboard heights, gesture handlers) need device evidence, not just green unit tests.</li><li>Spec-conformance lane: capture, mapProjection, and photos are protected paths. Every PR body declares scope claims (<code>does-not-touch</code>) honestly.</li></ul>
+<p>---</p>
+<h2>2. Key decisions</h2>
+<p>- <strong>Decision:</strong> add pinch/pan to the existing bundled PNG map. Ship a higher-resolution asset to make zoom useful. Do NOT add a tile-based map engine this pass. - <strong>Constraint (the why):</strong> the current asset is 1024px wide over ~450km of Finland (~440 m/px). Static zoom gives regional orientation (&quot;which side of the lake&quot;), and Andy confirmed that is the job for this pass. Cluster-level separation (~50 m) is physically impossible on a static country map at any sane asset size — acknowledged and accepted. - <strong>Revisit-trigger:</strong> field evidence that distinguishing near-adjacent encounters matters (Petra's pin-cluster follow-up signal), or a trip outside Finland (the bundled asset is Finland-only). Either triggers the MapLibre/expo-maps roadmap item.</p>
+<p>- <strong>Decision:</strong> extract <code>usePinchPanZoom</code> (gesture composition + clamp math) used by both the photo viewer and the map. Clamp math lives in pure functions (<code>src/utils/zoomMath.ts</code>) so it's unit-testable without a device. - <strong>Constraint (the why):</strong> two real consumers exist <em>simultaneously</em> — this is the second-consumer trigger, not premature abstraction. And isolating gesture/viewport math from <code>FinlandMap</code> internals is exactly what Petra's AC demands for a clean MapLibre swap later. - <strong>Revisit-trigger:</strong> if photo and map semantics diverge hard during implementation (different clamping, different dismiss gestures), split into two hooks sharing only <code>zoomMath</code> — don't bend one hook to serve two masters.</p>
+<p>- <strong>Decision:</strong> dismissing the enrich sheet (swipe-down or &quot;Skip for now&quot;) with unsaved typed text <strong>applies the note to the encounter</strong> (it already exists; the user's words are strictly better kept than deleted — and Petra's note-edit backlog item provides the recovery UI if they want to change it). Dismissing a <strong>new</strong> capture with typed content prompts (Save / Discard) since silent save would create an encounter. - <strong>Constraint (the why):</strong> Andy lost a field note to a swipe-down. The field-notebook thesis is &quot;forgiving in the field&quot;; silent discard is the least forgiving possible behavior. - <strong>Revisit-trigger:</strong> Petra's UX review of this PR, or field evidence that auto-applied notes surprise users.</p>
+<ul><li><strong>Static map pan/zoom, not MapLibre</strong> <em>(🚪➡️🚪 — Andy's call, 2026-07-21)</em></li><li><strong>One shared zoom/pan gesture core, two thin wrappers</strong> <em>(🚪➡️🚪)</em></li><li><strong>Dirty-state guard: auto-save in enrich mode, prompt in new-capture mode</strong> <em>(🚪➡️🚪 — Petra may override the UX)</em></li><li><strong>Keyboard fix approach: native insets first, KAV only if evidence demands</strong> <em>(🚪➡️🚪)</em> — see §4.1 implementation notes.</li></ul>
+<p>---</p>
+<h2>3. Work Item 1 — Capture screen: tall-keyboard collapse + silent note discard</h2>
+<p><strong>Backlog ref:</strong> &quot;P1 Bug — Blank screen after Wispr Flow keyboard handoff.&quot; <strong>Priority: first. This is a field-reliability bug in the core loop.</strong></p>
+<h3>3.1 What the evidence actually shows (re-read of the bug)</h3>
+<p>Andy's screenshots (2026-07-21) revise Petra's initial app-switch framing:</p>
+<ul><li>The 7:01 screenshot shows the <strong>&quot;New encounter&quot; header still rendered</strong> with Wispr Flow's dictation panel (a <em>custom keyboard</em>, ~55% of screen height) active. The app never backgrounded at that moment and never crashed. The content area is blank cream.</li><li>The blank screen is <strong>not</strong> an app-lifecycle/restoration failure. It is a <strong>layout collapse</strong>: <code>app/capture.tsx</code> wraps the screen in <code>KeyboardAvoidingView behavior=&quot;padding&quot;</code> (iOS) with no <code>keyboardVerticalOffset</code>. A keyboard reporting ~600–700px of height leaves the inner ScrollView with ≈0 rendered height. Nothing but <code>styles.flex</code> background remains visible.</li><li>Petra's instinct was right: <strong>not Wispr-specific.</strong> Any tall custom keyboard (dictation panels, some ML keyboards) triggers it. Wispr is just the first one Andy used in anger.</li><li>Second failure, same incident: Andy swiped the sheet down to escape; his note state lived only in component <code>useState</code> and was discarded. <code>Skip for now</code> (<code>router.back()</code>) has the same hole. <strong>The encounter saved with no note.</strong></li><li>(The separate screenshot of the Wispr <em>app</em> onboarding — &quot;swipe right to continue&quot; — is the one genuine app-switch in the flow. Returning from it was not the blank-screen moment; deprioritize the lifecycle theory but keep the foreground-transition logging below as cheap insurance.)</li></ul>
+<h3>3.2 Required behaviors</h3>
+<ul><li><strong>B1 — No collapse:</strong> with any keyboard height up to ~75% of screen height, the capture screen's content remains rendered and scrollable. The screen must never present as blank while the app is foregrounded.</li><li><strong>B2 — Focused field stays reachable:</strong> while typing/dictating into the note or guess field, the focused field scrolls into the visible region above the keyboard (standard keyboard-aware behavior).</li><li><strong>B3 — No silent discard:</strong> no dismissal path (swipe-down, Skip, back) may throw away non-empty typed text. Enrich mode: auto-apply per §2. New-capture mode: prompt.</li><li><strong>B4 — Typed text survives keyboard switching:</strong> switching keyboards (globe key → Wispr → back) must not reset field state. (Expected free — state is in React — but assert it in the test so a regression is loud.)</li></ul>
+<h3>3.3 Implementation notes (guidance, not gospel)</h3>
+<ul><li><strong>Primary path:</strong> remove the <code>KeyboardAvoidingView</code>; use the ScrollView's native <code>automaticallyAdjustKeyboardInsets</code> (iOS, supported in RN 0.81) plus <code>keyboardDismissMode=&quot;interactive&quot;</code>. This delegates inset math to iOS, which handles nonstandard keyboard heights (exactly our failure) far better than JS-side padding.</li><li><strong>Fallback path (if the native prop misbehaves in the modal presentation):</strong> keep KAV but with <code>useHeaderHeight()</code>-derived <code>keyboardVerticalOffset</code>, and add a minimum-content-height guard so padding can never crush the ScrollView below a floor.</li><li>Decide by evidence: build a dev client, install/enable a tall custom keyboard, and watch it. Log <code>Keyboard.addListener('keyboardWillShow')</code> heights during diagnosis (temporary logging; strip or downgrade before merge).</li><li><strong>Dirty guard:</strong> track a <code>dirty</code> flag (any of note/guess/confidence/event/themes changed since load). Intercept dismissal with <code>navigation.addListener('beforeRemove', ...)</code> (react-navigation under expo-router): enrich → apply note via existing <code>updateEncounter()</code> path, then allow dismissal; new-capture → <code>Alert</code> with Save / Discard. Instrument <code>capture_dismiss_dirty_saved</code> / <code>capture_dismiss_dirty_discarded</code>.</li><li>Keep the diff surgical. <code>capture.tsx</code> is a protected path; the PR story must be &quot;keyboard layout + dismissal guard,&quot; and the diff must contain exactly that.</li></ul>
+<h3>3.4 Acceptance criteria</h3>
+<ul><li>With Wispr Flow dictation active on device, the capture/enrich screen shows its content (Petra's AC, restated against the real cause). No blank state.</li><li>Focused note field visible above the keyboard while typing with (a) system keyboard, (b) a tall custom keyboard.</li><li>Swipe-down dismissal of the enrich sheet with typed note → note is on the encounter (verify in encounter detail).</li><li>&quot;Skip for now&quot; with typed note → same guard behavior.</li><li>New-capture dismissal with typed content → Save/Discard prompt; both branches behave.</li><li>Existing capture tests stay green; no changes to save/DB semantics beyond the guard's <code>updateEncounter</code> call.</li><li>Foreground/background transition logging around the capture screen (Petra's AC) — cheap insurance for the lifecycle theory we're deprioritizing.</li></ul>
+<h3>3.5 Evidence gate (what the PR must show)</h3>
+<ul><li><strong>Jest/component:</strong> simulated <code>keyboardWillShow</code> with heights {300, 450, 700} → content container height stays above floor; dirty-guard unit tests for both modes (this seam is fully testable — <code>beforeRemove</code> handler is a function you can invoke).</li><li><strong>Maestro:</strong> extend <code>save-note-only-encounter.yml</code> lineage — type note → swipe dismiss → reopen encounter → note text present.</li><li><strong>Device evidence:</strong> screen recording with an actual tall keyboard on a dev build, attached to the PR. Jest cannot prove this fix; the recording is the &quot;evidence it ran&quot; gate for the changed seam.</li><li><strong>Final acceptance:</strong> Andy repeats his exact Wispr flow on the next TestFlight build. That's the only gate that fully closes the ledger.</li></ul>
+<p>---</p>
+<h2>4. Shared foundation — zoom/pan core (lands inside PR 2)</h2>
+<ul><li><code>src/utils/zoomMath.ts</code>: pure functions — <code>clampScale(scale, min, max)</code>, <code>clampTranslation(tx, ty, scale, content, viewport)</code>, <code>doubleTapTarget(current)</code>. <strong>Fully unit-tested; this is where the gesture math correctness lives</strong>, because Jest can't drive a pinch.</li><li><code>src/hooks/usePinchPanZoom.ts</code>: composes <code>Gesture.Pinch()</code> + <code>Gesture.Pan()</code> + <code>Gesture.Tap(2)</code> via gesture-handler v2 API with reanimated shared values; exposes an animated transform + <code>reset()</code>. Config knobs: min/max scale, bounds mode, double-tap levels.</li><li>Verify <code>GestureHandlerRootView</code> wraps the app root (expo-router usually provides it; <strong>check, don't assume</strong> — if absent, add it in <code>_layout.tsx</code>, one line).</li><li>Photos and map consume this with different knobs. If their semantics fight, split per §2's revisit-trigger.</li></ul>
+<p>---</p>
+<h2>5. Work Item 2 — Photo pan/zoom, both surfaces</h2>
+<p><strong>Backlog ref:</strong> &quot;P1 — Zoom into encounter images during review.&quot; <strong>Andy widened scope 2026-07-21: review flow AND encounter detail.</strong></p>
+<h3>5.1 Design</h3>
+<ul><li>New <code>src/components/PhotoViewer.tsx</code>: full-screen <strong>modal overlay</strong> (RN <code>Modal</code>, dark backdrop) — <em>not</em> a navigation push, so underlying screen state (review progress, scroll position) is trivially preserved, which satisfies Petra's &quot;return without losing progress&quot; AC by construction.</li><li>Behaviors: pinch zoom (1x–6x), pan while zoomed (clamped to image bounds), double-tap toggle (1x ↔ ~2.5x at tap point if cheap, center otherwise), swipe-down dismiss <strong>only at 1x</strong> (avoid gesture fights), explicit close button (44pt target — field gloves).</li><li>Image inspection, not gallery (Petra's product note): no filters, no share sheet, no chrome beyond close.</li><li>URIs through <code>resolveLocalPhotoUri()</code> — same rebasing rules as everywhere else. Fully offline.</li><li><strong>Multi-photo encounters (explicit, per Petra's AC):</strong> tapping a thumbnail opens <em>that photo</em>. <strong>No in-viewer paging/carousel in v1</strong> — see §8.</li></ul>
+<h3>5.2 Wiring</h3>
+<ul><li><code>app/review.tsx</code>: encounter image tappable → viewer. Dismiss returns to the same card/prompt state (assert, don't assume). Events: <code>review_image_zoom_open</code> / <code>review_image_zoom_close</code>.</li><li><code>app/encounter/[id].tsx</code>: each gallery thumbnail tappable → viewer on that photo. Events: <code>encounter_image_zoom_open</code> / <code>encounter_image_zoom_close</code>.</li></ul>
+<h3>5.3 Acceptance criteria</h3>
+<p>Petra's review-zoom ACs, plus: works identically from encounter detail; one-photo and multi-photo encounters both behave (multi = per-thumbnail open, no paging); review card state identical after open/close; offline with local photos.</p>
+<h3>5.4 Evidence gate</h3>
+<ul><li><code>zoomMath</code> unit tests (clamping, double-tap targets — the correctness core).</li><li>Component test: viewer opens with resolved URI, close restores prior tree.</li><li>Maestro: review flow → tap image → viewer visible → close → <strong>assert same review card content</strong> (this is automatable and is the state-preservation proof). Second flow for encounter detail.</li><li>Device recording of pinch/pan/dismiss on real photos in the PR.</li></ul>
+<p>---</p>
+<h2>6. Work Item 3 — Map pan/zoom (static, full map view only)</h2>
+<p><strong>Backlog ref:</strong> &quot;P1 — Zoom and pan the map view.&quot; <strong>Andy confirmed static approach 2026-07-21.</strong></p>
+<h3>6.1 Design</h3>
+<ul><li><code>app/map.tsx</code> full-view <code>FinlandMap</code> gains pinch/pan via the shared core: scale 1x–4x, pan clamped so the map never detaches from the viewport, double-tap toggles 1x ↔ 2.5x, and a small <strong>reset control</strong> (&quot;fit trip&quot; — Petra's &quot;return to default without getting lost&quot; AC; don't rely on gesture-only reset).</li><li><strong>Transform strategy:</strong> image + pins live in ONE animated container so pins stay anchored by construction (no per-pin math on gesture frames). Counter-scale the pin <em>visual</em> (inverse scale on the pin core) so pins don't balloon at 4x; effective hit target stays ≥44pt at all zoom levels.</li><li><strong>Pin taps after zoom/pan must still route</strong> to the map-review door (<code>door:'map'</code>) — regression-assert this; it's the map's actual job.</li><li><strong>Isolation for MapLibre (Petra's AC, load-bearing):</strong> <code>mapProjection.ts</code> untouched. Gesture/viewport state lives in the shared hook + a thin <code>MapViewport</code> wrapper inside <code>FinlandMap</code>. The later native-map upgrade replaces <code>FinlandMap</code> internals; callers and projection tests don't move.</li><li><strong>Home compact card: unchanged.</strong> Glanceable per Izzy's v2.2 compress note. Full map view is the only zoom surface.</li><li>Events: <code>map_zoom_start</code>, <code>map_zoom_end</code> (+ max scale if lightweight), optional pin-tap-after-zoom.</li></ul>
+<h3>6.2 Higher-res asset (parallel task, not a blocker)</h3>
+<ul><li>Current: <code>assets/map/finland-map.png</code> 1024×1208. Target: <strong>2048×2417</strong> re-export (bundle-size delta noted in the PR; expect low single-digit MB for a stylized map — acceptable).</li><li>Source lives in <code>projects/frost-rocks/source-material/</code> or with Izzy — <strong>Izzy owns the re-export</strong> (visual style must survive upscaling; do NOT naive-upscale the PNG, that's decoration pretending to be resolution).</li><li>Zoom ships regardless; without the new asset it just goes soft past ~2x. Constants (<code>FINLAND_MAP_WIDTH/HEIGHT</code>) update with the asset — projection math is resolution-relative already; existing <code>mapProjection.test.ts</code> must stay green un-edited (if the asset change forces test edits, the projection wasn't resolution-independent and that's a finding, not a nit).</li></ul>
+<h3>6.3 Acceptance criteria</h3>
+<p>Petra's map ACs verbatim, plus: pins visually constant-size across zoom; reset control returns to trip-level view; compact card behavior untouched; offline unaffected (bundled asset).</p>
+<h3>6.4 Evidence gate</h3>
+<ul><li><code>zoomMath</code> clamp tests cover map-bounds mode (shared with §5 — one suite, two consumers).</li><li>Component test: pins remain at projected positions under a mocked transform state.</li><li>Maestro: open map → (gesture support permitting) zoom → tap pin → map-review opens. If Maestro's pinch support proves flaky on iOS, the pin-tap-after-transform assertion moves to a component test + device recording — <strong>don't burn days fighting the harness; say so in the PR instead.</strong></li><li>Device recording: pinch, pan, double-tap, reset, pin tap at 4x.</li></ul>
+<p>---</p>
+<h2>7. PR structure, sequencing, effort</h2>
+<table><thead><tr><th>PR</th><th>Contents</th><th>Size</th><th>Depends on</th></tr></thead><tbody><tr><td><strong>PR 1</strong></td><td>Capture keyboard fix + dismissal dirty-guard (+ transition logging)</td><td><strong>S–M</strong> (diagnosis-heavy, diff-light)</td><td>—</td></tr><tr><td><strong>PR 2</strong></td><td><code>zoomMath</code> + <code>usePinchPanZoom</code> + <code>PhotoViewer</code> + review &amp; encounter-detail wiring</td><td><strong>M</strong></td><td>—</td></tr><tr><td><strong>PR 3</strong></td><td>Map viewport (shared core) + reset control + asset swap when Izzy delivers</td><td><strong>S–M</strong></td><td>PR 2 (shared core)</td></tr></tbody></table>
+<ul><li>PR 1 ships first and alone — it's the field-reliability bug and it must not wait on gesture work. PR 2 → PR 3 sequence. PR 3's asset swap can trail as PR 3b if Izzy's export lags.</li><li>Every PR body: Summary / <strong>Evidence</strong> (test output for the changed seam + device recording where Jest can't reach) / Out-of-scope / <strong>Scope claims (does-not-touch globs)</strong> per the spec-conformance lane. capture, mapProjection, photos are protected paths — declare honestly.</li><li>Effort labels are PR-sized-chunk honesty, not heroic estimates: nothing here needs Jesse to be 10x. If PR 1's fallback path (KAV + offsets) is needed after the native-prop path fails, that's a finding to report, not silently absorb.</li></ul>
+<h2>8. Deliberately not building / not abstracting yet</h2>
+<table><thead><tr><th>#</th><th>What</th><th>Why now</th><th>Trigger to revisit</th></tr></thead><tbody><tr><td>1</td><td>MapLibre / tile-based offline map</td><td>Static zoom serves the confirmed job (regional orientation); tiles are a build-scale job</td><td>Cluster-separation field evidence, or first non-Finland trip</td></tr><tr><td>2</td><td>In-viewer photo paging/carousel</td><td>Per-thumbnail open is explicit and cheap; paging is gallery-shaped scope creep</td><td>Field evidence of compare-two-photos behavior (also the trigger Petra named for comparison surfaces)</td></tr><tr><td>3</td><td>Pin clustering / list-map hybrid</td><td>Petra flagged as follow-up signal only</td><td>Pins hard to tap at max zoom on a real trip</td></tr><tr><td>4</td><td>Keyboard-handling library dependency</td><td>Native ScrollView insets should suffice; a dep is a liability we can't see into</td><td>Native + KAV-fallback both fail on-device</td></tr><tr><td>5</td><td>Generic &quot;edit everything&quot; on encounters</td><td>Dirty-guard applies notes via existing <code>updateEncounter()</code>; full edit UX is Petra's separate backlog item</td><td>Petra's note-edit item gets scheduled</td></tr><tr><td>6</td><td>Zoom-level persistence (map remembers your zoom)</td><td>Session-scoped reset is simpler; no evidence anyone wants persistence</td><td>A user asks for it, ever</td></tr></tbody></table>
+<h2>9. Open questions &amp; owners</h2>
+<ul><li><strong>Izzy:</strong> higher-res map re-export from source (2048×2417). Parallel; blocks only PR 3b.</li><li><strong>Petra:</strong> ratify the dirty-dismissal UX default (auto-apply in enrich / prompt in new-capture). Two-way door; Jesse builds the default unless overridden before PR 1 review.</li><li><strong>Andy:</strong> final Wispr verification on TestFlight after PR 1 ships — the only gate that truly closes the bug.</li><li><strong>Jesse (during build):</strong> confirm <code>GestureHandlerRootView</code> presence; report which keyboard-fix path (native insets vs KAV fallback) evidence selected.</li></ul>
+<p>---</p>
+<p><em>Review: Arya holds the quality bar on all three PRs against the two hard gates. Where silent, <code>FINLAND-ARCHITECTURE.md</code> and the playbook govern.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

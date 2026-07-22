@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WoZ D3 Pilot #1 — Session Log &amp; Findings · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a aria-current="page" href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks WoZ D3 Pilot 1 Log</div>
+      <div class="doc-meta">Last updated: 2026-07-22</div>
+      <h1>WoZ D3 Pilot #1 — Session Log &amp; Findings</h1>
+<p><strong>Date:</strong> 2026-07-22, ~04:35–05:10 UTC (morning in Finland — Andy's call, &quot;not evening but I've got time&quot;) <strong>Participants:</strong> Andy (learner), Izzy (wizard, playing the D3 tutor in the Strimpel-don voice per AI-TUTOR-DESIGN-BRIEF.md §5.35) <strong>Status:</strong> Complete. Ended early by upload gremlins; Andy declared calibration sufficient. <strong>Provenance:</strong> Live webchat session, agent:izzy:main. Photos matched against <code>source-material/trip-export-2026-07-21.json</code>.</p>
+<p>---</p>
+<h2>1. Encounters covered (3 of 14)</h2>
+<h3>E1 — <code>27cc50b9</code> · Keskuspuisto Laakson Metsäalue · Mon 2026-07-20 06:41 local</h3>
+<p>&gt; Those cracks are <strong>joints</strong>, not cleavage — they cut across the banding at their own angle because jointing comes from later stress relief (unloading as erosion/ice stripped kilometers of cover), indifferent to the rock's internal fabric. Cleavage follows fabric; joints ignore it. The foliation bands sitting at slightly different angles are the second story: wavy, discordant banding is the signature of <strong>migmatite</strong> — gneiss that partially melted ~1.9 Ga and swirled before refreezing. Look-again: at the next outcrop, find the cracks and check — do they respect the stripes or ignore them?</p>
+<ul><li><strong>His note:</strong> smooth/weathered; &quot;off-angle banding and foliation&quot;; &quot;cleavage, cleaving kind of towards the top&quot;; under a tree root.</li><li><strong>Dialogue shape:</strong> elaborative prompt (&quot;did the cracks follow the banding or cut across?&quot;) → Andy: foliation bands at slightly different angles to each other; cracks ~perpendicular to foliation → reveal.</li><li><strong>Drafted <code>ai_learning_note</code>:</strong></li><li><strong>Question state:</strong> his implicit &quot;is this cleavage?&quot; → resolved (jointing).</li></ul>
+<h3>E1b — <code>ef445fd0</code> (not photographed this session, resolved by proxy)</h3>
+<p>&gt; Answered via the Keskuspuisto tree-root rock (same day): the gaps are <strong>joints</strong> — stress-relief fractures that form as buried rock expands upward once erosion and glaciers remove the overburden. They form in roughly perpendicular sets, which is why the angles look organized. They cut across any banding rather than following it.</p>
+<ul><li><strong>His note:</strong> &quot;Interesting cleavage in those rocks. Why do those gaps appear in those patterns and those angles?&quot;</li><li><strong>Drafted <code>ai_learning_note</code>:</strong></li><li><strong>Question state:</strong> open question → <strong>resolved</strong> (mark in model as answered 2026-07-22, evidence: WoZ session 1).</li></ul>
+<h3>E2 — <code>bdb6474a</code> · Nuuksio hike · Mon 2026-07-20 10:51 local</h3>
+<p>&gt; The blocky pink shapes are <strong>potassium feldspar</strong>, not quartz — and the tell is cleavage at crystal scale: feldspar breaks along flat internal planes, so its faces <em>flash</em> like tiny mirrors when you tilt the rock in sunlight; quartz has no cleavage and stays glassy/greasy like smoked glass. Also: in granite these aren't &quot;inclusions&quot; — the whole rock is interlocking crystals that grew together as the melt froze. Field test (30 seconds): tilt the next coarse pink rock in the light — what flashes is feldspar, what stays greasy is quartz. &gt; <em>Learner's own mnemonic (keep):</em> &quot;flashy feldspar cleaves differently than greasy quartz.&quot;</p>
+<ul><li><strong>His note:</strong> &quot;Fascinating crystalline structures, more pink… I think [maybe] they're quartz inclusions but I don't know.&quot;</li><li><strong>Dialogue shape:</strong> (wizard mis-matched photo as note-less; Andy corrected — see finding F1) → reveal with error-correction sequence: validated the pink-as-trip-theme noticing, corrected the mineral ID.</li><li><strong>Drafted <code>ai_learning_note</code>:</strong></li><li><strong>Question state:</strong> &quot;are they quartz inclusions?&quot; → resolved (K-feldspar; &quot;inclusions&quot; vocab corrected).</li></ul>
+<h3>E3 — <code>0686340a</code> · Fanninpenger 1 (wall block, walk to Maren's) · Sun 2026-07-19 20:33 local</h3>
+<p>&gt; Probably <strong>not rapakivi</strong>. Zoomed inspection: the pink feldspars are stretched, lens-shaped, sharing a common grain — that alignment is foliation, meaning this stone was squeezed (deformed granite → granite-gneiss). Rapakivi's diagnostic is the opposite: <strong>round ovoid K-feldspars, typically 1–3 cm (cherry to wine-cork), showy ones to golf-ball</strong>, often with a thin pale-greenish rim — undeformed because rapakivi intruded ~1.6 Ga, <em>after</em> the great squeeze. Pink is the pigment; texture is the plot. Caveat: rough-hewn lichened wall block, and quarried stone travels. Quest open: confirm a true rapakivi on a polished downtown facade (also closes the Kuuluttajankatu &quot;Rapakivi?&quot; note).</p>
+<ul><li><strong>His note:</strong> &quot;More Rapakivi … ?&quot;</li><li><strong>Dialogue shape:</strong> taught the rapakivi diagnostic (ovoids) → asked eggs-vs-blocks → wizard zoomed photo crops as evidence → verdict.</li><li><strong>Drafted <code>ai_learning_note</code>:</strong></li><li><strong>Question state:</strong> &quot;More rapakivi?&quot; → provisionally answered (likely no); <strong>standing quest registered</strong> (find confirmed rapakivi ovoids; applies to <code>43a729be</code> too).</li></ul>
+<p>---</p>
+<h2>2. Model deltas (Layer B, drafted per §4.4 — exposure ≠ mastery honored)</h2>
+<table><thead><tr><th>Concept</th><th>State delta</th><th>Evidence</th></tr></thead><tbody><tr><td>jointing vs (mineral) cleavage</td><td>exposed → <strong>understood-in-context</strong>; Andy supplied the perpendicular observation himself</td><td>E1 dialogue</td></tr><tr><td>foliation</td><td>reinforced; used spontaneously and correctly in his answer (&quot;cleavage almost perpendicular to the foliation&quot;)</td><td>E1</td></tr><tr><td>migmatite (wavy discordant banding)</td><td><strong>exposed</strong> (first introduction)</td><td>E1</td></tr><tr><td>feldspar vs quartz discrimination (cleavage flash vs greasy luster)</td><td>exposed + self-generated mnemonic (strong encoding signal); <strong>not yet field-verified</strong></td><td>E2</td></tr><tr><td>K-feldspar = the pink of S. Finland</td><td>validated a self-noticed trip theme</td><td>E2, his notes</td></tr><tr><td>rapakivi diagnostic (ovoids, size calibration 1–3 cm, post-orogenic timing)</td><td>exposed; size initially mis-taught by tutor (egg/golf-ball), <strong>learner challenged, tutor recalibrated</strong> — challenge-as-evidence per KM-1 works</td><td>E3 + follow-up</td></tr><tr><td>vocab: &quot;inclusions&quot; misuse</td><td>recurring (2 notes); corrected twice, gently</td><td>E2, E3</td></tr><tr><td>open quest</td><td>find confirmed rapakivi (polished facades)</td><td>E3</td></tr></tbody></table>
+<p>---</p>
+<h2>3. Design findings (feed into D3 wedge spec)</h2>
+<ul><li><strong>F1 — Photo→encounter matching is the pilot's #1 friction, and it produced a real error.</strong> Webchat strips EXIF; wizard matched on setting/notes and mis-shelved E2 as note-less until Andy corrected. In-app D3 never has this problem (record travels with the dialogue). <em>WoZ protocol fix: Andy sends photo + time/place in the same message. Product implication: none — this friction is an artifact of the wizard setup, don't over-engineer for it.</em></li><li><strong>F2 — Hunch-first lands when it's honest data-gathering, not quiz theater.</strong> The &quot;eggs or blocks?&quot; question was genuinely needed (photo insufficient); Andy answered willingly. The &quot;just tell me&quot; escape went unused all session. Supports INT-1 as designed.</li><li><strong>F3 — Spaced concept callbacks are the magic.</strong> Cleavage taught at outcrop scale (E1) → reused at crystal scale (E2) minutes later; foliation (E1) → carried the E3 verdict. Andy's engagement visibly spiked at these moments (&quot;super helpful!&quot;). Direct evidence for the concept-spine reuse hypothesis and the prep-provenance callback bet (§0.5 T1).</li><li><strong>F4 — Learner self-generated a mnemonic and named it &quot;solid calibration.&quot;</strong> The generative step happens naturally inside dialogue; no forced quiz needed (supports INT-2). Capture user-coined mnemonics as first-class Layer B evidence.</li><li><strong>F5 — &quot;Productively wrong&quot; framing explicitly praised.</strong> Error-correction tone validated; add to voice guide vocabulary.</li><li><strong>F6 — Learner challenge → tutor recalibration worked live (KM-1 in miniature).</strong> Andy pushed on ovoid size; tutor owned the overshoot and gave a tighter calibration (&quot;cherry to wine-cork&quot;), and the correction <em>strengthened</em> trust rather than denting it. Honest-uncertainty personality confirmed as a feature.</li><li><strong>F7 — Showing work on the learner's own photo builds trust.</strong> Zoomed crops used as verdict evidence (E3). Candidate D3 interaction: tutor highlights/zooms the diagnostic region of the user's photo.</li><li><strong>F8 — Voice held.</strong> Fireside don, one look-again per encounter, honest hedging, occasional wit. No grating detected in a 30-min session; the 40-day-charm question (§5.5 INT-3 note) remains open.</li><li><strong>F9 — Session shape worked:</strong> per-encounter rhythm (context reinstatement → elaborative prompt → reveal → look-again) + a session-spanning thread (pink/K-feldspar; texture-as-plot). &quot;Land the plane&quot; discipline never tested — session ended externally.</li></ul>
+<h2>4. Next steps</h2>
+<ul><li><strong>D3 wedge spec</strong> — write it, incorporating F1–F9 (Izzy).</li><li><strong>Voice guide</strong> from Geology Bites corpus (Izzy) — fold in F5, F6, F8.</li><li><strong>Layer A concept spine draft</strong> — tonight's concepts (jointing, foliation, migmatite, feldspar/quartz discrimination, rapakivi, K-feldspar-as-pigment) are the seed cluster (Izzy).</li><li><strong>Remaining WoZ evenings</strong> — protocol fix per F1: photo + time/place per message. Encounters still uncovered: Kuuluttajankatu pair, Keskuspuisto no-note pair, Karjakaivo, Radiokatu.</li><li><strong>T3 consolidation session</strong> after the trip (locked EMB-2).</li></ul>
+<p><em>Written by Izzy, 2026-07-22. Learning notes in §1 are drafts for the <code>ai_learning_note</code> field — Andy/app to apply; tutor never overwrites user words (guardrail §5.3).</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
