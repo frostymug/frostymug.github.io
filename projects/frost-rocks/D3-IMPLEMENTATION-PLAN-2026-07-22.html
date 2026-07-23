@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3 Evening Debrief — Implementation Plan (v1) · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a aria-current="page" href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/SPINE-FINLAND-V1.html">Concept Spine — Finland v1</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks D3 Implementation Plan</div>
+      <div class="doc-meta">Last updated: 2026-07-22</div>
+      <h1>D3 Evening Debrief — Implementation Plan (v1)</h1>
+<p><strong>Status:</strong> ANDY-REVIEWED 2026-07-22 (model + timeline locked, see §2 A1 / §9) — ready for Jesse; Izzy questions §13 outstanding <strong>Author:</strong> Arya (Architecture) · 2026-07-22 <strong>Inputs:</strong> <code>D3-WEDGE-SPEC.md</code> (Izzy, decisions locked §0.1) · <code>AI-TUTOR-DESIGN-BRIEF.md</code> · <code>WOZ-D3-PILOT-1-2026-07-22.md</code> · repo <code>aspen-frost/frost-rocks</code> @ <code>249fabd</code> (HEAD; spec was written @ <code>fbd81be</code> — three field-fix PRs landed since, none touching these seams) · <code>frost-fitness/proxy</code> (Worker pattern source) · <code>FINLAND-ARCHITECTURE.md</code> §3 · <code>ASPEN-MOBILE-APP-PLAYBOOK.md</code></p>
+<p>&gt; <strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>---</p>
+<h2>0. Feasibility answers (D3-Q5 – D3-Q7)</h2>
+<h3>D3-Q5 — Vision transport: <strong>feasible, cheap, one new dep</strong></h3>
+<p>- Gemini 2.5 Flash: <strong>~$0.07/session</strong> - Gemini 2.5 Pro: <strong>~$0.30/session</strong> - One session per evening — cost is a rounding error either way. Ten cents of nightly tutoring is not the constraint; trust is.</p>
+<ul><li><strong>Format/size:</strong> downscale to <strong>1280 px long edge, JPEG q≈0.7</strong> via <code>expo-image-manipulator</code> (new dependency — photos are stored full-res; nothing in the app downscales today). That's ~200–400 KB/photo, ~300–550 KB base64. Sent as Gemini <code>inline_data</code>. Limits are nowhere near binding: Gemini inline-request cap is 20 MB, Workers request cap 100 MB. A 4-photo turn is ~1.5 MB.</li><li><strong>Streaming + images concurrently:</strong> yes, cleanly. Images ride <strong>up</strong> in the request; streaming is the <strong>response</strong> (<code>streamGenerateContent?alt=sse</code>). The frost-fitness Worker already forwards <code>upstream.body</code> unbuffered — SSE flows through a transparent proxy for free. Client side: React Native's built-in <code>fetch</code> <strong>cannot</strong> stream response bodies — but <strong><code>expo/fetch</code> (SDK 52+, we're on 54) can</strong>. That's the one client-side subtlety, and it's solved by an import.</li><li><strong>Cost envelope</strong> (2–4 photos, 8–15 turns, full-context resend per D3-Q7): a 1280 px photo ≈ ~1K Gemini tokens. Worst-case session ≈ ~190K input / ~5K output tokens.</li><li><strong>Latency:</strong> TTFT ~1.5–3.5 s (Flash) / ~3–8 s (Pro) with images; streaming makes both feel fine for a couch session. Per-turn photo upload on hotel wifi is the real latency, which is why the send-photo policy below matters.</li><li><strong>Send-photo policy (tightens spec §6):</strong> send only the <strong>active agenda encounter's</strong> photos per turn (≤2/encounter), not all agenda photos every turn. Other encounters travel as text (note + place + residue so far). Cuts per-turn upload ~4× with zero credibility loss — the tutor only needs to <em>see</em> the rock under discussion.</li><li><strong>Model</strong> — <strong>DECIDED (Andy, 2026-07-22): <code>gemini-3.6-flash</code></strong> for <code>/tutor</code> (and <code>/enrich</code>). Newer-generation Flash; cost stays in the same trivial band as the envelope above. Kept env-switchable (<code>TUTOR_MODEL</code> Worker var) 🚪➡️🚪 — if the Strimpel-don register flattens in the first real sessions, the flip is one deploy, no client change. B2b's round-trip gate doubles as the first voice check.</li></ul>
+<h3>D3-Q6 — Structured output: <strong>sentinel-delimited trailing block, validated app-side, repaired in background</strong></h3>
+<p>Three candidate seams, one recommendation:</p>
+<table><thead><tr><th>Seam</th><th>Verdict</th></tr></thead><tbody><tr><td>Gemini <code>responseSchema</code> (whole-body JSON)</td><td>❌ Kills streamed prose feel (or forces streaming-partial-JSON parsing of a <code>prose</code> field — fiddly, fragile)</td></tr><tr><td>Function calling for the delta</td><td>❌ Part-ordering with streamed text is not reliably prose-then-call; adds API surface for no reliability gain we can't get cheaper</td></tr><tr><td><strong>Prose + sentinel + trailing JSON block</strong></td><td>✅ <strong>Recommended.</strong> One call per turn, deltas ride the same stream</td></tr></tbody></table>
+<p>Contract: model streams prose, then a line <code>---DELTA---</code>, then the JSON block (§4 of the wedge spec). Client renders tokens until the sentinel, buffers the remainder, parses, validates against a schema.</p>
+<p><strong>Reliability comes from the applier, not the model</strong> (this is the important part):</p>
+<ul><li><strong>Schema-validate</strong> the block (lightweight hand-rolled validator or zod — Jesse's call, it's ~40 lines either way).</li><li><strong>The delta applier enforces the conservative-by-rule table structurally</strong>: dialogue-sourced evidence can only produce <code>exposed</code>/<code>connected</code>; only <code>retrieval</code>/<code>field_application</code> can produce <code>solid</code>; <code>user_challenge</code> moves either direction; <strong>unknown concept slugs (not in the bundled spine) are rejected and logged</strong> — the model doesn't get to invent curriculum at runtime by typo. Never trust the prompt to enforce what the applier can enforce in code.</li><li><strong>Malformed block → prose still renders</strong> (spec rule: conversation never blocks on bookkeeping); a <strong>background repair call</strong> re-sends that assistant turn with &quot;emit only the delta block, no prose&quot; (non-streaming, ~1K tokens, pennies). One repair attempt, then park the delta as <code>rejected</code> with the raw text kept for manual replay. Idempotency: deltas apply once per <code>(session_id, message_id)</code>.</li></ul>
+<h3>D3-Q7 — Session state: <strong>stateless proxy, client resends full context. Not close.</strong></h3>
+<ul><li><strong>Token cost of resend is trivial</strong> (the whole session is ~$0.07–0.30, above). The &quot;tradeoff&quot; the spec worries about is real but numerically irrelevant at one user × one session/evening.</li><li>Stateless keeps the Worker a <strong>transparent pipe</strong> (playbook pattern, already proven in frost-fitness), no session store to build/expire/secure, no state to leak. Privacy stays clean: photos transit per turn, nothing persists server-side — matching the spec's own privacy language.</li><li>Everything the prompt needs is <strong>already on the device</strong>: encounters, photos, Layer B rows, bundled spine, voice guide, transcript (<code>tutor_messages</code>). Prompt assembly is client-side pure functions — which also makes it unit-testable in Jest without a network.</li><li>🚪➡️🚪: if a future moment (T3 over a whole trip) blows the context budget, we add server-side session memory <em>then</em>, for that route. Nothing in this design forecloses it.</li></ul>
+<p>---</p>
+<h2>1. What the repo read found (spec assumed; reality differs)</h2>
+<p>Three findings Jesse needs to know before estimating:</p>
+<ul><li><strong>There is no <code>proxy/</code> in frost-rocks. At all.</strong> The client outbox (<code>src/services/enrichment.ts</code>) calls <code>${proxyUrl()}/enrich</code>, but no Worker exists — the enrichment seam is client-complete and server-absent (&quot;dormant&quot; was truer than advertised). <strong>B2 is &quot;scaffold the Worker from frost-fitness's <code>proxy/</code> + write <code>/tutor</code>,&quot; not &quot;add a route.&quot;</strong> Includes <code>wrangler.toml</code> (rate limiters), <code>worker-ci.yml</code>/<code>worker-deploy.yml</code>, <code>smoke.js</code>, secrets, and a Cassian deploy — the playbook checklist items that were never executed for this repo.</li><li><strong>Live bug: the <code>events</code> table CHECK constraint silently drops new event types.</strong> Migration v2 constrains <code>events.type</code> to the original 7 values; v2.2 shipped <code>review_image_zoom_<em></code>, <code>encounter_image_zoom_</em></code>, <code>map_zoom_*</code> in the TS union — those INSERTs violate the CHECK and <code>logEvent</code>'s catch-and-warn swallows the failure. <strong>Zoom instrumentation has never been recorded on any device.</strong> The D3 spec §7 adds ~12 more types that would all hit the same wall. Migration v3 rebuilds <code>events</code> <strong>without the type CHECK</strong> (TS union stays the source of truth; the DB constraint fought us once and lost). Bonus: fixes the existing telemetry hole.</li><li><strong>Client streaming needs <code>expo/fetch</code></strong>, and photo downscaling needs <code>expo-image-manipulator</code> (new dep). Both boring, both SDK-54-supported, neither currently in the repo.</li></ul>
+<p>Also noted: repo HEAD is <code>249fabd</code> (photo-viewer/map-zoom field fixes merged), three PRs past the spec's <code>fbd81be</code>. None touch review flow logic, nav, schema, or enrichment — spec's delta baseline holds.</p>
+<h2>2. Architecture decisions</h2>
+<table><thead><tr><th>#</th><th>Decision</th><th>Door</th></tr></thead><tbody><tr><td>A1</td><td><strong>Model:</strong> <code>gemini-3.6-flash</code> for <code>/tutor</code> and <code>/enrich</code> (Andy, 2026-07-22); <code>TUTOR_MODEL</code>/<code>ENRICH_MODEL</code> Worker env vars keep it one-deploy switchable</td><td>🚪➡️🚪</td></tr><tr><td>A2</td><td><strong>Stateless proxy; client-side prompt assembly; full-context resend</strong> (D3-Q7)</td><td>🚪➡️🚪</td></tr><tr><td>A3</td><td><strong>Output contract:</strong> streamed prose + <code>---DELTA---</code> sentinel + JSON; app-side validation; structural applier rules; background repair</td><td>🚪➡️🚪 (sentinel), applier rules are policy not plumbing</td></tr><tr><td>A4</td><td><strong>Evidence/provenance schema as specced</strong> — append-only <code>evidence</code> with <code>source_type</code>/<code>source_id</code>/<code>excerpt</code>. This is the <strong>one-way door</strong> in the plan 🚪🧱: every future &quot;remember when…&quot; joins on it, and backfilling provenance you didn't record is impossible. Ship it exactly as Izzy specced; do not &quot;simplify&quot; it in review.</td><td>🚪🧱</td></tr><tr><td>A5</td><td><strong>Concept spine:</strong> bundled JSON (<code>src/content/spine/finland.v1.json</code>, versioned) <strong>upserted into the <code>concepts</code> table when <code>spine_version</code> changes</strong> at startup. Keeps Izzy's table + SQL joins; content stays versioned-like-code.</td><td>🚪➡️🚪</td></tr><tr><td>A6</td><td><strong>Voice guide:</strong> versioned markdown/JSON bundled the same way, injected as system-prompt block. Not hardcoded prose (spec §2).</td><td>🚪➡️🚪</td></tr><tr><td>A7</td><td><strong>Photos per turn:</strong> active encounter only, ≤2 photos, 1280 px JPEG (D3-Q5)</td><td>🚪➡️🚪</td></tr><tr><td>A8</td><td><strong>Doors gated on <code>isTutorEnabled()</code></strong> (proxy URL+token set, same pattern as <code>isEnrichmentEnabled</code>). Tutor unconfigured ⇒ nav/banner behave exactly as today; the chooser page ships behind the flag. D3 itself online-only: session start requires network, quiet copy on failure.</td><td>🚪➡️🚪</td></tr></tbody></table>
+<h2>3. Schema — migration v3 (B1)</h2>
+<p>&gt; <strong>UPDATE 2026-07-22 (foundation resequence):</strong> Andy pulled Petra's v1.1 foundation PRD (PRs 16–20) ahead of the D3 app work — see <code>FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.md</code>. Consequences here: the <strong>events rebuild ships in PR 16 (migration v3)</strong> and the <strong><code>questions</code> table ships in PR 19 (migration v5)</strong>, both verbatim from this section. D3's B1 migration renumbers to <strong>v7</strong> and drops those two items from its scope; everything else below stands. B2a (Worker scaffold) runs in parallel with the foundation PRs (Andy confirmed 2026-07-22).</p>
+<p>Additive; encounters untouched (the v0 bet keeps holding). Plus the <code>events</code> rebuild from §1.2 (→ relocated to PR 16, see update note).</p>
+<pre><code class="language-sql">-- concepts: bundled Layer A slice, upserted on spine_version change
+CREATE TABLE IF NOT EXISTS concepts (
+  id TEXT PRIMARY KEY,              -- slug, stable across spine versions
+  name TEXT NOT NULL,
+  family TEXT,
+  diagnostic_features TEXT,         -- json
+  confusion_pairs TEXT,             -- json: [{other_slug, resolving_feature}]
+  place_packs TEXT,                 -- json: [&quot;finland&quot;, ...]
+  keywords TEXT,                    -- json: match terms for concept-implication (v1 keyword pass)
+  spine_version TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user_concept_state (
+  concept_id TEXT PRIMARY KEY REFERENCES concepts(id),
+  state TEXT NOT NULL CHECK (state IN ('exposed','connected','shaky','solid')),
+  first_touched_at TEXT NOT NULL,
+  last_evidence_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS evidence (            -- append-only; the provenance rail (A4 🚪🧱)
+  id TEXT PRIMARY KEY,
+  concept_id TEXT NOT NULL REFERENCES concepts(id),
+  kind TEXT NOT NULL CHECK (kind IN ('exposure','self_explanation','retrieval',
+                                     'field_application','user_challenge','user_mnemonic')),
+  direction TEXT NOT NULL DEFAULT 'neutral' CHECK (direction IN ('up','down','neutral')),
+  source_type TEXT NOT NULL CHECK (source_type IN ('encounter','dialogue','artifact')),
+  source_id TEXT NOT NULL,
+  excerpt TEXT,
+  created_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_evidence_concept ON evidence(concept_id, created_at);
+
+CREATE TABLE IF NOT EXISTS questions (
+  id TEXT PRIMARY KEY,
+  encounter_id TEXT REFERENCES encounters(id),   -- nullable
+  trip_id TEXT NOT NULL REFERENCES trips(id),
+  text TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open','explored','resolved')),
+  resolved_by_session_id TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_questions_status ON questions(trip_id, status);
+
+CREATE TABLE IF NOT EXISTS tutor_sessions (
+  id TEXT PRIMARY KEY,
+  trip_id TEXT NOT NULL REFERENCES trips(id),
+  moment TEXT NOT NULL CHECK (moment IN ('d3','t1','d1','t3')),
+  started_at TEXT NOT NULL,
+  ended_at TEXT,
+  agenda TEXT,                                   -- json
+  summary TEXT
+);
+
+CREATE TABLE IF NOT EXISTS tutor_messages (
+  id TEXT PRIMARY KEY,
+  session_id TEXT NOT NULL REFERENCES tutor_sessions(id),
+  role TEXT NOT NULL CHECK (role IN ('user','tutor')),
+  content TEXT NOT NULL,
+  encounter_id TEXT REFERENCES encounters(id),   -- nullable
+  created_at TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_tutor_messages_session ON tutor_messages(session_id, created_at);
+
+-- delta bookkeeping (idempotency + repair queue)
+CREATE TABLE IF NOT EXISTS tutor_deltas (
+  message_id TEXT PRIMARY KEY REFERENCES tutor_messages(id),
+  status TEXT NOT NULL CHECK (status IN ('applied','rejected','pending_repair')),
+  raw_json TEXT,                                 -- kept for replay/audit
+  applied_at TEXT
+);
+
+-- events rebuild: drop the type CHECK (fixes silent-drop bug, unblocks §7 instrumentation)
+CREATE TABLE events_new (
+  id TEXT PRIMARY KEY, ts TEXT NOT NULL, type TEXT NOT NULL, data_json TEXT
+);
+INSERT INTO events_new SELECT id, ts, type, data_json FROM events;
+DROP TABLE events;
+ALTER TABLE events_new RENAME TO events;
+CREATE INDEX idx_events_ts ON events(ts);
+CREATE INDEX idx_events_type ON events(type, ts);</code></pre>
+<p>Notes for Jesse:</p>
+<ul><li><code>user_concept_state</code> transitions happen <strong>only</strong> through the delta applier (§4). No other write path.</li><li>Deviation from spec text: spec's <code>evidence.kind</code> example JSON uses <code>self_explanation</code> for a state move — applier maps <code>kind → allowed transitions</code>, see §4.</li><li>The WoZ pilot deltas (<code>WOZ-D3-PILOT-1</code> §2) become <code>src/__tests__/fixtures/woz-pilot-1-deltas.json</code>. Note the pilot log uses the state label <code>understood-in-context</code> — normalize to <code>connected</code> in the fixture.</li></ul>
+<h2>4. Delta contract v1 + applier rules (B1)</h2>
+<p>Wire format per wedge spec §4, with one addition — <code>encounter_tags</code> for the two-pass concept-implication (spec §5, block 2):</p>
+<pre><code class="language-json">{
+  &quot;encounter_tags&quot;: [{&quot;encounter_id&quot;: &quot;…&quot;, &quot;concepts&quot;: [&quot;jointing&quot;, &quot;migmatite&quot;]}],
+  &quot;deltas&quot;: [{&quot;concept&quot;: &quot;jointing&quot;, &quot;state&quot;: &quot;exposed-&gt;connected&quot;,
+              &quot;evidence&quot;: {&quot;kind&quot;: &quot;self_explanation&quot;, &quot;source_type&quot;: &quot;dialogue&quot;,
+                           &quot;source_id&quot;: &quot;&lt;message_id&gt;&quot;, &quot;excerpt&quot;: &quot;…&quot;}}],
+  &quot;questions&quot;: [{&quot;op&quot;: &quot;open&quot; | &quot;resolve&quot;, &quot;id&quot;: &quot;q_12?&quot;, &quot;encounter_id&quot;: &quot;…?&quot;, &quot;text&quot;: &quot;…?&quot;, &quot;note&quot;: &quot;…?&quot;}],
+  &quot;learning_note&quot;: {&quot;encounter_id&quot;: &quot;…&quot;, &quot;text&quot;: &quot;…&quot;},
+  &quot;mnemonics&quot;: [{&quot;concept&quot;: &quot;feldspar_vs_quartz&quot;, &quot;text&quot;: &quot;…&quot;, &quot;verbatim&quot;: true}]
+}</code></pre>
+<p><strong>Applier rules (code, not prompt):</strong></p>
+<ul><li>Unknown <code>concept</code> slug → reject that row, log <code>delta_row_rejected{reason:&quot;unknown_concept&quot;}</code>, apply the rest.</li><li>Transition legality by evidence kind: <code>exposure|self_explanation</code> (dialogue) → may set <code>exposed</code>/<code>connected</code> only · <code>retrieval|field_application</code> → may set <code>solid</code> · <code>user_challenge</code> → any direction · <code>user_mnemonic</code> → evidence row only, no state change.</li><li>Every applied delta writes the <code>evidence</code> row <strong>and</strong> upserts <code>user_concept_state</code> in one transaction.</li><li><code>learning_note</code> writes via existing <code>setAiLearningNote()</code> — AI-owned field only; <strong>no code path from delta to any user field</strong> (audit: grep-able, testable).</li><li>Idempotent per <code>message_id</code> (<code>tutor_deltas</code> table).</li><li>Malformed top-level JSON → <code>pending_repair</code> → one background repair call → <code>applied</code> or <code>rejected</code> (raw kept).</li></ul>
+<h2>5. Prompt assembly (client-side, pure) (B3)</h2>
+<p><code>src/services/tutor/promptAssembly.ts</code> — pure functions, Jest-testable, no I/O. Blocks per spec §5:</p>
+<ul><li><strong>System/persona</strong> ← bundled voice guide (versioned) + guardrails (§2 of spec, incl. ≤2-beat challenge rule, uncertainty grammar, turn budget).</li><li><strong>Layer A slice</strong> ← concepts implicated by tonight's encounters: v1 = keyword match (<code>concepts.keywords</code>) over note text ∪ place-pack default cluster; <strong>plus</strong> any <code>encounter_tags</code> returned by the model's own agenda turn (two-pass). Include confusion pairs of every included concept.</li><li><strong>Layer B</strong> ← compact render of <code>user_concept_state</code> + open <code>questions</code> + <code>user_mnemonic</code> excerpts.</li><li><strong>Session objects</strong> ← today's encounters: notes verbatim, guess/confidence/uncertainty, place/time/event tag; photos per policy A7.</li><li><strong>Task frame</strong> ← moment-specific job description: full loop (agenda→per-encounter→thread→close) or <strong>abbreviated</strong> (single-encounter, no agenda/close ceremony — doors 2 and 3).</li><li><strong>Output contract</strong> ← prose + sentinel + delta JSON schema.</li></ul>
+<h2>6. Transport (B2)</h2>
+<p><strong>Worker</strong> (<code>proxy/</code>, scaffolded from frost-fitness):</p>
+<ul><li><code>GET /health</code> (no auth) · <code>POST /tutor</code> · <code>POST /enrich</code> (finally give the dormant outbox its server — one-shot, <code>env.ENRICH_MODEL</code>, non-streaming; same shape the client already sends).</li><li><code>/tutor</code>: transparent pipe to <code>streamGenerateContent?alt=sse</code> on <code>env.TUTOR_MODEL</code> (default <code>gemini-3.6-flash</code>, per A1); forwards <code>upstream.body</code> unbuffered (pattern already proven). Worker enforces <code>maxOutputTokens</code> cap (~1.5K — turn budget is 2–5 sentences + delta block) and strips/ignores any client-supplied generation config outside the allowlist.</li><li>Auth + dual rate limiters + metadata-only logging: copy frost-fitness verbatim. <code>ai_call_log</code> mirror rides the existing client table.</li><li>CI/CD: <code>worker-ci.yml</code> (typecheck, tests, secret scan, wrangler dry-run), <code>worker-deploy.yml</code> with <code>worker-production</code> environment gate. <strong>Deploy is Cassian's</strong> (SRE veto lane) — Jesse writes it, Cassian ships it.</li></ul>
+<p><strong>Client</strong> (<code>src/services/tutor/transport.ts</code>):</p>
+<ul><li><code>expo/fetch</code> streaming reader → token callback → sentinel splitter (<code>---DELTA---</code>) → delta pipeline (§4).</li><li>Downscale-and-encode helper (<code>expo-image-manipulator</code> + base64 read) with in-session memo so a photo is encoded once per session, not per turn.</li><li>Online-only: no outbox, no retry queue. Failure mid-turn = quiet inline &quot;the guide lost the thread — tap to continue&quot; that resends the turn (idempotent by <code>message_id</code>).</li></ul>
+<h2>7. UI build (B3 structure → B4 skin)</h2>
+<p>New route <code>app/tutor-session.tsx</code> — state machine <code>OPEN → AGENDA → PER_ITEM(i) → THREAD? → CLOSE</code>, or <code>PER_ITEM</code> alone (abbreviated). Agenda v1: skip-toggles + &quot;add from today&quot; — <strong>no drag-reorder</strong> (see Q-I1). Residue rendered as it lands (&quot;noted on the encounter ✓&quot; — trust through visible bookkeeping).</p>
+<p>Doors:</p>
+<ul><li><strong>Banner</strong> (<code>app/index.tsx</code>): debrief state when <code>(todayCount ≥ 2) OR (todayCount ≥ 1 AND localHour ≥ 17)</code> — device-local day boundary and clock; copy per spec. Else current behavior. Gated on <code>isTutorEnabled()</code>.</li><li><strong>Encounter detail</strong> row &quot;Explore with your guide&quot; → abbreviated session scoped to that encounter.</li><li><strong>Review flow</strong>: after the original-note reveal in <code>app/review.tsx</code>, &quot;Talk it through&quot; → abbreviated session for that encounter (assumption — see Q-I2).</li><li><strong>Nav Review → chooser</strong> (<code>app/review-hub.tsx</code>): &quot;Review Today's Encounters&quot; → D3 session · &quot;Review the Trip So Far&quot; → visible, disabled, small &quot;after the trip&quot; caption (the T3 door). Map/timeline pins keep deep-linking into classic staged-reveal review with <code>id</code> — that path is untouched.</li></ul>
+<h2>8. Instrumentation (B5)</h2>
+<p>Add the §7 event list to the TS <code>EventType</code> union (DB constraint gone per migration v3): <code>debrief_invite_shown{door}</code>, <code>debrief_start{door, encounter_count}</code>, <code>encounter_discussed</code>, <code>hunch_prompt_shown</code>, <code>hunch_answered|hunch_skipped</code>, <code>question_resolved</code>, <code>delta_applied{n}</code>, <code>delta_row_rejected{reason}</code>, <code>mnemonic_captured</code>, <code>challenge_raised</code>, <code>debrief_complete{duration, items_done, items_skipped}</code>, <code>debrief_abandoned{at}</code>.</p>
+<h2>9. Build sequence → PRs, gates, evidence</h2>
+<p>Per wedge spec §9, sharpened into review-able PRs. <strong>Every PR: evidence gate #1 — test output exercising the changed seam, in the PR body. And gate #2 — body matches diff.</strong> (Standing review practice.)</p>
+<table><thead><tr><th>PR</th><th>Scope</th><th>Gate (evidence required)</th></tr></thead><tbody><tr><td><strong>B1</strong></td><td>Migration v3 + spine loader (stub spine ok) + delta validator + applier + fixtures</td><td><strong>WoZ pilot #1 deltas replay cleanly into the tables</strong> — fixture test output showing resulting <code>user_concept_state</code>/<code>evidence</code>/<code>questions</code> rows. Plus: migration test proving <code>events</code> rebuild preserves rows and accepts a zoom event type (regression for the live bug)</td></tr><tr><td><strong>B2a</strong></td><td><code>proxy/</code> scaffold: <code>/health</code>, <code>/tutor</code>, <code>/enrich</code>, rate limits, CI, smoke</td><td>Worker vitest green + smoke script output vs staging: auth, 429s, <strong>SSE streaming headers observed</strong></td></tr><tr><td><strong>B2b</strong></td><td>Client transport: streaming reader, sentinel parser, photo downscale/encode</td><td><strong>Round-trip a real Finland encounter photo + note → grounded streamed prose + valid parsed delta</strong> — paste transcript + parsed delta in PR. Parser unit tests incl. malformed-JSON → repair path</td></tr><tr><td><strong>B3</strong></td><td>Session screen, prompt assembly, 4 doors, residue writes, abbreviated mode</td><td><strong>Full session on device over real Finland export data</strong>: agenda → ≥2 encounters → residue visible on encounter detail. Screen recording + resulting DB rows</td></tr><tr><td><strong>B4</strong></td><td>Skin: field-guide dress, tutor-turn styling</td><td>After B3 gate only. Visual diff/screenshots</td></tr><tr><td><strong>B5</strong></td><td>Events + TestFlight build</td><td>Event rows visible in export after a real session</td></tr></tbody></table>
+<p><strong>Timeline (Andy, 2026-07-22): ship before he leaves Finland.</strong> Compressed sequencing:</p>
+<ul><li><strong>Now, in parallel:</strong> B1 (Jesse) + B2a (Jesse writes, Cassian deploys staging same day). Izzy starts the Finland spine slice + voice guide immediately — needed within ~24h (stub-then-swap is fine for B3 <em>development</em>, not for the release build).</li><li><strong>Next:</strong> B2b (round-trip gate = first live voice check on 3.6-flash), then B3 on real trip data.</li><li><strong>Folded:</strong> B5 events land inside the B3 PR (they're one union edit + emit calls); B4 becomes a minimal pass — tutor turns visually distinct, nothing more.</li><li><strong>Release:</strong> EAS preview → TestFlight (internal tester, no review queue; ~1h processing). Cassian gates the production Worker deploy.</li><li><strong>Scope knife, if the date wobbles (cut in this order):</strong> door 3 (review-flow handoff) → B4 polish beyond turn-styling → the THREAD step (per-encounter loop + close-out still deliver the wedge's soul). The banner, nav chooser, detail door, delta rail, and vision transport are not cuttable — they <em>are</em> the wedge.</li><li><strong>Compressed ≠ skipped:</strong> the two hard gates (B1 fixture replay, B2b real-photo round-trip) hold. They're cheap and they're exactly what catches a fast build going quietly wrong.</li></ul>
+<p>Needed from others: Izzy — spine slice + voice guide ETA (Q-I3, now urgent); Cassian — Worker staging + production deploys on call; Andy — departure date.</p>
+<h2>10. Deliberately not abstracting yet</h2>
+<ul><li>No generic &quot;tutor moment&quot; framework — D3 is the only moment. <code>tutor_sessions.moment</code> is the whole abstraction; T1/D1/T3 add rows, not scaffolding.</li><li>No server-side session store (revisit at T3 if context budgets demand — A2).</li><li>No embeddings/retrieval infra — keyword + place-pack + model-proposed tags is v1 concept-implication, on purpose.</li><li>No offline tutor queue — D3 is online-only by design; <code>/enrich</code> remains the offline-shaped path.</li><li>No multi-trip IA — but every new table carries <code>trip_id</code>, so it's rows-not-migrations later.</li><li>&quot;My geology&quot; page (v1.1) — data lands in v1; UI deliberately not built.</li></ul>
+<h2>11. Risks</h2>
+<table><thead><tr><th>Risk</th><th>Read</th></tr></thead><tbody><tr><td>Voice quality on <code>gemini-3.6-flash</code> vs the WoZ wizard</td><td>The plan's biggest product risk. Mitigations: voice guide as versioned data, B2b round-trip gate doubles as a voice check, <code>TUTOR_MODEL</code> env flip if the don flattens. F8's &quot;40-day charm&quot; question stays open regardless</td></tr><tr><td>Delta discipline (model emits junk)</td><td>Contained by design: applier rejects structurally, prose never blocks, repair path is background. Worst case = tutor is right but forgetful; visible in <code>tutor_deltas.rejected</code></td></tr><tr><td>Sentinel format drift (model omits/mangles block)</td><td>One repair attempt catches most; <code>delta_applied</code>/<code>delta_row_rejected</code> events tell us the real rate within a week of TestFlight</td></tr><tr><td>Compressed timeline (§9) squeezes the gates</td><td>Gates get compressed, not skipped — B1 fixture replay and B2b real-photo round-trip are non-negotiable. The scope knife (§9) protects the date instead</td></tr><tr><td>Spine slice quality/coverage</td><td>Izzy owns (spec §8, Petra review). Unknown-slug rejections in telemetry will show coverage gaps empirically</td></tr></tbody></table>
+<h2>12. Dependencies (blocking B3 gate, not B3 start)</h2>
+<ul><li><strong>Finland spine slice</strong> (~20–30 concepts) — Izzy, Petra review. <strong>Format contract needed now</strong> (see Q-I3): JSON with <code>id/name/family/diagnostic_features/confusion_pairs/place_packs/keywords</code>, top-level <code>spine_version</code>.</li><li><strong>Voice guide artifact</strong> — Izzy. Versioned, prompt-consumable (markdown with front-matter version is fine).</li><li><strong>Worker deploy + secrets</strong> — Cassian (staging then production; EAS secrets <code>EXPO_PUBLIC_PROXY_URL/_TOKEN</code> flip the doors on).</li></ul>
+<h2>13. Open questions</h2>
+<p><strong>For Izzy (design):</strong></p>
+<ul><li><strong>Q-I1 — Agenda ceremony:</strong> is skip-toggle + add-from-today enough for v1, or does &quot;reorder&quot; (spec D3-S2) mean real drag-reorder UI? My rec: skip/add only; reorder is ceremony until proven missed.</li><li><strong>Q-I2 — Door 3 shape:</strong> review-flow &quot;talk it through&quot; = same abbreviated loop as door 2? (Assumed yes.)</li><li><strong>Q-I3 — Spine + voice guide format:</strong> confirm the JSON contract in §12.1 (especially <code>keywords</code> per concept — my addition, needed for v1 concept-implication) and voice-guide delivery format. And an ETA — it gates the B3 acceptance gate.</li><li><strong>Q-I4 — Tutor-unconfigured state:</strong> chooser + debrief banner simply don't appear until the proxy is live (A8), nav behaves exactly as today. Confirm that's acceptable vs. some teaser state.</li></ul>
+<p><strong>For Andy (product/call):</strong></p>
+<ul><li>~~Q-A1 — Model~~ <strong>ANSWERED (2026-07-22): <code>gemini-3.6-flash</code></strong> (A1 updated).</li><li>~~Q-A2 — Timeline~~ <strong>ANSWERED (2026-07-22): ship before Andy leaves Finland</strong> — compressed schedule + scope knife in §9. Open sub-question: <strong>exact departure date</strong> (sets the drop-dead for the B5 TestFlight build).</li></ul>
+<p>Izzy's questions don't block B1/B2a start. Jesse can begin on this document as written.</p>
+<p>---</p>
+<p><em>Provenance: authored by Arya from D3-WEDGE-SPEC.md (Izzy, Andy-locked §0.1), AI-TUTOR-DESIGN-BRIEF.md, WOZ-D3-PILOT-1, frost-rocks @ 249fabd, frost-fitness proxy pattern, FINLAND-ARCHITECTURE §3, mobile playbook. Andy review 2026-07-22: model = gemini-3.6-flash, ship before end of Finland trip (§9). Status: Jesse-ready; Izzy §13 questions + departure date outstanding.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

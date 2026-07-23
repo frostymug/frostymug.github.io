@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks v1.1 Foundation — Implementation Plan (PRs 16–20) · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a aria-current="page" href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/SPINE-FINLAND-V1.html">Concept Spine — Finland v1</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Foundation v1.1 Implementation Plan</div>
+      <div class="doc-meta">Last updated: 2026-07-22</div>
+      <h1>Frost Rocks v1.1 Foundation — Implementation Plan (PRs 16–20)</h1>
+<p><strong>Status:</strong> ARYA BUILD PLAN — Jesse-ready; answers Petra's open questions inline <strong>Author:</strong> Arya (Architecture) · 2026-07-22 <strong>Inputs:</strong> <code>FROST-ROCKS-PRD-V1.1-PRS-16-20.md</code> (Petra) · repo <code>aspen-frost/frost-rocks</code> @ <code>249fabd</code> (= origin/main, source-verified today) · <code>D3-WEDGE-SPEC.md</code> · <code>D3-IMPLEMENTATION-PLAN-2026-07-22.md</code> · <code>BACKLOG.md</code></p>
+<p>&gt; <strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>---</p>
+<h2>0. What the repo read changes about the PRD</h2>
+<p>Petra specced against the product surface; the code is further along (and in one case further behind) than the PRD assumes. Three findings reshape scope:</p>
+<ul><li><strong>PR 16 is ~60% built.</strong> <code>buildExportBundle</code> (<code>src/services/exporter.ts</code>) already writes a self-contained folder — <code>journal.md</code>, <code>trip.json</code>, <code>events.json</code>, and <code>photos/</code> with deterministic <code>&lt;encounterId&gt;-&lt;n&gt;.&lt;ext&gt;</code> filenames — and <code>trip.json</code> already maps encounters → photo filenames. What's actually missing: <strong>the folder can't leave the device as one artifact</strong> (the share sheet shares single files; Andy has only ever shipped the JSON), missing-photo entries are a silent counter instead of manifest rows, no photo IDs/flags, no instrumentation. <strong>PR 16 = zip + manifest upgrade, not a new export system.</strong></li><li><strong>PR 18 mostly exists.</strong> <code>capture.tsx</code> has a full <strong>enrich mode</strong> (<code>/capture?id=X&amp;mode=enrich</code>) that loads an existing encounter into the form and saves note/guess/confidence/event-tag/themes via <code>updateEncounter</code> — with dirty-state guards and tests. It's only reachable from the home-timeline card. <strong>PR 18 = add the door from encounter detail + label polish</strong>, unless Petra insists on strict note-only editing (see Q-P1).</li><li><strong>PR 17 root cause is two lines.</strong> <code>src/services/photos.ts</code> calls the camera and library pickers with <strong><code>exif: false</code> and <code>quality: 0.85</code></strong> — metadata is never requested, and the sub-1.0 quality forces a re-encode that strips whatever survived. Also: GPS was <em>never</em> going to be in third-party camera EXIF on iOS — the app's own <code>expo-location</code> fix (already captured per encounter) is the source; we have to write it into the file ourselves. And <code>captured_at</code> is stored as UTC ISO (<code>toISOString()</code>) — <strong>local timezone is currently lost entirely</strong>, which PRD R5 correctly demands we fix.</li></ul>
+<p>Plus one standing item from the D3 plan that lands here first: <strong>the <code>events.type</code> CHECK constraint silently drops every event type added since migration v2</strong> (all v2.2 zoom events were never recorded). Every PR in this PRD adds event types, so the fix ships in PR 16 (first in sequence), satisfying the PRD's cross-cutting requirement.</p>
+<h2>1. Cross-cutting decisions</h2>
+<table><thead><tr><th>#</th><th>Decision</th><th>Door</th></tr></thead><tbody><tr><td>C1</td><td><strong>Migration ladder:</strong> v3 = events rebuild (PR 16) · v4 = <code>tz_offset_min</code> column (PR 17) · v5 = <code>questions</code> table (PR 19) · v6 = <code>encounter_keywords</code> (PR 20). D3's B1 migration renumbers to <strong>v7</strong> and drops <code>questions</code> + the events rebuild from its scope (they land here). D3 plan updated with a cross-reference note.</td><td>🚪➡️🚪</td></tr><tr><td>C2</td><td><strong><code>export_schema_version</code> continues the existing counter → 3</strong> (current <code>EXPORT_VERSION = 2</code>), answering Petra's open question. One version authority, no parallel numbering.</td><td>🚪➡️🚪</td></tr><tr><td>C3</td><td><strong>Zip via <code>fflate</code></strong> (pure JS, no native module, no EAS rebuild): JPEGs stored uncompressed (they're already compressed — level 0 is fast), JSON/markdown deflated. ~40MB trip zips fine in memory at this scale.</td><td>🚪➡️🚪</td></tr><tr><td>C4</td><td><strong>EXIF read/write via <code>piexifjs</code></strong> (pure JS, JPEG-only). HEIC files (library picks) that can't be stamped get flagged in the manifest, never silently skipped and never fabricated (PRD R7/R10).</td><td>🚪➡️🚪</td></tr><tr><td>C5</td><td><strong>PR 19's <code>questions</code> table is byte-identical to the D3 plan §3 schema.</strong> It doesn't &quot;align with&quot; the D3 direction — it <em>is</em> the D3 table, landing early. Zero drift allowed; D3's delta applier consumes it as-is.</td><td>🚪🧱 (shared substrate — same reasoning as the evidence rail)</td></tr><tr><td>C6</td><td><strong>PR 20 unifies tagging going forward:</strong> legacy theme rows are copied into <code>encounter_keywords</code> (<code>source: 'theme'</code>) at migration; <code>encounter_theme_tags</code> stays in place (nothing dropped, old exports reproducible) but stops receiving writes. One write path forward, one read path (union not needed after migration).</td><td>🚪➡️🚪 — reversible because the legacy table is preserved</td></tr><tr><td>C7</td><td>Every PR body: <strong>evidence gate #1</strong> (test/device output exercising the changed seam) + <strong>gate #2</strong> (body matches diff). Petra's §6 evidence gates adopted verbatim as the per-PR artifacts.</td><td>—</td></tr></tbody></table>
+<p>---</p>
+<h2>PR 16 — Export package (zip + manifest upgrade) — <strong>S/M</strong></h2>
+<p><strong>Migration v3 (ships here):</strong> rebuild <code>events</code> without the <code>type</code> CHECK (create-copy-drop-rename + reindex; SQL already written in D3 plan §3). Regression test: insert a <code>review_image_zoom_open</code> row post-migration and read it back — that's the live bug, caught.</p>
+<p><strong>Files:</strong> <code>src/db/export.ts</code> (manifest builders — pure, tested), <code>src/services/exporter.ts</code>, <code>app/export.tsx</code>, new <code>src/services/zipBundle.ts</code>. Dep: <code>fflate</code>.</p>
+<p><strong>Package structure</strong> (zip, <code>frost-rocks-export-&lt;stamp&gt;.zip</code>):</p>
+<pre><code>manifest.json      — export_schema_version: 3, trip, generated_at,
+                     per-encounter photo map: [{photo_id, path, width, height,
+                       photo_created_at, status: 'included'|'missing',
+                       missing_reason?, metadata: {gps, timestamp, tz, device}  ← flags land in PR 17, keys reserved now}]
+encounters.json    — full encounter records (note/guess/confidence/uncertainty/ai_note/
+                     learned_later/review_state/themes→keywords/questions when PR 19–20 land),
+                     photo refs by packaged path, NOT device URIs (R5)
+journal.md         — unchanged human journal
+events.json        — unchanged
+photos/&lt;encounterId&gt;/&lt;photoId&gt;.&lt;ext&gt;   — deterministic, collision-proof (R4)</code></pre>
+<p><strong>Implementation notes:</strong></p>
+<ul><li>Reuse <code>buildExportBundle</code>'s folder write, then zip the folder (read files → <code>fflate.zipSync</code> with per-file level: 0 for <code>photos/</code>, 6 for text) → single <code>shareFile(zipUri, 'application/zip')</code>.</li><li>Missing photo → manifest row <code>status: 'missing', missing_reason: 'file_not_found'</code> (replaces the silent <code>photoFailures</code> counter; keep the counter for the UI line).</li><li>Existing three share buttons remain (R6); &quot;Share full package&quot; becomes the primary action.</li><li>Events: <code>export_start</code>, <code>export_success{encounters, photos, missing, schema_version, bytes}</code>, <code>export_failure{stage}</code>.</li></ul>
+<p><strong>Gate:</strong> unit tests for manifest builder (incl. missing-photo row); a real sample zip from Finland data attached to the PR, opened cold on a laptop: find an encounter in <code>manifest.json</code>, locate its photos by path (Petra's acceptance, literally).</p>
+<p><strong>Answers Petra:</strong> zip immediately (a folder can't ride the iOS share sheet as one artifact — zip <em>is</em> the feature); version = 3 per C2.</p>
+<p>---</p>
+<h2>PR 17 — Native-quality photo metadata — <strong>M</strong> (the only PR with genuine unknowns)</h2>
+<p><strong>Step 0 is mandatory and comes first (PRD R1 is right):</strong> pull one Frost Rocks photo (app dir + camera-roll copy) and one native Camera photo off the device, run both through <code>exiftool</code>, and put the comparison table in the PR body. Everything below is the expected result of that inspection; if reality disagrees, the inspection wins and the plan adjusts.</p>
+<p><strong>Root cause (verified in source):</strong> <code>exif: false, quality: 0.85</code> on both pickers + re-encode. GPS additionally requires app-side stamping (iOS never gives third-party picker captures location EXIF).</p>
+<p><strong>Changes</strong> (<code>src/services/photos.ts</code>, <code>src/utils/dates.ts</code>, migration v4):</p>
+<p>- Plumbing: <code>persistAsset</code> needs the location fix — pass <code>locationRef.current</code> from <code>capture.tsx</code> through <code>takePhoto()</code>. GPS starts from the home FAB before the camera opens, so the fix is normally resolved; if not, stamp without GPS and flag (<code>R10</code>: no fabrication — a missing fix is a missing fix). - HEIC (library only): piexif can't write it → skip stamp, flag <code>metadata.write_skipped: 'heic'</code>.</p>
+<ul><li>Camera path: <code>exif: true</code> (harvest the dict iOS provides — <code>DateTimeOriginal</code>, orientation, some device fields). Keep <code>quality: 0.85</code> — the re-encode is acceptable because we stamp metadata <em>after</em> it.</li><li>Library path: <code>quality: 1</code> + <code>exif: true</code> — avoid transcoding; original bytes (and their EXIF, incl. GPS if the user's photo has it) survive the copy.</li><li><strong>Stamp step</strong> in <code>persistAsset</code>, <em>before</em> the camera-roll safety-net save (ordering matters — the roll copy must carry the metadata too): merge picker EXIF dict + app GPS fix + <code>DateTimeOriginal</code>/<code>OffsetTimeOriginal</code> from device clock + <code>Make</code>/<code>Model</code> via <code>expo-device</code> → write with <code>piexifjs</code> → then <code>createAssetAsync</code>.</li><li><strong>Migration v4:</strong> <code>ALTER TABLE encounters ADD COLUMN tz_offset_min INTEGER</code> — populated at capture from device timezone (R5). Exported in <code>encounters.json</code>. (Side note, not this PR: <code>captured_at</code> is UTC, so day-grouping in the timeline files a 1 a.m. Finland capture under the previous day. The column makes fixing that possible later.)</li><li>Manifest metadata flags (keys reserved in PR 16) go live: <code>{gps: bool, timestamp: bool, tz: bool, device: bool, write_skipped?: reason}</code> — distinguishing <em>never available</em> from <em>lost in processing</em> (R7).</li></ul>
+<p><strong>Answers Petra:</strong> minimum parity = <strong>GPS + timestamp + tz offset guaranteed; Make/Model best-effort; lens/aperture fields are not exposed by the Expo picker pipeline</strong> — that's the documented framework limitation the acceptance criteria anticipates. Lower-level capture (expo-camera / native module) is not warranted for this; structured encounter metadata stays canonical (R9).</p>
+<p><strong>Gate:</strong> before/after <code>exiftool</code> dumps + the native-photo parity table, on device.</p>
+<p>---</p>
+<h2>PR 18 — Edit note on existing encounter — <strong>XS/S</strong></h2>
+<p><strong>DECIDED (Andy, 2026-07-22): reuse enrich mode — &quot;just open the door.&quot;</strong> Original recommendation follows; the strict note-only alternative below is retained for provenance only.</p>
+<p><strong>Recommendation (was Q-P1):</strong> don't build a second edit surface. Add the door from encounter detail into the <strong>existing enrich mode</strong> — <code>router.push({pathname:'/capture', params:{id, mode:'enrich'}})</code> — which already loads/saves the note with dirty-guards and tests. Label adapts: <strong>&quot;Add a note&quot;</strong> when <code>!encounter.note</code> (R2), <strong>&quot;Edit entry&quot;</strong> otherwise. Two taps: detail → button (R7).</p>
+<ul><li>R3/R4 conformance: <code>buildCapturePatch</code> touches exactly <code>{note, initial_guess, confidence, event_tag, themes}</code> — all user-authored; <code>ai_learning_note</code>, photos, GPS, review state, questions, tutor residue are untouchable through this path <em>by construction</em>. Add the regression test asserting it (grep-able guarantee, same style as the D3 &quot;no AI path to user fields&quot; audit).</li><li>Strict-scope alternative if Petra wants the PRD's letter (note-only): a bottom sheet on detail editing only <code>note</code> + <code>updated_at</code>. It's a day of extra UI for a narrower door — my view: the wider door <em>is</em> the better product (a wrong guess is as worth fixing as a missing note), and it's all user-authored truth. Petra's call; the plan works either way. 🚪➡️🚪</li><li>Events: <code>encounter_note_edit_start/save/cancel</code> (persist thanks to migration v3).</li><li>One real gap either way: enrich mode is currently invisible from detail — that's the actual bug being fixed.</li></ul>
+<p><strong>Gate:</strong> device video — photo-only encounter → add note → detail shows it; cancel path unchanged; field-level non-regression test output.</p>
+<p>---</p>
+<h2>PR 19 — First-class questions — <strong>S/M</strong></h2>
+<p><strong>Migration v5:</strong> the <code>questions</code> table <strong>verbatim from D3 plan §3</strong> (id, encounter_id nullable, trip_id, text, status <code>open|explored|resolved</code>, resolved_by_session_id, created_at, updated_at + status index). C5: zero drift.</p>
+<p><strong>Files:</strong> new <code>src/db/questions.ts</code> (CRUD + <code>listOpenQuestions(tripId)</code>), <code>app/capture.tsx</code>, <code>app/encounter/[id].tsx</code>, export builders.</p>
+<ul><li><strong>Capture:</strong> manual-only v1 (answers Petra's detection question — suggestion/promotion heuristics wait for evidence). A quiet <strong>&quot;Save as a question&quot;</strong> toggle in the note section, off-path, nothing required — capture stays two-tap sacred. On save: note text also written as a <code>questions</code> row, verbatim (R3), linked to encounter + trip.</li><li><strong>Detail:</strong> &quot;Questions&quot; card, visually distinct from note/guess/AI note (R5), showing status. Plus <strong>&quot;Promote to question&quot;</strong> action on an existing note (covers the 14 live encounters whose questions are buried in note text — Andy's &quot;why do those gaps appear…&quot; becomes a row).</li><li><strong>Export:</strong> <code>questions</code> array in <code>encounters.json</code> + per-encounter question refs in manifest (R9).</li><li><strong>D3 consumers</strong> (<code>listOpenQuestions</code> → agenda priority #1) get their query for free — no text-scraping (acceptance #3).</li><li>Events: <code>question_capture{door: capture|promote}</code>, <code>question_review_open</code>; <code>question_resolved</code> stays owned by the D3 delta applier (R10's conditional resolved correctly — D3 owns it).</li><li>Status transitions to <code>explored/resolved</code> are <strong>D3-session-driven</strong>; this PR ships the object, the doors in, and the reads. No manual resolve UI in v1 (residue comes from dialogue, per the wedge).</li></ul>
+<p><strong>Answers Petra:</strong> ship it <strong>now, in foundation order</strong> — it's D3 substrate landing early, not a competing shape (C5 makes that structural). Manual-only detection first.</p>
+<p><strong>Gate:</strong> fixture test (create → promote → export contains verbatim text + status); device screenshot of the detail card; <code>listOpenQuestions</code> query output over the real Finland export.</p>
+<p>---</p>
+<h2>PR 20 — Dynamic keywords — <strong>M</strong> (the real design-touching one)</h2>
+<p><strong>Migration v6:</strong></p>
+<pre><code class="language-sql">CREATE TABLE encounter_keywords (
+  encounter_id TEXT NOT NULL REFERENCES encounters(id),
+  text TEXT NOT NULL,                -- stored as typed; matched case-insensitively
+  source TEXT NOT NULL DEFAULT 'user' CHECK (source IN ('user','suggested','theme')),
+  created_at TEXT NOT NULL,
+  PRIMARY KEY (encounter_id, text COLLATE NOCASE)
+);
+-- backfill: copy encounter_theme_tags rows in as source='theme' (label text, e.g. 'Built stone')</code></pre>
+<p><code>encounter_theme_tags</code> stays (nothing dropped, old exports reproducible) but receives no new writes (C6).</p>
+<p><strong>Files:</strong> new <code>src/db/keywords.ts</code> (add/reuse, <code>recentKeywords(tripId, limit)</code> by GROUP BY normalized text ordered by recency+frequency), <code>app/capture.tsx</code>, <code>src/db/export.ts</code>, display components.</p>
+<ul><li><strong>Capture UI:</strong> the fixed theme-chip row becomes a <strong>keyword row</strong>: recent/frequent user keywords first (R2), the 6 legacy themes trail as suggestions (R3 — suggestions, not a closed list), plus a small free-text add. Off-path, optional, below the fold — capture rhythm untouched.</li><li><strong>UI copy: &quot;Keywords&quot;</strong> (answers Petra — agreed, notebook-register, not taxonomy-register; the export field is <code>keywords</code> too).</li><li><code>source</code> column preserved per R7 (it's one INSERT param — cheap).</li><li><strong>Display/export:</strong> detail + cards render keywords (legacy <code>theme</code> rows included via the backfill, so R4 holds); <code>encounters.json</code> gains <code>keywords: [{text, source}]</code>, old <code>themes</code> array kept in the export for one version for downstream compatibility, marked deprecated in the manifest.</li><li><strong>Enrichment/scaffold compatibility:</strong> <code>promptsForThemes</code> and the <code>/enrich</code> payload key off <code>ThemeTag</code> — map keywords to theme slugs case-insensitively where they match, else pass none. (The tutor-side soft mapping of keywords → Layer A concepts lives in <strong>D3 prompt assembly block 3</strong>, not in tag storage — answers Petra's last open question. Tags stay the user's words; the mapping is the tutor's problem.)</li><li>No AI normalization/suggestion of any kind (R8) — <code>source:'suggested'</code> exists for the <em>legacy chips</em>, not for model output.</li><li>Events: <code>tag_add_custom</code>, <code>tag_select_existing</code>, <code>tag_suggestion_used</code>.</li></ul>
+<p><strong>Gate:</strong> create → reuse on second encounter → both visible on detail → export shows <code>keywords</code> with sources; legacy-theme display regression test; recents query unit test.</p>
+<p>---</p>
+<h2>2. Sequencing &amp; the D3 collision</h2>
+<p>Petra's order (16→17→18→19→20) is right and I'm keeping it. Two adjustments:</p>
+<ul><li><strong>16 → {17, 18 in parallel} → 19 → 20.</strong> 17 and 18 touch disjoint files; 18 is nearly free. 19 before 20 per Petra's reasoning (questions anchor the tutor before vocabulary does).</li><li><strong>D3 interaction (Andy: this foundation work precedes the AI functionality):</strong> the D3 <em>app</em> work (B1/B2b/B3) queues behind this PRD — and B1 shrinks, since the events fix and <code>questions</code> land in PRs 16/19 (C1). But <strong>B2a (the Worker) is not app code</strong>: scaffolding + staging deploy can run in parallel with PRs 16–20 without violating foundation-first, and it takes Cassian's deploy latency off the critical path. Recommend letting it run concurrently; if Andy wants strict sequence, it keys off nothing here and can wait.</li><li><strong>Schedule (Andy, 2026-07-22): no cuts — everything ships before he leaves Finland.</strong> Full sequence 16→{17,18}→19→20 → D3 (B2a Worker already running in parallel). PRs 16+18 are same-day-sized; 17 has device-inspection unknowns (step-0 inspection converts them to known scope fast); 19 is compact; 20 is the widest. Throughput risk lives in 17 and 20 — if either stalls, escalate to Andy immediately rather than silently slipping D3.</li></ul>
+<h2>3. Risks (delta to Petra's table — hers stand)</h2>
+<table><thead><tr><th>Risk</th><th>Read</th></tr></thead><tbody><tr><td>PR 17 framework ceiling (picker EXIF poorer than expected)</td><td>Step-0 inspection converts this from risk to known scope in ~an hour; acceptance already tolerates documented limits</td></tr><tr><td>Zip memory on big future trips</td><td>Fine at 14-encounter scale; if a 500-photo trip arrives, stream-zip then (🚪➡️🚪, noted, not built)</td></tr><tr><td>PR 20 keyword sprawl (&quot;pinkish&quot;, &quot;pink&quot;, &quot;Pink&quot;)</td><td>By design — the user's words are the data (0/14 theme usage is the evidence). NOCASE dedupe per encounter is the only normalization; anything smarter waits for evidence, per R8</td></tr><tr><td>PR 18 scope dispute (enrich-mode vs note-only)</td><td>Flagged as Q-P1; both paths specced; XS vs S, no downstream difference</td></tr></tbody></table>
+<h2>4. Open questions</h2>
+<ul><li>~~Q-P1~~ <strong>ANSWERED (Andy, 2026-07-22): reuse enrich mode; add the door from encounter detail.</strong> AI/user field wall regression test still required.</li><li>~~Q-A3 (Andy)~~ <strong>ANSWERED (2026-07-22): parallel confirmed</strong> — B2a Worker scaffold proceeds alongside PRs 16–20.</li><li>~~Q-A4~~ <strong>CLOSED (Andy, 2026-07-22): no cuts — the full set (PRs 16–20 + D3) ships before departure.</strong> Deferral options below are void; treat the sequence as committed scope.</li></ul>
+<p>---</p>
+<p><em>Provenance: authored by Arya from Petra's PRD v1.1, source-verified against <code>aspen-frost/frost-rocks</code> @ <code>249fabd</code> (origin/main). Key repo findings: exporter already writes the photo bundle (PR 16 rescoped), enrich-mode edit path exists (PR 18 rescoped), <code>exif:false</code>/<code>quality:0.85</code> root cause (PR 17), events CHECK bug fix relocated into PR 16, <code>questions</code> table = D3 schema verbatim (C5). D3-IMPLEMENTATION-PLAN updated for migration renumbering. Status: Jesse can start PR 16 on this document as written.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

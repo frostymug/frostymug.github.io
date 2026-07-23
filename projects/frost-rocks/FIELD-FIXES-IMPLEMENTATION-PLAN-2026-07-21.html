@@ -66,9 +66,15 @@
       <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
       <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
       <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
       <a href="/projects/frost-rocks/SPINE-FINLAND-V1.html">Concept Spine — Finland v1</a>
       <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
       <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
       <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
       <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
@@ -149,13 +155,13 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Field Fixes Implementation Plan</div>
-      <div class="doc-meta">Last updated: 2026-07-21</div>
+      <div class="doc-meta">Last updated: 2026-07-22</div>
       <h1>Frost Rocks — Field Fixes Implementation Plan (Build 2 follow-ups)</h1>
-<p><em>Arya (Architect) | 2026-07-21 | For: Jesse (implementation)</em> <em>Sources: Petra's <code>BACKLOG.md</code> (2026-07-21), Andy's scope answers (2026-07-21, msg thread), Andy's Wispr Flow screenshots, code inspection of <code>aspen-frost/frost-rocks@main</code>.</em> <em>Status: <strong>APPROVED SCOPE — Andy confirmed 2026-07-21</strong> (static map pan/zoom; photo zoom on both surfaces; Wispr bug evidence attached). Ready for implementation.</em></p>
+<p><em>Arya (Architect) | 2026-07-21 | For: Jesse (implementation)</em> <em>Sources: Petra's <code>BACKLOG.md</code> (2026-07-21), Andy's scope answers (2026-07-21, msg thread), Andy's Wispr Flow screenshots, code inspection of <code>aspen-frost/frost-rocks@main</code>.</em> <em>Status: <strong>IMPLEMENTED ON <code>origin/main</code> — field fixes merged after approval</strong>. PR #12 fixed the Wispr/tall-keyboard capture path, PR #13 added photo zoom, PR #14 added static map zoom, and PR #15/follow-up commits fixed gesture-root/worklet issues through <code>249fabd</code>. Keep this doc as the implementation/acceptance reference, not pending scope.</em></p>
 <p>&gt; <strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
 <p>---</p>
 <h2>0. TL;DR</h2>
-<p>Three field-driven fixes from Andy's Finland TestFlight usage, in priority order:</p>
+<p>Three field-driven fixes from Andy's Finland TestFlight usage, implemented on <code>origin/main</code>:</p>
 <ul><li><strong>Capture keyboard bug (P1 reliability):</strong> tall third-party keyboards (Wispr Flow dictation) collapse the capture screen to a blank view, and dismissal silently discards typed notes. Fix the keyboard layout AND add a dirty-state guard. Two bugs, one PR.</li><li><strong>Photo pan/zoom (both surfaces):</strong> one reusable full-screen photo viewer (pinch/pan/double-tap/dismiss), wired into review flow and encounter detail.</li><li><strong>Map pan/zoom (static approach):</strong> pinch/pan on the existing bundled map in the full map view, pins stay anchored, higher-res asset to buy zoom range. Home compact card unchanged. MapLibre explicitly deferred.</li></ul>
 <p>All gesture work shares one zoom/pan core (two real consumers arrive simultaneously — the abstraction earns its place under the rule of three's second-consumer trigger). Three PRs, sequenced. Every PR passes the two hard review gates: <strong>evidence the changed seam ran</strong> and <strong>diff matches the story</strong>.</p>
 <p>---</p>
