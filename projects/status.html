@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Status Audit · Aspen's Docs</title>
+  <title>Aspen Frost Project Status · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -158,10 +158,59 @@
     <article>
       <div class="crumb">Projects &middot; Portfolio Status</div>
       <div class="doc-meta">Last updated: 2026-07-24</div>
-      <h1>Project Status Audit</h1>
-<p><em>Generated nightly by <code>project-viewer/scripts/update-project-pipeline.js</code>. Last generated: 2026-07-24.</em></p>
-<p>Audit inputs: last 4320 minutes of OpenClaw sessions across all agents, Frost Fitness GitHub PRs/runs, workspace git status. Raw audit artifact: <code>project-viewer/logs/project-audit-2026-07-24.json</code>.</p>
-<table><thead><tr><th>Project</th><th>Stage</th><th>Next Move</th><th>Evidence</th></tr></thead><tbody><tr><td><strong>Frost Fitness</strong></td><td>App Store Submitted</td><td>Productization Plan Phase 2 complete; prepare Phase 3 kickoff after docs/process cleanup.</td><td><code>projects/frost-fitness/STATUS.md</code>&lt;br&gt;<code>projects/frost-fitness/ARCHITECTURE.md</code>&lt;br&gt;<code>projects/frost-fitness/PRODUCTIZATION-PLAN.md</code>&lt;br&gt;<code>projects/frost-fitness/CI-CD.md</code>&lt;br&gt;<code>projects/frost-fitness/RELEASE-PROCESS.md</code></td></tr><tr><td><strong>Aspen Frost Website</strong></td><td>Positioning Approved / Website Build Prep</td><td>Messaging/sitemap detail, then build from the approved positioning and visual brand standard.</td><td><code>projects/website/README.md</code>&lt;br&gt;<code>projects/website/POSITIONING-BRIEF.md</code>&lt;br&gt;<code>projects/website/DESIGN-SYSTEM.md</code>&lt;br&gt;<code>projects/website/published-html/positioning-brief.html</code></td></tr><tr><td><strong>Frost Rocks</strong></td><td>Launched Soft / TestFlight v2 Live</td><td>Continue the AI tutor / D3 evening debrief track, verify/release the newly landed field-fix and export-packaging work, then prioritize metadata preservation, note editing, first-class questions, and dynamic/custom tags.</td><td><code>projects/frost-rocks/README.md</code>&lt;br&gt;<code>projects/frost-rocks/DESIGN.md</code>&lt;br&gt;<code>projects/frost-rocks/STRATEGY.md</code>&lt;br&gt;<code>projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.md</code>&lt;br&gt;<code>projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.md</code>&lt;br&gt;<code>projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.md</code>&lt;br&gt;<code>projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.md</code></td></tr><tr><td><strong>Ice Age Trail</strong></td><td>Intake -&gt; Deployment Spike Succeeded</td><td>Send Lisa the architecture options/pros-cons note, collect UWSP -&gt; Minnesota State layer migration details, and inventory source/destination ArcGIS layer ownership, sharing, schema, editability, and terms.</td><td><code>projects/ice-age-trail/README.md</code>&lt;br&gt;<code>projects/ice-age-trail/DEPLOYMENT-SPIKE.md</code>&lt;br&gt;<code>projects/ice-age-trail/LAYER-HOSTING-OPTIONS.md</code>&lt;br&gt;<code>projects/ice-age-trail/CALL-SOURCE-LOG-2026-07-10.md</code>&lt;br&gt;<code>projects/ice-age-trail/CALL-NOTES-GEMINI-2026-07-10.md</code>&lt;br&gt;<code>projects/ice-age-trail/ARCHITECTURE-OPTIONS-2026-07-11.md</code>&lt;br&gt;<code>MEMORY.md</code>&lt;br&gt;<code>PIPELINE.md</code></td></tr><tr><td><strong>Structured Intake Assistant</strong></td><td>Intake / Safety-Gated</td><td>Wait for remaining Andy/Erik messages and PDF provenance/licensing; then run product framing and early risk/feasibility review before any build request.</td><td><code>projects/structured-intake-assistant/README.md</code>&lt;br&gt;<code>projects/structured-intake-assistant/STATUS.md</code>&lt;br&gt;<code>projects/structured-intake-assistant/PROJECT-INTAKE.md</code>&lt;br&gt;<code>projects/structured-intake-assistant/SOURCE-LOG.md</code></td></tr><tr><td><strong>ToothBud Dental</strong></td><td>Intake / Safety-Gated</td><td>Schedule Luc discovery interview, validate preliminary research against Ann/Luc workflow, then recommend proceed, pause, configure/buy, integrate, or prototype.</td><td><code>projects/toothbud-dental/README.md</code>&lt;br&gt;<code>projects/toothbud-dental/STATUS.md</code>&lt;br&gt;<code>projects/toothbud-dental/PROJECT-INTAKE.md</code>&lt;br&gt;<code>projects/toothbud-dental/LUC-INTERVIEW-PREP.md</code>&lt;br&gt;<code>projects/toothbud-dental/ARYA-OPENDENTAL-ARCHITECTURE.md</code>&lt;br&gt;<code>projects/toothbud-dental/PETRA-COMPETITIVE-ANALYSIS.md</code></td></tr><tr><td><strong>Recall Coach</strong></td><td>Idea</td><td>Brainstorm with Petra and Izzy; clarify target user, capture workflow, FSRS/confusion-matrix mechanics, and differentiation.</td><td><code>PIPELINE.md</code></td></tr><tr><td><strong>Curate Mental Health</strong></td><td>Idea / Safety-Gated</td><td>Hold until stakes/safety ramp and client transparency are explicit.</td><td><code>MEMORY.md</code>&lt;br&gt;<code>PIPELINE.md</code></td></tr><tr><td><strong>Babycito Camp Scheduler</strong></td><td>Backlog</td><td>Await discovery call and per-project token-cost tracking.</td><td><code>MEMORY.md</code>&lt;br&gt;<code>PIPELINE.md</code></td></tr></tbody></table>
+      <h1>Aspen Frost Project Status</h1>
+<p><em>Last refreshed: 2026-07-24. This is the Andy-facing portfolio read, not a complete audit log.</em></p>
+<h2>Executive Read</h2>
+<p>The portfolio is healthy, but it needs focus. The highest-leverage path this weekend is to keep Frost Rocks moving while the Finland field evidence is fresh, unblock the Aspen Frost website from &quot;approved positioning&quot; into actual build shape, and tee up Frost Fitness Phase 3 so Apple review does not become an excuse to idle.</p>
+<p>My bias: do not open another safety-gated client lane until one of the active lanes ships or gets explicitly paused. The empire is richer than the available attention right now. Annoying, but true.</p>
+<h2>Active Bets</h2>
+<h3>Frost Rocks</h3>
+<p><strong>Status:</strong> Launched soft / TestFlight v2 live. Andy is using it in the field, and the app has real evidence now instead of theoretical product vibes.</p>
+<p><strong>Obvious next step:</strong> continue the AI tutor / D3 evening debrief track, but protect the evidence substrate first: export packages with linked photos, native-quality photo metadata, and note-edit recovery. The newly landed field fixes and export-packaging work should be verified/released before piling on more trip-use scope.</p>
+<p><strong>Gate / owner:</strong> Aspen + Arya own the next planning pass; Jesse implements; Cassian stays involved for TestFlight/release reliability; Andy is the product gate.</p>
+<p><strong>Key links:</strong> <a href="/projects/frost-rocks/index.html">overview</a>, <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 wedge spec</a>, <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 implementation plan</a>, <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">backlog priority</a></p>
+<h3>Aspen Frost Website</h3>
+<p><strong>Status:</strong> Positioning and visual brand standard are approved. This is ready to become a site, not another round of tasteful document gardening.</p>
+<p><strong>Obvious next step:</strong> turn the approved spine into sitemap + page-level messaging, then build from the approved visual standard. The homepage hero copy is the main unlock; &quot;Who We Are&quot; is already locked.</p>
+<p><strong>Gate / owner:</strong> Zev owns marketing spine and copy direction; Izzy protects design quality; Aspen coordinates; Andy decides whether the technical-details nook names OpenClaw / Aspen CLAW.</p>
+<p><strong>Key links:</strong> <a href="/projects/website/index.html">overview</a>, <a href="/projects/website/positioning-brief.html">positioning brief</a>, <a href="/projects/website/design-system.html">visual brand standard</a>, <a href="website/published-html/aspen-frost-homepage.html">approved homepage review</a></p>
+<h3>Frost Fitness</h3>
+<p><strong>Status:</strong> App Store submitted; TestFlight is live and production traffic is routed through the Cloudflare proxy. Productization Plan Phase 2 is complete.</p>
+<p><strong>Obvious next step:</strong> prepare Phase 3 kickoff now: onboarding/defaults, hardcoded Andy assumptions, and account/data expectations. Apple review remains the external gate, but internal productization does not need to wait for Apple unless feedback arrives first.</p>
+<p><strong>Gate / owner:</strong> Apple owns the review gate; Andy owns product launch choices; Aspen coordinates; Arya/Jesse/Cassian own Phase 3/4 planning and release safety.</p>
+<p><strong>Key links:</strong> <a href="/projects/frost-fitness/status.html">status</a>, <a href="/projects/frost-fitness/architecture.html">architecture</a>, <a href="/projects/frost-fitness/productization-plan.html">productization plan</a>, <a href="/projects/frost-fitness/release-process.html">release process</a></p>
+<h2>Warm But Not Weekend-Core</h2>
+<h3>Ice Age Trail</h3>
+<p><strong>Status:</strong> Deployment spike succeeded. The front-end path is feasible; the real question is ArcGIS data stewardship.</p>
+<p><strong>Obvious next step:</strong> send Lisa the concise pros/cons note, then collect UWSP -&gt; Minnesota State layer migration details and layer URLs before doing more app work.</p>
+<p><strong>Gate / owner:</strong> Lisa owns source data context; Andy/Aspen own stakeholder follow-up; Arya owns layer inventory; Cassian owns any future demo reliability guardrails.</p>
+<p><strong>Key links:</strong> <a href="/projects/ice-age-trail/index.html">overview</a>, <a href="/projects/ice-age-trail/deployment-spike.html">deployment spike</a>, <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">architecture options</a></p>
+<h3>Structured Intake Assistant</h3>
+<p><strong>Status:</strong> Intake / safety-gated. Potentially clinical, licensed-source, PHI-adjacent territory.</p>
+<p><strong>Obvious next step:</strong> wait for remaining Andy/Erik messages and PDF provenance/licensing. Then run product framing and early risk review before any design/build ask.</p>
+<p><strong>Gate / owner:</strong> Andy + Erik for context; Aspen for intake; Petra and Arya before implementation; Jesse stays out until a bounded prototype is explicitly cleared.</p>
+<p><strong>Key links:</strong> <a href="/projects/structured-intake-assistant/index.html">overview</a>, <a href="/projects/structured-intake-assistant/status.html">status</a>, <a href="/projects/structured-intake-assistant/project-intake.html">intake</a>, <a href="/projects/structured-intake-assistant/source-log.html">source log</a></p>
+<h3>ToothBud Dental</h3>
+<p><strong>Status:</strong> Intake / safety-gated. The pain is plausible; the scope is not yet trustworthy.</p>
+<p><strong>Obvious next step:</strong> schedule Luc discovery, validate preliminary OpenDental and competitor research against Ann/Luc's actual workflow, then decide whether this is buy/configure, integrate, prototype, or pause.</p>
+<p><strong>Gate / owner:</strong> Luc/Ann own workflow truth; Andy/Aspen own discovery; Arya/Petra inputs are preliminary until validated; PHI/operations risk keeps this gated.</p>
+<p><strong>Key links:</strong> <a href="/projects/toothbud-dental/index.html">overview</a>, <a href="/projects/toothbud-dental/status.html">status</a>, <a href="/projects/toothbud-dental/luc-interview-prep.html">interview prep</a>, <a href="/projects/toothbud-dental/arya-opendental-architecture.html">OpenDental architecture</a>, <a href="/projects/toothbud-dental/petra-competitive-analysis.html">competitive analysis</a></p>
+<h2>Backlog / Idea Parking Lot</h2>
+<h3>Recall Coach</h3>
+<p><strong>Status:</strong> Idea. Interesting because it may become a personal learning tool rather than a generic AI chat wrapper.</p>
+<p><strong>Obvious next step:</strong> Petra + Izzy brainstorm the real differentiator: capture workflow, FSRS/confusion-matrix mechanics, and why Andy would pull this out instead of asking a frontier model.</p>
+<p><strong>Gate / owner:</strong> Andy for appetite; Petra/Izzy for differentiation and experience shape.</p>
+<p><strong>Key link:</strong> <a href="/governance/pipeline.html">pipeline</a></p>
+<h3>Curate Mental Health</h3>
+<p><strong>Status:</strong> Idea / safety-gated. Health context plus external stakeholder means do not casually touch it.</p>
+<p><strong>Obvious next step:</strong> hold until client transparency, stakes ramp, data posture, and safety boundaries are explicit.</p>
+<p><strong>Gate / owner:</strong> Andy + Erik; safety ramp before commitment.</p>
+<p><strong>Key link:</strong> <a href="/governance/pipeline.html">pipeline</a></p>
+<h3>Babycito Camp Scheduler</h3>
+<p><strong>Status:</strong> Backlog. Potential future cost-recovery beachhead, but not before the operating model can track token spend by project.</p>
+<p><strong>Obvious next step:</strong> wait for discovery call and per-project cost tracking.</p>
+<p><strong>Gate / owner:</strong> Andy + Amy; Aspen for intake when it becomes real.</p>
+<p><strong>Key link:</strong> <a href="/governance/pipeline.html">pipeline</a></p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
