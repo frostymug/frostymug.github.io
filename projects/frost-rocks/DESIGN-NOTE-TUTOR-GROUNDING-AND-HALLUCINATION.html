@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Note — Tutor Grounding &amp; Anti-Hallucination · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a aria-current="page" href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/SPINE-FINLAND-V1.html">Concept Spine — Finland v1</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Tutor Grounding And Anti-Hallucination Note</div>
+      <div class="doc-meta">Last updated: 2026-07-23</div>
+      <h1>Design Note — Tutor Grounding &amp; Anti-Hallucination</h1>
+<p><strong>Author:</strong> Izzy (Design) · 2026-07-23 · <strong>Status:</strong> DRAFT for Andy — opened at Andy's direction after WoZ Pilot #3 <strong>Trigger:</strong> Pilot #3 finding F24 — the tutor confidently mis-IDd a rock feature (boudinage) that the learner correctly challenged as jointing, using a discrimination the tutor itself had taught. <strong>Related:</strong> VOICE-GUIDE-FIELD-DON-V1 (§6 uncertainty grammar), D3-WEDGE-SPEC (§5.1 prompt assembly, §4 model), AI-TUTOR-DESIGN-BRIEF (KM-1 challenge-able model; &quot;authored vs improvised&quot; meta).</p>
+<p>---</p>
+<h2>1. The problem, stated precisely</h2>
+<p>The tutor makes <strong>factual claims about the physical world</strong> — mineral IDs, rock types, structural features, ages, mechanisms. Some are right; some are improvised and wrong. Tonight's boudinage call was the second kind: a plausible, exotic, confidently-delivered, <strong>incorrect</strong> identification, dressed in a warm authoritative register that makes it <em>more</em> believable.</p>
+<p><strong>The charm is a liability at exactly the moment the content is wrong.</strong> A tutor that hallucinates a confident wrong ID is worse than one that says &quot;I can't tell from this photo,&quot; because it teaches a falsehood <em>and</em> trains misplaced trust in the source.</p>
+<h2>2. Two different &quot;uncertainties&quot; — do not conflate them</h2>
+<p>The voice guide already handles ONE of these. The gap is the other.</p>
+<table><thead><tr><th>Layer</th><th>What it is</th><th>Failure mode</th><th>Status</th></tr></thead><tbody><tr><td><strong>Pedagogical uncertainty</strong></td><td>Teaching epistemics: &quot;likely / can't rule out / here's what would settle it.&quot; Models <em>how a geologist reasons</em> under incomplete evidence.</td><td>Hedge soup, or false confidence as pedagogy.</td><td><strong>Canon</strong> (voice guide §6).</td></tr><tr><td><strong>Factual grounding</strong></td><td>Is the claim <em>actually true</em>? Did the model see the feature correctly, or improvise a plausible label?</td><td><strong>Hallucination</strong> — fluent wrong ID.</td><td><strong>UNADDRESSED.</strong> This note.</td></tr></tbody></table>
+<p>These feel similar in the output (&quot;I'd say likely gneiss…&quot;) but are different mechanisms. You can be perfectly calibrated in pedagogical grammar while being factually hallucinating — tonight's boudinage was phrased <em>without</em> enough hedging AND was wrong. Both layers failed at once.</p>
+<h2>3. Why this domain is high-risk for it</h2>
+<ul><li><strong>Vision IDs from a single amateur photo are genuinely hard</strong> — even a real geologist hedges heavily from one field photo (angle, scale, lighting, weathering, lichen). The model's confidence should almost never exceed a real expert's from the same photo.</li><li><strong>Near-neighbors look alike</strong> — jointing vs. boudinage, foliation vs. banding vs. dike, granite vs. gneiss. The whole <em>point</em> of the app is these are confusable; the tutor is not magically immune to the confusion it teaches.</li><li><strong>Exotic-explanation bias</strong> — the model reached for the rarer, more impressive term (boudinage) over the mundane correct one (jointing). A &quot;sounds like a real geologist&quot; pull toward vocabulary that impresses. This is a specific, nameable bias to guard against.</li><li><strong>Authoritative register amplifies</strong> — the Field Don voice is <em>designed</em> to sound like a leader in the field. That trust is earned for pedagogy and weaponized for error.</li></ul>
+<h2>4. Candidate mitigations (for discussion — not yet decisions)</h2>
+<p>Ordered rough cheapest→deepest. These are design directions; several need Jesse/Arya feasibility input.</p>
+<ul><li><strong>Confidence-tiered claims with an honest floor.</strong> Every physical-world claim carries an internal confidence; low-confidence claims MUST surface as such (&quot;from this one photo I genuinely can't tell X from Y — here's what would settle it&quot;) and MUST NOT be delivered in the same register as high-confidence ones. Ties factual confidence to the <em>already-canon</em> uncertainty grammar — but driven by actual claim confidence, not vibe.</li><li><strong>Exotic-explanation guardrail.</strong> Explicit instruction: when a mundane and an exotic explanation both fit, PREFER the mundane and name the exotic as a possibility to check — never lead with the rare term. (&quot;These read as joints; if they turn out to be stretched layers rather than open cracks, that'd be boudinage — worth a look.&quot;) This single rule would have caught tonight's error.</li><li><strong>Photo-grounded claims only / &quot;show the evidence.&quot;</strong> Require the tutor to tie each visual claim to a <em>nameable feature in the image</em> (&quot;the dark lines are open gaps with shadow inside → cracks&quot;). Forces the model to actually look, and makes claims falsifiable by the learner. Directly connects to F21 (photo-in-turn) — showing the crop IS grounding.</li><li><strong>Learner-as-check is a feature, not a fallback (KM-1).</strong> The challenge-able model already anticipates this: the correct tutor behavior on challenge is to <strong>actually re-examine and concede</strong> (move 8), not defend. Tonight's correct recovery = re-look → &quot;you're right, those are joints.&quot; Design the correction loop to be <em>graceful and fast</em>, and treat learner corrections as high-value model evidence.</li><li><strong>Source/reference layer (Andy's original sidenote).</strong> Where claims can be tied to real references (regional geology, known formations — e.g. Wiborg rapakivi batholith, Svecofennian bedrock), ground them and optionally cite. Distinguish &quot;general geological fact&quot; (citable) from &quot;ID of THIS rock from THIS photo&quot; (inherently uncertain, never citable as fact). Feasibility: retrieval over a curated geology corpus vs. relying on model priors — open question for architecture.</li><li><strong>Post-hoc verification for high-stakes claims.</strong> A second pass (self-critique or a cheaper verifier) on confident physical IDs before they land in <code>ai_learning_note</code> (persisted &quot;truth&quot;). Especially important because residue writes become the learner's <em>record</em> — a hallucination written to <code>learned_later</code>-adjacent fields becomes durable false memory.</li></ul>
+<h2>5. The sharp line (connects to the brief's &quot;authored vs improvised&quot; meta)</h2>
+<p>The AI-Tutor brief already drew this for <em>curriculum</em>: the spine is authored/reviewed/versioned, not improvised per-session. <strong>Factual claims need the same discipline.</strong> A confident physical-world ID improvised at runtime with no grounding and no confidence floor is the factual-layer version of &quot;freelancing the curriculum.&quot; The fix philosophy is consistent: <em>improvisation is fine for phrasing and pedagogy; it is not fine for facts and curriculum.</em></p>
+<h2>6. Open questions for Andy / architecture</h2>
+<ul><li>How much can/should we ground against a real geology corpus vs. trust model priors? (Retrieval feasibility → Jesse/Arya.)</li><li>Where's the confidence floor? What confidence is &quot;too low to state as a lead&quot;?</li><li>Do low-confidence IDs still get written to residue, and if so, flagged how? (Durable-false-memory risk.)</li><li>Is a verification second-pass worth the latency/cost per session? (D3-Q5 envelope.)</li><li>Does the learner-correction loop feed the <em>tutor's</em> calibration over time, not just the learner model?</li></ul>
+<p>---</p>
+<p><em>Case study of record: Pilot #3, encounter e1dad4aa. Tutor said boudinage; learner said jointing; learner was right. The whole note exists so the shipped tutor loses that argument less often — and concedes gracefully when it does.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

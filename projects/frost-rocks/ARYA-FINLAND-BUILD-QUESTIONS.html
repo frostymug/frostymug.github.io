@@ -71,6 +71,8 @@
       <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
       <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
       <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
       <a href="/projects/frost-rocks/SPINE-FINLAND-V1.html">Concept Spine — Finland v1</a>
       <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
       <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
@@ -160,7 +162,7 @@
 <p><em>Arya (Architect) | 2026-06-28 | Status: Superseded reference after Build 1</em></p>
 <p>&gt; Superseded by <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a> and <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>. Andy later authorized Arya's autonomous Build 1, so this file should be read as answered pre-build context, not the active plan or gate.</p>
 <h2>What changed in v2</h2>
-<p>My v1 asked questions the org already answered in production with <strong>Frost Fitness</strong> — build target, backend-or-not, Apple Developer account, CI/CD, AI key handling. That was a context-sharing failure on my part. Frost Fitness is a shipped Expo/EAS app, live on the App Store via TestFlight, with a Cloudflare Worker AI proxy, CI/CD, and a rollback runbook. I've now read that repo and its docs and generalized the whole thing into a reusable <strong><a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a></strong>.</p>
+<p>My v1 asked questions the org already answered in production with <strong>Frost Fitness</strong> — build target, backend-or-not, Apple Developer account, CI/CD, AI key handling. That was a context-sharing failure on my part. Frost Fitness is a shipped Expo/EAS app, live on the App Store via TestFlight, with a Cloudflare Worker AI proxy, CI/CD, and a rollback runbook. I've now read that repo and its docs and generalized the whole thing into a reusable <strong><a href="../_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a></strong>.</p>
 <p>So the platform is settled by default, not by debate:</p>
 <ul><li><strong>Expo (RN) + TypeScript, expo-router, expo-sqlite, local-first</strong> — the house stack.</li><li><strong>AI keys go in a Cloudflare Worker proxy</strong>, never the client bundle — the proxy pattern is already built and generalized.</li><li><strong>EAS Build → TestFlight → App Store</strong> — account, signing, provisioning, <code>aspen-frost</code> EAS owner already exist.</li><li><strong>CI/CD + rollback</strong> — Cassian's pipeline copies in.</li></ul>
 <p>None of that needs an Andy decision. It's inherited. That deletes v1's Q1, Q2, Q9, and most of Q6/Q10.</p>

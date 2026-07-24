@@ -71,6 +71,8 @@
       <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
       <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
       <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
       <a href="/projects/frost-rocks/SPINE-FINLAND-V1.html">Concept Spine — Finland v1</a>
       <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
       <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
@@ -155,7 +157,7 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Backlog</div>
-      <div class="doc-meta">Last updated: 2026-07-22</div>
+      <div class="doc-meta">Last updated: 2026-07-23</div>
       <h1>Frost Rocks Backlog</h1>
 <p>Product backlog for follow-up work coming out of live TestFlight usage. Keep items small, evidence-linked, and scoped to the field-notebook loop unless a larger roadmap decision explicitly pulls them forward.</p>
 <p>---</p>
@@ -206,6 +208,22 @@
 <ul><li>This should probably reuse the existing <code>updateEncounter()</code> path described in <code>V2-IMPLEMENTATION-PLAN.md</code>, but the UI should be narrower than the full enrich form: quick note edit first, broader encounter editing later only if usage proves the need.</li><li>Do not make this a generic &quot;edit everything&quot; feature yet. The observed pain is specifically &quot;I forgot the note,&quot; not &quot;I need a full CMS for encounters.&quot; We are staying disciplined. Shocking, I know.</li></ul>
 <h3>Evidence Ledger</h3>
 <table><thead><tr><th>Belief</th><th>Signal</th><th>Disconfirming Signal</th><th>Decision</th></tr></thead><tbody><tr><td>Users will intentionally save incomplete encounters in the field, then enrich them moments later.</td><td>Andy did this on first real app use.</td><td>Users rarely return to photo-only encounters or prefer full edit during capture.</td><td>Add note-edit recovery to backlog as a near-term candidate.</td></tr><tr><td>Note editing alone is enough for this follow-up.</td><td>The stated pain was adding a note quickly.</td><td>Users repeatedly need to edit guess, confidence, event, or location after save.</td><td>Scope first pass to personal note only.</td></tr></tbody></table>
+<p>---</p>
+<h2>P1 - Add explicit &quot;No clue&quot; identification state</h2>
+<p><strong>Status:</strong> Backlog - candidate for next TestFlight follow-up <strong>Source:</strong> Andy in-field usage note, 2026-07-23 <strong>Area:</strong> Encounter capture / identification / confidence <strong>Type:</strong> Capture-model gap in the field-learning loop</p>
+<h3>Problem</h3>
+<p>Frost Rocks should support guesses, but field users will often be looking at something and genuinely have no idea what it is. If the product only offers a guess-like field, users may feel nudged into inventing a label, overstating confidence, or leaving the state ambiguous.</p>
+<p>&quot;No clue&quot; is not the same thing as a bad guess. It is a truthful field state: the user noticed something worth saving, but cannot classify it yet.</p>
+<h3>User Story</h3>
+<p>As a field user, I want to mark an encounter as &quot;no clue&quot; when I do not know what I am looking at, so I can preserve the observation without pretending to have an identification.</p>
+<h3>Why It Matters</h3>
+<ul><li>Reduces false confidence and fake precision in the field record.</li><li>Makes the app feel more forgiving for beginners and curious users.</li><li>Creates a useful review queue for later learning, AI exploration, or human help.</li><li>Supports the product thesis that noticing can come before naming.</li><li>Gives downstream analysis a clean distinction between &quot;user guessed X&quot; and &quot;user did not know.&quot;</li></ul>
+<h3>Acceptance Criteria</h3>
+<ul><li>The encounter capture flow allows an explicit &quot;No clue&quot; state alongside any guess/identification input.</li><li>&quot;No clue&quot; is stored as a distinct state, not as an empty guess string.</li><li>Encounter detail and review surfaces display &quot;No clue&quot; clearly without making it feel like an error.</li><li>Users can later replace &quot;No clue&quot; with a guess or confirmed identification.</li><li>Export includes the identification state distinctly enough for reviewers and agents to tell no-clue encounters apart from missing data.</li><li>AI assistance treats &quot;No clue&quot; as an invitation to help reason from evidence, not as a failed answer.</li><li>Analytics, if lightweight, can distinguish <code>id_state_no_clue</code> from guessed, confirmed, skipped, or missing states.</li></ul>
+<h3>Product Notes</h3>
+<ul><li>Keep the language humble and field-native. &quot;No clue&quot; is better than &quot;unknown classification&quot; for this stage.</li><li>This pairs naturally with confidence, but should not be collapsed into low confidence. A low-confidence guess still names a hypothesis; &quot;No clue&quot; preserves the absence of one.</li><li>This is especially important for beginner trust. The product should reward honest uncertainty.</li></ul>
+<h3>Evidence Ledger</h3>
+<table><thead><tr><th>Belief</th><th>Signal</th><th>Disconfirming Signal</th><th>Decision</th></tr></thead><tbody><tr><td>Users need a way to represent honest non-identification.</td><td>Andy explicitly noted that, in addition to guessing, Frost Rocks should add &quot;no clue.&quot;</td><td>Users consistently either make a guess or do not care about identification state.</td><td>Add explicit &quot;No clue&quot; to the backlog as a P1 capture-model candidate.</td></tr><tr><td>&quot;No clue&quot; is meaningfully different from low confidence.</td><td>A guess is still a hypothesis; &quot;no clue&quot; means the user is preserving an observation before naming it.</td><td>Users interpret low confidence and no clue identically in practice.</td><td>Store and display it as a distinct state until usage suggests otherwise.</td></tr></tbody></table>
 <p>---</p>
 <h2>P1 - Zoom into encounter images during review</h2>
 <p><strong>Status:</strong> Implemented on <code>origin/main</code> via field-fixes PRs; keep for verification/regression reference <strong>Source:</strong> Andy in-field review-flow usage, 2026-07-19 <strong>Area:</strong> Review flow / image inspection <strong>Type:</strong> Usability gap in the core learning loop</p>
