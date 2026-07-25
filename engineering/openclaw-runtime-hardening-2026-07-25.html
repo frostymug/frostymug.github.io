@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenClaw Runtime Hardening Recommendations - 2026-07-25 · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-BRIEF.html">Finland Prototype Brief</a>
+      <a href="/projects/frost-rocks/FINLAND-PROTOTYPE-EXPERIENCE-SKETCH.html">Finland Experience Sketch</a>
+      <a href="/projects/frost-rocks/PETRA-FINLAND-PROTOTYPE-QUESTIONS.html">Petra Prototype Questions</a>
+      <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
+      <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
+      <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
+      <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
+      <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
+      <a href="/projects/frost-rocks/V2-IMPLEMENTATION-PLAN.html">v2 Implementation Plan</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.1-HOME-DELTA.html">v2.1 Home Delta</a>
+      <a href="/projects/frost-rocks/FINLAND-V2.2-MAP-COMPRESS-NOTE.html">v2.2 Map Compress Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-TRIP-EXPORT-READ-2026-07-21.html">Trip Export Read Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/SPINE-FINLAND-V1.html">Concept Spine — Finland v1</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a aria-current="page" href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Engineering &middot; OpenClaw Runtime Hardening Recommendations</div>
+      <div class="doc-meta">Last updated: 2026-07-25</div>
+      <h1>OpenClaw Runtime Hardening Recommendations - 2026-07-25</h1>
+<p>Status: Review draft for Andy Owner: Aspen Scope: Main Lightsail OpenClaw host, cron jobs, docs publish workflow, gateway reliability Incident reviewed: 2026-07-25 memory exhaustion and host reboot</p>
+<h2>Executive Summary</h2>
+<p>The 2026-07-25 host incident was most likely caused by the <code>docs-nightly-review-publish</code> OpenClaw cron job exhausting memory and swap, followed by partial host degradation that a gateway restart could not repair.</p>
+<p>The immediate recommendation is to disable or replace the agent-turn nightly docs cron with a deterministic shell publish job, then reintroduce agent review in a lower-frequency or manually-triggered form. The broader recommendation is to add hard resource boundaries around OpenClaw cron work and either scale the Lightsail instance or reduce concurrent background work.</p>
+<p>This is not primarily a docs-site problem. The docs publish pipeline is lightweight when run directly. The risky part is the nightly autonomous agent review wrapped around it: broad context, tool access, model/tool child processes, long timeout, and unclear cleanup after timeout.</p>
+<h2>Evidence Collected</h2>
+<h3>Host Reboot And Uptime</h3>
+<p>Command:</p>
+<pre><code class="language-bash">who -b
+uptime
+last -x | head -40</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-text">system boot  2026-07-25 11:36
+shutdown system down  6.17.0-1019-aws  Sat Jul 25 11:34 - 11:36</code></pre>
+<p>Interpretation: Andy's reboot happened at 11:34 UTC and restored the host at 11:36 UTC.</p>
+<h3>Memory And Disk Baseline After Reboot</h3>
+<p>Command:</p>
+<pre><code class="language-bash">free -h
+df -h
+df -ih</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-text">Mem: 3.7Gi total, 2.7Gi used, 1.1Gi available
+Swap: 4.0Gi total, 0B used
+/dev/root 77G size, 33G used, 44G available, 43% used</code></pre>
+<p>Interpretation: disk and inode exhaustion were not the trigger. The active constraint is memory.</p>
+<h3>OpenClaw Gateway Memory Footprint After Reboot</h3>
+<p>Command:</p>
+<pre><code class="language-bash">systemctl --user status openclaw-gateway.service --no-pager
+ps -eo pid,ppid,user,stat,%mem,%cpu,rss,vsz,comm,args --sort=-rss | head -40</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-text">openclaw-gateway.service
+Memory: 1.8G (peak: 3.0G swap: 283.2M swap peak: 283.7M)
+
+PID 2213 MainThread /usr/bin/node ... openclaw ... gateway --port 18789
+RSS 518572 KB, VSZ 82463604</code></pre>
+<p>Interpretation: the gateway plus active embedded agent/tool processes can consume a large fraction of the host's 3.7 GiB RAM even shortly after a clean boot.</p>
+<h3>Nightly Docs Cron Started Before Memory Pressure</h3>
+<p>Command:</p>
+<pre><code class="language-bash">journalctl --user -u openclaw-gateway.service \
+  --since '2026-07-25 05:55:00 UTC' \
+  --until '2026-07-25 07:28:00 UTC' --no-pager |
+  rg -i 'cron|docs|nightly|long-running|timeout|oom|killed' -C 2</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-text">06:03:59 [diagnostic] long-running session ... cronJob=&quot;docs-nightly-review-publish&quot;
+06:09:17 [diagnostic] long-running session ... cronJob=&quot;docs-nightly-review-publish&quot;
+06:20:28 [diagnostic] long-running session ... cronJob=&quot;docs-nightly-review-publish&quot;
+06:34:53 [diagnostic] lane task error ... cron-nested task timed out after 1830000ms
+06:37:36 [diagnostic] message processed ... outcome=error ... &quot;cron: job execution timed out (last phase: tool-execution-started)&quot;
+07:26:16 openclaw-gateway.service: A process of this unit has been killed by the OOM killer.
+07:26:16 openclaw-gateway.service: Main process exited, code=killed, status=9/KILL</code></pre>
+<p>Interpretation: the docs cron was the active long-running OpenClaw task before memory exhaustion. The cron timed out, but the host continued degrading until the OOM killer killed the gateway.</p>
+<h3>System Memory And Swap Timeline</h3>
+<p>Command:</p>
+<pre><code class="language-bash">sar -r -S -q -u -s 05:55:00 -e 07:35:00</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-text">06:10:18  kbswpused 2893108  %swpused 68.98
+06:20:16  kbswpused 3584424  %swpused 85.46
+06:30:16  kbswpused 4052548  %swpused 96.62
+06:40:06  kbswpused 4194296  %swpused 100.00
+
+06:10:18  ldavg-1 35.91
+06:20:16  ldavg-1 37.10
+06:30:16  ldavg-1 41.62
+06:40:06  ldavg-1 50.80
+07:26:17  ldavg-1 106.76</code></pre>
+<p>Interpretation: this was not a sudden single crash. The host thrashed for a long time. Swap was effectively full by 06:40 UTC, and load average reached pathological levels on a 2 CPU instance.</p>
+<h3>Kernel OOM Evidence</h3>
+<p>Command:</p>
+<pre><code class="language-bash">journalctl --since '2026-07-25 07:20:00 UTC' \
+  --until '2026-07-25 07:28:30 UTC' --no-pager |
+  rg -i 'oom|out of memory|killed process|MainThread|openclaw|swap' -C 4</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-text">07:26:17 kernel: apport invoked oom-killer
+07:26:17 kernel: Free swap = 148kB
+07:26:17 kernel: Total swap = 4194300kB
+07:26:18 kernel: [1043430] 1000 1043430 20606512 ... MainThread
+07:26:18 kernel: oom-kill ... task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/openclaw-gateway.service,task=MainThread,pid=1043430,uid=1000
+07:26:18 kernel: Out of memory: Killed process 1043430 (MainThread) total-vm:82426048kB, anon-rss:153212kB, file-rss:3188kB, shmem-rss:0kB</code></pre>
+<p>Interpretation: Linux explicitly killed the OpenClaw gateway process because the host had exhausted memory and swap.</p>
+<h3>Network Degradation After OOM</h3>
+<p>Commands:</p>
+<pre><code class="language-bash">journalctl --since '2026-07-25 07:20:00 UTC' \
+  --until '2026-07-25 07:40:00 UTC' --no-pager |
+  rg -i 'ENETUNREACH|network is unreachable|telegram|metadata|systemd-networkd'</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-text">07:26:19 lightsail-manage-certd: Failed to get current IP ... 169.254.169.254 ... network is unreachable
+07:26:41 [openclaw] Non-fatal uncaught exception ... connect ENETUNREACH 149.154.167.220:443
+07:26:42 [telegram] deleteWebhook failed: Network request for 'deleteWebhook' failed!
+07:31:58 systemd-networkd-wait-online: Timeout occurred while waiting for network connectivity.</code></pre>
+<p>Interpretation: after the OOM kill, the restarted gateway came back into a host with broken or partially broken network state. That explains why a gateway-only restart did not restore service.</p>
+<h3>Current Cron Configuration</h3>
+<p>Command:</p>
+<pre><code class="language-bash">openclaw cron list --json</code></pre>
+<p>Key evidence:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;c76b1072-9591-455f-8d06-c69de4346d18&quot;,
+  &quot;name&quot;: &quot;docs-nightly-review-publish&quot;,
+  &quot;enabled&quot;: true,
+  &quot;agentId&quot;: &quot;main&quot;,
+  &quot;schedule&quot;: {
+    &quot;kind&quot;: &quot;cron&quot;,
+    &quot;expr&quot;: &quot;0 1 * * *&quot;,
+    &quot;tz&quot;: &quot;America/Chicago&quot;
+  },
+  &quot;sessionTarget&quot;: &quot;isolated&quot;,
+  &quot;payload&quot;: {
+    &quot;kind&quot;: &quot;agentTurn&quot;,
+    &quot;thinking&quot;: &quot;medium&quot;,
+    &quot;timeoutSeconds&quot;: 1800,
+    &quot;toolsAllow&quot;: [&quot;exec&quot;, &quot;read&quot;, &quot;write&quot;]
+  },
+  &quot;state&quot;: {
+    &quot;lastRunStatus&quot;: &quot;error&quot;,
+    &quot;lastDurationMs&quot;: 5199875,
+    &quot;lastError&quot;: &quot;cron: job interrupted by gateway restart&quot;
+  }
+}</code></pre>
+<p>Interpretation: the nightly docs job is a broad agent turn, not just a deterministic build/publish script. It has a 30 minute requested timeout but recorded a much longer failed duration after the gateway/reboot sequence.</p>
+<h2>Recommendations</h2>
+<h3>1. Disable The Agent-Turn Nightly Docs Cron Immediately</h3>
+<p>Why:</p>
+<p>The nightly job has already demonstrated it can push the host into memory exhaustion. Disabling it stops the repeat-failure path while preserving every manual docs publish path.</p>
+<p>How:</p>
+<pre><code class="language-bash">openclaw cron disable c76b1072-9591-455f-8d06-c69de4346d18
+openclaw cron show c76b1072-9591-455f-8d06-c69de4346d18</code></pre>
+<p>Expected result:</p>
+<p><code>enabled</code> should be <code>false</code>.</p>
+<p>Operational effect:</p>
+<p>Andy will stop receiving nightly autonomous docs-review summaries until the safer replacement exists. Manual publish still works.</p>
+<h3>2. Use The Deterministic Docs Publish Pipeline For Routine Publishing</h3>
+<p>Why:</p>
+<p>The deterministic publish path does not need an agent turn, long context, model calls, or broad autonomous exploration. It runs the known scripts, builds the static site, checks links, publishes, and logs output.</p>
+<p>How to run manually:</p>
+<pre><code class="language-bash">cd /home/ubuntu/.openclaw/workspace/project-viewer
+./scripts/nightly-update.sh</code></pre>
+<p>What it does:</p>
+<ul><li>Runs <code>scripts/update-project-pipeline.js</code></li><li>Builds the static docs viewer</li><li>Checks internal links</li><li>Publishes to <code>frostymug/frostymug.github.io</code></li><li>Writes a log under <code>project-viewer/logs/nightly-YYYY-MM-DD.log</code></li></ul>
+<p>Operational effect:</p>
+<p>Docs remain publishable without exposing the host to an autonomous review loop every night.</p>
+<h3>3. Replace The Nightly Agent Cron With A Command Cron</h3>
+<p>Why:</p>
+<p>If nightly publishing should remain automatic, the job should be a command job with bounded output and timeout, not an agent job. Agent review can happen separately and less often.</p>
+<p>Implementation option:</p>
+<pre><code class="language-bash">openclaw cron add \
+  --name docs-nightly-deterministic-publish \
+  --description &quot;Nightly deterministic docs publish: audit, build, link-check, publish, and log output without an agent review turn.&quot; \
+  --cron '0 1 * * *' \
+  --tz America/Chicago \
+  --command '/home/ubuntu/.openclaw/workspace/project-viewer/scripts/nightly-update.sh' \
+  --command-cwd '/home/ubuntu/.openclaw/workspace/project-viewer' \
+  --timeout-seconds 900 \
+  --no-output-timeout-seconds 120 \
+  --output-max-bytes 200000 \
+  --failure-alert \
+  --failure-alert-after 1 \
+  --failure-alert-channel telegram \
+  --failure-alert-to 8779808012 \
+  --failure-alert-account-id default</code></pre>
+<p>Then verify:</p>
+<pre><code class="language-bash">openclaw cron list
+openclaw cron run &lt;new-job-id&gt; --wait --wait-timeout 1200000
+openclaw cron runs --id &lt;new-job-id&gt; --limit 5</code></pre>
+<p>Operational effect:</p>
+<p>Nightly docs keep publishing, but the dangerous part - open-ended agent review with tools - is removed from the nightly critical path.</p>
+<h3>4. Move Agent-Based Docs Review To Weekly Or Manual</h3>
+<p>Why:</p>
+<p>The valuable part of the old job was not the nightly publish. It was the editorial judgment: harmonizing stale project claims, catching contradictions, and asking Andy canon questions. That does not need to run every night, and it should not be coupled to publish reliability.</p>
+<p>Implementation option A - weekly cron:</p>
+<pre><code class="language-bash">openclaw cron add \
+  --name docs-weekly-agent-review \
+  --description &quot;Weekly agent review of docs for stale claims, contradictions, and canon questions. Publish only after deterministic checks pass.&quot; \
+  --cron '30 8 * * 6' \
+  --tz America/Chicago \
+  --agent main \
+  --session isolated \
+  --message &quot;Run a bounded weekly Aspen Frost docs review. Read /home/ubuntu/.openclaw/workspace/project-viewer/prompts/nightly-doc-review.md, but treat it as weekly review guidance. Keep scope to project/status contradictions and obvious stale claims. Avoid broad repo spelunking unless directly needed. If edits are made, run cd /home/ubuntu/.openclaw/workspace/project-viewer &amp;&amp; npm run build &amp;&amp; node scripts/check-links.js &amp;&amp; ./scripts/publish.sh. Final response: concise summary and any canon questions.&quot; \
+  --thinking low \
+  --timeout-seconds 900 \
+  --tools exec,read,write \
+  --failure-alert \
+  --failure-alert-after 1 \
+  --failure-alert-channel telegram \
+  --failure-alert-to 8779808012 \
+  --failure-alert-account-id default \
+  --channel telegram \
+  --to 8779808012 \
+  --account default \
+  --announce</code></pre>
+<p>Implementation option B - manual only:</p>
+<pre><code class="language-bash">openclaw agent --message &quot;Run a bounded Aspen Frost docs review using /home/ubuntu/.openclaw/workspace/project-viewer/prompts/nightly-doc-review.md, then publish if checks pass.&quot;</code></pre>
+<p>Operational effect:</p>
+<p>Agent judgment remains available, but the expensive discretionary work is no longer part of a nightly reliability path.</p>
+<h3>5. Add A Systemd Memory Boundary For The Gateway</h3>
+<p>Why:</p>
+<p>The OOM killer killed the gateway after the whole host was already badly degraded. A service-level memory limit should fail OpenClaw earlier and more cleanly, leaving enough headroom for SSH, journald, networkd, Docker, and recovery tooling.</p>
+<p>Recommended starting point on the current 3.7 GiB host:</p>
+<ul><li><code>MemoryHigh=2800M</code></li><li><code>MemoryMax=3300M</code></li><li><code>Restart=always</code></li><li><code>RestartSec=10</code></li></ul>
+<p>How:</p>
+<pre><code class="language-bash">systemctl --user edit openclaw-gateway.service</code></pre>
+<p>Add:</p>
+<pre><code class="language-ini">[Service]
+MemoryHigh=2800M
+MemoryMax=3300M
+Restart=always
+RestartSec=10</code></pre>
+<p>Then:</p>
+<pre><code class="language-bash">systemctl --user daemon-reload
+systemctl --user restart openclaw-gateway.service
+systemctl --user status openclaw-gateway.service --no-pager</code></pre>
+<p>Operational effect:</p>
+<p>The gateway may restart sooner under runaway memory, but the host is less likely to become unrecoverable. This is a containment measure, not a root-cause fix.</p>
+<p>Risk:</p>
+<p>If normal OpenClaw operation regularly exceeds these values, the gateway may restart too often. If that happens, either raise the host size or lower routine concurrency before raising the memory cap.</p>
+<h3>6. Add A Lightweight Host Watchdog</h3>
+<p>Why:</p>
+<p>The host showed warning signs for more than an hour before the OOM kill. A watchdog can alert or restart the gateway while there is still enough headroom to recover.</p>
+<p>Implementation path:</p>
+<p>Create a small script that checks:</p>
+<ul><li>Available memory under 500 MB</li><li>Swap usage over 80%</li><li>Load average over 20 for 10+ minutes</li><li>Gateway RSS over 2.8 GB</li><li>Network reachability to Telegram or a neutral endpoint</li></ul>
+<p>Response ladder:</p>
+<ul><li>Log status.</li><li>If memory is bad but network works, send Telegram alert.</li><li>Restart <code>openclaw-gateway.service</code>.</li><li>If network is also unreachable and swap is saturated, leave a clear log and rely on host reboot/manual intervention.</li></ul>
+<p>Suggested first implementation:</p>
+<pre><code class="language-bash">mkdir -p /home/ubuntu/.openclaw/workspace/ops/scripts</code></pre>
+<p>Create <code>/home/ubuntu/.openclaw/workspace/ops/scripts/openclaw-host-watchdog.sh</code> with checks only first. Run it from user cron or OpenClaw command cron every 5 minutes after it is reviewed.</p>
+<p>Operational effect:</p>
+<p>Turns a silent multi-hour death spiral into an alertable, logged condition.</p>
+<h3>7. Consider Scaling The Lightsail Instance</h3>
+<p>Why:</p>
+<p>The current instance has about 3.7 GiB RAM and 2 CPUs. That is tight for a multi-agent OpenClaw setup with Telegram providers, embedded Codex app servers, Docker sandboxes, hooks, cron jobs, docs builds, and occasional repo work.</p>
+<p>Recommended threshold:</p>
+<p>If the gateway still exceeds 2.5 GB RSS during normal usage after disabling/replacing the nightly agent cron, move to an 8 GB instance.</p>
+<p>How:</p>
+<ul><li>Take a Lightsail snapshot.</li><li>Create a larger instance from the snapshot, preferably 8 GB RAM.</li><li>Preserve the static IP attachment.</li><li>Boot and verify:</li></ul>
+<pre><code class="language-bash">free -h
+systemctl --user status openclaw-gateway.service --no-pager
+openclaw status
+openclaw cron status</code></pre>
+<ul><li>Send a Telegram test message through each active bot.</li></ul>
+<p>Operational effect:</p>
+<p>Scaling buys headroom. It does not replace cron hardening, but it makes OpenClaw less brittle when multiple agents or tool sessions overlap.</p>
+<h2>Recommended Execution Order</h2>
+<ul><li>Disable <code>docs-nightly-review-publish</code>.</li><li>Run <code>./scripts/nightly-update.sh</code> manually once and verify docs publish still works.</li><li>Add the deterministic command cron for nightly publish.</li><li>Add service-level memory boundaries.</li><li>Watch the host for 48 hours.</li><li>Reintroduce agent docs review weekly or manual.</li><li>Decide whether to resize Lightsail based on measured gateway RSS and swap behavior.</li></ul>
+<h2>Verification Checklist</h2>
+<p>After step 1:</p>
+<pre><code class="language-bash">openclaw cron show c76b1072-9591-455f-8d06-c69de4346d18</code></pre>
+<p>After step 2:</p>
+<pre><code class="language-bash">cd /home/ubuntu/.openclaw/workspace/project-viewer
+tail -80 logs/nightly-$(date -u +%F).log
+node scripts/check-links.js</code></pre>
+<p>After step 3:</p>
+<pre><code class="language-bash">openclaw cron list
+openclaw cron run &lt;new-job-id&gt; --wait --wait-timeout 1200000
+openclaw cron runs --id &lt;new-job-id&gt; --limit 5</code></pre>
+<p>After step 4:</p>
+<pre><code class="language-bash">systemctl --user status openclaw-gateway.service --no-pager
+systemctl --user show openclaw-gateway.service -p MemoryHigh -p MemoryMax -p Restart -p RestartUSec</code></pre>
+<p>After 24-48 hours:</p>
+<pre><code class="language-bash">free -h
+sar -r -S -q -s 00:00:00
+journalctl --since '24 hours ago' -p warning --no-pager | rg -i 'oom|out of memory|killed process|memory pressure|ENETUNREACH|network is unreachable'</code></pre>
+<h2>Open Questions</h2>
+<ul><li>Should nightly docs publishing prioritize deterministic freshness over editorial review? My recommendation: yes.</li><li>Should agent-based docs review move to weekly? My recommendation: yes, unless Andy actively wants nightly editorial maintenance.</li><li>Is the current 4 GB Lightsail instance still the right size for the agent team? My recommendation: probably not long term; keep it only if hardening stabilizes memory.</li><li>Should OpenClaw itself enforce child-process cleanup after cron timeout? My recommendation: yes. This incident looks like a platform-level reliability gap worth upstreaming or fixing locally if we own that layer.</li></ul>
+<h2>Bottom Line</h2>
+<p>The failure mode was not mysterious: broad nightly agent cron, sustained swap exhaustion, runaway load, OOM kill, then damaged network state. The fix is to remove discretionary agent work from nightly critical paths, put hard memory boundaries around the gateway, and scale the box if observed memory remains high.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

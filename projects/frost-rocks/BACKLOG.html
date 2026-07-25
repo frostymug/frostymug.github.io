@@ -151,13 +151,14 @@
     <summary class="nav-section-label">Engineering</summary>
       <a href="/engineering/index.html">Engineering Index</a>
       <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
   </details>
   <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
 </aside>
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Backlog</div>
-      <div class="doc-meta">Last updated: 2026-07-24</div>
+      <div class="doc-meta">Last updated: 2026-07-25</div>
       <h1>Frost Rocks Backlog</h1>
 <p>Product backlog for follow-up work coming out of live TestFlight usage. Keep items small, evidence-linked, and scoped to the field-notebook loop unless a larger roadmap decision explicitly pulls them forward.</p>
 <p>---</p>
@@ -178,7 +179,7 @@
 <table><thead><tr><th>Belief</th><th>Signal</th><th>Disconfirming Signal</th><th>Decision</th></tr></thead><tbody><tr><td>Frost Rocks is losing or failing to write important image metadata.</td><td>Andy inspected app-captured photos in Google Photos and did not see location, time zone, camera info, or similar native-photo metadata.</td><td>A raw Frost Rocks image file contains full metadata and Google Photos is merely hiding it.</td><td>Add metadata preservation to the backlog prominently and require raw-file verification.</td></tr><tr><td>Native-quality metadata matters to the product promise.</td><td>Place/time/capture context directly supports map recall, timeline review, exports, and future AI/tutor reasoning.</td><td>Users never inspect/export photos and app database metadata fully covers all review workflows.</td><td>Treat as P1 capture-integrity work, not a cosmetic media issue.</td></tr><tr><td>EXIF preservation and structured app metadata are both needed.</td><td>Some fields, such as time zone and event/trip context, may not map cleanly to standard image metadata.</td><td>EXIF covers every needed downstream workflow with no loss or ambiguity.</td><td>Preserve EXIF for interoperability; keep encounter metadata canonical in the app database/export.</td></tr></tbody></table>
 <p>---</p>
 <h2>P1 - Export encounter data with linked photo files</h2>
-<p><strong>Status:</strong> Backlog - prominent diagnostic/export candidate <strong>Source:</strong> Andy and Izzy export review workflow, 2026-07-22 <strong>Area:</strong> Export / diagnostics / research handoff <strong>Type:</strong> Diagnostic workflow gap in the field-learning loop</p>
+<p><strong>Status:</strong> Implemented on <code>origin/main</code> via PR #16; keep for verification/release and regression reference <strong>Source:</strong> Andy and Izzy export review workflow, 2026-07-22 <strong>Area:</strong> Export / diagnostics / research handoff <strong>Type:</strong> Diagnostic workflow gap in the field-learning loop</p>
 <h3>Problem</h3>
 <p>Andy and Izzy are reviewing Frost Rocks exports, but the current export requires them to stitch encounter data back together with the photos manually. The JSON contains encounter records and photo references, but the export does not behave like a self-contained review package where each encounter's data and visual evidence travel together.</p>
 <p>That makes diagnostics slower and more error-prone. It also blocks the future workflow we clearly want: handing a complete encounter package to a human reviewer, designer, product strategist, or AI agent and asking, &quot;what happened here, what did the user capture, and what should we learn from it?&quot;</p>
