@@ -250,9 +250,9 @@ RSS 518572 KB, VSZ 82463604</code></pre>
 07:26:42 [telegram] deleteWebhook failed: Network request for 'deleteWebhook' failed!
 07:31:58 systemd-networkd-wait-online: Timeout occurred while waiting for network connectivity.</code></pre>
 <p>Interpretation: after the OOM kill, the restarted gateway came back into a host with broken or partially broken network state. That explains why a gateway-only restart did not restore service.</p>
-<h3>Current Cron Configuration</h3>
+<h3>Original Cron Configuration</h3>
 <p>Command:</p>
-<pre><code class="language-bash">openclaw cron list --json</code></pre>
+<pre><code class="language-bash">openclaw cron list --all --json</code></pre>
 <p>Key evidence:</p>
 <pre><code class="language-json">{
   &quot;id&quot;: &quot;c76b1072-9591-455f-8d06-c69de4346d18&quot;,
@@ -277,103 +277,93 @@ RSS 518572 KB, VSZ 82463604</code></pre>
     &quot;lastError&quot;: &quot;cron: job interrupted by gateway restart&quot;
   }
 }</code></pre>
-<p>Interpretation: the nightly docs job is a broad agent turn, not just a deterministic build/publish script. It has a 30 minute requested timeout but recorded a much longer failed duration after the gateway/reboot sequence.</p>
-<h2>Recommendations</h2>
-<h3>1. Disable The Agent-Turn Nightly Docs Cron Immediately</h3>
-<p>Why:</p>
-<p>The nightly job has already demonstrated it can push the host into memory exhaustion. Disabling it stops the repeat-failure path while preserving every manual docs publish path.</p>
-<p>How:</p>
-<pre><code class="language-bash">openclaw cron disable c76b1072-9591-455f-8d06-c69de4346d18
-openclaw cron show c76b1072-9591-455f-8d06-c69de4346d18</code></pre>
-<p>Expected result:</p>
-<p><code>enabled</code> should be <code>false</code>.</p>
+<p>Interpretation: the nightly docs job was a broad agent turn, not just a deterministic build/publish script. It had a 30 minute requested timeout but recorded a much longer failed duration after the gateway/reboot sequence.</p>
+<h2>Current State After Steps 1-5</h2>
+<p>Status checked: 2026-07-26.</p>
+<h3>1. Agent-Turn Nightly Docs Cron Disabled</h3>
+<p>The risky nightly agent-turn job is disabled.</p>
+<p>Current evidence:</p>
+<pre><code class="language-text">id: c76b1072-9591-455f-8d06-c69de4346d18
+name: docs-nightly-review-publish
+enabled: false
+schedule: 0 1 * * * @ America/Chicago
+payload: agentTurn
+status: disabled</code></pre>
 <p>Operational effect:</p>
-<p>Andy will stop receiving nightly autonomous docs-review summaries until the safer replacement exists. Manual publish still works.</p>
-<h3>2. Use The Deterministic Docs Publish Pipeline For Routine Publishing</h3>
-<p>Why:</p>
-<p>The deterministic publish path does not need an agent turn, long context, model calls, or broad autonomous exploration. It runs the known scripts, builds the static site, checks links, publishes, and logs output.</p>
-<p>How to run manually:</p>
+<p>Andy no longer receives nightly autonomous docs-review summaries from this job. Manual publish and deterministic publish still work.</p>
+<h3>2. Deterministic Docs Publish Pipeline Verified</h3>
+<p>The deterministic publish path remains the routine publish mechanism.</p>
+<p>Manual command:</p>
 <pre><code class="language-bash">cd /home/ubuntu/.openclaw/workspace/project-viewer
 ./scripts/nightly-update.sh</code></pre>
-<p>What it does:</p>
-<ul><li>Runs <code>scripts/update-project-pipeline.js</code></li><li>Builds the static docs viewer</li><li>Checks internal links</li><li>Publishes to <code>frostymug/frostymug.github.io</code></li><li>Writes a log under <code>project-viewer/logs/nightly-YYYY-MM-DD.log</code></li></ul>
+<p>Latest verified result:</p>
+<pre><code class="language-text">Nightly publish complete. Log: /home/ubuntu/.openclaw/workspace/project-viewer/logs/nightly-2026-07-26.log</code></pre>
 <p>Operational effect:</p>
 <p>Docs remain publishable without exposing the host to an autonomous review loop every night.</p>
-<h3>3. Replace The Nightly Agent Cron With A Command Cron</h3>
-<p>Why:</p>
-<p>If nightly publishing should remain automatic, the job should be a command job with bounded output and timeout, not an agent job. Agent review can happen separately and less often.</p>
-<p>Implementation option:</p>
-<pre><code class="language-bash">openclaw cron add \
-  --name docs-nightly-deterministic-publish \
-  --description &quot;Nightly deterministic docs publish: audit, build, link-check, publish, and log output without an agent review turn.&quot; \
-  --cron '0 1 * * *' \
-  --tz America/Chicago \
-  --command '/home/ubuntu/.openclaw/workspace/project-viewer/scripts/nightly-update.sh' \
-  --command-cwd '/home/ubuntu/.openclaw/workspace/project-viewer' \
-  --timeout-seconds 900 \
-  --no-output-timeout-seconds 120 \
-  --output-max-bytes 200000 \
-  --no-deliver</code></pre>
-<p>OpenClaw 2026.7.1-2 does not expose <code>--failure-alert*</code> flags on <code>openclaw cron add</code>, but it does expose them on <code>openclaw cron edit</code>. After creating the job, add failure-only Telegram alerts with the returned job id:</p>
-<pre><code class="language-bash">openclaw cron edit &lt;new-job-id&gt; \
-  --no-deliver \
-  --failure-alert \
-  --failure-alert-after 1 \
-  --failure-alert-channel telegram \
-  --failure-alert-to 8779808012 \
-  --failure-alert-account-id default \
-  --failure-alert-exclude-skipped</code></pre>
-<p>This avoids a nightly success notification while still notifying Andy when the command itself fails.</p>
-<p>Then verify:</p>
-<pre><code class="language-bash">openclaw cron list
-openclaw cron run &lt;new-job-id&gt; --wait --wait-timeout 1200000
-openclaw cron runs --id &lt;new-job-id&gt; --limit 5</code></pre>
+<h3>3. Nightly Command Cron Active</h3>
+<p>Nightly automatic publishing now runs as a bounded command job, not an agent turn.</p>
+<p>Current evidence:</p>
+<pre><code class="language-text">id: ec8987fd-a35c-4e4c-9677-789fcbfc9298
+name: docs-nightly-deterministic-publish
+enabled: true
+schedule: 0 1 * * * @ America/Chicago
+payload: command
+command: /home/ubuntu/.openclaw/workspace/project-viewer/scripts/nightly-update.sh
+timeout: 900s
+no-output timeout: 120s
+output max: 200000 bytes
+delivery: none
+failure alert: telegram 8779808012, after 1 error, account default
+latest run: ok
+latest delivery: not-requested</code></pre>
+<p>Verification command:</p>
+<pre><code class="language-bash">openclaw cron run ec8987fd-a35c-4e4c-9677-789fcbfc9298 --wait --wait-timeout 20m</code></pre>
 <p>Operational effect:</p>
-<p>Nightly docs keep publishing, but the dangerous part - open-ended agent review with tools - is removed from the nightly critical path.</p>
-<h3>4. Move Agent-Based Docs Review To Weekly Or Manual</h3>
-<p>Why:</p>
-<p>The valuable part of the old job was not the nightly publish. It was the editorial judgment: harmonizing stale project claims, catching contradictions, and asking Andy canon questions. That does not need to run every night, and it should not be coupled to publish reliability.</p>
-<p>Implementation option A - weekly cron:</p>
-<pre><code class="language-bash">openclaw cron add \
-  --name docs-weekly-agent-review \
-  --description &quot;Weekly agent review of docs for stale claims, contradictions, and canon questions. Publish only after deterministic checks pass.&quot; \
-  --cron '30 8 * * 6' \
-  --tz America/Chicago \
-  --agent main \
-  --session isolated \
-  --message &quot;Run a bounded weekly Aspen Frost docs review. Read /home/ubuntu/.openclaw/workspace/project-viewer/prompts/nightly-doc-review.md, but treat it as weekly review guidance. Keep scope to project/status contradictions and obvious stale claims. Avoid broad repo spelunking unless directly needed. If edits are made, run cd /home/ubuntu/.openclaw/workspace/project-viewer &amp;&amp; npm run build &amp;&amp; node scripts/check-links.js &amp;&amp; ./scripts/publish.sh. Final response: concise summary and any canon questions.&quot; \
-  --thinking low \
-  --timeout-seconds 900 \
-  --tools exec,read,write \
-  --channel telegram \
-  --to 8779808012 \
-  --account default \
-  --announce</code></pre>
-<p>Implementation option B - manual only:</p>
-<pre><code class="language-bash">openclaw agent --message &quot;Run a bounded Aspen Frost docs review using /home/ubuntu/.openclaw/workspace/project-viewer/prompts/nightly-doc-review.md, then publish if checks pass.&quot;</code></pre>
+<p>Nightly docs keep publishing, but the dangerous part - open-ended agent review with tools - is removed from the nightly critical path. Successful nightly runs stay quiet; failures alert Andy.</p>
+<h3>4. Weekly Agent-Based Docs Review Active</h3>
+<p>Andy chose implementation option A. One intended weekly review job is active.</p>
+<p>Current evidence:</p>
+<pre><code class="language-text">id: d22d8c85-6387-4722-936d-2a2afa3d4ca6
+name: docs-weekly-agent-review
+enabled: true
+schedule: 30 8 * * 6 @ America/Chicago
+agent: main
+payload: agentTurn
+thinking: low
+timeout: 900s
+tools: exec, read, write
+delivery: telegram 8779808012, account default</code></pre>
+<p>Review note:</p>
+<pre><code class="language-text">id: 7f265ef6-2904-4409-8f77-9c3ed3d703ae
+name: docs-weekly-agent-review
+schedule: 30 4 * * 6 @ America/Chicago
+status: disabled</code></pre>
+<p>A duplicate <code>04:30</code> Saturday weekly review job was found during verification and disabled, leaving the intended <code>08:30</code> Saturday job active.</p>
 <p>Operational effect:</p>
 <p>Agent judgment remains available, but the expensive discretionary work is no longer part of a nightly reliability path.</p>
-<h3>5. Add A Systemd Memory Boundary For The Gateway</h3>
-<p>Why:</p>
-<p>The OOM killer killed the gateway after the whole host was already badly degraded. A service-level memory limit should fail OpenClaw earlier and more cleanly, leaving enough headroom for SSH, journald, networkd, Docker, and recovery tooling.</p>
-<p>Recommended starting point on the current 3.7 GiB host:</p>
-<ul><li><code>MemoryHigh=2800M</code></li><li><code>MemoryMax=3300M</code></li><li><code>Restart=always</code></li><li><code>RestartSec=10</code></li></ul>
-<p>How:</p>
-<pre><code class="language-bash">systemctl --user edit openclaw-gateway.service</code></pre>
-<p>Add:</p>
+<h3>5. Systemd Memory Boundary Active For The Gateway</h3>
+<p>The gateway service now has the memory and restart boundary applied through a user systemd override.</p>
+<p>Override file:</p>
 <pre><code class="language-ini">[Service]
 MemoryHigh=2800M
 MemoryMax=3300M
 Restart=always
 RestartSec=10</code></pre>
-<p>Then:</p>
-<pre><code class="language-bash">systemctl --user daemon-reload
-systemctl --user restart openclaw-gateway.service
-systemctl --user status openclaw-gateway.service --no-pager</code></pre>
+<p>Current evidence:</p>
+<pre><code class="language-text">ActiveState=active
+SubState=running
+Restart=always
+RestartUSec=10s
+MemoryHigh=2936012800
+MemoryMax=3460300800
+NRestarts=0</code></pre>
+<p>Gateway status check also reports <code>bind=loopback (127.0.0.1)</code>, matching the intended local-only gateway posture.</p>
 <p>Operational effect:</p>
 <p>The gateway may restart sooner under runaway memory, but the host is less likely to become unrecoverable. This is a containment measure, not a root-cause fix.</p>
-<p>Risk:</p>
-<p>If normal OpenClaw operation regularly exceeds these values, the gateway may restart too often. If that happens, either raise the host size or lower routine concurrency before raising the memory cap.</p>
+<p>Current watch item:</p>
+<p>The first verification snapshot showed the gateway near <code>MemoryHigh</code>; a later snapshot showed recovery to about 1.5 GiB available host memory. Continue watching memory during heavy multi-agent or cron activity.</p>
+<h2>Deferred Recommendations</h2>
+<p>Andy is not implementing Steps 6 or 7 for now.</p>
 <h3>6. Add A Lightweight Host Watchdog</h3>
 <p>Why:</p>
 <p>The host showed warning signs for more than an hour before the OOM kill. A watchdog can alert or restart the gateway while there is still enough headroom to recover.</p>
@@ -401,30 +391,33 @@ openclaw cron status</code></pre>
 <ul><li>Send a Telegram test message through each active bot.</li></ul>
 <p>Operational effect:</p>
 <p>Scaling buys headroom. It does not replace cron hardening, but it makes OpenClaw less brittle when multiple agents or tool sessions overlap.</p>
-<h2>Recommended Execution Order</h2>
-<ul><li>Disable <code>docs-nightly-review-publish</code>.</li><li>Run <code>./scripts/nightly-update.sh</code> manually once and verify docs publish still works.</li><li>Add the deterministic command cron for nightly publish.</li><li>Add service-level memory boundaries.</li><li>Watch the host for 48 hours.</li><li>Reintroduce agent docs review weekly or manual.</li><li>Decide whether to resize Lightsail based on measured gateway RSS and swap behavior.</li></ul>
-<h2>Verification Checklist</h2>
-<p>After step 1:</p>
-<pre><code class="language-bash">openclaw cron show c76b1072-9591-455f-8d06-c69de4346d18</code></pre>
-<p>After step 2:</p>
+<h2>Remaining Operating Checklist</h2>
+<p>Completed:</p>
+<ul><li>Disabled <code>docs-nightly-review-publish</code>.</li><li>Verified <code>./scripts/nightly-update.sh</code>.</li><li>Added <code>docs-nightly-deterministic-publish</code>.</li><li>Added failure-only Telegram alerts for deterministic publish failures.</li><li>Added <code>docs-weekly-agent-review</code> for Saturday review.</li><li>Disabled a duplicate <code>04:30</code> Saturday weekly review job.</li><li>Added systemd memory and restart boundaries.</li></ul>
+<p>Still open:</p>
+<ul><li>Watch the host through the next nightly publish and weekly review.</li><li>Decide later whether to implement the host watchdog.</li><li>Decide later whether to resize Lightsail based on measured gateway RSS and swap behavior.</li></ul>
+<h2>Current Verification Commands</h2>
+<p>Cron state:</p>
+<pre><code class="language-bash">openclaw cron list --all --json
+openclaw cron runs --id ec8987fd-a35c-4e4c-9677-789fcbfc9298 --limit 5</code></pre>
+<p>Docs publish path:</p>
 <pre><code class="language-bash">cd /home/ubuntu/.openclaw/workspace/project-viewer
 tail -80 logs/nightly-$(date -u +%F).log
 node scripts/check-links.js</code></pre>
-<p>After step 3:</p>
-<pre><code class="language-bash">openclaw cron list
-openclaw cron run &lt;new-job-id&gt; --wait --wait-timeout 1200000
-openclaw cron runs --id &lt;new-job-id&gt; --limit 5</code></pre>
-<p>After step 4:</p>
+<p>Gateway boundary:</p>
 <pre><code class="language-bash">systemctl --user status openclaw-gateway.service --no-pager
-systemctl --user show openclaw-gateway.service -p MemoryHigh -p MemoryMax -p Restart -p RestartUSec</code></pre>
-<p>After 24-48 hours:</p>
+systemctl --user show openclaw-gateway.service -p ActiveState -p SubState -p MemoryCurrent -p MemoryHigh -p MemoryMax -p Restart -p RestartUSec -p NRestarts
+systemctl --user cat openclaw-gateway.service</code></pre>
+<p>Runtime posture:</p>
 <pre><code class="language-bash">free -h
-sar -r -S -q -s 00:00:00
+openclaw gateway status --deep</code></pre>
+<p>After 24-48 hours, if available:</p>
+<pre><code class="language-bash">sar -r -S -q -s 00:00:00
 journalctl --since '24 hours ago' -p warning --no-pager | rg -i 'oom|out of memory|killed process|memory pressure|ENETUNREACH|network is unreachable'</code></pre>
-<h2>Open Questions</h2>
-<ul><li>Should nightly docs publishing prioritize deterministic freshness over editorial review? My recommendation: yes.</li><li>Should agent-based docs review move to weekly? My recommendation: yes, unless Andy actively wants nightly editorial maintenance.</li><li>Is the current 4 GB Lightsail instance still the right size for the agent team? My recommendation: probably not long term; keep it only if hardening stabilizes memory.</li><li>Should OpenClaw itself enforce child-process cleanup after cron timeout? My recommendation: yes. This incident looks like a platform-level reliability gap worth upstreaming or fixing locally if we own that layer.</li></ul>
+<h2>Current Open Questions</h2>
+<ul><li>Does the deterministic nightly publish stay clean for several runs with failure-only alerts?</li><li>Does the weekly agent review stay within the 900 second timeout and avoid broad exploration?</li><li>Is the current 4 GB Lightsail instance still the right size for the agent team? My recommendation: keep watching after Steps 1-5; resize if gateway RSS stays high or swap pressure returns.</li><li>Should OpenClaw itself enforce child-process cleanup after cron timeout? My recommendation: yes. This incident looks like a platform-level reliability gap worth upstreaming or fixing locally if we own that layer.</li></ul>
 <h2>Bottom Line</h2>
-<p>The failure mode was not mysterious: broad nightly agent cron, sustained swap exhaustion, runaway load, OOM kill, then damaged network state. The fix is to remove discretionary agent work from nightly critical paths, put hard memory boundaries around the gateway, and scale the box if observed memory remains high.</p>
+<p>The failure mode was not mysterious: broad nightly agent cron, sustained swap exhaustion, runaway load, OOM kill, then damaged network state. Steps 1-5 now remove discretionary agent work from the nightly critical path and put hard memory boundaries around the gateway. Steps 6 and 7 remain deferred unless observed memory pressure returns.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
