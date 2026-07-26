@@ -312,8 +312,18 @@ openclaw cron show c76b1072-9591-455f-8d06-c69de4346d18</code></pre>
   --command-cwd '/home/ubuntu/.openclaw/workspace/project-viewer' \
   --timeout-seconds 900 \
   --no-output-timeout-seconds 120 \
-  --output-max-bytes 200000</code></pre>
-<p>Note: OpenClaw 2026.7.1-2 does not expose <code>--failure-alert*</code> flags on <code>openclaw cron add</code>. For this build, failure monitoring should come from <code>openclaw cron runs</code>, <code>--webhook &lt;url&gt;</code>, or a small wrapper script that sends an alert only when <code>scripts/nightly-update.sh</code> exits nonzero.</p>
+  --output-max-bytes 200000 \
+  --no-deliver</code></pre>
+<p>OpenClaw 2026.7.1-2 does not expose <code>--failure-alert*</code> flags on <code>openclaw cron add</code>, but it does expose them on <code>openclaw cron edit</code>. After creating the job, add failure-only Telegram alerts with the returned job id:</p>
+<pre><code class="language-bash">openclaw cron edit &lt;new-job-id&gt; \
+  --no-deliver \
+  --failure-alert \
+  --failure-alert-after 1 \
+  --failure-alert-channel telegram \
+  --failure-alert-to 8779808012 \
+  --failure-alert-account-id default \
+  --failure-alert-exclude-skipped</code></pre>
+<p>This avoids a nightly success notification while still notifying Andy when the command itself fails.</p>
 <p>Then verify:</p>
 <pre><code class="language-bash">openclaw cron list
 openclaw cron run &lt;new-job-id&gt; --wait --wait-timeout 1200000
