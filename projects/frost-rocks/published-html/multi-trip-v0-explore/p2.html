@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P2 · Trips in Review — Frost Rocks Multi-Trip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head><body>
+<div class="phone">
+  <div class="screen" id="screen"></div>
+  <div class="nav">
+    <button class="slot" id="n-note" onclick="go('note')"><div class="ic">📓</div><span class="lbl">Notebook</span></button>
+    <button class="slot" id="n-map" onclick="go('map')"><div class="ic">🗺️</div><span class="lbl">Map</span></button>
+    <button class="capslot" onclick="capHint()"><div class="ring">+</div><span class="lbl">Capture</span></button>
+    <button class="slot" id="n-review" onclick="go('review')"><div class="ic">🕒</div><span class="lbl">Review</span></button>
+    <div class="slot" style="pointer-events:none;opacity:.35"><div class="ic"> </div><span class="lbl"> </span></div>
+  </div>
+</div>
+<p class="cap" style="max-width:390px;text-align:center">P2 — Trips live inside Review. Notebook/Map stay locked to the current trip. Tap <b>Review</b> to time-travel across trips.</p>
+
+<script src="data.js"></script>
+<script>
+let seg='previous';
+function noteScreen(){
+  const t=window.trip(window.CURRENT_TRIP_ID);
+  return `<div class="pad">
+    <div class="over">The Field Notebook</div>
+    <div class="h1">${t.title}</div>
+    <div class="cap" style="margin-top:4px">${t.place} · ${t.count} encounters · 3 today</div>
+    <div style="height:14px"></div>
+    <div class="anchor">FR-MT-P2-01 current-trip notebook (no switcher here)</div>
+    ${window.tripTimeline(window.CURRENT_TRIP_ID)}
+  </div>`;
+}
+function mapScreen(){
+  const t=window.trip(window.CURRENT_TRIP_ID);
+  return `<div class="pad">
+    <div class="over">Field map</div><div class="h2">${t.title}</div>
+    <div style="height:12px"></div>
+    <div class="anchor">FR-MT-P2-02 map = current trip only</div>
+    <div class="map locked"><div class="mlabel">${t.place}</div>${window.mapPins(window.CURRENT_TRIP_ID)}</div>
+    <p class="cap" style="margin-top:10px">Map is scoped to the current trip (floor: static field map). The zoomable all-trips world map is deferred.</p>
+  </div>`;
+}
+function reviewScreen(){
+  const groups={previous:[],active:[],upcoming:[]};
+  window.TRIPS.forEach(t=>groups[t.state].push(t));
+  const segTrips=groups[seg];
+  const rows = segTrips.length? segTrips.map(t=>`
+    <div class="card tight" style="cursor:pointer" onclick="alert('Would open the ${t.state} flow for ${t.title}.\\n\\nPrevious → T3 consolidation (review any past trip).\\nUpcoming → T1 prep/plan.\\n(T1/T3 not built yet — this is the door.)')">
+      <div class="between">
+        <div class="row"><span class="dot ${t.state}"></span><div><div class="h3">${t.title}</div><div class="cap">${t.place} · ${t.dates}</div></div></div>
+        <div class="cap mono">${t.count||'—'} enc</div>
+      </div>
+      <div class="cap ink2" style="margin-top:8px">${seg==='previous'?'Revisit & consolidate (T3)':seg==='upcoming'?'Plan & prep (T1)':'Currently capturing'} →</div>
+    </div>`).join('') : `<p class="sm ink3">No ${seg} trips.</p>`;
+  return `<div class="pad">
+    <div class="over">Review &amp; Prep</div>
+    <div class="h1">Your trips</div>
+    <p class="cap" style="margin:6px 0 14px">This is where you time-travel: revisit a past trip or prep an upcoming one. Capturing always stays on the current trip.</p>
+    <div class="anchor">FR-MT-P2-03 trips = the review/prep front door</div>
+    <div class="seg">
+      <button class="${seg==='previous'?'on':''}" onclick="setSeg('previous')">Previous</button>
+      <button class="${seg==='active'?'on':''}" onclick="setSeg('active')">Active</button>
+      <button class="${seg==='upcoming'?'on':''}" onclick="setSeg('upcoming')">Upcoming</button>
+    </div>
+    ${rows}
+  </div>`;
+}
+let view='note';
+function go(v){ view=v; render(); }
+function setSeg(s){ seg=s; render(); }
+function render(){
+  document.getElementById('screen').innerHTML =
+    view==='note'?noteScreen():view==='map'?mapScreen():reviewScreen();
+  ['note','map','review'].forEach(v=>document.getElementById('n-'+v).classList.toggle('on',v===view));
+}
+function capHint(){ alert('Capture writes to the CURRENT trip only (Door County).\n\nIn P2 there is no trip switcher on the capture/notebook/map side at all — those surfaces are present-tense. Switching lives entirely inside Review.'); }
+render();
+</script>
+</body></html>

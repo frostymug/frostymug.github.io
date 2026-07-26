@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frost Rocks — Multi-Trip Prototypes (v0 explore)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<style>
+  body{max-width:none}
+  .wrap{max-width:760px; width:100%; margin:0 auto}
+  .doc{background:var(--surface1); border:1px solid var(--surface3); border-radius:18px; padding:22px 20px; margin-bottom:18px}
+  .grid4{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+  @media(max-width:640px){ .grid4{grid-template-columns:1fr} }
+  .ptile{display:block; text-decoration:none; color:inherit; background:var(--surface1); border:1px solid var(--surface3); border-radius:16px; overflow:hidden; transition:box-shadow .15s, transform .15s}
+  .ptile:hover{box-shadow:0 8px 22px rgba(43,33,22,.22); transform:translateY(-2px)}
+  .ptile .band{height:8px}
+  .b1{background:var(--lichen500)} .b2{background:var(--slate500)} .b3{background:var(--amber500)} .b4{background:var(--stamp)}
+  .ptile .in{padding:16px}
+  table{width:100%; border-collapse:collapse; font-size:14px; margin-top:6px}
+  th,td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--surface3); vertical-align:top}
+  th{font-family:var(--mono); font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--text3); font-weight:400}
+  .pro{color:var(--lichen700)} .con{color:var(--danger)}
+  ul{margin:6px 0; padding-left:18px} li{margin:4px 0; font-size:14px; line-height:20px}
+  .pill{display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.5px; padding:2px 7px; border-radius:6px; background:var(--surface2); border:1px solid var(--surface3); color:var(--text2); margin:2px 4px 2px 0}
+  code{font-family:var(--mono); font-size:13px; background:var(--surface2); padding:1px 5px; border-radius:4px}
+</style>
+</head><body>
+<div class="wrap">
+
+  <div class="doc">
+    <div class="over">Frost Rocks · Design Prototype</div>
+    <h1 class="h1" style="margin:4px 0 2px">Multi-Trip Navigation — 4 divergent directions</h1>
+    <p class="body ink2">Izzy · 2026-07-26 · v0 explore · for the Door County trip (departs ~Aug 2)</p>
+
+    <hr class="hair">
+    <p class="h3">The design question</p>
+    <p class="body"><b>How should Frost Rocks let you live across many trips (≈3–15/year) without disturbing the present-tense capture flow?</b></p>
+    <p class="body ink2" style="margin-top:8px">The load-bearing insight from our interview: there are <b>two verbs with opposite relationships to time.</b></p>
+    <ul>
+      <li><b>Capture is present-tense &amp; singular.</b> You only ever capture into the <i>current</i> trip. “Switching trips” is nonsensical at the shutter.</li>
+      <li><b>Review / prep time-travels &amp; is plural.</b> Revisit any past trip (T3), prep an upcoming one (T1). Here roaming across trips <i>is</i> the core flow.</li>
+    </ul>
+    <p class="body ink2">So the four differ mainly on <b>where trip-roaming lives</b> — and each is judged first on whether it keeps roaming <i>away from</i> the capture path. Trip states used throughout: <span class="chip state-previous"><span class="dot previous"></span>previous</span> <span class="chip state-active"><span class="dot active"></span>active</span> <span class="chip state-upcoming"><span class="dot upcoming"></span>upcoming</span>.</p>
+  </div>
+
+  <div class="doc">
+    <p class="h3" style="margin-bottom:4px">Open a prototype</p>
+    <p class="cap" style="margin-bottom:12px">Each opens in a phone frame with fake Door County + Finland data. Tap the <b>+</b> in any of them to see the capture guardrail note.</p>
+    <div class="grid4">
+      <a class="ptile" href="p1.html"><div class="band b1"></div><div class="in">
+        <div class="over">P1 · my lean</div><div class="h3">Trip Header Dropdown</div>
+        <p class="sm ink2" style="margin:6px 0 0">Trip name lives in the notebook header; tap it for a quiet drop-down shelf. No new nav slot. Roaming is one deliberate reach.</p>
+      </div></a>
+      <a class="ptile" href="p2.html"><div class="band b2"></div><div class="in">
+        <div class="over">P2</div><div class="h3">Trips inside Review</div>
+        <p class="sm ink2" style="margin:6px 0 0">The Review tab <i>is</i> the roam-across-trips surface (Previous / Active / Upcoming). Most literal honoring of the two-verbs split.</p>
+      </div></a>
+      <a class="ptile" href="p3.html"><div class="band b3"></div><div class="in">
+        <div class="over">P3</div><div class="h3">Dedicated “Trips” Tab</div>
+        <p class="sm ink2" style="margin:6px 0 0">Fills the reserved 5th nav slot with a Trips bookshelf as a top-level place. Most prominent — and most at odds with “switching isn’t a daily gesture.”</p>
+      </div></a>
+      <a class="ptile" href="p4.html"><div class="band b4"></div><div class="in">
+        <div class="over">P4</div><div class="h3">Bookshelf Home</div>
+        <p class="sm ink2" style="margin:6px 0 0">App opens to a shelf of trip “covers”; you step <i>into</i> one. The trip becomes the top-level object. Biggest structural change.</p>
+      </div></a>
+    </div>
+  </div>
+
+  <div class="doc">
+    <p class="h3">Pros &amp; cons</p>
+    <table>
+      <tr><th>Direction</th><th>Pros</th><th>Cons / risks</th><th>Verb-split fit</th></tr>
+      <tr>
+        <td><b>P1</b><br>Header dropdown</td>
+        <td class="pro"><ul><li>Daily experience stays 100% single-trip &amp; calm</li><li>Zero nav change; smallest build — fits a week easily</li><li>Trip name always visible = built-in capture guardrail</li></ul></td>
+        <td class="con"><ul><li>Roaming feels “hidden” — fine now, may be too quiet once T1/T3 are rich</li><li>Header does double duty (label + control)</li></ul></td>
+        <td>Good. Roaming is off the capture path but shares the notebook surface.</td>
+      </tr>
+      <tr>
+        <td><b>P2</b><br>Trips in Review</td>
+        <td class="pro"><ul><li>Cleanest conceptual model: capture-side surfaces never mention other trips</li><li>Gives T1/T3 their natural home for free</li><li>No new nav slot</li></ul></td>
+        <td class="con"><ul><li>“Where’s Finland?” may not be obvious (it’s under Review)</li><li>Overloads “Review” to also mean “trip picker”</li></ul></td>
+        <td><b>Best.</b> Roaming lives entirely on the review side, by construction.</td>
+      </tr>
+      <tr>
+        <td><b>P3</b><br>Trips tab</td>
+        <td class="pro"><ul><li>Most discoverable; trips are obviously first-class</li><li>Uses the already-reserved 5th slot</li><li>Scales visibly to 15 trips</li></ul></td>
+        <td class="con"><ul><li>Makes switching feel like an everyday gesture — you said it isn’t</li><li>Splits “review current” (Review tab) from “roam trips” (Trips tab): two doors</li></ul></td>
+        <td>Weakest. Elevates roaming to peer-of-capture prominence.</td>
+      </tr>
+      <tr>
+        <td><b>P4</b><br>Bookshelf home</td>
+        <td class="pro"><ul><li>Most emotionally rich: each trip is “a chapter” (matches the T3 payoff we want)</li><li>Trip-as-object scales best long-term</li></ul></td>
+        <td class="con"><ul><li>Adds a step to every launch — taxes the daily single-trip life</li><li>Browsing vs. capturing split gets subtle: inside Finland, capture must still hit Door County</li><li>Biggest build; most risk for a 1-week window</li></ul></td>
+        <td>Mixed. Powerful, but blurs which trip is “current” if you’re browsing another.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="doc">
+    <p class="h3">The map, across all four</p>
+    <p class="body ink2">Map ambition is a <b>separate axis</b> we already resolved: Door County v1 ships the <b>floor</b> — a static, offline field map per trip, auto-selected (same treatment Finland got). Every prototype shows the map <b>scoped to the current trip</b>; the zoomable all-trips world map (MapLibre) is deliberately deferred. So picking a prototype is picking a <i>navigation model</i>, not a map bet.</p>
+  </div>
+
+  <div class="doc">
+    <p class="h3">What’s intentionally fake</p>
+    <span class="pill">Fake trip data (Finland + Door County + your Sep/Oct plans)</span>
+    <span class="pill">Static gridded “map” placeholder, not the real field map</span>
+    <span class="pill">T1 / T3 prep &amp; consolidation flows (not designed yet — shown only as doors)</span>
+    <span class="pill">Capture opens an alert, not the camera</span>
+    <span class="pill">Encounter detail / review dialogue not wired</span>
+    <span class="pill">No real GPS / offline behavior</span>
+    <p class="cap" style="margin-top:10px">These are navigation-model prototypes. Judge <b>where trips live and how it feels to move among them</b> — not pixels or the map art.</p>
+  </div>
+
+  <div class="doc">
+    <p class="h3">React to these anchors</p>
+    <ul>
+      <li><code>FR-MT-01</code> — Which of the four is the right <b>navigation model</b> for Door County v1?</li>
+      <li><code>FR-MT-02</code> — Is roaming trips kept far enough from capture in your pick? Does the current trip ever feel ambiguous?</li>
+      <li><code>FR-MT-03</code> — Does the “in-between” moment (previous Finland + upcoming Door County at once) feel handled, or do we need more?</li>
+      <li><code>FR-MT-04</code> — Is hiding roaming (P1/P2) too quiet, or exactly the calm you want? Is surfacing it (P3/P4) worth the daily cost?</li>
+      <li><code>FR-MT-05</code> — Anything about trip <b>states</b> (previous/active/upcoming) you’d change now, before T1/T3 design?</li>
+    </ul>
+    <p class="body" style="margin-top:12px"><b>My recommendation:</b> <b>P1 for the Door County build</b> (smallest, calmest, safest for a 1-week window and truest to “switching isn’t a daily gesture”) — with <b>P2’s model as the destination</b> once T1/T3 are real (roaming belongs in review/prep). P1 and P2 are compatible: P1’s header shelf can graduate into P2’s review surface later without a rebuild. P3/P4 are the “bigger swing” options if you want trips to feel first-class <i>now</i> — but they spend build budget and daily attention on a gesture you told me is rare.</p>
+  </div>
+
+  <p class="cap" style="text-align:center; margin-bottom:40px">Frost Rocks · multi-trip-v0-explore · kraft-paper field-guide skin mirrors <code>src/theme/tokens.ts</code></p>
+</div>
+</body></html>

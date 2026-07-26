@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>P4 · Bookshelf Home — Frost Rocks Multi-Trip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head><body>
+<div class="phone">
+  <div class="screen" id="screen"></div>
+  <div class="nav" id="nav"></div>
+</div>
+<p class="cap" style="max-width:390px;text-align:center">P4 — Bookshelf Home. The app opens to a shelf of trips; you step <i>into</i> one. The trip is the top-level object. Use “‹ Shelf” to come back out.</p>
+
+<script src="data.js"></script>
+<script>
+let level='shelf'; // 'shelf' | 'inside'
+let inside=window.CURRENT_TRIP_ID; let view='note';
+
+function shelfScreen(){
+  const groups={active:[],upcoming:[],previous:[]};
+  window.TRIPS.forEach(t=>groups[t.state].push(t));
+  const sec=(title,arr)=> arr.length? `<div class="over" style="margin:16px 0 8px">${title}</div>`+arr.map(cover).join('') : '';
+  return `<div class="pad">
+    <div class="over">Frost Rocks</div><div class="h1">Your trips</div>
+    <p class="cap" style="margin:6px 0 2px">Open a trip to step inside its notebook, map, and review. The current trip is where new captures land.</p>
+    <div class="anchor">FR-MT-P4-01 shelf is home; trip is the top object</div>
+    ${sec('Active',groups.active)}${sec('Upcoming',groups.upcoming)}${sec('Previous',groups.previous)}
+    <div style="height:8px"></div>
+  </div>`;
+}
+function cover(t){
+  return `<div class="cover ${t.state==='active'?'active':''}" onclick="openTrip('${t.id}')">
+    <div class="art ${t.art}"><div class="place">${t.glyph}</div></div>
+    <div class="info"><div><div class="h3">${t.title}</div><div class="cap">${t.place} · ${t.dates}</div></div>
+    <div style="text-align:right">${window.stateChip(t.state)}<div class="cap mono" style="margin-top:4px">${t.count||'—'} enc</div></div></div></div>`;
+}
+function insideNote(){
+  const t=window.trip(inside);
+  return `<div class="tophead" style="position:static;padding:44px 18px 10px">
+      <button class="tripbtn" onclick="toShelf()"><span class="cap mono" style="color:var(--lichen700)">‹ Shelf</span></button>
+      <div class="between" style="margin-top:6px">
+        <div><div class="over">Notebook</div><div class="h2">${t.title}</div></div>
+        ${window.stateChip(t.state)}
+      </div>
+      <div class="cap" style="margin-top:4px">${t.place} · ${t.count} encounters</div>
+    </div>
+    <div class="pad" style="padding-top:12px">
+      <div class="anchor">FR-MT-P4-02 inside a trip</div>
+      ${t.count? window.tripTimeline(inside) : '<p class="sm ink3">Upcoming trip — no encounters yet. This is where T1 prep would live.</p>'}
+    </div>`;
+}
+function insideMap(){
+  const t=window.trip(inside);
+  return `<div class="tophead" style="position:static;padding:44px 18px 10px">
+    <button class="tripbtn" onclick="toShelf()"><span class="cap mono" style="color:var(--lichen700)">‹ Shelf</span></button>
+    <div class="over" style="margin-top:6px">Field map</div><div class="h2">${t.title}</div></div>
+    <div class="pad" style="padding-top:12px"><div class="anchor">FR-MT-P4-03 map inside current trip</div>
+    <div class="map locked"><div class="mlabel">${t.place}</div>${window.mapPins(inside)}</div></div>`;
+}
+function insideReview(){
+  const t=window.trip(inside);
+  return `<div class="tophead" style="position:static;padding:44px 18px 10px">
+    <button class="tripbtn" onclick="toShelf()"><span class="cap mono" style="color:var(--lichen700)">‹ Shelf</span></button>
+    <div class="over" style="margin-top:6px">Review</div><div class="h2">${t.title}</div></div>
+    <div class="pad" style="padding-top:12px"><div class="anchor">FR-MT-P4-04 review inside trip</div>
+    <div class="card"><div class="h3">${t.state==='previous'?'Consolidate this trip (T3)':'Review Today’s Encounters'}</div>
+    <div class="cap ink2" style="margin-top:4px">${t.state==='previous'?'Revisit standouts, generalize concepts':'3 waiting · evening debrief'}</div></div></div>`;
+}
+function openTrip(id){
+  const t=window.trip(id);
+  if(t.state==='upcoming'){ alert(`${t.title} is upcoming.\n\nOpening would show T1 prep/plan (not built yet).`); return; }
+  inside=id; level='inside'; view='note'; render();
+}
+function toShelf(){ level='shelf'; render(); }
+function go(v){ view=v; render(); }
+function capHint(){ alert('Capture writes to the CURRENT trip only (Door County) — regardless of which trip you’re browsing.\n\nP4 risk: if you’re “inside” Finland reviewing, capture must still land in Door County. That split (browsing vs. capturing) is the thing to watch here.'); }
+
+function navHtml(){
+  if(level==='shelf'){
+    return `<button class="capslot" onclick="capHint()" style="margin:0 auto"><div class="ring">+</div><span class="lbl">Capture · Door County</span></button>`;
+  }
+  return `
+    <button class="slot ${view==='note'?'on':''}" onclick="go('note')"><div class="ic">📓</div><span class="lbl">Notebook</span></button>
+    <button class="slot ${view==='map'?'on':''}" onclick="go('map')"><div class="ic">🗺️</div><span class="lbl">Map</span></button>
+    <button class="capslot" onclick="capHint()"><div class="ring">+</div><span class="lbl">Capture</span></button>
+    <button class="slot ${view==='review'?'on':''}" onclick="go('review')"><div class="ic">🕒</div><span class="lbl">Review</span></button>
+    <div class="slot" style="pointer-events:none;opacity:.35"><div class="ic"> </div><span class="lbl"> </span></div>`;
+}
+function render(){
+  let s;
+  if(level==='shelf') s=shelfScreen();
+  else s = view==='note'?insideNote():view==='map'?insideMap():insideReview();
+  document.getElementById('screen').innerHTML=s;
+  document.getElementById('nav').innerHTML=navHtml();
+}
+render();
+</script>
+</body></html>
