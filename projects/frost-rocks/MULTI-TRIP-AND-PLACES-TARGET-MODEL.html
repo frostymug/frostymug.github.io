@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Structured Intake Assistant Status · Aspen's Docs</title>
+  <title>Multi-Trip &amp; Places — Target Model · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -36,7 +36,7 @@
       <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
       <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
     </details>
-    <details class="nav-subsection">
+    <details class="nav-subsection" open>
       <summary>Frost Rocks</summary>
       <a href="/projects/frost-rocks/index.html">Overview</a>
       <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
@@ -50,7 +50,7 @@
       <a href="/projects/frost-rocks/ANDY-FINLAND-PROTOTYPE-ANSWERS.html">Andy Prototype Answers</a>
       <a href="/projects/frost-rocks/ARYA-FINLAND-BUILD-QUESTIONS.html">Finland Build Questions</a>
       <a href="/projects/frost-rocks/FINLAND-ARCHITECTURE.html">Finland Architecture</a>
-      <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
+      <a aria-current="page" href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
       <a href="/projects/frost-rocks/FINLAND-ONE-SHOT-SYNC.html">Finland One-Shot Sync</a>
       <a href="/projects/frost-rocks/FINLAND-V2-DELTA-SPEC.html">v2 Delta Spec</a>
@@ -109,10 +109,10 @@
       <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
       <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
     </details>
-    <details class="nav-subsection" open>
+    <details class="nav-subsection">
       <summary>Structured Intake Assistant</summary>
       <a href="/projects/structured-intake-assistant/index.html">Overview</a>
-      <a aria-current="page" href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
       <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
       <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
       <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
@@ -164,21 +164,62 @@
 </aside>
   <main>
     <article>
-      <div class="crumb">Projects &middot; Structured Intake Assistant Status</div>
-      
-      <h1>Structured Intake Assistant Status</h1>
-<p><strong>Last updated:</strong> 2026-06-24 <strong>Stage:</strong> Intake / Safety-Gated <strong>Owner:</strong> Andy + Aspen <strong>External stakeholder:</strong> Erik Frost <strong>Current gate:</strong> Waiting for remaining Andy/Erik context plus PDF provenance/licensing before cross-functional intake.</p>
-<h2>Current Read</h2>
-<p>Erik has proposed a tool around administering or streamlining a SCID-style structured psychiatric interview. The project may connect to Curate Mental Health or Erik's clinical-assistant-AI context, but the exact organization, users, workflow, and data posture are not yet known.</p>
-<p>Because this could touch clinical assessment, DSM-linked interviewing, PHI, diagnosis, or care workflow decisions, the default posture is safety-first. No engineering work should start until intake clarifies scope, licensing, clinical boundaries, data handling, and who would be responsible for use.</p>
-<h2>What Is In Hand</h2>
-<ul><li>Screenshot of Erik's initial text to Andy, preserved in <code>sources/2026-06-24-erik-scid-screenshot.jpg</code>.</li><li>PDF referenced by Erik, preserved in <code>sources/2026-06-24-scid-5-cv.pdf</code>. It is a 98-page scanned/image PDF and should be treated as licensed clinical source material, not content to reproduce in project docs.</li><li>Andy's instruction to open a project and expect more back-and-forth.</li></ul>
-<h2>Waiting On</h2>
-<ul><li>Additional Andy/Erik messages.</li><li>PDF provenance/licensing context: where it came from, who is authorized to use it, and whether any structure or wording can be encoded in software.</li><li>Clarification of whether this is for Curate Mental Health, Erik's workplace, research use, or a private Aspen Frost exploration.</li><li>Clarification of whether any real patient data would be used in discovery or prototype testing.</li></ul>
-<h2>Next Steps</h2>
-<ul><li>Attach or summarize the additional messages when Andy sends them.</li><li>Update <code>PROJECT-INTAKE.md</code> with concrete source and licensing details.</li><li>Run Petra product framing and Arya early risk/feasibility review before any design or build request.</li><li>Decide whether this remains a safety-gated project, becomes a research spike, or pauses.</li></ul>
-<h2>Guardrails</h2>
-<ul><li>Do not build a clinical diagnostic tool casually.</li><li>Do not store patient data in the shared workspace.</li><li>Do not assume Aspen Frost can reuse SCID content without checking licensing/IP constraints.</li><li>Do not ask Jesse to implement until Arya and Andy have explicitly cleared a bounded prototype scope.</li></ul>
+      <div class="crumb">Projects &middot; Frost Rocks Multi-Trip &amp; Places Target Model</div>
+      <div class="doc-meta">Last updated: 2026-07-26</div>
+      <h1>Multi-Trip &amp; Places — Target Model</h1>
+<p><em>Izzy (Design) | 2026-07-26 | Status: <strong>DURABLE TARGET (Andy-approved, 2026-07-26). Not a build spec.</strong> The Door County build is the P1 slice of this; see <code>MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.md</code>.</em> <em>Sources: Andy's 2026-07-26 multi-trip interview (on the flight home from Finland) + the P1 prototype compare page (<code>published-html/multi-trip-v0-explore/</code>) + live repo <code>aspen-frost/frost-rocks</code>.</em></p>
+<p>---</p>
+<h2>0. Why this note exists</h2>
+<p>We are adding a second trip (Door County) so we can keep running WoZ tutor pilots. The <strong>data and capture</strong> scale easily; the hard part is the <strong>experience design of living across many trips</strong> (~3–15/year, growing). This note captures the <em>durable model</em> we're aiming at, so the small Door County build doesn't paint us into a corner and so the AI-tutor consult and future T1/T3 work inherit a stable frame.</p>
+<p><strong>This is the target, not the Door County scope.</strong> Door County builds only the P1 slice (§6).</p>
+<p>---</p>
+<h2>1. The load-bearing insight: two verbs, opposite relationships to time</h2>
+<p>Everything follows from this. There are two different things you do with a trip, and they relate to time in opposite ways:</p>
+<ul><li><strong>Capture is present-tense and singular.</strong> You only ever capture into the <strong>current context</strong>. &quot;Switching trips&quot; is nonsensical at the shutter — the current context is a fact of where you are in your life, not a selection you make.</li><li><strong>Review / prep time-travels and is plural.</strong> You revisit any past trip (retrospective) and prep any upcoming trip (prospective). Roaming across contexts <em>is</em> the core flow here.</li></ul>
+<p><strong>Design consequence:</strong> the mechanism for roaming across trips belongs to the review/prep side and must <strong>never</strong> sit on or near the capture path. This also dissolves the apparent map/timeline inconsistency — the map is a capture-side surface (current context), the timeline is a look-back surface (roams across all).</p>
+<p>---</p>
+<h2>2. The core abstraction: a <em>capture context</em> (Trip <strong>or</strong> Place)</h2>
+<p>The real top-level object is not &quot;trip.&quot; It's a <strong>capture context</strong> — the thing an encounter belongs to. There are two flavors, distinguished by <em>time-boundedness</em>:</p>
+<table><thead><tr><th>Flavor</th><th>Bounded?</th><th>Example</th><th>Ends?</th><th>Map behavior (long-term)</th></tr></thead><tbody><tr><td><strong>Trip</strong></td><td>Yes — has start/end</td><td>Finland (Jul 16–25)</td><td>You <em>mark it over</em></td><td>Bounded region</td></tr><tr><td><strong>Place</strong></td><td>No — recurring</td><td>North Shore (&quot;My Places&quot;)</td><td>Never; you just visit again</td><td>Accretes pins across years</td></tr></tbody></table>
+<p>&quot;My Places&quot; is Andy's concept: places he returns to repeatedly, accumulating encounters across many visits. A place is not a trip — it's an unbounded, standing context.</p>
+<p>This is why the management tab graduates from <strong>&quot;Trips&quot;</strong> to <strong>&quot;Trips &amp; Places.&quot;</strong></p>
+<p><strong>Data-model implication (target, not Door County):</strong> today <code>encounters.trip_id</code> is <code>NOT NULL</code> and everything hangs off <code>getOrCreateDefaultTrip()</code>. The durable target is for an encounter to point at a <strong>context</strong> (a trip <em>or</em> a place <em>or</em>, transiently, nothing/unfiled) rather than a hard <code>trip_id</code>. We do <strong>not</strong> build this for Door County — but Door County code must not deepen the <code>getOrCreateDefaultTrip()</code>-everywhere assumption (see §6 discipline).</p>
+<p>---</p>
+<h2>3. Two tabs, two different jobs (this is the P2/P3 hybrid, refined)</h2>
+<p>The prototype's P2 (&quot;Trips in Review&quot;) and P3 (&quot;Trips tab&quot;) each felt half-right. The refinement: <strong>they are not redundant — they do different jobs.</strong></p>
+<h3>3.1 The <strong>Trips &amp; Places</strong> tab = <em>management / lifecycle</em></h3>
+<p>The CRUD home for contexts. This is where the <em>set of containers</em> is maintained:</p>
+<ul><li>Create a trip; <strong>mark a trip over</strong>; spin up the next trip(s).</li><li>Create and manage <strong>Places</strong> (My Places).</li><li>This replaces today's hard-coding of trips into the app. Right now a trip exists because it's coded in (<code>DEFAULT_TRIP_TITLE</code>). We generalize that into a real flow: <em>end the current trip, create the next.</em></li></ul>
+<p>Not everything about a trip needs to live here — this is lifecycle management, not browsing your memories.</p>
+<h3>3.2 The <strong>Review</strong> tab = <em>temporal lenses</em></h3>
+<p>Ways to <strong>look back</strong> at your learning. Trips are <strong>one</strong> organizing structure inside Review — not the only one, and <strong>not managed here</strong> (so not every trip needs to appear). Review borrows trips as a scaffold; it does not own them.</p>
+<p>The contents are a <strong>zoom axis over time</strong>:</p>
+<ul><li><strong>Review Today's Encounters</strong> (today) — the D3 evening-debrief door (already in the D3 spec).</li><li><strong>Review the Trip So Far</strong> (this trip) — the T3-ish consolidation door (stubbed today).</li><li><strong>Review across time</strong> (all-time) — working name TBD: &quot;Review Everything&quot; / &quot;Review Across Time&quot; / &quot;General Review&quot;. The all-history lens; also the natural home for cross-trip and <em>per-place</em> review (North Shore across years).</li></ul>
+<p><strong>Naming flag:</strong> &quot;Review&quot; is honest for retrospection but wrong for <em>prep</em>. You cannot review an upcoming trip. So <strong>forward-looking prep (T1) for an upcoming trip is reached from the Trips &amp; Places tab</strong>, next to the trip being set up — not from Review. This keeps &quot;Review = look back&quot; clean. The exact lens names above deserve their own small IA pass when T1/T3 are designed; don't over-decide now.</p>
+<h3>3.3 Why this beats plain P2 or plain P3</h3>
+<ul><li>Plain <strong>P3</strong> gave two doors that both sort of meant &quot;trips&quot; (a Trips tab <em>and</em> a Review-of-current-trip), which was redundant.</li><li>Plain <strong>P2</strong> put trip management inside Review, but you can't &quot;review&quot; an upcoming trip, and Review shouldn't own the container lifecycle.</li><li><strong>Hybrid:</strong> Trips &amp; Places <em>manages</em> the containers; Review <em>looks through</em> them (with trips as one lens among several, plus places and all-time). No redundancy; each verb has one home.</li></ul>
+<p>---</p>
+<h2>4. The capture rule, amended</h2>
+<p>Old rule: <em>&quot;Capture always goes to the current trip.&quot;</em> New rule: <strong>&quot;Capture always goes to the current context, if there is one.&quot;</strong></p>
+<p>The amendment matters because of Places and the in-between state: <strong>at home, between trips, with no active trip, you should still be able to capture.</strong> It lands in a Place (e.g., a home place / My Places) or an &quot;unfiled&quot; bucket — never nowhere.</p>
+<ul><li>The <strong>field case is unchanged</strong>: on a trip, capture → that trip. Sacred path untouched.</li><li>We are only defining behavior for the <em>absence</em> of an active trip, instead of assuming one always exists.</li><li>This is the one change that touches the capture path, so it's handled with care and is <strong>out of Door County scope</strong> (Door County always has an active trip).</li></ul>
+<p>---</p>
+<h2>5. Trip states</h2>
+<p><code>previous</code> · <code>active</code> · <code>upcoming</code> (Andy: &quot;previous,&quot; not &quot;closing&quot;). In the target model these carry real behavior:</p>
+<ul><li><strong>upcoming</strong> → surfaces T1 prep (reached via Trips &amp; Places).</li><li><strong>active</strong> → the current capture context; drives the notebook/map/capture.</li><li><strong>previous</strong> → surfaces T3 consolidation and feeds all-time review.</li></ul>
+<p>The &quot;in-between&quot; moment is real and important: near a trip boundary you are simultaneously <strong>T3-of-the-previous trip</strong> and <strong>T1-of-the-next</strong> (closing Finland while prepping Door County). The model must let a trip wear a state and let both flows run without a hard single-&quot;active&quot;-pointer assumption baked into the UI. (In v1 the states are largely inert labels; the point is not to design them <em>out</em>.)</p>
+<p>---</p>
+<h2>6. What Door County builds (the P1 slice) — pointer</h2>
+<p>Door County is the <strong>first real slice</strong> of this model, chosen to be safe under a one-week deadline. It builds:</p>
+<ul><li><strong>P1 navigation</strong> — trip name in the notebook header → quiet dropdown shelf to <em>see</em> other trips (roaming stays off the capture path).</li><li><strong>A real Trips (&amp; Places-ready) management tab</strong> — minimal: create a trip, mark a trip over, set current. This kills the hard-coded-trip approach. (Andy chose to stand this up now rather than retrofit it in September.)</li><li><strong>Static offline field map, auto-selected per trip</strong> (the &quot;floor&quot;). MapLibre/world-map deferred.</li><li>Capture → current trip (unchanged); timeline scrolls across all trips; map = current trip.</li></ul>
+<p><strong>Design discipline for the build (so the target stays reachable):</strong></p>
+<ul><li>Do <strong>not</strong> scatter new <code>getOrCreateDefaultTrip()</code> assumptions into new code. Read &quot;the current trip&quot; from one place (a current-context accessor) so the trip→context generalization later is a swap, not a hunt.</li><li>The Trips tab is built as <strong>Trips</strong> now but named/structured so <strong>&quot;&amp; Places&quot;</strong> and the trip/place context split are additive, not a rewrite.</li><li>Keep the map's per-trip selection behind a seam so MapLibre can replace the static image invisibly.</li></ul>
+<p>Full implementation detail: <strong><code>MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.md</code>.</strong></p>
+<p>---</p>
+<h2>7. Parked / deferred (explicitly not now)</h2>
+<ul><li><strong>My Places</strong> (recurring unbounded contexts) — target, not Door County.</li><li><strong>Capture with no active trip</strong> → place/home/unfiled + the <code>trip_id</code>→<code>context</code> data-model generalization.</li><li><strong>Review temporal-lens IA + naming</strong> (today / this-trip / across-time) — needs its own pass with T1/T3.</li><li><strong>T1 prep and T3 consolidation flows</strong> — separate design track (AI tutor).</li><li><strong>Zoomable all-trips / all-places world map</strong> (MapLibre) — the long-term map destination.</li><li><strong>Trips &amp; Places management depth</strong> (editing itineraries, place boundaries, merging) — later.</li></ul>
+<p>---</p>
+<p><em>Provenance: authored by Izzy from Andy's 2026-07-26 interview + the multi-trip v0 prototype exploration. Approved as durable target by Andy 2026-07-26. 2026-07-26.</em></p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
