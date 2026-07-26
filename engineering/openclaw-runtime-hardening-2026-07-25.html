@@ -158,7 +158,7 @@
   <main>
     <article>
       <div class="crumb">Engineering &middot; OpenClaw Runtime Hardening Recommendations</div>
-      <div class="doc-meta">Last updated: 2026-07-25</div>
+      <div class="doc-meta">Last updated: 2026-07-26</div>
       <h1>OpenClaw Runtime Hardening Recommendations - 2026-07-25</h1>
 <p>Status: Review draft for Andy Owner: Aspen Scope: Main Lightsail OpenClaw host, cron jobs, docs publish workflow, gateway reliability Incident reviewed: 2026-07-25 memory exhaustion and host reboot</p>
 <h2>Executive Summary</h2>
@@ -312,12 +312,8 @@ openclaw cron show c76b1072-9591-455f-8d06-c69de4346d18</code></pre>
   --command-cwd '/home/ubuntu/.openclaw/workspace/project-viewer' \
   --timeout-seconds 900 \
   --no-output-timeout-seconds 120 \
-  --output-max-bytes 200000 \
-  --failure-alert \
-  --failure-alert-after 1 \
-  --failure-alert-channel telegram \
-  --failure-alert-to 8779808012 \
-  --failure-alert-account-id default</code></pre>
+  --output-max-bytes 200000</code></pre>
+<p>Note: OpenClaw 2026.7.1-2 does not expose <code>--failure-alert*</code> flags on <code>openclaw cron add</code>. For this build, failure monitoring should come from <code>openclaw cron runs</code>, <code>--webhook &lt;url&gt;</code>, or a small wrapper script that sends an alert only when <code>scripts/nightly-update.sh</code> exits nonzero.</p>
 <p>Then verify:</p>
 <pre><code class="language-bash">openclaw cron list
 openclaw cron run &lt;new-job-id&gt; --wait --wait-timeout 1200000
@@ -339,11 +335,6 @@ openclaw cron runs --id &lt;new-job-id&gt; --limit 5</code></pre>
   --thinking low \
   --timeout-seconds 900 \
   --tools exec,read,write \
-  --failure-alert \
-  --failure-alert-after 1 \
-  --failure-alert-channel telegram \
-  --failure-alert-to 8779808012 \
-  --failure-alert-account-id default \
   --channel telegram \
   --to 8779808012 \
   --account default \
