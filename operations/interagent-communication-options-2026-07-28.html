@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ToothBud Dental - Luc Interview Prep · Aspen's Docs</title>
+  <title>Interagent Communication Options · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
       <a href="/governance/pipeline.html">Pipeline</a>
       <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
-  <details class="nav-section" open>
+  <details class="nav-section">
     <summary class="nav-section-label">Projects</summary>
       <a href="/projects/index.html">Project Index</a>
       <a href="/projects/status.html">Portfolio Status</a>
@@ -117,12 +117,12 @@
       <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
       <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
     </details>
-    <details class="nav-subsection" open>
+    <details class="nav-subsection">
       <summary>Toothbud Dental</summary>
       <a href="/projects/toothbud-dental/index.html">Overview</a>
       <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
       <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
-      <a aria-current="page" href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
       <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
       <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
       <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
@@ -149,11 +149,11 @@
     <summary class="nav-section-label">Marketing</summary>
       <a href="/marketing/index.html">Marketing Index</a>
   </details>
-  <details class="nav-section">
+  <details class="nav-section" open>
     <summary class="nav-section-label">Operations</summary>
       <a href="/operations/agent-development/index.html">Agent Development</a>
       <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
-      <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
+      <a aria-current="page" href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
   </details>
   <details class="nav-section">
     <summary class="nav-section-label">Engineering</summary>
@@ -165,29 +165,72 @@
 </aside>
   <main>
     <article>
-      <div class="crumb">Projects &middot; ToothBud Dental Luc Interview Prep</div>
-      <div class="doc-meta">Last updated: 2026-06-24</div>
-      <h1>ToothBud Dental - Luc Interview Prep</h1>
-<p>&gt; Status: Draft &gt; Purpose: first discovery interview guide for Luc Dimick.</p>
-<h2>Interview Goal</h2>
-<p>Understand what is actually broken or painful about OpenDental in Ann's pediatric dentistry practice, before assuming the answer is new software.</p>
-<h2>Opening Context</h2>
-<ul><li>This is discovery, not a commitment to build.</li><li>We should avoid patient-identifiable examples. Use anonymized/general workflow examples only.</li><li>The goal is to understand workflows, constraints, and decision criteria.</li></ul>
-<h2>Questions</h2>
-<h3>Practice and Setup</h3>
-<ul><li>How many providers, operatories, locations, and staff are involved?</li><li>How is OpenDental hosted today: local server, cloud-hosted, vendor-hosted, or something else?</li><li>Which version/modules do you use?</li><li>What other systems are connected: imaging, payments, claims, texting, forms, patient portal, accounting, analytics?</li></ul>
-<h3>Pain Points</h3>
-<ul><li>What are the top 5 daily annoyances with OpenDental?</li><li>Which pain is specifically pediatric rather than general dental practice management?</li><li>Where do staff use workarounds, spreadsheets, paper, duplicate entry, or side systems?</li><li>What creates errors, delays, or patient/family frustration?</li><li>What does Ann complain about most after a normal clinic day?</li></ul>
-<h3>Pediatric Dentistry Specifics</h3>
-<ul><li>How do guardian/parent relationships work in the system?</li><li>Are siblings/family scheduling, consents, recalls, school forms, sedation, behavior notes, or age-specific workflows painful?</li><li>What pediatric reporting or clinical documentation does OpenDental not support well?</li><li>Are there child-specific insurance/billing quirks that cause trouble?</li></ul>
-<h3>Data and Operations</h3>
-<ul><li>What data would need to move if you switched systems?</li><li>Do you have reliable backups and test restores?</li><li>How hard is it to export data from OpenDental?</li><li>What downtime could the practice tolerate?</li><li>Who supports the system today when something breaks?</li></ul>
-<h3>Buying vs Building</h3>
-<ul><li>Have you evaluated alternatives? Which ones and why did they fail?</li><li>Would a better configuration, plugin, integration, or reporting layer solve 80% of the pain?</li><li>What would make you switch vendors?</li><li>What would make you stay on OpenDental?</li></ul>
-<h3>Success Criteria</h3>
-<ul><li>If this project worked, what would be different 90 days later?</li><li>What must never break?</li><li>What are the budget/time/support constraints?</li><li>Who besides Luc and Ann needs to be involved before any decision?</li></ul>
-<h2>Red Flags To Listen For</h2>
-<ul><li>Any request to copy production data into our workspace.</li><li>Any expectation that Aspen Frost can casually replace an EHR/practice-management system.</li><li>No backup/export path.</li><li>Billing/claims or clinical documentation dependencies that are not understood.</li><li>Staff adoption problems masquerading as software problems.</li></ul>
+      <div class="crumb">Operations &middot; Interagent Communication Options</div>
+      <div class="doc-meta">Last updated: 2026-07-28</div>
+      <h1>Interagent Communication Options</h1>
+<p><strong>Decision brief for Andy Frost</strong> <strong>Date:</strong> 2026-07-28 <strong>Status:</strong> Research complete; recommendation proposed; no configuration changes made</p>
+<h2>Executive Summary</h2>
+<p>Andy currently has to manually trigger each handoff between specialist agents. This is especially cumbersome in two recurring loops:</p>
+<ul><li>Product loop: Izzy → Petra → Arya</li><li>Engineering loop: Arya → Jesse → Cassian</li></ul>
+<p>The recommended solution is <strong>Aspen-led workflow orchestration, supported by narrowly controlled agent-to-agent messaging</strong>.</p>
+<p>Andy would assign the outcome once to Aspen. Aspen would manage sequencing, verify each shared artifact, enforce approval gates, trigger the next specialist, and return a consolidated result.</p>
+<p>A shared Telegram group should not be used as the underlying communication bus. Telegram prevents bots from receiving messages sent by other bots, so the room would look shared to Andy while the agents actually retained separate and incomplete views.</p>
+<h2>Desired Outcome</h2>
+<p>Reduce this:</p>
+<ul><li>Ask Arya to produce an architecture.</li><li>Wait for completion.</li><li>Open Jesse's chat.</li><li>Explain where Arya left the artifact.</li><li>Ask Jesse to implement it.</li><li>Wait for completion.</li><li>Open Cassian's chat.</li><li>Explain what Jesse finished.</li><li>Ask Cassian to deploy it.</li></ul>
+<p>To this:</p>
+<p>&gt; Aspen, run the approved engineering loop for Project X through TestFlight.</p>
+<p>Aspen would then coordinate Arya → Jesse → Cassian while preserving Andy's required approval gates.</p>
+<h2>Option 1: Shared Telegram Team Channels</h2>
+<p>Possible rooms:</p>
+<ul><li>Product Room: Izzy, Petra, Arya, Aspen</li><li>Engineering Room: Arya, Jesse, Cassian, Aspen</li></ul>
+<p>Andy could mention the agent responsible for each task while all bots receive his messages.</p>
+<h3>Advantages</h3>
+<ul><li>One visible place for Andy to operate each loop.</li><li>All agents can receive Andy's framing, corrections, and approvals.</li><li>Fewer separate direct-message conversations.</li><li>A human-readable record organized by team or project.</li></ul>
+<h3>Limitations</h3>
+<ul><li>Telegram bots cannot receive messages sent by other bots, regardless of privacy mode or administrator status.</li><li>Arya's visible response would therefore not automatically reach Jesse or Cassian.</li><li>Each OpenClaw agent would still maintain an isolated group session rather than sharing one transcript.</li><li>Disabling Telegram privacy mode would make every bot ingest more human messages, increasing token usage and accidental activation risk.</li><li>OpenClaw's true multi-agent broadcast-group feature is currently experimental and WhatsApp-only.</li></ul>
+<h3>Verdict</h3>
+<p>Useful as a human-facing command room or dashboard, but not dependable as the interagent handoff mechanism.</p>
+<h2>Option 2: Direct Agent-to-Agent Messaging</h2>
+<p>OpenClaw supports cross-agent communication through <code>sessions_send</code>. It is disabled by default and must be explicitly enabled with an agent allowlist and appropriate session visibility.</p>
+<p>A handoff could look like:</p>
+<p>&gt; Architecture approved for implementation. Canonical artifact: <code>projects/example/ARCHITECTURE.md</code>. Build only the approved scope and report blockers to Aspen.</p>
+<p>OpenClaw marks these messages as inter-session data rather than direct human-authored instructions. It can also permit a bounded reply-back exchange between agents.</p>
+<h3>Advantages</h3>
+<ul><li>Eliminates Andy's manual handoff message.</li><li>Preserves separate agent identities, workspaces, credentials, and tool permissions.</li><li>Fits the existing shared-artifact system: the file remains canonical and the message triggers action.</li><li>Can be restricted to explicitly allowlisted agents.</li><li>Provides a foundation for later workflow automation.</li></ul>
+<h3>Risks</h3>
+<ul><li>Increases agent autonomy across a boundary previously reserved for Trust Ramp Phase 2.</li><li>Broad session visibility could expose more cross-agent context than necessary.</li><li>Unbounded exchanges can create loops, unclear ownership, duplicated work, and token waste.</li><li>An agent might trigger downstream work before an Andy approval gate.</li><li>Transient messages could be mistaken for canonical project state.</li></ul>
+<h3>Verdict</h3>
+<p>Technically appropriate when constrained. It should be treated as a formal handoff channel, not unrestricted agent conversation.</p>
+<h2>Option 3: Aspen as Workflow Orchestrator</h2>
+<p>Andy assigns a multi-stage outcome once. Aspen owns the workflow state and coordinates each specialist.</p>
+<p>For the product-feasibility loop, Aspen would:</p>
+<ul><li>Ask Izzy for the design artifact.</li><li>Verify that it was promoted to the shared project folder.</li><li>Ask Petra for the specified strategic or customer review.</li><li>Route the resulting package to Arya for feasibility.</li><li>Return a consolidated decision packet to Andy.</li></ul>
+<p>For the engineering loop, Aspen would:</p>
+<ul><li>Confirm the architecture and Andy approval gate.</li><li>Trigger Jesse with the exact approved scope and acceptance criteria.</li><li>Verify implementation and test evidence.</li><li>Trigger Cassian for release verification and deployment.</li><li>Report the outcome, failures, or required decision to Andy.</li></ul>
+<h3>Advantages</h3>
+<ul><li>Andy assigns the outcome once.</li><li>One owner tracks what is waiting, completed, rejected, or blocked.</li><li>Approval and safety gates are enforced centrally.</li><li>Each specialist receives a narrowly framed request with exact artifacts and completion criteria.</li><li>Handoffs are easier to audit.</li><li>The model directly matches Aspen's Integrator role.</li></ul>
+<h3>Tradeoffs</h3>
+<ul><li>Aspen becomes a coordination dependency.</li><li>Each workflow needs explicit stage and completion definitions.</li><li>OpenClaw still needs a controlled mechanism for Aspen to invoke the other agents.</li><li>Premature overengineering could create unnecessary workflow bureaucracy.</li></ul>
+<h3>Verdict</h3>
+<p>Best fit for the current organization and Trust Ramp.</p>
+<h2>Recommendation</h2>
+<p>Adopt <strong>Option 3 as the operating model</strong>, powered by a constrained implementation of <strong>Option 2</strong>.</p>
+<h3>Operating Rules</h3>
+<p>- canonical artifact path; - artifact status and provenance; - requested action; - completion criteria; - required next recipient; - whether Andy approval is required before proceeding.</p>
+<ul><li>Andy initiates or advances a multi-agent workflow through Aspen.</li><li>Aspen owns sequencing, status, handoff quality, and approval gates.</li><li>Canonical deliverables remain under <code>projects/&lt;project&gt;/</code>.</li><li>Messages trigger work but never replace shared artifacts or project status.</li><li>Each handoff states:</li><li>Initial agent messaging should route completion back to Aspen.</li><li>Specialist agents should not autonomously cross an Andy approval gate.</li><li>Agent reply-back exchanges should be limited to one or two turns.</li><li>Existing Telegram direct messages remain available for Andy to interrogate or redirect individual specialists.</li></ul>
+<h2>Proposed Rollout</h2>
+<h3>Stage 1: Aspen-Coordinated Pilot</h3>
+<p>Pilot the Arya → Jesse → Cassian engineering workflow.</p>
+<ul><li>Andy starts the workflow once through Aspen.</li><li>Aspen performs and records each handoff.</li><li>Every gate remains visible to Andy.</li><li>No agent independently initiates the next approval-sensitive stage.</li></ul>
+<h3>Stage 2: Measured Delegation</h3>
+<p>After the pilot demonstrates reliable artifacts, completion contracts, and stopping behavior:</p>
+<ul><li>Permit selected specialists to initiate explicitly approved downstream handoffs.</li><li>Keep Aspen informed as workflow owner.</li><li>Expand only where the reduced friction outweighs the added autonomy and context exposure.</li></ul>
+<h2>Current Configuration</h2>
+<p>As of 2026-07-28:</p>
+<ul><li>Telegram group handling is disabled.</li><li>Agent-to-agent messaging is unset, which means effectively disabled.</li><li>No configuration was changed as part of this research.</li></ul>
+<h2>Sources</h2>
+<ul><li><a href="https://docs.openclaw.ai/concepts/session-tool">OpenClaw session tools and cross-session messaging</a></li><li><a href="https://docs.openclaw.ai/gateway/config-tools#toolsagenttoagent">OpenClaw agent-to-agent configuration</a></li><li><a href="https://docs.openclaw.ai/concepts/multi-agent">OpenClaw multi-agent routing</a></li><li><a href="https://docs.openclaw.ai/channels/broadcast-groups">OpenClaw broadcast groups</a></li><li><a href="https://core.telegram.org/bots/faq#why-doesn-39-t-my-bot-see-messages-from-other-bots">Telegram Bot FAQ: why bots cannot see messages from other bots</a></li></ul>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
