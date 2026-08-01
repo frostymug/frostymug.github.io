@@ -46,6 +46,7 @@
       <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
       <a aria-current="page" href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
+      <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
       <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
       <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
@@ -182,7 +183,7 @@
 <h3>3.4 Maps are a per-trip offline floor</h3>
 <p>The current trip’s map is Door County. Its static offline image and projection cover <strong>Green Bay to the southwest and Washington Island / Rock Island to the northeast</strong>. Pins outside that descriptor’s bounds remain unpinned, as today.</p>
 <p>The map component must become descriptor-driven: image, dimensions, geographic bounds, label, and compact-card copy are inputs rather than Finland constants. The established Finland descriptor stays available for its trip; no global/world map is being implied.</p>
-<p>The Door County image and calibrated bounds are a required design asset, supplied separately by Izzy. Until that asset is added, an honest no-map state is preferable to rendering Finland for Door County.</p>
+<p>The delivered <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County static field-map asset</a> provides the raster, vector source, generator, calibrated bounds, and projection fixtures. Until that asset is bundled, an honest no-map state is preferable to rendering Finland for Door County.</p>
 <h3>3.5 Exports make scope explicit</h3>
 <p>The Export screen presents two actions before building:</p>
 <ul><li><strong>Export current trip</strong> — Door County only; preserves the existing single-trip bundle format and is the field/WoZ handoff path.</li><li><strong>Export all trips</strong> — all trip records, encounters, questions, photos, and relevant event data in one self-contained bundle.</li></ul>
