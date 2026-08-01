@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>projects/frost-rocks/archive/finland/prototypes/finland-v0/styles.css · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
+      <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/index.html">— Multi-Trip Prototypes (v0 explore)</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p1.html">P1 · Trip Header Dropdown — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p2.html">P2 · Trips in Review — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p3.html">P3 · Trips Nav Tab — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p4.html">P4 · Bookshelf Home — Frost Rocks Multi-Trip</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+      <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Project support file</div>
+      <div class="doc-meta">Last updated: 2026-06-28</div>
+      <h1>projects/frost-rocks/archive/finland/prototypes/finland-v0/styles.css</h1><pre><code>:root {
+  --ink: #18201c;
+  --muted: #64726a;
+  --paper: #f6f3ec;
+  --panel: #fffdf8;
+  --line: #d9d4c8;
+  --moss: #526f55;
+  --moss-dark: #38513d;
+  --water: #5d8792;
+  --stone: #76736e;
+  --clay: #a96f52;
+  --gold: #b99547;
+  --shadow: 0 18px 40px rgba(24, 32, 28, .12);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ebe7dc;
+  color: var(--ink);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--paper);
+  position: relative;
+  box-shadow: 0 0 0 1px rgba(24, 32, 28, .08);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px 12px;
+  background: rgba(246, 243, 236, .94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.topbar h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.topbar h1 {
+  font-size: 25px;
+  line-height: 1.05;
+}
+
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.kicker,
+.label,
+.review-anchor {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-weight: 750;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--moss-dark);
+  font-weight: 800;
+}
+
+.review-link,
+.link-button {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
+
+main {
+  min-height: calc(100vh - 142px);
+  padding-bottom: 90px;
+}
+
+.screen {
+  display: none;
+  padding: 14px 14px 22px;
+}
+
+.screen.active {
+  display: block;
+}
+
+.review-anchor {
+  display: inline-flex;
+  margin: 0 0 10px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .78);
+}
+
+.hero-panel {
+  min-height: 210px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 18px;
+  background: linear-gradient(0deg, rgba(20, 27, 23, .82), rgba(20, 27, 23, .1));
+  color: #fffdf8;
+}
+
+.hero-overlay h2 {
+  margin: 3px 0 8px;
+  font-size: 25px;
+  line-height: 1.08;
+}
+
+.hero-overlay p,
+.hero-overlay span {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.stone-photo {
+  background-color: #817d73;
+  background-size: cover;
+  background-position: center;
+}
+
+.shoreline {
+  background-image:
+    linear-gradient(168deg, rgba(22, 41, 45, .08) 0 28%, rgba(84, 121, 130, .72) 29% 44%, transparent 45%),
+    linear-gradient(24deg, #425247 0 10%, #777a70 11% 22%, #4d5d55 23% 34%, #9c9a8e 35% 48%, #5e6961 49% 61%, #b5a789 62% 74%, #6e716a 75% 100%);
+}
+
+.gneiss {
+  background-image:
+    linear-gradient(20deg, transparent 0 15%, rgba(245, 236, 213, .45) 16% 20%, transparent 21% 34%, rgba(47, 53, 52, .45) 35% 41%, transparent 42% 100%),
+    repeating-linear-gradient(154deg, #565d59 0 18px, #a49d8f 19px 32px, #6c7069 33px 48px, #d0c3a8 49px 55px);
+}
+
+.built {
+  background-image:
+    linear-gradient(90deg, rgba(40, 35, 28, .15), rgba(255, 255, 255, .1)),
+    repeating-linear-gradient(0deg, #a56e59 0 28px, #d7b28c 29px 31px, #8f8170 32px 58px, #ead3a9 59px 62px);
+}
+
+.fresh {
+  background-image:
+    radial-gradient(circle at 26% 32%, #ece0bb 0 5%, transparent 6%),
+    radial-gradient(circle at 68% 64%, #332f2c 0 5%, transparent 6%),
+    repeating-linear-gradient(128deg, #5d645f 0 22px, #b1aa99 23px 36px, #6c756d 37px 54px);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.metric-grid article {
+  min-height: 82px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 10px;
+  background: var(--panel);
+}
+
+.metric-grid strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.metric-grid span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.mode-tabs,
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #e5dfd3;
+}
+
+.tab,
+.segmented button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.tab.active,
+.segmented button.active {
+  background: var(--panel);
+  color: var(--moss-dark);
+  box-shadow: 0 1px 6px rgba(24, 32, 28, .08);
+}
+
+.view-panel {
+  display: none;
+  margin-top: 12px;
+}
+
+.view-panel.active {
+  display: block;
+}
+
+.day-heading,
+.detail-header,
+.status-row,
+.button-row,
+.toggle-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.day-heading {
+  margin-bottom: 10px;
+}
+
+.day-heading h3 {
+  font-size: 18px;
+}
+
+.day-heading p,
+.helper,
+.encounter-card p,
+.quiet-card p,
+.note-block p,
+.prompt-box p,
+.ai-note p,
+.notes-panel p,
+.export-preview p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.38;
+}
+
+.primary,
+.secondary,
+.back,
+.theme-list button,
+.choice-grid button {
+  min-height: 42px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0 14px;
+  font-weight: 800;
+}
+
+.primary {
+  background: var(--moss);
+  color: white;
+}
+
+.link-button {
+  margin-top: 18px;
+}
+
+.primary:active {
+  background: var(--moss-dark);
+}
+
+.secondary,
+.back,
+.choice-grid button {
+  background: var(--panel);
+  color: var(--moss-dark);
+  border-color: var(--line);
+}
+
+.compact {
+  min-height: 38px;
+  white-space: nowrap;
+}
+
+.full {
+  width: 100%;
+}
+
+.back {
+  margin: 0 0 12px;
+}
+
+.encounter-card,
+.quiet-card,
+.detail-card,
+.review-card,
+.capture-panel,
+.capture-start,
+.success-panel,
+.guide-panel,
+.review-entry-panel,
+.reflection-panel,
+.export-panel,
+.notes-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 8px 22px rgba(24, 32, 28, .06);
+}
+
+.encounter-card {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.encounter-card h4,
+.quiet-card h4 {
+  margin: 3px 0 5px;
+  font-size: 16px;
+  line-height: 1.18;
+}
+
+.thumb {
+  height: 86px;
+  border-radius: 7px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.chips span,
+.uncertainty,
+.status-row span,
+.queued-note span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ece7dc;
+  color: #48524c;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.quiet-card,
+.capture-panel,
+.capture-start,
+.success-panel,
+.guide-panel,
+.review-entry-panel,
+.reflection-panel,
+.export-panel,
+.notes-panel {
+  padding: 14px;
+}
+
+.quiet-card .secondary {
+  margin-top: 12px;
+}
+
+.map-card {
+  height: 310px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 22% 72%, rgba(83, 119, 91, .8) 0 16%, transparent 17%),
+    radial-gradient(circle at 66% 24%, rgba(83, 119, 91, .75) 0 18%, transparent 19%),
+    linear-gradient(135deg, #6e9aa5 0 46%, #d8d0bd 47% 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.pin {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--clay);
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+  box-shadow: 0 8px 16px rgba(24, 32, 28, .2);
+}
+
+.pin-a { left: 54%; top: 25%; }
+.pin-b { left: 36%; top: 52%; }
+.pin-c { left: 68%; top: 64%; }
+
+.theme-list {
+  display: grid;
+  gap: 8px;
+}
+
+.theme-list button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  background: var(--panel);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.theme-list span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.photo-drop {
+  height: 220px;
+  border-radius: 8px;
+  display: grid;
+  place-items: end start;
+  padding: 12px;
+  color: white;
+  font-weight: 850;
+  box-shadow: inset 0 -60px 80px rgba(0, 0, 0, .35);
+}
+
+.capture-panel .photo-drop {
+  height: 150px;
+}
+
+body[data-current-screen=&quot;capture-note&quot;] main {
+  padding-bottom: 96px;
+}
+
+.capture-hero {
+  min-height: 300px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  color: white;
+  box-shadow: inset 0 -120px 90px rgba(0, 0, 0, .44);
+}
+
+.capture-hero h2 {
+  max-width: 320px;
+  margin-top: 4px;
+  font-size: 28px;
+  line-height: 1.08;
+}
+
+.capture-hero .label {
+  color: rgba(255, 253, 248, .84);
+}
+
+.modal-sheet {
+  position: relative;
+  margin-top: 34vh;
+  border-radius: 16px 16px 8px 8px;
+  box-shadow: 0 -18px 48px rgba(24, 32, 28, .22);
+}
+
+.modal-sheet h2 {
+  margin: 4px 42px 8px 0;
+  font-size: 24px;
+  line-height: 1.12;
+}
+
+.sheet-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--moss-dark);
+  font-weight: 900;
+}
+
+.capture-actions {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.action-icon {
+  display: inline-grid;
+  width: 34px;
+  height: 28px;
+  margin-right: 8px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .18);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.field-note {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ece7dc;
+}
+
+.field-note span,
+.optional-fields summary {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.38;
+}
+
+.status-row {
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+label,
+fieldset {
+  display: block;
+  margin: 12px 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 800;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-top: 7px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffefa;
+  color: var(--ink);
+  padding: 11px 12px;
+}
+
+textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.big-prompt {
+  margin: 12px 0 0;
+  font-size: 18px;
+}
+
+.prompt-action-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.prompt-action-row label {
+  margin: 0;
+  font-size: 18px;
+}
+
+.compact-save {
+  width: auto;
+  min-width: 86px;
+  min-height: 40px;
+  padding: 9px 16px;
+  white-space: nowrap;
+}
+
+.big-prompt textarea {
+  min-height: 96px;
+  margin-top: 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.capture-save-bar {
+  margin-top: 10px;
+}
+
+.save-now {
+  min-height: 52px;
+}
+
+.optional-fields {
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f1eee6;
+}
+
+.optional-fields summary {
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.toggle-line {
+  min-height: 48px;
+  margin: 10px 0 16px;
+  font-weight: 800;
+}
+
+.toggle {
+  width: 54px;
+  height: 30px;
+  border-radius: 999px;
+  border: 0;
+  background: #bbb6aa;
+  position: relative;
+}
+
+.toggle::after {
+  content: &quot;&quot;;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 3px;
+  top: 3px;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .18);
+}
+
+.toggle.active {
+  background: var(--moss);
+}
+
+.toggle.active::after {
+  left: 27px;
+}
+
+.success-panel {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.success-panel h2 {
+  margin: 14px 0 8px;
+}
+
+.success-panel p {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.save-mark {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--moss);
+  color: white;
+  font-weight: 900;
+}
+
+.queued-note {
+  margin: 18px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ece7dc;
+  text-align: left;
+}
+
+.queued-note strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.queued-note span {
+  border-radius: 8px;
+  line-height: 1.35;
+}
+
+.mini-photo {
+  height: 150px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.guide-panel h2 {
+  margin: 3px 0 12px;
+  font-size: 23px;
+  line-height: 1.12;
+}
+
+.chat-stack {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.chat {
+  max-width: 88%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.chat.user {
+  justify-self: end;
+  background: var(--moss);
+  color: white;
+}
+
+.chat.guide {
+  justify-self: start;
+  background: #f1eee6;
+  color: var(--ink);
+}
+
+.quick-replies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 14px 0;
+}
+
+.quick-replies button {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--moss-dark);
+  font-weight: 800;
+}
+
+.detail-card,
+.review-card {
+  padding: 12px;
+}
+
+.detail-photo,
+.review-photo {
+  height: 240px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.detail-header h2,
+.review-card h2,
+.review-entry-panel h2,
+.reflection-panel h2,
+.export-panel h2,
+.notes-panel h2 {
+  font-size: 22px;
+  line-height: 1.12;
+}
+
+.review-entry-panel &gt; p:not(.label),
+.review-entry-choice span,
+.review-list em,
+.knowledge-map p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.review-entry-grid {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.review-entry-choice,
+.review-list button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  text-align: left;
+}
+
+.review-entry-choice {
+  display: grid;
+  gap: 5px;
+  min-height: 94px;
+  padding: 13px;
+}
+
+.review-entry-choice strong {
+  font-size: 17px;
+}
+
+.knowledge-map {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f1eee6;
+  border-left: 4px solid var(--water);
+}
+
+.knowledge-map h3 {
+  margin: 3px 0 10px;
+  font-size: 17px;
+}
+
+.map-ladder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.map-ladder span {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--moss-dark);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.review-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.review-list button {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+}
+
+.review-list strong,
+.review-list em {
+  display: block;
+}
+
+.review-list em {
+  margin-top: 3px;
+  font-style: normal;
+}
+
+.mini-thumb {
+  height: 58px;
+  border-radius: 7px;
+}
+
+.uncertainty {
+  background: #f1e3c9;
+  color: #6f4d1e;
+}
+
+.note-block,
+.prompt-box,
+.ai-note,
+.connection-panel,
+.export-preview {
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f1eee6;
+}
+
+.prompt-box {
+  border-left: 4px solid var(--water);
+}
+
+.prompt-box h3,
+.ai-note h3 {
+  margin: 3px 0 8px;
+  font-size: 17px;
+}
+
+ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ai-note {
+  border-left: 4px solid var(--gold);
+}
+
+.connection-panel {
+  border-left: 4px solid var(--moss);
+}
+
+.connection-panel h3 {
+  margin: 3px 0 8px;
+  font-size: 17px;
+}
+
+.button-row {
+  margin-top: 12px;
+}
+
+.button-row &gt; * {
+  flex: 1;
+}
+
+.reveal-panel {
+  display: none;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f1eee6;
+}
+
+.reveal-panel.active {
+  display: block;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.choice-grid button {
+  min-height: 54px;
+  padding: 6px;
+  line-height: 1.15;
+}
+
+.export-preview {
+  background: #fffefa;
+  border: 1px solid var(--line);
+}
+
+.export-preview h3 {
+  margin: 0 0 10px;
+}
+
+.notes-panel h3 {
+  margin: 18px 0 6px;
+  font-size: 16px;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 10;
+  width: min(480px, 100vw);
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 1fr 86px 1fr;
+  gap: 4px;
+  padding: 8px 10px 10px;
+  background: rgba(255, 253, 248, .96);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.bottom-nav button {
+  min-height: 50px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.bottom-nav .capture-nav {
+  width: 66px;
+  height: 66px;
+  min-height: 66px;
+  justify-self: center;
+  margin-top: -28px;
+  border-radius: 50%;
+  background: var(--clay);
+  color: white;
+  font-size: 34px;
+  line-height: 1;
+  box-shadow: 0 12px 24px rgba(24, 32, 28, .24);
+}
+
+.bottom-nav button.active {
+  background: #e7efe5;
+  color: var(--moss-dark);
+}
+
+.bottom-nav .capture-nav.active {
+  background: var(--clay);
+  color: white;
+}
+
+body[data-current-screen=&quot;capture-note&quot;] .bottom-nav {
+  display: none;
+}
+
+@media (min-width: 760px) {
+  body {
+    padding: 28px 0;
+  }
+
+  .app-shell {
+    min-height: calc(100vh - 56px);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .bottom-nav {
+    border-radius: 0 0 18px 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .encounter-card {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .choice-grid,
+  .button-row {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .button-row &gt; * {
+    width: 100%;
+  }
+}
+</code></pre>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
