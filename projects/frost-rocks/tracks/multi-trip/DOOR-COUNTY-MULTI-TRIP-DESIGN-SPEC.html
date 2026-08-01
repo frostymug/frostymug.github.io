@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Door County Multi-Trip — Final Design Spec · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
+      <a aria-current="page" href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
+      <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/index.html">— Multi-Trip Prototypes (v0 explore)</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p1.html">P1 · Trip Header Dropdown — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p2.html">P2 · Trips in Review — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p3.html">P3 · Trips Nav Tab — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p4.html">P4 · Bookshelf Home — Frost Rocks Multi-Trip</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+      <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Door County Multi-Trip Final Design Spec</div>
+      <div class="doc-meta">Last updated: 2026-08-01</div>
+      <h1>Door County Multi-Trip — Final Design Spec</h1>
+<p><em>Izzy (Design) | 2026-08-01 | Status: <strong>FINAL DESIGN HANDOFF — ready for Arya feasibility and technical design.</strong> Product decisions approved by Andy, 2026-08-01.</em></p>
+<h2>1. The Door County job</h2>
+<p>Add the smallest trustworthy multi-trip slice for a second field trip. Andy must be able to capture Door County encounters without disturbing Finland, review either trip deliberately, see one continuous notebook history, use the correct offline field map, and export either the current trip or everything.</p>
+<p>This is deliberately narrower than the durable <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>. It does <strong>not</strong> build trip creation/end flows, Places, upcoming trips, capture without a trip, MapLibre, or the full temporal-lenses Review IA. Those remain later work.</p>
+<h2>2. Product decisions (locked)</h2>
+<table><thead><tr><th>Decision</th><th>Door County behavior</th></tr></thead><tbody><tr><td>Current trip</td><td><strong>Door County 2026</strong> is the one current/active trip when this build ships. The transition from Finland happens behind the scenes; there is no current-trip control in this release.</td></tr><tr><td>Prior trip</td><td>Finland remains intact and is labelled <strong>previous</strong>.</td></tr><tr><td>Where trip browsing happens</td><td><strong>Review only.</strong> Notebook, capture, and map never provide a trip switcher.</td></tr><tr><td>Review switcher</td><td>A P1-style dropdown shelf in the Review header scopes the review session to Door County or a previous trip. It changes only the review scope; it never changes the current trip or capture destination.</td></tr><tr><td>Notebook</td><td>One reverse-chronological timeline across all trips, with clear trip dividers.</td></tr><tr><td>Map</td><td>Map and compact notebook map are scoped to current Door County only. Finland retains its existing static map for later review/history compatibility.</td></tr><tr><td>Export</td><td>Two explicit choices: <strong>Export current trip</strong> and <strong>Export all trips</strong>.</td></tr><tr><td>Trip lifecycle UI</td><td>Deferred until after Door County, when Trips &amp; Places will own end-trip and create-trip flows.</td></tr></tbody></table>
+<h2>3. Experience contract</h2>
+<h3>3.1 Capture remains boringly safe</h3>
+<p>At capture time, Door County is visibly named in the notebook header and every new encounter writes to Door County. There is no choice to make, no remembered selection, and no way a Review visit can redirect the shutter to Finland.</p>
+<p>The app may seed and select Door County during migration/setup, but that is implementation plumbing, not a user flow. Future lifecycle controls belong in Trips &amp; Places.</p>
+<h3>3.2 Notebook is the shared field record</h3>
+<p>The Notebook is a single continuous reverse-chronological scroll across all encounters.</p>
+<ul><li>Door County encounters appear first while the trip is current.</li><li>Encounters from Finland appear below, separated by a labelled trip rule (for example, <code>FINLAND 2026 · previous</code>).</li><li>Existing within-day/event grouping remains intact inside each trip section.</li><li>Theme filtering operates across the whole timeline; empty/filter states must say whether no encounters exist at all or none match the chosen filter.</li><li>The notebook header identifies <strong>Door County 2026</strong> as current but is not tappable as a trip chooser.</li></ul>
+<p>This is a historical reading surface, not a mechanism for changing the active capture context.</p>
+<h3>3.3 Review is the deliberate time-travel surface</h3>
+<p>The Review entry point opens with Door County selected. Its top header contains a tappable trip title and state label. Tapping it opens a quiet dropdown shelf with:</p>
+<ul><li>current trip: <code>Door County 2026 · active</code>;</li><li>prior trip(s): initially <code>Finland 2026 · previous</code>;</li><li>encounter/review-queue count where inexpensive to provide;</li><li>a checkmark on the selected review scope.</li></ul>
+<p>Choosing a shelf row reloads the review queue for that trip. It is a view/filter selection only:</p>
+<ul><li>it must not call the current-trip setter;</li><li>capture, map, notebook header, and Export Current Trip remain Door County;</li><li>direct links from a map pin or timeline encounter continue to open that encounter, regardless of the shelf’s prior selection.</li></ul>
+<p>The existing review reveal sequence and scheduling behavior do not change. The only change is which trip supplies a nav-initiated review queue.</p>
+<h3>3.4 Maps are a per-trip offline floor</h3>
+<p>The current trip’s map is Door County. Its static offline image and projection cover <strong>Green Bay to the southwest and Washington Island / Rock Island to the northeast</strong>. Pins outside that descriptor’s bounds remain unpinned, as today.</p>
+<p>The map component must become descriptor-driven: image, dimensions, geographic bounds, label, and compact-card copy are inputs rather than Finland constants. The established Finland descriptor stays available for its trip; no global/world map is being implied.</p>
+<p>The Door County image and calibrated bounds are a required design asset, supplied separately by Izzy. Until that asset is added, an honest no-map state is preferable to rendering Finland for Door County.</p>
+<h3>3.5 Exports make scope explicit</h3>
+<p>The Export screen presents two actions before building:</p>
+<ul><li><strong>Export current trip</strong> — Door County only; preserves the existing single-trip bundle format and is the field/WoZ handoff path.</li><li><strong>Export all trips</strong> — all trip records, encounters, questions, photos, and relevant event data in one self-contained bundle.</li></ul>
+<p>Neither action silently changes the other’s scope. The result summary and bundle metadata must name the selected scope and included trip(s). Arya should choose the cleanest compatible all-trips manifest/journal representation; it must preserve each encounter’s trip identity and remain portable.</p>
+<h2>4. Required structural seams</h2>
+<p>The current repository is single-trip at <code>origin/main</code> (<code>7f6c449</code>): <code>getOrCreateDefaultTrip()</code> is used by app initialization, notebook, map, capture, review, and export; the map is Finland-specific; the database has a <code>trips</code> table but no current-trip state.</p>
+<p>The implementation must introduce the following seams before adding the UI:</p>
+<ul><li><strong>Current-trip accessor.</strong> A single persisted accessor returns the current trip. All capture, map, notebook-current-context, and current-trip export paths use it. <code>getOrCreateDefaultTrip()</code> may remain only as first-run Finland seeding/migration compatibility, not as an application-wide resolver.</li><li><strong>Trip state.</strong> Persist at least <code>active</code> and <code>previous</code> now, using the durable vocabulary <code>previous | active | upcoming</code>; <code>upcoming</code> has no Door County UI or behavior. Backfill Finland as previous and seed/make Door County 2026 active/current.</li><li><strong>Review scope.</strong> Review owns a local selected-trip scope. It is distinct from current trip and resets to current Door County on a fresh nav-initiated Review visit.</li><li><strong>All-trip timeline query.</strong> Add a query/read model that returns encounters across trips in reverse chronology while retaining trip metadata for dividers. Do not fake this by merging client lists without a stable ordering rule.</li><li><strong>Map descriptor.</strong> Replace <code>FinlandMap</code>/Finland-only projection constants with a generic field-map descriptor interface. The current trip resolves its descriptor through one registry/seam.</li><li><strong>Export scope.</strong> Keep the existing current-trip builder intact where possible; add an explicit all-trips builder rather than treating “all” as an unlabelled current-trip export.</li></ul>
+<h2>5. Migration and setup requirements</h2>
+<ul><li>Use additive, versioned SQLite migrations.</li><li>Preserve the live Finland trip and every associated encounter, question, photo, keyword, and event reference.</li><li>Add current-trip persistence and trip state in the least risky form Arya recommends; the result must be unambiguous and testable.</li><li>In the same controlled setup, seed <code>Door County 2026</code> and make it current/active; mark Finland previous. The setup must be idempotent so reinstall/re-run behavior does not produce duplicate Door County trips.</li><li>No change to <code>encounters.trip_id NOT NULL</code> in this release. Contexts/Places and unfiled capture are specifically deferred.</li></ul>
+<h2>6. Scope boundaries</h2>
+<h3>In scope</h3>
+<ul><li>Behind-the-scenes Finland → Door County current-trip setup.</li><li>Review-only trip shelf for current and previous trips.</li><li>All-trip Notebook timeline with trip dividers.</li><li>Per-trip static map seam plus Door County field-map asset.</li><li>Current-trip and all-trips exports.</li><li>Tests, migrations, analytics/events needed to make the slice safe to field-use.</li></ul>
+<h3>Out of scope</h3>
+<ul><li>Trips &amp; Places tab, trip creation, ending a trip, renaming, or user-facing current-trip selection.</li><li>Upcoming trip behavior, prep/T1, consolidation/T3, Places, home/unfiled capture.</li><li>MapLibre, online map data, or an all-trips world map.</li><li>A redesign of the review learning sequence.</li></ul>
+<h2>7. Acceptance criteria</h2>
+<ul><li><strong>DC-MT-01 — capture safety:</strong> Every newly captured Door County encounter has the Door County trip id. Visiting Finland in Review cannot alter this.</li><li><strong>DC-MT-02 — review scope:</strong> Review can switch between Door County and Finland from its header shelf; the selected queue and its empty state match that trip.</li><li><strong>DC-MT-03 — timeline history:</strong> Notebook shows a single reverse-chronological history across Door County and Finland, with legible trip boundaries.</li><li><strong>DC-MT-04 — map scope:</strong> Door County map is shown for current field use, covers the stated geography, and Finland’s static map still renders from its own descriptor.</li><li><strong>DC-MT-05 — export clarity:</strong> Export Current Trip includes only Door County; Export All Trips includes both trip records with their associations and makes the scope clear in UI and output.</li><li><strong>DC-MT-06 — migration safety:</strong> Existing Finland data survives upgrade unchanged and Door County setup is idempotent.</li><li><strong>DC-MT-07 — field regression:</strong> camera-first capture, note enrichment/editing, questions, keywords, photo portability, and the existing export path remain functional offline.</li></ul>
+<h2>8. Arya feasibility brief</h2>
+<p>Arya should recommend the minimal technical shape for current-trip persistence, state migration, cross-trip queries, descriptor registry, and all-trips export schema. The architectural choices are open; the experience contract above is not.</p>
+<p>Flag any migration, TestFlight-data, offline-asset, or export-compatibility risk before Jesse begins implementation. PRs should be sequenced so data/setup and capture safety land before review/timeline/map/export UI, with regression coverage at each seam.</p>
+<h2>9. Provenance and supersession</h2>
+<p>This replaces the Door County decisions in <code>MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.md</code>, whose Trips-tab and notebook-header-switcher portions are superseded. The durable target model remains the source for later Trips &amp; Places, Places, and no-active-context work.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
