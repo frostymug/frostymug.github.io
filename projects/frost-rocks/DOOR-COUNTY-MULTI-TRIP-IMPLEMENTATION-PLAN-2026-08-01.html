@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Door County Multi-Trip — Implementation Plan · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/WORK.html">Work Index</a>
+      <a href="/projects/frost-fitness/decisions/FF-ADR-001-range-based-nutrition-estimates.html">FF-ADR-001 Range-Based Nutrition Estimates</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/PRD-Frost-Fitness-V3-App-Store-Submission.html">V3 App Store Submission PRD</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/WORK.html">Work Index</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-001-local-first-field-record.html">FR-ADR-001 Local-First Field Record</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-002-multi-trip-without-capture-switching.html">FR-ADR-002 Multi-Trip Without Capture Switching</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
+      <a href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
+      <a aria-current="page" href="/projects/frost-rocks/DOOR-COUNTY-MULTI-TRIP-IMPLEMENTATION-PLAN-2026-08-01.html">Door County Multi-Trip Implementation Plan</a>
+      <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
+      <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/index.html">— Door County multi-trip v1</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/review.html">Door County multi-trip v1 — review notes</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/index.html">— Multi-Trip Prototypes (v0 explore)</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p1.html">P1 · Trip Header Dropdown — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p2.html">P2 · Trips in Review — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p3.html">P3 · Trips Nav Tab — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p4.html">P4 · Bookshelf Home — Frost Rocks Multi-Trip</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+      <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Door County Multi-Trip Implementation Plan</div>
+      <div class="doc-meta">Last updated: 2026-08-01</div>
+      <h1>Door County Multi-Trip — Implementation Plan</h1>
+<p><em>Arya (Architecture) | 2026-08-01 | Status: <strong>READY FOR JESSE</strong> — Andy-approved product decisions locked; technical decisions below are mine unless flagged 🚪🧱. Source design spec: <code>tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.md</code> (Izzy, 2026-08-01, FINAL). Repo baseline verified: <code>aspen-frost/frost-rocks</code> <code>main@7f6c449</code>, migrations at v6.</em></p>
+<h2>How to read this doc</h2>
+<p><strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>Jesse: build in PR order (§6). Each PR ships with the acceptance evidence listed under it — that's gate #1 of my review. Diff must match the PR body (gate #2). Don't skip the migration snapshot test in PR-DC1; that's the one that protects Andy's live Finland data.</p>
+<p>---</p>
+<h2>1. TL;DR</h2>
+<p>Turn Frost Rocks from a single-hard-coded-trip app into a <strong>two-trip</strong> app for Door County, per Izzy's FINAL 2026-08-01 spec. Behind-the-scenes migration seeds <code>Door County 2026</code> as current/active and marks the existing <code>Finland 2026</code> row <code>previous</code>. Notebook shows one continuous cross-trip timeline with a labelled divider. Review gets a dropdown shelf that changes review scope only — never capture. Map is scoped to current trip and driven by a per-trip descriptor (Door County asset bundled). Export UI offers two labelled scopes; the current-trip bundle stays byte-identical to today's format (WoZ pilots consume it). No Trips management tab. No Places. No MapLibre. Six sequenced PRs (DC1–DC6), each independently mergeable, each with acceptance evidence at the changed seam.</p>
+<p>---</p>
+<h2>2. Baseline verification (evidence I did the honest read)</h2>
+<p>Repo state at plan time (<code>main@7f6c449</code>, <code>2026-07-26T11:01Z</code>, matches Izzy's stated baseline):</p>
+<ul><li><strong><code>src/db/trips.ts</code></strong> — only two functions: <code>getOrCreateDefaultTrip()</code> (reads first trip, seeds <code>Finland 2026</code> if empty) and <code>renameTrip()</code>. No current-pointer, no state, no listing.</li><li><strong><code>src/db/schema.ts</code></strong> — migrations v1–v6. <code>trips(id, title, start_date, end_date, created_at)</code>. <code>encounters.trip_id NOT NULL REFERENCES trips(id)</code>, index <code>idx_encounters_trip(trip_id, captured_at DESC)</code>. Events table (v3+) has no type CHECK — open enum, safe to extend from TS.</li><li><strong><code>getOrCreateDefaultTrip()</code> call sites:</strong> <code>app/_layout.tsx</code>, <code>app/index.tsx</code>, <code>app/map.tsx</code>. Also referenced inside <code>src/db/trips.ts</code> itself. Every one of these swaps in PR-DC1.</li><li><strong><code>src/components/FinlandMap.tsx</code> + <code>src/utils/mapProjection.ts</code></strong> — the one place hard-wired to Finland (constants <code>FINLAND_MAP_WIDTH/HEIGHT</code> + bounds). Existing test <code>finlandMapZoom.test.tsx</code> protects behavior; keep it green in PR-DC2.</li><li><strong><code>src/db/export.ts</code> + <code>src/services/exporter.ts</code></strong> — export bundle at <code>EXPORT_VERSION = 3</code>, format tag <code>frost-rocks-export</code>. <strong>This is what WoZ pilots consume — do not touch its output for the current-trip scope.</strong></li><li><strong><code>src/utils/timeline.ts</code></strong> — <code>groupByEventWithinDay()</code> groups a flat encounter list; assumes input is already DESC-sorted. Ready to receive a cross-trip list; PR-DC4 adds a query, not a rework.</li><li><strong>Door County map asset delivered:</strong> <code>assets/map/door-county-map.png</code> (1024×1096), calibrated corners NW=(45.50, -88.22) → SE=(44.40, -86.78). PR-DC2 bundles this + registers the descriptor.</li></ul>
+<p>Nothing has shifted underneath Izzy's spec.</p>
+<p>---</p>
+<h2>3. Technical decisions</h2>
+<h3>3.1 Current-trip persistence — <code>app_state</code> single-row settings table (🚪🧱)</h3>
+<p><strong>Options considered:</strong></p>
+<ul><li>(a) <code>is_current</code> boolean column on <code>trips</code>.</li><li>(b) <code>app_state(key, value)</code> table with a <code>current_trip_id</code> row.</li><li>(c) Derive from state + dates.</li></ul>
+<p><strong>Rejected (c):</strong> brittle. The target model (§5) explicitly warns against a hard single-&quot;active&quot;-pointer assumption because near a trip boundary you're simultaneously T3-of-previous and T1-of-upcoming. Deriving &quot;current&quot; from state means those two roles can't coexist.</p>
+<p><strong>Rejected (a):</strong> puts &quot;which trip is current&quot; onto the trips table as an attribute of a trip. That's exactly the coupling the target model (§2) tells us to avoid — when we generalize <code>trip_id</code> → <code>context_id</code> (trip | place | unfiled), we'd have to migrate <code>is_current</code> off <code>trips</code> and onto whatever <code>contexts</code> becomes.</p>
+<p><strong>Picked (b): <code>app_state(key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)</code>.</strong> Key <code>current_trip_id</code>. Reasoning:</p>
+<ul><li>Cleanly separates &quot;which trip is the current capture context&quot; (an app-level pointer) from &quot;trip metadata + lifecycle state&quot; (properties of the trip row).</li><li>When the trip→context generalization lands later, the pointer becomes <code>current_context_id</code> (+ optional <code>current_context_kind</code>) without a trips-table migration.</li><li>Doubles as a home for other transient app-level state we'll want (last review scope, &quot;seen this notice&quot;, door_county_seeded idempotency marker) without more schema churn.</li></ul>
+<p><strong>Why 🚪🧱:</strong> picking (a) is easy to un-pick (you can migrate off it), but picking it <em>shapes</em> everything Jesse writes after: every &quot;which trip?&quot; question gets answered by asking a trip row instead of asking the app. That's a subtle direction to reverse. This is the target-model-preserving choice.</p>
+<h3>3.2 Trip state — explicit <code>state</code> column, invariant enforced in code (🚪➡️🚪)</h3>
+<p>Add <code>trips.state TEXT NOT NULL DEFAULT 'active' CHECK (state IN ('previous', 'active', 'upcoming'))</code>. Matches target model §5 vocabulary. <code>upcoming</code> is inert in this release (no UI, no behavior) — the column exists so the vocabulary is durable and PR-DC5 for Trips &amp; Places later is additive.</p>
+<p><strong>Do not</strong> enforce &quot;exactly one <code>active</code> at a time&quot; in schema (partial unique index). The target model's in-between case (T3-of-previous + T1-of-upcoming both running near a boundary) rejects the hard-single-active constraint. Enforce transactionally in <code>setCurrentTrip()</code>: when we point at a new current trip, the previous current flips to <code>previous</code>. That's a code invariant Door County needs; the target model can relax it later.</p>
+<p>Two-way door: if I'm wrong, we add the partial unique index later.</p>
+<h3>3.3 Migration ladder — v7 (schema) + v8 (data seed), both additive (🚪🧱)</h3>
+<p>Ship <strong>as separate migrations</strong>, in order. Splitting keeps each one's failure mode legible.</p>
+<p><strong>v7 (schema-only, additive):</strong></p>
+<pre><code class="language-sql">ALTER TABLE trips ADD COLUMN state TEXT NOT NULL DEFAULT 'active'
+  CHECK (state IN ('previous', 'active', 'upcoming'));
+
+ALTER TABLE trips ADD COLUMN map_descriptor_key TEXT;
+
+CREATE TABLE app_state (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);</code></pre>
+<p>No data touched. Reversible in the trivial sense (dropping the column + table would restore v6), and every existing trip picks up the default <code>state='active'</code>, which we correct in v8.</p>
+<p><strong>v8 (data seed, idempotent):</strong> run as a versioned migration (not app-startup code), so it runs exactly once per install per version:</p>
+<ul><li><strong>Idempotency guard.</strong> If <code>app_state.door_county_seeded = '1'</code>, return early. (Belt + suspenders — versioned migrations already guarantee once-only, but this survives a wonky re-run.)</li><li><strong>Seed Door County.</strong> <code>INSERT INTO trips (id, title, start_date, end_date, created_at, state, map_descriptor_key) VALUES (&lt;uid&gt;, 'Door County 2026', NULL, NULL, &lt;nowIso&gt;, 'active', 'door-county-2026');</code></li><li><strong>Demote everything else.</strong> <code>UPDATE trips SET state = 'previous' WHERE id != &lt;door_county_id&gt;;</code> — this handles Andy's Finland row, a fresh install (no-op), and defensively also handles a renamed Finland (title-based lookup would miss). Do <strong>not</strong> hardcode Finland by title.</li><li><strong>Backfill Finland's map descriptor key.</strong> <code>UPDATE trips SET map_descriptor_key = 'finland-2026' WHERE title = 'Finland 2026' AND map_descriptor_key IS NULL;</code> — title-based here is acceptable because it's a best-effort recovery of the field-map hookup, not a correctness invariant. Miss → Finland map falls back to the honest empty state per spec §3.4. That's fine.</li><li><strong>Set the current pointer.</strong> <code>INSERT INTO app_state (key, value, updated_at) VALUES ('current_trip_id', &lt;door_county_id&gt;, &lt;nowIso&gt;);</code></li><li><strong>Mark seeded.</strong> <code>INSERT INTO app_state (key, value, updated_at) VALUES ('door_county_seeded', '1', &lt;nowIso&gt;);</code></li></ul>
+<p><strong>Trip start/end dates left NULL</strong> for Door County (Andy confirmed silent transition; there's no UI to set them). If Andy wants dates displayed later, add via <code>renameTrip</code>-style helper — nothing in this release renders them.</p>
+<p><strong>Why 🚪🧱:</strong> migration version numbers are permanent. Getting v7/v8 wrong on TestFlight leaves Andy with a dead or duplicate-tripped install. This is the one place in the plan where the honest answer is &quot;test it against a real DB snapshot before merge.&quot;</p>
+<h3>3.4 Map descriptor seam — code registry + <code>trips.map_descriptor_key</code> pointer (🚪➡️🚪)</h3>
+<p><strong>Data:</strong> <code>trips.map_descriptor_key TEXT</code> (nullable). NULL → no map. Migration v8 sets <code>finland-2026</code> and <code>door-county-2026</code>. <strong>Code:</strong> <code>src/config/mapDescriptors.ts</code>:</p>
+<pre><code class="language-ts">export interface FieldMapDescriptor {
+  key: string;                       // registry lookup key
+  label: string;                     // human label (e.g., &quot;Door County 2026&quot;)
+  compactCopy: string;               // notebook compact-map caption
+  image: ImageSourcePropType;        // bundled asset
+  imageWidth: number;                // logical pixel dims
+  imageHeight: number;
+  boundsNW: { lat: number; lng: number };
+  boundsSE: { lat: number; lng: number };
+}
+
+export const MAP_DESCRIPTORS: Record&lt;string, FieldMapDescriptor&gt; = {
+  'finland-2026': { /* extracted from current FinlandMap + mapProjection constants */ },
+  'door-county-2026': {
+    key: 'door-county-2026',
+    label: 'Door County 2026',
+    compactCopy: 'DOOR COUNTY FIELD MAP',
+    image: require('@/assets/map/door-county-map.png'),
+    imageWidth: 1024,
+    imageHeight: 1096,
+    boundsNW: { lat: 45.50, lng: -88.22 },
+    boundsSE: { lat: 44.40, lng: -86.78 },
+  },
+};
+
+export function resolveDescriptor(key: string | null): FieldMapDescriptor | null {
+  if (!key) return null;
+  return MAP_DESCRIPTORS[key] ?? null;
+}</code></pre>
+<p>Rename <code>FinlandMap</code> → <code>FieldMap(props: { descriptor: FieldMapDescriptor, pins: Pin[] })</code>. <code>mapProjection</code> becomes <code>projectLatLng(coord, descriptor.imageWidth, descriptor.imageHeight, descriptor.boundsNW, descriptor.boundsSE)</code> — bounds as inputs, not constants. Existing Finland behavior renders byte-identical because it's the same numbers, just plumbed through a descriptor.</p>
+<p><strong>Why 🚪➡️🚪:</strong> the descriptor shape is invented here and can evolve freely — the &quot;seam&quot; the target model wants preserved is just &quot;one place resolves current trip → map.&quot; That seam is <code>resolveDescriptor(currentTrip.map_descriptor_key)</code>, called from <code>app/map.tsx</code>. MapLibre later swaps the descriptor kind (&quot;static image&quot; → &quot;tile source&quot;) without touching callers. If I got the field shape wrong, we edit the interface — not the world.</p>
+<h3>3.5 All-trips timeline query — new dedicated read (🚪➡️🚪)</h3>
+<p>Add <code>listAllEncountersAcrossTrips(): Promise&lt;EncounterWithMeta[]&gt;</code> in <code>src/db/encounters.ts</code>. Reverse-chronological by <code>captured_at DESC</code> across the whole <code>encounters</code> table, joined to <code>trips</code> for the divider metadata. Do <strong>not</strong> client-merge two <code>listEncounters(tripId)</code> results — that violates spec §4 (&quot;Do not fake this by merging client lists without a stable ordering rule.&quot;).</p>
+<p>Notebook (<code>app/index.tsx</code>) uses <code>listAllEncountersAcrossTrips()</code> and passes the flat list to <code>groupByEventWithinDay()</code> — but with one wrapper step: before day-grouping, split the list at trip boundaries so each contiguous trip segment groups independently and gets its divider header. Suggested helper <code>groupByTripThenDayThenEvent(encounters, trips)</code> in <code>src/utils/timeline.ts</code>. Preserves the existing within-day event grouping; adds trip-level segmentation on top.</p>
+<p><strong>Filter interaction:</strong> theme filter applies to the flat list <em>before</em> trip segmentation. Empty states distinguish:</p>
+<ul><li>No encounters at all → &quot;No encounters yet.&quot;</li><li>No encounters match filter (any trip) → &quot;No encounters match this theme.&quot; Filter chip visible.</li></ul>
+<h3>3.6 Export scope — new all-trips builder; current-trip bundle unchanged (🚪🧱)</h3>
+<p>Andy confirmed: <strong>current-trip export byte-identical.</strong> WoZ pilots consume <code>frost-rocks-export</code> schema v3; that contract is frozen.</p>
+<p><strong>Current-trip export (unchanged):</strong></p>
+<ul><li>Entry point: <code>buildExportBundle(trip: Trip)</code> — no signature change.</li><li>Called with <code>getCurrentTrip()</code> result (Door County).</li><li>Format tag <code>frost-rocks-export</code>, schema v3.</li><li>Bundle name <code>frost-rocks-export-&lt;timestamp&gt;.zip</code>.</li></ul>
+<p><strong>All-trips export (new):</strong></p>
+<p>``<code>json { &quot;format&quot;: &quot;frost-rocks-export-all&quot;, &quot;export_schema_version&quot;: 1, &quot;generated_at&quot;: &quot;...&quot;, &quot;trips&quot;: [ { &quot;id&quot;: &quot;...&quot;, &quot;title&quot;: &quot;Door County 2026&quot;, &quot;state&quot;: &quot;active&quot;, &quot;start_date&quot;: null, &quot;end_date&quot;: null, &quot;encounters&quot;: [ { &quot;id&quot;: &quot;...&quot;, &quot;photo_count&quot;: 3, &quot;photos&quot;: [...], &quot;question_ids&quot;: [...] } ] }, { &quot;id&quot;: &quot;...&quot;, &quot;title&quot;: &quot;Finland 2026&quot;, &quot;state&quot;: &quot;previous&quot;, ..., &quot;encounters&quot;: [...] } ], &quot;files&quot;: { &quot;encounters&quot;: &quot;encounters.json&quot;, &quot;events&quot;: &quot;events.json&quot;, &quot;journal&quot;: &quot;journal.md&quot; } } </code>``</p>
+<ul><li>New entry point: <code>buildAllTripsExportBundle(trips: Trip[])</code> in <code>src/services/exporter.ts</code>.</li><li>New pure builders in <code>src/db/export.ts</code>: <code>buildAllTripsManifest</code>, <code>buildAllTripsEncountersExport</code>, <code>buildAllTripsJournalMarkdown</code>.</li><li>Format tag <code>frost-rocks-export-all</code>, schema v1.</li><li>Manifest top-level shape:</li><li><code>encounters.json</code> is a flat array; every encounter carries <code>trip_id</code>. No trip-scoped subdirectory for encounters. Photos remain at <code>photos/&lt;encounter_id&gt;/&lt;photo_id&gt;.&lt;ext&gt;</code> (already keyed by encounter, not trip — no collisions).</li><li><code>journal.md</code> uses trip sections at the top level (<code># Door County 2026 (active)</code> / <code># Finland 2026 (previous)</code>), day sections within. Not interleaved.</li><li>Bundle name <code>frost-rocks-export-all-&lt;timestamp&gt;.zip</code>.</li></ul>
+<p><strong>Why 🚪🧱:</strong> once we ship a manifest shape and Andy hands it to anyone (consultant, future WoZ variant, an archival step), we own that format. Getting the top-level structure right now — <code>trips[]</code> with nested encounter pointers, encounters flat, trip identity preserved on every encounter — is worth the ten minutes to think about.</p>
+<h3>3.7 Review scope memory (🚪➡️🚪)</h3>
+<p>Review's trip scope is component-local state in <code>app/review.tsx</code>. <strong>On every nav-initiated entry</strong> (bottom-nav tap, deep link from map/timeline), it resets to <code>getCurrentTrip()</code> — Door County. Do not persist review scope across sessions. Spec §3.3: &quot;resets to current Door County on a fresh nav-initiated Review visit.&quot; Direct links (map pin, encounter row) open that specific encounter regardless of shelf state (that's not a scope selection, it's a target).</p>
+<p>The invariant that matters: <strong>selecting a shelf row calls the review scope setter only, never <code>setCurrentTrip()</code>.</strong> This gets a dedicated test in PR-DC3.</p>
+<p>---</p>
+<h2>4. Feasibility &amp; risk (Izzy's §8 brief)</h2>
+<table><thead><tr><th>Risk</th><th>Severity</th><th>Mitigation</th></tr></thead><tbody><tr><td>Migration corrupts Andy's Finland data</td><td>High</td><td>(a) v7/v8 additive only — no destructive DDL. (b) PR-DC1 ships with a snapshot test: fixture DB dumped from Andy's live TestFlight (or best proxy), migrate to v8, assert every Finland encounter/photo/question/keyword/event still resolves and <code>trip_id</code> is unchanged. (c) Andy performs a &quot;Export current trip&quot; on his TestFlight device <strong>before</strong> installing the build carrying PR-DC1 — belt-and-suspenders, five minutes.</td></tr><tr><td><code>getOrCreateDefaultTrip()</code> leak into new code</td><td>Medium</td><td>PR-DC1 grep-gate: <code>rg getOrCreateDefaultTrip src/ app/</code> returns zero results after PR-DC1 merges (or only the shim definition inside <code>trips.ts</code> scheduled for deletion in PR-DC6). PR review checklist item.</td></tr><tr><td>Migration v8 accidentally re-seeds on reinstall</td><td>Medium</td><td>Idempotency guard is <code>app_state.door_county_seeded='1'</code>, not title match. Reinstall → fresh DB, v8 runs once, seeds once. Belt = versioned migration mechanism itself.</td></tr><tr><td>WoZ export format regression</td><td>High</td><td>PR-DC5 ships a golden-file test: <code>buildExportBundle(fixtureTrip)</code> output diffed field-by-field against a v6-era bundle. Anything but timestamps/uids must be identical.</td></tr><tr><td>Door County pin projection off</td><td>Medium</td><td>Reuse Izzy's calibrated corners from the map asset README verbatim in <code>MAP_DESCRIPTORS</code>. New test <code>doorCountyMapProjection.test.ts</code> with fixture points (Cave Point, Sturgeon Bay, Rock Island) at their known lat/lng → assert pixel coords within tolerance.</td></tr><tr><td>Finland map subtly changed by descriptor refactor</td><td>Medium</td><td>Keep <code>finlandMapZoom.test.tsx</code> green. Add a new render-parity assertion that <code>&lt;FieldMap descriptor={finlandDescriptor}/&gt;</code> produces the same subtree the current <code>FinlandMap</code> produces (props snapshot).</td></tr><tr><td>Fresh install (no Finland) shows a stale label</td><td>Low</td><td>v8 demote-everything-else is a no-op when only Door County exists. <code>listAllEncountersAcrossTrips()</code> returns only Door County encounters. No Finland divider rendered. Correct outcome. Add a test.</td></tr></tbody></table>
+<p>Nothing on this list blocks Jesse from starting PR-DC1 today. The TestFlight snapshot test in PR-DC1 is the highest-friction ask — it's the one I will not budge on at review time.</p>
+<p>---</p>
+<h2>5. Structural seams (crosswalk to spec §4)</h2>
+<table><thead><tr><th>Spec seam</th><th>Implementation</th></tr></thead><tbody><tr><td>Current-trip accessor</td><td><code>getCurrentTrip()</code> in <code>src/db/trips.ts</code> (reads <code>app_state.current_trip_id</code>, joins <code>trips</code>).</td></tr><tr><td>Trip state</td><td><code>trips.state</code> column; <code>setCurrentTrip(tripId)</code> transactionally flips previous current → <code>previous</code> and new target → <code>active</code>.</td></tr><tr><td>Review scope</td><td>Local state in <code>app/review.tsx</code>; setter never touches <code>setCurrentTrip</code>.</td></tr><tr><td>All-trip timeline query</td><td><code>listAllEncountersAcrossTrips()</code> in <code>src/db/encounters.ts</code>; <code>groupByTripThenDayThenEvent()</code> in <code>src/utils/timeline.ts</code>.</td></tr><tr><td>Map descriptor</td><td><code>FieldMapDescriptor</code> interface + <code>MAP_DESCRIPTORS</code> registry + <code>trips.map_descriptor_key</code> column; <code>FieldMap</code> component + <code>projectLatLng()</code> take descriptor/bounds as inputs.</td></tr><tr><td>Export scope</td><td>Existing <code>buildExportBundle(trip)</code> unchanged; new <code>buildAllTripsExportBundle(trips)</code> + new pure builders + new format tag <code>frost-rocks-export-all</code> v1.</td></tr></tbody></table>
+<p>---</p>
+<h2>6. PR sequence</h2>
+<p>Six PRs, in strict order. Each merges independently; each carries a green test suite plus the acceptance evidence listed. The order enforces spec §8: data/setup and capture safety land before Review/timeline/map/export UI.</p>
+<h3>PR-DC1 — Data layer + capture safety (STRUCTURE)</h3>
+<p><strong>Diff:</strong></p>
+<ul><li><code>src/db/schema.ts</code>: add migration v7 (state + map_descriptor_key + app_state table) and v8 (data seed, idempotent per §3.3).</li><li><code>src/db/trips.ts</code>: add <code>getCurrentTrip()</code>, <code>setCurrentTrip(tripId)</code>, <code>listTrips()</code>. Retire the seeding side of <code>getOrCreateDefaultTrip()</code> (either delete or turn into a thin <code>getCurrentTrip()</code> alias with a <code>@deprecated</code> warning; delete preferred).</li><li><code>src/db/appState.ts</code> (new): <code>getAppState(key)</code>, <code>setAppState(key, value)</code> helpers wrapping the table.</li><li>Call-site swaps: <code>app/_layout.tsx</code>, <code>app/index.tsx</code>, <code>app/map.tsx</code>. Every <code>getOrCreateDefaultTrip()</code> → <code>getCurrentTrip()</code>.</li><li>Types: add <code>TripState = 'previous' | 'active' | 'upcoming'</code> to <code>src/types/index.ts</code>; extend <code>Trip</code> interface with <code>state</code> and <code>map_descriptor_key</code>.</li></ul>
+<p><strong>Acceptance evidence (must be in the PR):</strong></p>
+<ul><li><strong>DC-MT-01 (capture safety):</strong> unit test — after v8 runs on a Finland-only fixture, <code>createEncounter({trip_id: (await getCurrentTrip()).id, ...})</code> writes to Door County. Also: no code path in <code>app/capture.tsx</code> reads from anywhere but <code>getCurrentTrip()</code>.</li><li><strong>DC-MT-06 (migration safety):</strong> snapshot test — take a synthetic Finland fixture (18 encounters, mixed photos/questions/keywords/events, matching Andy's live shape as closely as we can), migrate v6 → v8, assert row-for-row equality for encounters/photos/questions/keywords/events, plus <code>trips</code> has exactly 2 rows (Finland <code>previous</code>, Door County <code>active</code>), <code>app_state.current_trip_id</code> points at Door County.</li><li><strong>Idempotency test:</strong> run v8 twice (simulate a wonky re-run against a v8 DB), assert exactly one Door County row still exists and current pointer unchanged.</li><li><strong>Grep gate:</strong> <code>rg getOrCreateDefaultTrip src/ app/</code> returns nothing outside <code>trips.ts</code> (and ideally nothing at all).</li><li><strong>Regression:</strong> full existing test suite green.</li></ul>
+<p><strong>Not in this PR:</strong> no UI changes. Notebook still shows only current-trip encounters (via <code>getCurrentTrip()</code>), which is now Door County. Andy would see &quot;empty Door County notebook&quot; if he installed just this PR. That's fine — PR-DC4 adds the cross-trip timeline.</p>
+<h3>PR-DC2 — Map descriptor seam + Door County asset (STRUCTURE)</h3>
+<p><strong>Diff:</strong></p>
+<ul><li><code>src/config/mapDescriptors.ts</code> (new): <code>FieldMapDescriptor</code> interface + <code>MAP_DESCRIPTORS</code> + <code>resolveDescriptor(key)</code>.</li><li><code>src/components/FieldMap.tsx</code> (renamed from <code>FinlandMap.tsx</code>): takes <code>descriptor</code> prop instead of hard-coded constants.</li><li><code>src/utils/mapProjection.ts</code>: <code>projectLatLng()</code> takes width/height/bounds as parameters.</li><li><code>app/map.tsx</code>: resolves descriptor from <code>(await getCurrentTrip()).map_descriptor_key</code>. If descriptor null → empty state &quot;No offline map for this trip yet.&quot;</li><li><code>assets/map/door-county-map.png</code>: copy the delivered asset into the app bundle. Confirm bundling via <code>app.json</code> / expo asset config.</li><li>Rename <code>finland-map.png</code> bundling untouched.</li></ul>
+<p><strong>Acceptance evidence:</strong></p>
+<ul><li><strong>DC-MT-04 (map scope):</strong> snapshot render — <code>&lt;FieldMap descriptor={finlandDescriptor} pins={fixturePins} /&gt;</code> matches the pre-refactor <code>&lt;FinlandMap pins={fixturePins} /&gt;</code> snapshot. <code>finlandMapZoom.test.tsx</code> still green.</li><li><strong>Door County projection test:</strong> <code>doorCountyMapProjection.test.ts</code> — plug (44.7378, -87.1892) [Cave Point], (44.8358, -87.3773) [Sturgeon Bay], (45.4108, -86.8778) [Rock Island tip] into the projector with Door County descriptor; assert pixel positions within ±2px of known landmarks. Bounds edges + one out-of-bounds coord (e.g., Chicago) → null/hidden.</li><li><strong>Empty-state test:</strong> trip with <code>map_descriptor_key=null</code> renders the no-map component; no crash, no Finland ghost render.</li></ul>
+<h3>PR-DC3 — Review shelf (STRUCTURE + SKIN)</h3>
+<p><strong>Diff:</strong></p>
+<ul><li><code>app/review.tsx</code>: local <code>reviewScopeTripId</code> state, initialized from <code>getCurrentTrip()</code> on mount and on every navigation focus event (React Navigation <code>useFocusEffect</code>).</li><li><code>src/components/ReviewTripShelf.tsx</code> (new): dropdown shelf UI per prototype <code>index.html</code> §DC-MT-PROT-02. Rows list <code>listTrips()</code> newest-first with state chip + encounter count.</li><li>Review queue data source: filter/query by <code>reviewScopeTripId</code>, not by current trip.</li><li>Header: current review scope title tappable → toggles shelf; state chip (<code>active</code> / <code>previous</code>) reflects scope, not current trip.</li><li>Copy per prototype: intro text switches between &quot;this trip's questions while they're still a little alive&quot; and &quot;a previous trip without changing today's capture context.&quot; Foot text: &quot;Changing the shelf changes this review queue only. It never changes where capture saves.&quot;</li></ul>
+<p><strong>Acceptance evidence:</strong></p>
+<ul><li><strong>DC-MT-02 (review scope):</strong> integration-style test — mount Review, switch shelf to Finland, assert queue length matches Finland fixture; the current-trip pointer (<code>getAppState('current_trip_id')</code>) is unchanged; notebook header (rendered separately) still says Door County.</li><li><strong>Capture safety under Finland review:</strong> dedicated test — user is on Review scoped to Finland; call <code>createEncounter({trip_id: (await getCurrentTrip()).id, ...})</code>; assert encounter's <code>trip_id</code> is Door County. This is DC-MT-01 for the scariest path.</li><li><strong>Nav-reset test:</strong> switch shelf to Finland, leave Review (tab switch), come back → scope reset to Door County.</li></ul>
+<h3>PR-DC4 — Cross-trip Notebook timeline (STRUCTURE + SKIN)</h3>
+<p><strong>Diff:</strong></p>
+<ul><li><code>src/db/encounters.ts</code>: <code>listAllEncountersAcrossTrips()</code>.</li><li><code>src/utils/timeline.ts</code>: <code>groupByTripThenDayThenEvent(encounters, trips)</code> — segments by contiguous <code>trip_id</code> runs (list is already DESC by <code>captured_at</code>; two adjacent trips can't interleave because they don't share timestamps meaningfully overlap in this release — Door County is current, Finland is history), then day-groups within each segment.</li><li><code>app/index.tsx</code>: switch data source to <code>listAllEncountersAcrossTrips()</code>. Render trip divider components between segments (<code>FINLAND 2026 · previous</code> per prototype).</li><li>Notebook header: shows current trip title from <code>getCurrentTrip()</code>, <strong>not tappable</strong>. Sub-line updates to reflect current-trip context.</li><li>Theme filter: applies to flat list before segmentation. Empty states per §3.5.</li></ul>
+<p><strong>Acceptance evidence:</strong></p>
+<ul><li><strong>DC-MT-03 (timeline history):</strong> ordering test — fixture: 3 Door County encounters today, 18 Finland encounters last month; assert output has Door County entries first, then a single Finland divider node, then Finland entries in DESC order. Existing within-day event grouping preserved (test one Finland day with multiple events).</li><li><strong>Filter-across-trips test:</strong> filter by <code>theme='glacial'</code>, assert both trip sections filtered independently (or both removed if no matches).</li><li><strong>Empty-state tests:</strong> (a) truly empty DB → &quot;No encounters yet&quot;; (b) all filtered out → &quot;No encounters match this theme.&quot;</li><li><strong>Notebook-header non-tappable test:</strong> header renders trip title, no <code>onPress</code> handler; regression for spec §3.2.</li></ul>
+<h3>PR-DC5 — Export scope UI + all-trips builder</h3>
+<p><strong>Diff:</strong></p>
+<ul><li><code>app/export.tsx</code>: two labelled buttons per prototype §DC-MT-PROT-04. Button 1 → <code>buildExportBundle(await getCurrentTrip())</code> (unchanged). Button 2 → <code>buildAllTripsExportBundle(await listTrips())</code>.</li><li><code>src/db/export.ts</code>: <code>buildAllTripsManifest</code>, <code>buildAllTripsEncountersExport</code>, <code>buildAllTripsJournalMarkdown</code> per §3.6.</li><li><code>src/services/exporter.ts</code>: <code>buildAllTripsExportBundle(trips: Trip[]): Promise&lt;ExportResult&gt;</code>. Iterates trips, aggregates encounters, writes single bundle with the new manifest shape, zips to <code>frost-rocks-export-all-&lt;stamp&gt;.zip</code>.</li><li>Result summary UI names the scope + included trip titles.</li></ul>
+<p><strong>Acceptance evidence:</strong></p>
+<ul><li><strong>Byte-identity of current-trip bundle:</strong> golden-file test — pre-PR fixture bundle for a Finland-shaped trip; post-PR bundle output on the same fixture; diff must be empty modulo <code>generated_at</code> and paths containing timestamps.</li><li><strong>DC-MT-05 (export clarity):</strong> all-trips bundle test — fixture with Door County (3 encounters) + Finland (18 encounters); assert manifest <code>trips[]</code> has both entries with correct <code>state</code>; encounters.json is flat with 21 items, each with correct <code>trip_id</code>; journal.md has two top-level trip sections; photos are all present under <code>photos/&lt;encounter_id&gt;/</code>.</li><li><strong>Missing-photo tolerance:</strong> delete a Finland photo file from the fixture; all-trips export completes; that photo's status is <code>missing</code> in manifest.</li><li><strong>Neither-scope-leaks test:</strong> current-trip bundle contains zero Finland encounters; all-trips bundle names its scope in the result summary text.</li></ul>
+<h3>PR-DC6 — Events + polish</h3>
+<p><strong>Diff:</strong></p>
+<ul><li><code>src/types/index.ts</code> — extend <code>EventType</code>: <code>review_scope_switch</code>, <code>export_all_start</code>, <code>export_all_success</code>, <code>export_all_failure</code>.</li><li>Instrument shelf selection + all-trips export path. Minimal payloads (<code>{trip_id}</code> for scope switch; <code>{trip_count, encounter_count}</code> for exports).</li><li>Copy pass: empty-state strings, notice styling, trip-divider label formatting per prototype.</li><li>Retire <code>getOrCreateDefaultTrip()</code> from <code>src/db/trips.ts</code> if not already gone in PR-DC1.</li><li>Update <code>DESIGN.md</code> / <code>README.md</code> in <code>projects/frost-rocks/</code> with the new capabilities (short paragraph, cross-link this plan and Izzy's spec).</li></ul>
+<p><strong>Acceptance evidence:</strong></p>
+<p>1. Upgrade from a Finland build → notebook shows Door County (empty) with Finland divider below (Finland encounters visible). 2. Capture in Door County → new entry appears above the divider. 3. Review → shelf → switch to Finland → queue length changes; back out and re-enter → scope resets to Door County. 4. Map tab → Door County map, no Finland ghost. 5. Export current → Door County-only bundle. Export all → both-trip bundle. 6. All events logged.</p>
+<ul><li>New events fire under the right conditions (test each).</li><li>Full app manual smoke test on a device build (Jesse's checklist):</li></ul>
+<p>---</p>
+<h2>7. Out of scope (locked, do not creep)</h2>
+<p>Per spec §6 out-of-scope, and my own gates:</p>
+<ul><li>Trips &amp; Places tab, trip creation UI, ending a trip, renaming UI, upcoming-trip UI, current-trip selection UI. (The migration is the only &quot;create Door County&quot; mechanism in this release.)</li><li>Places, home/unfiled capture, <code>encounters.trip_id</code> nullability changes.</li><li>MapLibre, online map data, world map.</li><li>Review learning-sequence changes (D3 stays as-is).</li><li>Reserved 5th nav slot: <strong>unchanged</strong> — no visible &quot;Trips&quot; label per Andy's call. Leave the comment.</li></ul>
+<p>---</p>
+<h2>8. Acceptance criteria crosswalk (spec §7)</h2>
+<table><thead><tr><th>Spec ID</th><th>Where covered</th></tr></thead><tbody><tr><td>DC-MT-01 capture safety</td><td>PR-DC1 + PR-DC3 (Finland-review capture test)</td></tr><tr><td>DC-MT-02 review scope</td><td>PR-DC3</td></tr><tr><td>DC-MT-03 timeline history</td><td>PR-DC4</td></tr><tr><td>DC-MT-04 map scope</td><td>PR-DC2</td></tr><tr><td>DC-MT-05 export clarity</td><td>PR-DC5</td></tr><tr><td>DC-MT-06 migration safety</td><td>PR-DC1 snapshot test</td></tr><tr><td>DC-MT-07 field regression</td><td>PR-DC6 device smoke; regression suite green through every PR</td></tr></tbody></table>
+<p>---</p>
+<h2>9. Open items / handoff notes</h2>
+<p><strong>To Izzy:</strong></p>
+<ul><li>Door County asset is delivered; PR-DC2 bundles it verbatim. No further design input needed unless the projection test reveals a bounds error (unlikely — corners are calibrated in the README).</li><li>Copy on the notebook empty state and the &quot;no offline map for this trip&quot; state is minimal in my plan (working strings). If you want to write final copy, drop it into the design track and Jesse will pick it up in PR-DC6.</li></ul>
+<p><strong>To Cassian (SRE, when hired):</strong></p>
+<ul><li>Asset pipeline: Door County PNG is 108 KB, one-shot bundled. Nothing to build.</li></ul>
+<p><strong>To Podrick (Product / stories):</strong></p>
+<ul><li>This plan slices into six PRs by seam. Stories should follow PR order — DC1 unblocks everything else; DC3/DC4/DC5 are parallel-safe once DC1 + DC2 land.</li></ul>
+<p><strong>To Andy:</strong></p>
+<ul><li>Before Jesse merges PR-DC1: run <strong>Export current trip</strong> on your live TestFlight build and stash the zip somewhere safe. Five minutes; it's the belt to my migration suspenders. Confirm when done and I'll green-light DC1 review.</li><li>Silent migration means the first launch after PR-DC1 lands will just say &quot;Door County 2026&quot; in the notebook header with an empty encounter list until you capture. Working as intended per your call.</li></ul>
+<p>---</p>
+<h2>10. Provenance</h2>
+<p>- Q1 (downstream export consumers) → WoZ pilots only, current-trip bundle format frozen. - Q2 (Finland → Door County transition UX) → silent, no first-launch notice. - Q3 (reserved 5th nav slot) → leave as-is; no visible &quot;Trips&quot; label.</p>
+<ul><li>Design spec: <code>tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.md</code> (Izzy, 2026-08-01, FINAL, product decisions Andy-approved same day).</li><li>Durable target model: <code>tracks/multi-trip/MULTI-TRIP-AND-PLACES-TARGET-MODEL.md</code> (Izzy, 2026-07-26, Andy-approved).</li><li>Superseded reference: <code>tracks/multi-trip/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.md</code> (2026-07-26, decision history).</li><li>Prototype: <code>published-html/door-county-multi-trip-v1/index.html</code> + <code>review.html</code> (2026-08-01).</li><li>Map asset: <code>assets/map/README-DOOR-COUNTY-MAP.md</code> (2026-08-01, calibrated corners).</li><li>Repo baseline: <code>aspen-frost/frost-rocks@7f6c449</code> (main, 2026-07-26T11:01Z).</li><li>Arya clarifications with Andy (this session, 2026-08-01):</li></ul>
+<p><em>&quot;What do we say to the god of premature ceremony? Not today. Ship the two-trip cut, protect the field record, keep the doors we don't need closed.&quot;</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

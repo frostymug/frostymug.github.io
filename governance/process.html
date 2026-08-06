@@ -25,8 +25,11 @@
     <details class="nav-subsection">
       <summary>Frost Fitness</summary>
       <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/WORK.html">Work Index</a>
+      <a href="/projects/frost-fitness/decisions/FF-ADR-001-range-based-nutrition-estimates.html">FF-ADR-001 Range-Based Nutrition Estimates</a>
       <a href="/projects/frost-fitness/status.html">Status</a>
       <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/PRD-Frost-Fitness-V3-App-Store-Submission.html">V3 App Store Submission PRD</a>
       <a href="/projects/frost-fitness/architecture.html">Architecture</a>
       <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
       <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
@@ -39,6 +42,9 @@
     <details class="nav-subsection">
       <summary>Frost Rocks</summary>
       <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/WORK.html">Work Index</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-001-local-first-field-record.html">FR-ADR-001 Local-First Field Record</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-002-multi-trip-without-capture-switching.html">FR-ADR-002 Multi-Trip Without Capture Switching</a>
       <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
       <a href="/projects/frost-rocks/design.html">Design</a>
       <a href="/projects/frost-rocks/design-process.html">Design Process</a>
@@ -46,6 +52,7 @@
       <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
       <a href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
+      <a href="/projects/frost-rocks/DOOR-COUNTY-MULTI-TRIP-IMPLEMENTATION-PLAN-2026-08-01.html">Door County Multi-Trip Implementation Plan</a>
       <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
       <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
@@ -158,7 +165,7 @@
   <main>
     <article>
       <div class="crumb">Corporate Governance &middot; Process</div>
-      <div class="doc-meta">Last updated: 2026-07-04</div>
+      <div class="doc-meta">Last updated: 2026-08-06</div>
       <h1>PROCESS.md — How We Build Software</h1>
 <p>&gt; The canonical flow from idea to production. Read this before designing any agent or workflow. &gt; Update it as the process evolves.</p>
 <p><em>Started 2026-05-23. Updated 2026-06-11 - added project intake/kickoff and stakes-ramp rubric.</em></p>
@@ -263,6 +270,21 @@ Production</code></pre>
     reviews/
     archive/</code></pre>
 <p>Not every project needs every file, but every active project should have <code>README.md</code> and <code>STATUS.md</code>. The status file should say what is approved, what is draft, and what the next gate is.</p>
+<h3>Work Identity, Naming, and Versioning</h3>
+<p>Every material piece of project work gets a stable identity that connects it to the project and, when useful, to a larger initiative. Names may improve; IDs do not change.</p>
+<p>Use this hierarchy:</p>
+<pre><code class="language-text">&lt;PROJECT&gt;-&lt;INITIATIVE&gt;             FR-001       Multi-trip foundation
+&lt;PROJECT&gt;-&lt;INITIATIVE&gt;-W&lt;PACKAGE&gt;  FR-001-W01   Data migration and capture safety
+&lt;PROJECT&gt;-ADR-&lt;DECISION&gt;           FR-ADR-001   Local-first field record</code></pre>
+<ul><li><strong>Project code:</strong> a short registered code, such as <code>FR</code> (Frost Rocks) or <code>FF</code> (Frost Fitness).</li><li><strong>Initiative number:</strong> three digits assigned in creation order. It is identity, not priority; never renumber work when plans change.</li><li><strong>Work package:</strong> a two-digit child of the initiative. Use it for a coherent story, implementation slice, or PR-sized package. Tiny tasks can live in the package checklist without another ID layer.</li><li><strong>Human title:</strong> plain language after the ID: <code>FR-001 — Multi-trip foundation</code>, not an unexplained trip nickname such as <code>DC</code>.</li><li><strong>Aliases:</strong> preserve old labels such as <code>DC1</code> in the work index and PR history, but do not create new work under the obsolete label.</li></ul>
+<p>Each active project keeps <code>WORK.md</code> as its lightweight registry: ID, title, status, owner/next owner, parent, and relevant artifact or PR links. Assign the next number from that file. Never recycle an ID.</p>
+<p>Keep these version systems separate:</p>
+<table><thead><tr><th>Thing</th><th>Convention</th><th>Meaning</th></tr></thead><tbody><tr><td>Work identity</td><td><code>FR-001-W03</code></td><td>Stable forever; does not imply release order</td></tr><tr><td>Document revision</td><td><code>v1</code>, <code>v1.1</code>, <code>v2</code> in document metadata</td><td>Revision of one artifact; approved revisions are superseded, not silently rewritten</td></tr><tr><td>App release</td><td>Semantic version + build, e.g. <code>1.2.0 (42)</code></td><td>Installable product version</td></tr><tr><td>Database/export schema</td><td>Monotonic integer</td><td>Compatibility contract, not a product release</td></tr></tbody></table>
+<p>Dates may remain in filenames for logs, reviews, and snapshots. Canonical living documents keep stable filenames and put their revision/status in the document. Do not use <code>final-final</code>, destination initials, or a trip nickname as the only identity.</p>
+<h3>Decision Records</h3>
+<p>Create a decision record only for a consequential one-way-door decision: one that is costly, risky, or confusing to reverse, or whose rationale future agents are likely to lose. Reversible two-way-door choices get a dated one-line note in <code>STATUS.md</code> or <code>WORK.md</code> instead.</p>
+<p>Decision records live under <code>projects/&lt;project&gt;/decisions/</code> and use <code>&lt;PROJECT&gt;-ADR-NNN-short-title.md</code>. They are append-only after acceptance. If the decision changes, create a new ADR that explicitly supersedes the old one; do not rewrite history.</p>
+<p>Each ADR contains: status, date, deciders, context, decision, consequences, evidence/links, and any superseding relationship. Backfill only decisions that still constrain current work.</p>
 <p>---</p>
 <h2>Open Questions</h2>
 <ul><li>[x] Artifact storage — shared repo vs. per-agent workspace. Decision: canonical shared project folder under <code>/home/ubuntu/.openclaw/workspace/projects/</code>; agent workspaces remain draft/scratch areas.</li><li>[ ] Agent-to-agent communication — direct runtime messaging is still held for a later trust-ramp phase; shared project files are the system of record for handoffs.</li><li>[x] SRE agent design — Cassian is the standalone Reliability Engineer / SRE.</li><li>[x] Jesse's final name and model assignment — Jesse is the Engineer on Sonnet 4.6</li><li>[ ] Podrick's exact story format and tooling</li></ul>
