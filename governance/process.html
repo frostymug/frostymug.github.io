@@ -165,7 +165,7 @@
   <main>
     <article>
       <div class="crumb">Corporate Governance &middot; Process</div>
-      <div class="doc-meta">Last updated: 2026-08-06</div>
+      <div class="doc-meta">Last updated: 2026-08-20</div>
       <h1>PROCESS.md — How We Build Software</h1>
 <p>&gt; The canonical flow from idea to production. Read this before designing any agent or workflow. &gt; Update it as the process evolves.</p>
 <p><em>Started 2026-05-23. Updated 2026-06-11 - added project intake/kickoff and stakes-ramp rubric.</em></p>
@@ -248,6 +248,10 @@ Production</code></pre>
 <p>Use the lowest fidelity that can answer the question. Use Markdown for unsettled flows, HTML for visual/interaction review, and native Expo/TestFlight only when the question depends on device APIs such as camera, location permissions, offline storage, gestures, or push notifications.</p>
 <p>For fuzzy, high-stakes, or open-ended delegated work, add a lightweight <strong>appetite</strong> and <strong>stopping rule</strong> to the handoff. This is most useful for research loops, strategy loops, architecture investigations, competitive scans, safety reviews, and agent-development routines. Do not make it ceremony for tiny deterministic tasks.</p>
 <ul><li><strong>Appetite:</strong> how much effort/time/depth belongs in this pass.</li><li><strong>Stopping rule:</strong> what makes the loop complete enough to hand back, or what condition should stop the work early.</li></ul>
+<h3>Handoff Packet</h3>
+<p>Before a cross-agent phase transition, the outgoing owner attaches a short handoff to the artifact or status update:</p>
+<ul><li>Artifact link or shared path.</li><li>Next owner and requested action.</li><li>Acceptance or decision question.</li><li>Known risks or open questions.</li><li>Requested next state in <code>PIPELINE.md</code>.</li></ul>
+<p>Aspen updates <code>PIPELINE.md</code> after this packet exists; a finished draft alone does not advance a project.</p>
 <h3>&quot;Share This With Another Agent&quot; Protocol</h3>
 <p>When Andy says to share a document, artifact, PRD, brief, plan, review, or similar work product with another agent, that means make it available through the shared project record, not just save it in the producing agent's personal workspace.</p>
 <p>The producing agent should:</p>
