@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — Full Multi-Trip + Real Maps Implementation Plan · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/WORK.html">Work Index</a>
+      <a href="/projects/frost-fitness/decisions/FF-ADR-001-range-based-nutrition-estimates.html">FF-ADR-001 Range-Based Nutrition Estimates</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/PRD-Frost-Fitness-V3-App-Store-Submission.html">V3 App Store Submission PRD</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/WORK.html">Work Index</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-001-local-first-field-record.html">FR-ADR-001 Local-First Field Record</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-002-multi-trip-without-capture-switching.html">FR-ADR-002 Multi-Trip Without Capture Switching</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
+      <a href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
+      <a href="/projects/frost-rocks/DOOR-COUNTY-MULTI-TRIP-IMPLEMENTATION-PLAN-2026-08-01.html">Door County Multi-Trip Implementation Plan</a>
+      <a aria-current="page" href="/projects/frost-rocks/FULL-MULTI-TRIP-REAL-MAPS-IMPLEMENTATION-PLAN-2026-08-13.html">Full Multi-Trip + Real Maps Implementation Plan</a>
+      <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
+      <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/index.html">— Door County multi-trip v1</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/review.html">Door County multi-trip v1 — review notes</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/index.html">— Multi-Trip Prototypes (v0 explore)</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p1.html">P1 · Trip Header Dropdown — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p2.html">P2 · Trips in Review — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p3.html">P3 · Trips Nav Tab — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p4.html">P4 · Bookshelf Home — Frost Rocks Multi-Trip</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+      <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Full Multi-Trip + Real Maps Implementation Plan</div>
+      <div class="doc-meta">Last updated: 2026-08-25</div>
+      <h1>Frost Rocks — Full Multi-Trip + Real Maps Implementation Plan</h1>
+<p><em>Arya (Architecture) | 2026-08-13; provider decision recorded 2026-08-25 | Status: <strong>APPROVED FOR JESSE — begin with PR-FMT1 native-map proof.</strong></em></p>
+<p><strong>Source design:</strong> <code>tracks/multi-trip/MULTI-TRIP-AND-PLACES-TARGET-MODEL.md</code> (Izzy; Andy-approved 2026-07-26) and <code>tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.md</code> (Izzy; FINAL 2026-08-01). This plan extends the merged Door County implementation on <code>aspen-frost/frost-rocks@ecaabf3</code> (PRs #25–26); it does not rebuild it.</p>
+<h2>How to read this doc</h2>
+<p><strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>Jesse: each PR must carry evidence that its changed load-bearing seam ran. “The test suite passed” is not enough for the map download, native build, migration, or capture-context seams. The diff must also match the PR story.</p>
+<p>---</p>
+<h2>1. The cut we are building</h2>
+<h3>In scope</h3>
+<p>- destination search; - a prefilled, adjustable rectangular offline area; - explicit download, progress, retry, and ready state; - encounter pins, including when the device is offline.</p>
+<ul><li>A <strong>Trips</strong> management surface (named and structured so <code>Trips &amp; Places</code> is additive later).</li><li>Create, rename, configure, start, and mark over trips.</li><li><code>previous | active | upcoming</code> trip lifecycle, with one persisted current capture trip.</li><li>A real interactive map for every <strong>newly created</strong> trip:</li><li>The existing multi-trip contract remains intact: capture goes only to the current trip; Review scopes locally and cannot redirect capture; notebook remains a cross-trip history; current/all-trip export stays explicit.</li><li>A migration-safe bridge for existing Finland and Door County static field maps.</li></ul>
+<h3>Explicitly out of scope</h3>
+<ul><li>Places / recurring unbounded contexts.</li><li>Capture with no current context or an unfiled inbox. The target model deliberately parks this with Places; do not quietly invent it here.</li><li>T1 preparation, T3 consolidation, or the full temporal-lenses Review IA.</li><li>Route planning, turn-by-turn navigation, geofences, shared maps, cloud sync, map editing after download, and a world-history map.</li><li>Destructive deletion of trips or field records.</li></ul>
+<h3>Product contract carried forward</h3>
+<ul><li><strong>Capture is present-tense and singular.</strong> The shutter reads <code>app_state.current_trip_id</code>; no Review or map UI changes it.</li><li><strong>Review time-travels.</strong> It may view any prior trip, locally scoped to that review session.</li><li><strong>A trip is not active merely because its map exists.</strong> Creating and downloading an upcoming trip must not move capture away from the trip Andy is currently taking.</li><li><strong>Map preparation happens before activation.</strong> A trip can be started only after its map area is ready. This is the honest version of “real map built as part of trip creation,” rather than a pretty online map that evaporates on the ferry.</li></ul>
+<p>---</p>
+<h2>2. Approved one-way-door decision</h2>
+<h3>Map data + geocoding provider (🚪🧱) — approved by Andy, 2026-08-25</h3>
+<p><strong>Decision:</strong> use MapLibre Native as the renderer and MapTiler Cloud for destination search, style, and downloadable vector tiles. MapTiler's Free plan is enabled for this work.</p>
+<p>Why this pair:</p>
+<ul><li><code>@maplibre/maplibre-react-native@11.3.6</code> declares compatibility with the repository’s Expo 54 / React Native 0.81 / React 19 baseline. It is a renderer, not a map-data vendor, and keeps us out of a renderer-vendor lock-in.</li><li>One provider covers the two creation requirements: destination search and a styled tile source. The app owns the map-region and offline-pack seams, so a later provider change is contained.</li><li>Do <strong>not</strong> download OpenStreetMap’s public raster tiles in bulk. Their public tile service is not an offline-pack backend. That road ends in a 429 and a small amount of shame.</li></ul>
+<p><strong>Implementation handoff:</strong> this approval clears PR-FMT1. Before its first EAS development build, Jesse needs the MapTiler restricted public client token for <code>com.frostrocks.app</code>, supplied through EAS environment configuration—not committed or copied into this document. The Free plan is the current cost ceiling; any paid-plan change is a new Andy decision.</p>
+<p>The provider-account setup must support the planned iOS offline proof under its current terms. If that proof cannot be completed on the Free plan, stop at PR-FMT1 and bring back the measured limitation; do not quietly upgrade or ship an online-only substitute.</p>
+<p>The originally required provider facts are:</p>
+<ul><li>a MapTiler account/project (or explicitly name an equivalent provider);</li><li>the intended paid/free plan and a monthly spend/usage cap;</li><li>permission to use its terms for offline storage on the supported platforms;</li><li>a restricted public client token for <code>com.frostrocks.app</code> (and Android package/signing identity when Android is shipped).</li></ul>
+<p>The token is not a secret in the cryptographic sense—the native client must receive it—but it must be restricted by application identity and injected through EAS environment configuration, never committed. A vendor account, billing terms, and offline redistribution rules are a real commitment; I will not smuggle one into a package install.</p>
+<p><strong>Fallback only if PR-FMT1 proves this selection cannot meet the offline contract:</strong> keep MapLibre and select a provider with (a) forward geocoding, (b) vector/raster tile URLs suitable for offline packs, (c) explicit mobile/offline terms, and (d) token restrictions. The rest of this plan does not change.</p>
+<p>---</p>
+<h2>3. Architecture</h2>
+<h3>3.1 The trip lifecycle and capture pointer</h3>
+<p>The existing Door County implementation already has the right base:</p>
+<ul><li><code>trips.state</code> uses <code>previous | active | upcoming</code>.</li><li><code>app_state.current_trip_id</code> is the only capture pointer.</li><li><code>setCurrentTrip()</code> updates the pointer independently of Review scope.</li></ul>
+<p>Extend it; do not replace it with <code>is_current</code> on <code>trips</code>.</p>
+<p><strong>Lifecycle operations</strong></p>
+<table><thead><tr><th>User action</th><th>Trip state / pointer result</th><th>Capture consequence</th></tr></thead><tbody><tr><td>Create trip</td><td>new row is <code>upcoming</code>; no pointer change</td><td>stays in current trip</td></tr><tr><td>Configure destination and download map</td><td>remains <code>upcoming</code>; map becomes <code>ready</code></td><td>stays in current trip</td></tr><tr><td>Start prepared trip</td><td>old current becomes <code>previous</code>; selected trip becomes <code>active</code>; pointer updates atomically</td><td>subsequent capture goes to new trip</td></tr><tr><td>Mark trip over</td><td>shorthand only when another prepared trip is selected; perform the same atomic handoff</td><td>never leaves capture with no destination</td></tr><tr><td>Rename / edit dates</td><td>metadata change only</td><td>no capture consequence</td></tr></tbody></table>
+<p>There is intentionally no standalone “end current trip and have no destination” control. That is the absent-context product problem, which belongs with Places/unfiled capture. This increment does not pretend it solved it.</p>
+<h3>3.2 Map-region persistence (🚪🧱)</h3>
+<p>Keep <code>trips</code> as a lifecycle record. Put map configuration and offline-pack state in a separate one-to-one table so a future Place can use the same map-region shape without a <code>trip_id → context_id</code> archaeology dig.</p>
+<pre><code class="language-sql">CREATE TABLE trip_map_regions (
+  trip_id TEXT PRIMARY KEY REFERENCES trips(id),
+  destination_label TEXT NOT NULL,
+  center_lat REAL NOT NULL,
+  center_lng REAL NOT NULL,
+  north_lat REAL NOT NULL,
+  south_lat REAL NOT NULL,
+  east_lng REAL NOT NULL,
+  west_lng REAL NOT NULL,
+  min_zoom REAL NOT NULL,
+  max_zoom REAL NOT NULL,
+  style_id TEXT NOT NULL,
+  provider_region_id TEXT,
+  offline_status TEXT NOT NULL
+    CHECK (offline_status IN ('not_requested','downloading','ready','failed','stale')),
+  offline_bytes INTEGER,
+  downloaded_at TEXT,
+  last_error TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  CHECK (north_lat &gt; south_lat),
+  CHECK (east_lng &gt; west_lng),
+  CHECK (min_zoom &lt;= max_zoom)
+);
+CREATE INDEX idx_trip_map_regions_status ON trip_map_regions(offline_status, updated_at);</code></pre>
+<p>Notes:</p>
+<ul><li>A rectangle is the selected offline/download area. It is intentionally not a Place boundary or a trip geofence.</li><li>The native map SDK owns actual tile files/cache paths. SQLite stores only durable intent and verified status, never a provider cache path that can disappear after an OS cleanup.</li><li><code>style_id</code> and zoom range make a pack reproducible. Changing either marks a pack <code>stale</code>; it never silently says “ready.”</li><li>Coordinate validation additionally happens in TypeScript: latitude [-90, 90], longitude [-180, 180], sane maximum area/estimated-size limits, and no antimeridian-crossing region in v1. Trips spanning the antimeridian are a later, explicit map-geometry job.</li></ul>
+<h3>3.3 Map service boundary</h3>
+<p>Create <code>src/services/maps/</code> behind an interface. UI components do not call a vendor SDK directly except through a thin rendered-map adapter.</p>
+<pre><code class="language-ts">export interface MapSearchResult {
+  label: string;
+  center: { lat: number; lng: number };
+  suggestedBounds: Bounds;
+}
+
+export interface OfflineMapService {
+  searchDestination(query: string): Promise&lt;MapSearchResult[]&gt;;
+  estimate(region: MapRegion): Promise&lt;{ bytes: number; display: string }&gt;;
+  download(region: MapRegion, onProgress: (p: DownloadProgress) =&gt; void): Promise&lt;void&gt;;
+  verify(region: MapRegion): Promise&lt;boolean&gt;;
+  remove(region: MapRegion): Promise&lt;void&gt;;
+}</code></pre>
+<ul><li><code>MapTilerSearchClient</code> implements search over HTTPS using the restricted client token.</li><li><code>MapLibreOfflineService</code> implements pack creation, progress, verification, and removal with the pinned native SDK.</li><li><code>MapRegionRepository</code> is the SQLite layer; it translates native download outcomes into the durable <code>offline_status</code> state machine.</li><li>The <code>FieldMap</code> screen takes a trip + region + encounter pins. It knows no provider names, token, or SQL.</li></ul>
+<p>This is deliberate: renderer and map data may evolve independently, and future Places can reuse the region record.</p>
+<h3>3.4 Existing Finland / Door County bridge</h3>
+<p>Do <strong>not</strong> force a giant redownload or change existing field behavior during migration.</p>
+<ul><li>Preserve <code>map_descriptor_key</code> and the static Finland/Door County assets for existing trips.</li><li>Map resolution order is: verified <code>trip_map_regions</code> pack → legacy static descriptor → honest “map not prepared” state.</li><li>The Trips screen offers existing trips an explicit <strong>Set up interactive map</strong> action using the same destination/area/download flow. It does not delete the legacy asset.</li><li>New trips never receive a static descriptor. They require a prepared interactive map before activation.</li></ul>
+<p>This makes the real-map model the forward path without turning an upgrade into a 300 MB surprise at launch.</p>
+<h3>3.5 Native build implications</h3>
+<p>MapLibre is native code. Expo Go is not a test target for this increment.</p>
+<ul><li>Add the library/config plugin and any iOS/Android native configuration required by the pinned release.</li><li>Build a development client and EAS preview build after PR-FMT1; a JavaScript-only OTA update cannot introduce the SDK.</li><li>Keep the existing location permission. Add no background-location permission: maps display captured pins and current foreground location only if it already exists in scope.</li><li>Keep <code>MapTiler</code> token configuration in EAS environment variables exposed as a deliberately named public client setting at build time. Restrict it on the provider side.</li></ul>
+<p>---</p>
+<h2>4. User flows to implement</h2>
+<h3>4.1 Create and prepare a trip</h3>
+<ul><li>Open <strong>Trips</strong> from the reserved fifth navigation slot.</li><li>Tap <strong>Create trip</strong>.</li><li>Enter title (required) and dates (optional).</li><li>Search a destination. Selecting a result sets a suggested center and rectangle.</li><li>Adjust the rectangle with map handles / a visible viewport control. Show the selected area, zoom range, and estimated download size.</li><li>Tap <strong>Download field map</strong>. Persist the trip first as <code>upcoming</code>, then run the resumable download.</li><li>Show progress, cancel, retry, and a plain failure explanation. On verified completion, show <strong>Map ready</strong>.</li><li>Tap <strong>Start this trip</strong> only when ready. Confirm the handoff copy names the outgoing and incoming trips; then make the state/pointer change in one transaction.</li></ul>
+<p>The creation flow defaults to <code>upcoming</code>, even if the departure is tomorrow. “Start” is a separate, clear action because it changes where every shutter press goes.</p>
+<h3>4.2 Manage trips</h3>
+<ul><li>Group rows as <strong>Current</strong>, <strong>Upcoming</strong>, and <strong>Previous</strong>. (<code>Current</code> is a presentation label for the active pointer; persisted vocabulary remains <code>active</code>.)</li><li>Upcoming: edit title/dates/destination, redownload map, start when ready.</li><li>Current: rename/edit dates, inspect map status, create/prepare the next trip. No standalone end action.</li><li>Previous: rename/edit dates, review, export, and optionally set up an interactive map for history.</li><li>No delete control in this increment. The export and historical record are more important than tidying a list.</li></ul>
+<h3>4.3 Map screen</h3>
+<ul><li>Current trip map opens as an interactive MapLibre map with its verified offline pack and the trip’s pins.</li><li>Pin interaction continues to deep-link to the encounter/review flow without changing review or capture scope.</li><li>When online, the map may fetch tiles outside the downloaded area only if the provider allows it; no readiness claim may rely on that.</li><li>When offline, the selected region and pins must render. Panning beyond the offline region shows ordinary unavailable map area, never Finland or an invented base map.</li><li>The compact notebook card displays the prepared map region and pins. It remains current-trip only; cross-trip map is out of scope.</li></ul>
+<p>---</p>
+<h2>5. Migration plan</h2>
+<h3>Migration v9 — map-region table only</h3>
+<p>Add <code>trip_map_regions</code> and its index. Do not alter <code>encounters</code>, <code>questions</code>, photo records, events, <code>trips.state</code>, or <code>app_state.current_trip_id</code>.</p>
+<h3>Existing-data invariants</h3>
+<ul><li>Finland and Door County rows, ids, states, and map descriptors remain unchanged.</li><li>Every encounter/photo/question/keyword/event remains byte-for-byte equivalent except migration bookkeeping.</li><li>Current pointer remains Door County (or the actual persisted current trip on a later device).</li><li>A v8→v9 upgrade with no map preparation works normally through the legacy static descriptor.</li><li>A repeat/recovery of migration v9 is inert (<code>CREATE TABLE IF NOT EXISTS</code> only).</li></ul>
+<h3>Map-status recovery</h3>
+<p>On app start and on entering Trips:</p>
+<ul><li>Read all regions marked <code>downloading</code> or <code>ready</code>.</li><li>Ask the native service whether the pack exists and is complete.</li><li><code>downloading</code> with no live native task becomes <code>failed</code> with recoverable copy, not an eternal spinner.</li><li><code>ready</code> missing its native data becomes <code>stale</code>; offer re-download before activation/use as a real map.</li></ul>
+<p>No automatic background redownload. It could consume a hotel’s Wi-Fi while looking very industrious and being exactly the wrong thing.</p>
+<p>---</p>
+<h2>6. PR sequence</h2>
+<p>The dependency is strict through offline-pack proof. Do not begin broad UI work until the native spike has demonstrated the actual supported SDK path.</p>
+<h3>PR-FMT1 — Native map spike and provider proof (gate)</h3>
+<p><strong>Purpose:</strong> prove the selected provider and <code>@maplibre/maplibre-react-native@11.3.6</code> can render a style, search a destination, download a deliberately small region, survive app restart + airplane mode, and remove the pack on a physical iPhone development build.</p>
+<p><strong>Diff:</strong> isolated <code>MapProofScreen</code> / temporary service, package/config changes, EAS dev-build instructions. Do not wire Trips or mutate production database state.</p>
+<p><strong>Evidence required:</strong></p>
+<ul><li>exact library/provider versions and build commands in the PR body;</li><li>iPhone development-build recording or reproducible output: online render → download → kill/relaunch → airplane mode render;</li><li>progress, completion, and downloaded-size values from the native API;</li><li>a cleanup/remove run; and</li><li><code>npm run typecheck</code>, <code>npm run lint</code>, relevant tests.</li></ul>
+<p><strong>Go/no-go:</strong> if the package cannot supply a reliable native offline API on Expo 54, stop. Do not substitute screenshot tiles, web views, or an online-only map and call it done. Re-evaluate the renderer/provider before proceeding.</p>
+<h3>PR-FMT2 — Durable trip/map persistence and lifecycle service</h3>
+<p><strong>Diff:</strong> migration v9; <code>MapRegion</code> types/repository; validation; lifecycle service (<code>createUpcomingTrip</code>, <code>startPreparedTrip</code>, <code>renameTrip</code>, <code>listTripsByState</code>); map status recovery seam; event types.</p>
+<p><strong>Rules:</strong> <code>startPreparedTrip(tripId)</code> is one SQLite transaction: target must be <code>upcoming</code> with <code>offline_status='ready'</code>, current pointer updates, old current becomes <code>previous</code>, target becomes <code>active</code>.</p>
+<p><strong>Evidence required:</strong></p>
+<ul><li>v8→v9 fixture migration preserving Finland/Door County and every child record row-for-row;</li><li>create/upcoming does not change <code>current_trip_id</code>;</li><li>unready trip cannot start;</li><li>ready trip start atomically changes state + pointer;</li><li>failed/stale recovery cannot start; and</li><li>grep gate: all capture paths still derive their trip only through <code>getCurrentTrip()</code>.</li></ul>
+<h3>PR-FMT3 — Trips management surface (without map download UI)</h3>
+<p><strong>Diff:</strong> fill the reserved fifth nav slot with <code>Trips</code>; grouped list; create title/date draft; rename metadata; current/upcoming/previous cards; start controls rendered disabled until map preparation is present.</p>
+<p><strong>Rules:</strong> Review keeps its existing shelf. Trip management is not smuggled into the notebook header or capture screen.</p>
+<p><strong>Evidence required:</strong></p>
+<ul><li>component/integration test creates a trip and shows it as upcoming while notebook/capture remain Door County;</li><li>current-trip display remains non-tappable on notebook;</li><li>no standalone “end current trip” action;</li><li>route/navigator regression test; and</li><li>accessibility labels for create, destination setup, start, retry.</li></ul>
+<h3>PR-FMT4 — Interactive map renderer and legacy bridge</h3>
+<p><strong>Diff:</strong> production <code>FieldMap</code> MapLibre adapter, source/layer/pin rendering, current-trip map screen and compact card integration, legacy static fallback, provider/token configuration boundary.</p>
+<p><strong>Evidence required:</strong></p>
+<ul><li>physical development build shows current Door County pins on the real map when a test region is prepared;</li><li>Finland/Door County legacy descriptor render tests remain green when no real region exists;</li><li>pin tap still opens the exact encounter and does not call <code>setCurrentTrip()</code>;</li><li>no token is present in git history/diff; configuration is documented; and</li><li>a screenshot/manual check at normal and zoomed scales.</li></ul>
+<h3>PR-FMT5 — Destination search and adjustable area</h3>
+<p><strong>Diff:</strong> trip-creation geography step; debounced search; result selection; editable rectangle; bounds/zoom validation; download-size estimate; persisted region draft.</p>
+<p><strong>Rules:</strong> selecting a search result only sets a suggested rectangle. User-adjusted bounds are the actual download contract.</p>
+<p><strong>Evidence required:</strong></p>
+<ul><li>search-client unit tests with fixture provider responses, cancellation/debounce, empty result, and provider error;</li><li>pure bounds tests: valid, inverted, too-large, too-small, and antimeridian rejection;</li><li>UI integration test: select destination → adjust area → persisted region belongs to the new trip; and</li><li>real device check that handles/viewport work with the existing gesture system.</li></ul>
+<h3>PR-FMT6 — Offline pack provisioning and activation gate</h3>
+<p><strong>Diff:</strong> production offline service, download progress, cancellation/retry, completion verification, state recovery, map-ready UX, <code>Start this trip</code> confirmation/action.</p>
+<p><strong>Evidence required:</strong></p>
+<ul><li>native iPhone test: create → search → adjust → download → force quit → airplane mode map/pins work;</li><li>retry test from an induced download error;</li><li>cancel leaves trip upcoming and current pointer unchanged;</li><li>start is blocked until verified ready, then capture writes only to the new trip;</li><li>an upgrade build retains Finland/Door County data and current/all-trip export contracts; and</li><li>provider-usage/size estimate is shown before download.</li></ul>
+<h3>PR-FMT7 — Cross-surface polish, exports, instrumentation, and field regression</h3>
+<p><strong>Diff:</strong> make real-map status legible across Trips/current map/compact card; events such as <code>trip_create</code>, <code>trip_destination_selected</code>, <code>map_download_start|success|failure|cancel</code>, <code>trip_start</code>; docs; remove spike code.</p>
+<p><strong>Rules:</strong> current-trip <code>frost-rocks-export</code> v3 output remains unchanged. All-trip export remains <code>frost-rocks-export-all</code> v1. A map region may be added only to the all-trip manifest in a backward-compatible optional field after a consumer check; it is not needed for field-record export and may be deferred.</p>
+<p><strong>Evidence required:</strong></p>
+<ul><li>golden test for current-trip v3 export remains byte-identical apart from allowed timestamps/paths;</li><li>all-trip export still preserves trip identity and associations;</li><li>event tests use minimal payloads and contain no raw provider response/token;</li><li>full lint/typecheck/test run; and</li><li>final manual field matrix below.</li></ul>
+<p>---</p>
+<h2>7. Manual field matrix — non-negotiable release gate</h2>
+<p>Run on a physical TestFlight/preview build, not a simulator alone:</p>
+<ul><li>Upgrade a Finland + Door County device database. Verify notebook, review shelf, static-map bridge, capture, and both exports.</li><li>Create a future trip while Door County is current. Verify capture still writes Door County.</li><li>Search destination, adjust an area, inspect estimated size, download over Wi-Fi, and confirm ready status.</li><li>Force quit, disable network, relaunch, open the prepared map, pan/zoom within its selected region, and open an encounter pin.</li><li>Start the prepared trip. Verify old trip becomes previous, new trip active/current, and a camera-first capture writes to the new trip.</li><li>Open Finland in Review; then capture. Verify capture remains on the new active trip.</li><li>Induce an interrupted download. Verify retry works and unready trip cannot start.</li><li>Export current and all trips. Verify scope, photos, and existing WoZ-compatible v3 current bundle.</li><li>Check disk usage before/after a pack and after its explicit removal in a development test. No silent cache growth claim without evidence.</li></ul>
+<p>---</p>
+<h2>8. Risks and mitigations</h2>
+<table><thead><tr><th>Risk</th><th>Severity</th><th>Mitigation</th></tr></thead><tbody><tr><td>Native SDK’s offline API differs from expectations</td><td>High</td><td>PR-FMT1 is a physical-device gate before product wiring.</td></tr><tr><td>Map provider terms/cost make offline packs unsuitable</td><td>High</td><td>Andy approves provider/plan/offline terms before work; service boundary keeps replacement contained.</td></tr><tr><td>Starting a new trip accidentally redirects capture early</td><td>High</td><td>Upcoming-by-default; prepare map first; atomic <code>startPreparedTrip</code>; dedicated capture invariance tests.</td></tr><tr><td>Upgrade loses Finland field record</td><td>High</td><td>additive v9 only; snapshot migration fixture; pre-upgrade export remains required before release.</td></tr><tr><td>Large offline regions consume storage/data</td><td>High</td><td>adjustable bounds, estimate before download, sane max-area/size cap, Wi-Fi-first copy, explicit action only.</td></tr><tr><td>Native pack is evicted by OS</td><td>Medium</td><td>startup verification marks stale, never falsely ready; re-download required before activation.</td></tr><tr><td>Existing map regressions</td><td>Medium</td><td>legacy bridge and existing descriptor tests remain until old trips are deliberately re-prepared.</td></tr><tr><td>Review becomes a second trip manager</td><td>Medium</td><td>lifecycle controls only in Trips; review scope remains local, tested.</td></tr></tbody></table>
+<p>---</p>
+<h2>9. What Jesse receives / what Izzy may refine</h2>
+<p><strong>Jesse receives:</strong> this plan, the existing Door County plan, and the source design documents. The first code task is PR-FMT1, not a broad map UI branch.</p>
+<p><strong>Izzy has no blocking design deliverable.</strong> The approved flow is destination search + adjustable area + explicit offline preparation. She may supply final field-guide copy for: search empty/error, download estimate/progress, map-ready, stale-map, and start-trip confirmation. Jesse should use direct working copy until then; copy must not block the data/native safety seams.</p>
+<p><strong>Andy’s provider decision is complete.</strong> The operational prerequisite for PR-FMT1 is only the restricted iOS client token in EAS; everything else is established by the existing target model and the two instructions from this conversation.</p>
+<p><em>A map that works only while the signal does is a brochure. We are building a field tool.</em></p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
