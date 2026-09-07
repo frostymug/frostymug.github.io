@@ -59,6 +59,7 @@
       <a href="/projects/frost-rocks/PR-DR2.1-LAUNCH-BOOTSTRAP-HOTFIX-SCOPE-2026-09-06.html">DR2.1 Launch Bootstrap Scope</a>
       <a href="/projects/frost-rocks/PR-DR3-RESTORED-PHOTO-DURABILITY-HOTFIX-SCOPE-2026-09-07.html">DR3 Restored Photo Durability Scope</a>
       <a href="/projects/frost-rocks/DEFERRED-POST-RESTORE-EXIT-FLOW-2026-09-07.html">Deferred Post-Restore Exit Flow</a>
+      <a href="/projects/frost-rocks/PR-CAP1-LIBRARY-PHOTO-ORIGINAL-TIMESTAMP-SCOPE-2026-09-07.html">CAP1 Library Photo Timestamp Scope</a>
       <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
       <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
@@ -173,9 +174,15 @@
   <main>
     <article>
       <div class="crumb">Operations &middot; Interagent Communication Options</div>
-      <div class="doc-meta">Last updated: 2026-07-28</div>
+      <div class="doc-meta">Last updated: 2026-09-07</div>
       <h1>Interagent Communication Options</h1>
-<p><strong>Decision brief for Andy Frost</strong> <strong>Date:</strong> 2026-07-28 <strong>Status:</strong> Research complete; recommendation proposed; no configuration changes made</p>
+<p><strong>Decision brief for Andy Frost</strong> <strong>Date:</strong> 2026-07-28 <strong>Status:</strong> Recommendation reaffirmed 2026-09-07; proposed for a controlled Frost Rocks pilot; no configuration changes made</p>
+<h2>2026-09-07 Reassessment</h2>
+<p>The PR #27-#37 review strengthens the original recommendation. Andy is still acting as the transport layer between Arya, Jesse, and Cassian, while essential review and release state is fragmented across their separate memories. The next Frost Rocks work package is a good pilot for Aspen-led orchestration with narrowly allowlisted direct agent messaging.</p>
+<p>Do not use a Telegram group as the technical solution; bots still cannot reliably consume each other's messages there. Andy may keep using the individual chats for direct discussion, while Aspen triggers the approved handoffs and maintains the shared record.</p>
+<p>Pilot boundary:</p>
+<ul><li>Andy gives Aspen the outcome and approves Arya's scoped work package.</li><li>Aspen triggers Jesse with the canonical work-package path and completion contract.</li><li>When the PR is ready, Aspen triggers Arya and Cassian for their distinct reviews.</li><li>After both pass, Aspen triggers Cassian to merge and start the auto-submitting TestFlight candidate.</li><li>Aspen returns the TestFlight build number and focused device matrix to Andy.</li></ul>
+<p>Initially, only Aspen may initiate cross-agent work. Specialists report completion or blockers back to Aspen and do not initiate downstream stages. This reduces Andy's coordination load without jumping to free-form autonomous agent conversation.</p>
 <h2>Executive Summary</h2>
 <p>Andy currently has to manually trigger each handoff between specialist agents. This is especially cumbersome in two recurring loops:</p>
 <ul><li>Product loop: Izzy → Petra → Arya</li><li>Engineering loop: Arya → Jesse → Cassian</li></ul>

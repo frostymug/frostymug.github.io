@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>projects/frost-rocks/published-html/multi-trip-v0-explore/data.js · Aspen's Docs</title>
+  <title>Frost Rocks — FR-005 / PR-CAP1 Library Photo Capture with Original Timestamp · Aspen's Docs</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
       <a href="/governance/pipeline.html">Pipeline</a>
       <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
   </details>
-  <details class="nav-section">
+  <details class="nav-section" open>
     <summary class="nav-section-label">Projects</summary>
       <a href="/projects/index.html">Project Index</a>
       <a href="/projects/status.html">Portfolio Status</a>
@@ -39,7 +39,7 @@
       <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
       <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
     </details>
-    <details class="nav-subsection">
+    <details class="nav-subsection" open>
       <summary>Frost Rocks</summary>
       <a href="/projects/frost-rocks/index.html">Overview</a>
       <a href="/projects/frost-rocks/WORK.html">Work Index</a>
@@ -59,7 +59,7 @@
       <a href="/projects/frost-rocks/PR-DR2.1-LAUNCH-BOOTSTRAP-HOTFIX-SCOPE-2026-09-06.html">DR2.1 Launch Bootstrap Scope</a>
       <a href="/projects/frost-rocks/PR-DR3-RESTORED-PHOTO-DURABILITY-HOTFIX-SCOPE-2026-09-07.html">DR3 Restored Photo Durability Scope</a>
       <a href="/projects/frost-rocks/DEFERRED-POST-RESTORE-EXIT-FLOW-2026-09-07.html">Deferred Post-Restore Exit Flow</a>
-      <a href="/projects/frost-rocks/PR-CAP1-LIBRARY-PHOTO-ORIGINAL-TIMESTAMP-SCOPE-2026-09-07.html">CAP1 Library Photo Timestamp Scope</a>
+      <a aria-current="page" href="/projects/frost-rocks/PR-CAP1-LIBRARY-PHOTO-ORIGINAL-TIMESTAMP-SCOPE-2026-09-07.html">CAP1 Library Photo Timestamp Scope</a>
       <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
       <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
@@ -173,72 +173,50 @@
 </aside>
   <main>
     <article>
-      <div class="crumb">Project support file</div>
-      <div class="doc-meta">Last updated: 2026-07-26</div>
-      <h1>projects/frost-rocks/published-html/multi-trip-v0-explore/data.js</h1><pre><code>/* Shared fake data + helpers for all four multi-trip prototypes. */
-window.TRIPS = [
-  { id:'denver',  title:'Denver',            place:'Colorado',       dates:'Oct 2026',        state:'upcoming', count:0,  art:'art-denver',  glyph:'⛰️', note:'Front Range uplift, Fountain Formation' },
-  { id:'rapid',   title:'Rapid City',        place:'South Dakota',   dates:'Sep 2026',        state:'upcoming', count:0,  art:'art-rapid',   glyph:'⛰️', note:'Black Hills, Badlands' },
-  { id:'door',    title:'Door County',       place:'Wisconsin',      dates:'Aug 2–9, 2026', state:'active', count:3, art:'art-door', glyph:'🪨', note:'Silurian dolomite, Niagara Escarpment' },
-  { id:'finland', title:'Finland',           place:'Helsinki → Koli', dates:'Jul 16–25, 2026', state:'previous', count:14, art:'art-finland', glyph:'🪨', note:'~1.9 Ga bedrock, rapakivi, glaciation' },
-];
-window.CURRENT_TRIP_ID = 'door'; // the present-tense trip (capture writes here)
-
-window.ENCOUNTERS = {
-  door: [
-    { id:'d3', day:'Today · Sat Aug 2', place:'Cave Point County Park', time:'14:20', glyph:'🪨', note:'Layered shoreline ledges — flat slabs, wave-cut. Dolomite?', x:'62%', y:'40%' },
-    { id:'d2', day:'Today · Sat Aug 2', place:'Cave Point County Park', time:'13:58', glyph:'🐚', note:'Fossil-looking texture in the rock face — corals? no idea, curious', x:'58%', y:'46%' },
-    { id:'d1', day:'Today · Sat Aug 2', place:'Sturgeon Bay', time:'10:12', glyph:'🪨', note:'Pale gray blocky stone at the harbor wall', x:'40%', y:'66%' },
-  ],
-  finland: [
-    { id:'f14', day:'Fri Jul 25', place:'Fanninpelto', time:'16:40', glyph:'🪨', note:'More rapakivi? pink feldspars, stretched/lens-shaped', x:'55%', y:'35%' },
-    { id:'f13', day:'Thu Jul 24', place:'Nuuksio', time:'10:51', glyph:'🪨', note:'Fascinating crystalline structures… quartz inclusions?', x:'30%', y:'52%' },
-    { id:'f12', day:'Mon Jul 21', place:'Keskuspuisto', time:'06:41', glyph:'🪨', note:'Banding/foliation + &quot;cleavage?&quot; cracks under a tree root', x:'48%', y:'44%' },
-  ],
-};
-
-// number formatting helper
-window.trip = (id) =&gt; window.TRIPS.find(t=&gt;t.id===id);
-window.stateChip = (s) =&gt; `&lt;span class=&quot;chip state-${s}&quot;&gt;&lt;span class=&quot;dot ${s}&quot;&gt;&lt;/span&gt;${s}&lt;/span&gt;`;
-
-// Render an encounter row
-window.encRow = (e) =&gt; `
-  &lt;div class=&quot;enc&quot;&gt;
-    &lt;div class=&quot;thumb&quot;&gt;&lt;span&gt;${e.glyph}&lt;/span&gt;&lt;/div&gt;
-    &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;between&quot;&gt;&lt;span class=&quot;cap mono&quot;&gt;${e.place} · ${e.time}&lt;/span&gt;&lt;/div&gt;
-      &lt;p class=&quot;note&quot;&gt;${e.note}&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;`;
-
-// Render a day-grouped encounter list for one trip
-window.tripTimeline = (id) =&gt; {
-  const list = window.ENCOUNTERS[id] || [];
-  if(!list.length) return `&lt;p class=&quot;sm ink3&quot; style=&quot;padding:8px 0&quot;&gt;No encounters yet — this trip is upcoming.&lt;/p&gt;`;
-  let html=''; let lastDay=null;
-  list.forEach(e=&gt;{ if(e.day!==lastDay){ html+=`&lt;div class=&quot;daylabel&quot;&gt;${e.day}&lt;/div&gt;`; lastDay=e.day; } html+=window.encRow(e); });
-  return html;
-};
-
-// Universal timeline (all trips, newest first, grouped by trip rule)
-window.universalTimeline = () =&gt; {
-  const order=['door','finland']; let html='';
-  order.forEach(id=&gt;{
-    const t=window.trip(id); const list=window.ENCOUNTERS[id]||[];
-    if(!list.length) return;
-    html+=`&lt;div class=&quot;triprule&quot;&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;${t.title} · ${t.dates}&lt;/span&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;/div&gt;`;
-    let lastDay=null;
-    list.forEach(e=&gt;{ if(e.day!==lastDay){ html+=`&lt;div class=&quot;daylabel&quot;&gt;${e.day}&lt;/div&gt;`; lastDay=e.day; } html+=window.encRow(e); });
-  });
-  return html;
-};
-
-// Map pins for a trip
-window.mapPins = (id) =&gt; {
-  const list=window.ENCOUNTERS[id]||[];
-  return list.filter(e=&gt;e.x).map(e=&gt;`&lt;div class=&quot;pin&quot; style=&quot;left:${e.x}; top:${e.y}&quot;&gt;📍&lt;/div&gt;`).join('');
-};
-</code></pre>
+      <div class="crumb">Projects &middot; Frost Rocks CAP1 Library Photo Timestamp Scope</div>
+      <div class="doc-meta">Last updated: 2026-09-07</div>
+      <h1>Frost Rocks — FR-005 / PR-CAP1 Library Photo Capture with Original Timestamp</h1>
+<p><em>Arya (Architecture) | 2026-09-07 | Status: <strong>APPROVED FOR JESSE</strong> — bounded field-capture enhancement. Ship as its own PR; do not fold it into PR-DR3.</em></p>
+<h2>Why now</h2>
+<p>Black Hills field use produced an ordinary need: Andy already has photos in the iPhone camera roll that belong in the trip notebook. Each should become an encounter without pretending it happened at import time.</p>
+<p>The app has a <code>Library</code> control today, but only on the post-camera enrichment screen—too late for an existing photo to begin an encounter. Its shared <code>persistAsset()</code> routine also copies a chosen JPEG and writes EXIF using <code>new Date()</code>, replacing original capture time with import time. That is the exact seam this PR fixes.</p>
+<h2>How to read this doc</h2>
+<p><strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<h2>The call</h2>
+<p>🚪➡️🚪 <strong>Keep the center Capture action camera-first and immediate. Add a quiet, explicit <code>Use a photo from your library</code> escape hatch beside it in the notebook capture area.</strong> It uses the system picker, accepts one still image, creates an encounter in the current trip, and opens the same enrichment screen as a shutter capture.</p>
+<p>🚪🧱 <strong>A library-created encounter uses the source image's capture instant and GPS location whenever iOS exposes trustworthy values—never import time or the phone's current location.</strong> Make an unmodified app-managed copy of the chosen image. If no trustworthy original time is available, say so before save and use import time; if no trustworthy source GPS is available, leave the encounter unpinned. Do not invent either value from the importing device.</p>
+<p>No schema migration. <code>encounters.captured_at</code> is already the timeline/order/export authority, and the relative <code>encounter_photos.local_uri</code> contract is already durable. A new source taxonomy or timestamp column would be a very permanent answer to a small problem.</p>
+<h2>Product behavior</h2>
+<h3>Entry and fast path</h3>
+<ul><li>The existing center <strong>Capture</strong> tap still launches the camera immediately. No action sheet, confirmation, or extra tap on that path.</li><li>Add a low-emphasis but discoverable <code>Use a photo from your library</code> action adjacent to/just above Capture.</li><li>One selection creates <strong>one encounter</strong> in <code>app_state.current_trip_id</code>, then pushes <code>/capture?id=&lt;new-id&gt;&amp;mode=enrich</code>. Six Black Hills images become six truthful moments, not a bundle with one misleading timestamp.</li><li>Cancellation, permission denial, or failure creates no encounter. Existing <code>Library</code> on enrichment may remain for additional photos, but receives the same non-mutating persistence rule.</li></ul>
+<h3>Capture-time contract</h3>
+<p>Add a small, independently tested resolver, e.g. <code>src/utils/importedPhotoCaptureTime.ts</code>:</p>
+<pre><code class="language-ts">type SourceCaptureTime =
+  | { capturedAt: string; tzOffsetMin: number | null; source: 'exif_original' | 'media_library' }
+  | { capturedAt: null; tzOffsetMin: null; source: 'unavailable' };</code></pre>
+<p>Precedence:</p>
+<ul><li>Valid EXIF <code>DateTimeOriginal</code> (or equivalent) <strong>with an explicit parseable offset</strong> wins. Write ISO instant to <code>captured_at</code>, its offset to <code>tz_offset_min</code>.</li><li>Otherwise, use a finite positive <code>MediaLibrary.getAssetInfoAsync(asset.assetId).creationTime</code> if exposed. Write its ISO instant and <code>tz_offset_min: null</code>; the source timezone is unknown.</li><li>An unoffset EXIF civil date is insufficient to manufacture an absolute instant for a travelling field record. It may not be used when Media Library time is absent.</li><li>If neither source is available, show: <code>Original photo date unavailable — this encounter will use today’s date.</code> Then allow save with the existing import-time default and device timezone.</li></ul>
+<p>The resolver tolerates Expo/iOS key variants (named/numeric EXIF keys, optional offset fields, malformed dates, missing <code>assetId</code>, limited-library access, and asset-info failure). It must never throw the picker flow or report an original timestamp while silently using <code>Date.now()</code>.</p>
+<h3>Source-location contract</h3>
+<p>Resolve original location from the same selected asset context, separately from the app's foreground-location service:</p>
+<pre><code class="language-ts">type SourcePhotoLocation =
+  | { lat: number; lng: number; source: 'exif_gps' | 'media_library' }
+  | { lat: null; lng: null; source: 'unavailable' };</code></pre>
+<p>Precedence:</p>
+<ul><li>A complete, finite, in-range coordinate pair from the photo's EXIF GPS is authoritative. Support the named/numeric fields and GPS reference/DMS forms Expo may surface; apply hemisphere references before validating latitude <code>[-90, 90]</code> and longitude <code>[-180, 180]</code>.</li><li>Otherwise, use a complete, valid location reported by the selected Media Library asset when available.</li><li>If neither is available—because the source never recorded location, it was stripped during sharing, iOS does not expose it, or library access is limited—store <code>lat</code>, <code>lng</code>, and <code>location_label</code> as <code>NULL</code>. This is a normal successful import, not an error and not a prompt for current GPS.</li></ul>
+<p>No reverse geocoding belongs here. The coordinates are the source evidence; an invented or network-dependent label would merely make them less reliable.</p>
+<h3>Photo and location integrity</h3>
+<ul><li>A library import only <code>copyAsync</code>s into the existing <code>photos/&lt;id&gt;.&lt;extension&gt;</code> namespace. Retain <code>quality: 1</code>/no editing; never call <code>stampJpegMetadata</code>, <code>writeAsStringAsync</code>, or <code>MediaLibrary.createAssetAsync</code> for it. JPEG/HEIC bytes must remain unchanged and no duplicate camera-roll asset appears.</li><li>Camera capture retains its existing EXIF-writing and camera-roll-backup behavior. Do not refactor it casually.</li><li>A library-created encounter gets only the resolved source GPS. It must never call <code>getCurrentLocation()</code> or use the importing device's location. When source GPS is unavailable, leave <code>lat</code>, <code>lng</code>, and <code>location_label</code> null. Pinning a historical photo to where the phone happens to be today is a confident lie.</li><li>Thread resolved time, nullable source timezone, and source GPS through <code>CapturedPhoto</code> (or equivalent transient result) to <code>createEncounter</code>. Change that DB helper only enough to distinguish omitted <code>tz_offset_min</code> (current default) from explicit unknown <code>null</code> (store <code>NULL</code>).</li><li><code>created_at</code>, <code>updated_at</code>, and <code>encounter_photos.created_at</code> remain actual import/write timestamps; they are audit times, not encounter time.</li></ul>
+<h2>In scope</h2>
+<ul><li>Secondary notebook library entry, one-image route, shared post-create enrich navigation, and current-trip invariant.</li><li>Source-specific persistence: camera behavior unchanged; library copy unmodified; best-effort single Media Library asset-info lookup without a new broad permission prompt.</li><li>Validated original-time and source-GPS resolvers and threading to encounter creation. Log sanitized source/resolution outcomes only (<code>camera|library</code>, <code>exif_original|media_library|unavailable</code>, <code>exif_gps|media_library|unavailable</code>)—never EXIF, date values, IDs, paths, filenames, or coordinates.</li><li>Brief unavailable-date confirmation, no date editor.</li></ul>
+<h2>Explicit non-goals</h2>
+<ul><li>No migration, backfill, export-format change, multi-select/bulk import, albums UI, duplicate detection, date editor, or batch reassignment.</li><li>No use of current import location, reverse geocoding, image transformation/HEIC conversion/recompression/EXIF rewrite, or camera-roll duplication.</li><li>No change to camera default behavior, Maps/MapTiler, trips, or PR-DR3 recovery behavior.</li></ul>
+<h2>Suggested implementation seams</h2>
+<table><thead><tr><th>Seam</th><th>Responsibility</th></tr></thead><tbody><tr><td><code>app/index.tsx</code></td><td>primary immediate camera; secondary library action; library creation with source GPS or null; shared enrich route</td></tr><tr><td><code>src/services/photos.ts</code></td><td>source-specific copy; one Media Library lookup; transient source time/location</td></tr><tr><td><code>src/utils/importedPhotoContext.ts</code></td><td>EXIF/Media Library time + GPS precedence, timezone and coordinate parsing</td></tr><tr><td><code>src/db/encounters.ts</code></td><td>supplied <code>captured_at</code>; explicit nullable timezone semantics; existing nullable coordinates</td></tr><tr><td><code>app/capture.tsx</code></td><td>compatible non-mutating additional library photo behavior</td></tr><tr><td>focused service, resolver, home/capture, and DB tests</td><td>changed-seam proof</td></tr></tbody></table>
+<h2>Acceptance evidence — required in the PR body</h2>
+<ul><li><strong>Resolver tests:</strong> EXIF original+offset wins; Media Library time is fallback; valid EXIF GPS wins; valid Media Library location is GPS fallback; malformed/missing EXIF, missing ID, asset-info failure, unoffset EXIF without library time, and incomplete/out-of-range GPS resolve safely to <code>unavailable</code>. Include exact output.</li><li><strong>Persistence tests:</strong> imported JPEG and HEIC get relative <code>photos/...</code> paths and make no <code>writeAsStringAsync</code>/EXIF-stamp/<code>createAssetAsync</code> call; source bytes survive. Existing camera test still proves its stamping and camera-roll backup.</li><li><strong>Encounter tests:</strong> library creation has historical <code>captured_at</code>, expected nullable timezone, import audit timestamps, and source lat/lng; it orders historically. An image without source GPS creates no pin and must never call foreground location. Unavailable time shows warning then uses import time. Camera still uses live time/location.</li><li><strong>Trip invariant:</strong> while Review shows a previous trip, import a photo and prove it lands only in the persisted current trip.</li><li><strong>Physical iPhone proof:</strong> select a JPEG/HEIC with a visible Apple Photos date/time and location/map pin. Compare date/time in Frost Rocks timeline/detail and coordinates on its map; both match the source. Source remains in Photos, one encounter is created, and no duplicate appears. Also test a stripped/no-date/no-location image: capture the honest time fallback warning and prove it creates no map pin. Record device, iOS, and build.</li><li>Run changed suites, <code>npm run typecheck</code>, and <code>npm run lint</code>; aggregate green supplements, never replaces, the seam evidence.</li></ul>
+<h2>Review gate</h2>
+<p>🚪🧱 The question is not “does a picker open?” It is: <strong>can a photo from last week become an encounter from last week and there, without mutating it or pinning it to today’s location?</strong> No approval without resolver/persistence tests and the physical Apple Photos-to-Frost Rocks comparison. If the diff also fixes general camera metadata, adds batch import, or touches recovery storage, split it. Small blades cut cleaner.</p>
     </article>
     <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
   </main>
