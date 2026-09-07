@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — PR-DR1 Recovery Import Scope · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/WORK.html">Work Index</a>
+      <a href="/projects/frost-fitness/decisions/FF-ADR-001-range-based-nutrition-estimates.html">FF-ADR-001 Range-Based Nutrition Estimates</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/PRD-Frost-Fitness-V3-App-Store-Submission.html">V3 App Store Submission PRD</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/WORK.html">Work Index</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-001-local-first-field-record.html">FR-ADR-001 Local-First Field Record</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-002-multi-trip-without-capture-switching.html">FR-ADR-002 Multi-Trip Without Capture Switching</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
+      <a href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
+      <a href="/projects/frost-rocks/DOOR-COUNTY-MULTI-TRIP-IMPLEMENTATION-PLAN-2026-08-01.html">Door County Multi-Trip Implementation Plan</a>
+      <a href="/projects/frost-rocks/FULL-MULTI-TRIP-REAL-MAPS-IMPLEMENTATION-PLAN-2026-08-13.html">Full Multi-Trip + Real Maps Implementation Plan</a>
+      <a aria-current="page" href="/projects/frost-rocks/RECOVERY-IMPORT-PR-SCOPE-2026-09-05.html">Recovery Import PR Scope</a>
+      <a href="/projects/frost-rocks/PR-DR2-RESTORE-DIAGNOSTICS-SCOPE-2026-09-06.html">DR2 Restore Diagnostics Scope</a>
+      <a href="/projects/frost-rocks/PR-DR2.1-LAUNCH-BOOTSTRAP-HOTFIX-SCOPE-2026-09-06.html">DR2.1 Launch Bootstrap Scope</a>
+      <a href="/projects/frost-rocks/PR-DR3-RESTORED-PHOTO-DURABILITY-HOTFIX-SCOPE-2026-09-07.html">DR3 Restored Photo Durability Scope</a>
+      <a href="/projects/frost-rocks/DEFERRED-POST-RESTORE-EXIT-FLOW-2026-09-07.html">Deferred Post-Restore Exit Flow</a>
+      <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
+      <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/index.html">— Door County multi-trip v1</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/review.html">Door County multi-trip v1 — review notes</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/index.html">— Multi-Trip Prototypes (v0 explore)</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p1.html">P1 · Trip Header Dropdown — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p2.html">P2 · Trips in Review — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p3.html">P3 · Trips Nav Tab — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p4.html">P4 · Bookshelf Home — Frost Rocks Multi-Trip</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/routine-refresh-2026-09-07.html">Agent Development Routine Refresh</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+      <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/pr-delivery-loop-review-2026-09-07.html">PR-to-Release Loop Review</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks Recovery Import PR Scope</div>
+      <div class="doc-meta">Last updated: 2026-09-05</div>
+      <h1>Frost Rocks — PR-DR1 Recovery Import Scope</h1>
+<p><em>Arya (Architecture) | 2026-09-05 | Status: <strong>APPROVED FOR JESSE</strong> — recovery slice inserted after verified PR-FMT1 and before PR-FMT2.</em></p>
+<p><strong>Trigger:</strong> deleting Frost Rocks from an iPhone removes its sandboxed SQLite database. Andy holds a complete <code>frost-rocks-export-all</code> archive and needs a reliable way to recover it into a fresh install.</p>
+<h2>How to read this doc</h2>
+<p><strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>Jesse: the PR must show evidence that the restore seam actually ran. A green aggregate suite is not evidence that a zip can survive a delete-and-reinstall recovery. The PR story and diff must agree.</p>
+<h2>The call</h2>
+<p>Ship one narrow, self-service restore path for the existing all-trips archive:</p>
+<p>&gt; <strong>Restore from Frost Rocks backup</strong> → choose archive → validate → restore a fresh app → show a truthful result.</p>
+<p>This accepts exactly <code>frost-rocks-export-all</code>, <code>export_schema_version: 1</code>. It is not a generic importer, a merge tool, or cloud sync. Those are different beasts with different teeth.</p>
+<p>The archive format is already an external durable contract, so accepting it as recovery input is a 🚪🧱 decision. The small supported surface is deliberate: it gets Andy's record back without inventing conflict resolution, cross-device sync, or format archaeology.</p>
+<h2>In scope</h2>
+<h3>Entry and guard</h3>
+<ul><li>Add <strong>Restore from Frost Rocks backup</strong> to the Export screen, with direct, sober copy that restoration is available only before recording new data on this install.</li><li>Use the platform document picker; copy the selected archive into app-controlled temporary storage before reading it.</li><li>Enable the action only for a pristine install: no encounters, photos, questions, keywords, or user-created trips. The app's migration-seeded Finland/Door County shell is allowed and is replaced during recovery.</li><li>If any user data exists, do not offer an in-place restore. Tell the user to export that record first; this PR intentionally has no merge or overwrite mode.</li></ul>
+<h3>Accepted archive and validation</h3>
+<p>Validate <em>everything</em> before a database write:</p>
+<ul><li>zip is readable and contains <code>manifest.json</code>, <code>encounters.json</code>, and the files declared by the manifest;</li><li>manifest format is <code>frost-rocks-export-all</code> and schema is exactly v1;</li><li>trip ids are unique; encounter ids are unique; every encounter references an archive trip; and exactly one archived trip is <code>active</code>;</li><li>enum/field values match the current database contract (including review state, uncertainty, themes/keywords, and questions where present);</li><li>each included photo path is a normalized relative <code>photos/&lt;encounter-id&gt;/...</code> path, appears once, is inside the archive, and belongs to the declared encounter;</li><li>missing photos explicitly marked <code>status: 'missing'</code> remain missing and are counted in the result; an undeclared/missing included photo rejects the archive; and</li><li>malformed, unsupported, incomplete, or oversized archives fail with a useful message and leave the install unchanged.</li></ul>
+<p>Keep parsing/validation pure and fixture-driven. Do not trust zip entry paths or use them as filesystem destinations directly; path traversal is a very old trick wearing a new coat.</p>
+<h3>Restore execution</h3>
+<ul><li>Extract/copy validated included photos into a unique app-controlled restore directory.</li><li>In a single SQLite transaction, replace only the pristine migration-seeded shell and insert archive trips, encounters, photo rows, themes/keywords, questions, and exported event rows with their archived ids and timestamps intact.</li><li>Set <code>app_state.current_trip_id</code> from the archived <code>active</code> trip. Preserve <code>previous | active | upcoming</code> states exactly.</li><li>Commit only after every database row can refer to its staged local photo URI. On any pre-commit failure, remove the staged directory and leave the database untouched.</li><li>After success, render a result with trip, encounter, restored-photo, and explicitly-known-missing-photo counts. Do not claim a complete photo restore when the source archive marks one missing.</li></ul>
+<p>The imported field record is authoritative. Do not recreate enrichment jobs, native map packs, transient UI state, or native camera-roll asset ids: none is safely portable, and none is needed to recover the notebook. Static Finland/Door County map descriptors continue through the existing trip data; future MapLibre offline packs are per-device cache and must be prepared again.</p>
+<h3>Result and diagnostics</h3>
+<ul><li>Success view: named archive, number of trips/encounters/photos restored, known missing-photo count, and return-to-notebook action.</li><li>Failure view: plain cause and a retry action; no partial-data success state.</li><li>Log <code>restore_start</code>, <code>restore_success</code>, and <code>restore_failure</code> with archive schema/version and aggregate counts only—never file paths, notes, or other field-record content.</li></ul>
+<h2>Explicit non-goals</h2>
+<ul><li>Current-trip <code>frost-rocks-export</code> v3 import or conversion.</li><li>Merge, overwrite, duplicate detection, selective-trip restore, or restore into a non-pristine record.</li><li>iCloud/CloudKit/backend backup, cross-device sync, scheduled backup, or automatic import on app launch.</li><li>Restoring native MapLibre offline packs, cached tiles, queued enrichment work, camera-roll linkage, or UI/navigation state.</li><li>Altering the export format. Existing current-trip and all-trips exports must remain byte-compatible except for ordinary generated timestamps/paths.</li></ul>
+<h2>Implementation shape</h2>
+<p>Suggested seams (names may adjust to repository conventions):</p>
+<table><thead><tr><th>Seam</th><th>Responsibility</th></tr></thead><tbody><tr><td><code>src/services/recovery/archive.ts</code></td><td>read zip, parse and validate the v1 archive into typed data; no SQL or React</td></tr><tr><td><code>src/services/recovery/restore.ts</code></td><td>stage files, coordinate the atomic database restore, clean failed staging</td></tr><tr><td><code>src/db/recovery.ts</code></td><td>pristine-install check and transactional inserts/current-pointer write</td></tr><tr><td><code>app/export.tsx</code></td><td>file-picker entry, confirmation, progress, success/failure states</td></tr><tr><td>tests/fixtures</td><td>small all-trips archive fixture with Finland + Door County, multiple photos, questions, keywords, events, and one known-missing photo</td></tr></tbody></table>
+<p>Reuse the existing archive/relative-photo-path conventions and zip dependency where possible. A new native dependency is not justified unless Expo's supported document-pick path requires it.</p>
+<h2>Acceptance evidence — required in the PR body</h2>
+<ul><li><strong>Pure validation tests:</strong> accept the v1 fixture; reject wrong format/version, corrupt zip/JSON, duplicate ids, dangling trip/photo references, traversal path, absent included photo, and more than one/no active trip.</li><li><strong>Database round-trip test:</strong> export a fixture containing Finland + Door County records, wipe to the migration-seeded pristine shell, restore, then compare archive-backed rows field-for-field: trips/states/current pointer, encounters, photos, themes/keywords, questions, and events. Account explicitly for only the new restore telemetry event(s).</li><li><strong>Rollback test:</strong> induce a staged-photo or SQL failure and prove no encounter/trip/user-data rows were added and no staged directory remains.</li><li><strong>Guard test:</strong> a non-pristine database cannot enter the restore path and is not modified.</li><li><strong>Physical-iPhone proof:</strong> export all trips → save the zip outside Frost Rocks (Files/iCloud) → delete the app → install the recovery build → restore → inspect Finland and Door County records and several restored photos. The PR body includes the counts from both ends and a short recording or reproducible steps.</li><li><code>npm run typecheck</code>, <code>npm run lint</code>, and the targeted restore tests.</li></ul>
+<h2>Sequencing</h2>
+<p><strong>PR-FMT1 is now verified.</strong> Execute PR-DR1 next, then resume <strong>PR-FMT2</strong> unchanged. PR-DR1 does not depend on the FMT2 map-region migration and must not pull map lifecycle work into its diff.</p>
+<p>Before the device test, keep Andy's existing zip outside the Frost Rocks sandbox and make a second copy. The first successful restore is recovery, not an excuse to tempt the gods twice.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>

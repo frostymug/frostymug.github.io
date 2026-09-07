@@ -54,6 +54,11 @@
       <a href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
       <a href="/projects/frost-rocks/DOOR-COUNTY-MULTI-TRIP-IMPLEMENTATION-PLAN-2026-08-01.html">Door County Multi-Trip Implementation Plan</a>
       <a aria-current="page" href="/projects/frost-rocks/FULL-MULTI-TRIP-REAL-MAPS-IMPLEMENTATION-PLAN-2026-08-13.html">Full Multi-Trip + Real Maps Implementation Plan</a>
+      <a href="/projects/frost-rocks/RECOVERY-IMPORT-PR-SCOPE-2026-09-05.html">Recovery Import PR Scope</a>
+      <a href="/projects/frost-rocks/PR-DR2-RESTORE-DIAGNOSTICS-SCOPE-2026-09-06.html">DR2 Restore Diagnostics Scope</a>
+      <a href="/projects/frost-rocks/PR-DR2.1-LAUNCH-BOOTSTRAP-HOTFIX-SCOPE-2026-09-06.html">DR2.1 Launch Bootstrap Scope</a>
+      <a href="/projects/frost-rocks/PR-DR3-RESTORED-PHOTO-DURABILITY-HOTFIX-SCOPE-2026-09-07.html">DR3 Restored Photo Durability Scope</a>
+      <a href="/projects/frost-rocks/DEFERRED-POST-RESTORE-EXIT-FLOW-2026-09-07.html">Deferred Post-Restore Exit Flow</a>
       <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
       <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
       <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
@@ -152,12 +157,14 @@
   <details class="nav-section">
     <summary class="nav-section-label">Operations</summary>
       <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/routine-refresh-2026-09-07.html">Agent Development Routine Refresh</a>
       <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
       <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
   </details>
   <details class="nav-section">
     <summary class="nav-section-label">Engineering</summary>
       <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/pr-delivery-loop-review-2026-09-07.html">PR-to-Release Loop Review</a>
       <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
       <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
   </details>
@@ -166,9 +173,9 @@
   <main>
     <article>
       <div class="crumb">Projects &middot; Frost Rocks Full Multi-Trip + Real Maps Implementation Plan</div>
-      <div class="doc-meta">Last updated: 2026-08-25</div>
+      <div class="doc-meta">Last updated: 2026-09-05</div>
       <h1>Frost Rocks — Full Multi-Trip + Real Maps Implementation Plan</h1>
-<p><em>Arya (Architecture) | 2026-08-13; provider decision recorded 2026-08-25 | Status: <strong>APPROVED FOR JESSE — begin with PR-FMT1 native-map proof.</strong></em></p>
+<p><em>Arya (Architecture) | 2026-08-13; provider decision recorded 2026-08-25; recovery sequencing updated 2026-09-05 | Status: <strong>PR-FMT1 verified; execute PR-DR1 recovery import, then PR-FMT2.</strong></em></p>
 <p><strong>Source design:</strong> <code>tracks/multi-trip/MULTI-TRIP-AND-PLACES-TARGET-MODEL.md</code> (Izzy; Andy-approved 2026-07-26) and <code>tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.md</code> (Izzy; FINAL 2026-08-01). This plan extends the merged Door County implementation on <code>aspen-frost/frost-rocks@ecaabf3</code> (PRs #25–26); it does not rebuild it.</p>
 <h2>How to read this doc</h2>
 <p><strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
@@ -284,6 +291,12 @@ export interface OfflineMapService {
 <p><strong>Evidence required:</strong></p>
 <ul><li>exact library/provider versions and build commands in the PR body;</li><li>iPhone development-build recording or reproducible output: online render → download → kill/relaunch → airplane mode render;</li><li>progress, completion, and downloaded-size values from the native API;</li><li>a cleanup/remove run; and</li><li><code>npm run typecheck</code>, <code>npm run lint</code>, relevant tests.</li></ul>
 <p><strong>Go/no-go:</strong> if the package cannot supply a reliable native offline API on Expo 54, stop. Do not substitute screenshot tiles, web views, or an online-only map and call it done. Re-evaluate the renderer/provider before proceeding.</p>
+<p><strong>Status (2026-09-05):</strong> completed, built, and verified on the required physical-iPhone path. The native-provider gate is cleared.</p>
+<h3>PR-DR1 — Restore from Frost Rocks backup (recovery interlude)</h3>
+<p><strong>Purpose:</strong> recover an all-trips field record after an app deletion, and prove exported data can actually return to a fresh device. This is deliberately inserted before lifecycle/map persistence because it protects the existing record without depending on it.</p>
+<p><strong>Canonical scope:</strong> <a href="/projects/frost-rocks/RECOVERY-IMPORT-PR-SCOPE-2026-09-05.html">Recovery Import PR Scope</a>.</p>
+<p><strong>Rules:</strong> accept only <code>frost-rocks-export-all</code> v1 into a pristine install; validate before writing; stage photos before one transactional database restore; refuse merge/overwrite; state any archive-declared missing photos honestly. Do not alter export formats or restore native map caches.</p>
+<p><strong>Evidence required:</strong> zip validation/rejection tests; full export → fresh seeded install → import field-by-field round trip; rollback proof; non-pristine guard; and an iPhone export → delete → reinstall → restore proof with matching counts.</p>
 <h3>PR-FMT2 — Durable trip/map persistence and lifecycle service</h3>
 <p><strong>Diff:</strong> migration v9; <code>MapRegion</code> types/repository; validation; lifecycle service (<code>createUpcomingTrip</code>, <code>startPreparedTrip</code>, <code>renameTrip</code>, <code>listTripsByState</code>); map status recovery seam; event types.</p>
 <p><strong>Rules:</strong> <code>startPreparedTrip(tripId)</code> is one SQLite transaction: target must be <code>upcoming</code> with <code>offline_status='ready'</code>, current pointer updates, old current becomes <code>previous</code>, target becomes <code>active</code>.</p>

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frost Rocks — PR-DR2.1 Launch Bootstrap Hotfix Scope · Aspen's Docs</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<aside>
+  <a class="brand" href="/">Aspen's Docs <span>🐾</span></a>
+  <details class="nav-section">
+    <summary class="nav-section-label">Corporate Governance</summary>
+      <a href="/governance/empire.html">Empire (Org)</a>
+      <a href="/governance/empire-os.html">Empire OS</a>
+      <a href="/governance/empire-culture.html">Empire Culture</a>
+      <a href="/governance/process.html">Process</a>
+      <a href="/governance/pipeline.html">Pipeline</a>
+      <a href="/governance/agent-development-routines.html">Agent Development Routines</a>
+  </details>
+  <details class="nav-section" open>
+    <summary class="nav-section-label">Projects</summary>
+      <a href="/projects/index.html">Project Index</a>
+      <a href="/projects/status.html">Portfolio Status</a>
+    <details class="nav-subsection">
+      <summary>Frost Fitness</summary>
+      <a href="/projects/frost-fitness/index.html">Overview</a>
+      <a href="/projects/frost-fitness/WORK.html">Work Index</a>
+      <a href="/projects/frost-fitness/decisions/FF-ADR-001-range-based-nutrition-estimates.html">FF-ADR-001 Range-Based Nutrition Estimates</a>
+      <a href="/projects/frost-fitness/status.html">Status</a>
+      <a href="/projects/frost-fitness/productization-plan.html">Productization Plan</a>
+      <a href="/projects/frost-fitness/PRD-Frost-Fitness-V3-App-Store-Submission.html">V3 App Store Submission PRD</a>
+      <a href="/projects/frost-fitness/architecture.html">Architecture</a>
+      <a href="/projects/frost-fitness/architecture-review.html">Architectural Review</a>
+      <a href="/projects/frost-fitness/ci-cd.html">CI/CD</a>
+      <a href="/projects/frost-fitness/release-process.html">Release Process</a>
+      <a href="/projects/frost-fitness/reviews/2026-05-26-phase-1-review.html">Phase 1 Review</a>
+      <a href="/projects/frost-fitness/hotfix-camera-capture.html">Camera Capture Hotfix</a>
+      <a href="/projects/frost-fitness/hotfix-confirm-no-data.html">Confirm Meal No Data Hotfix</a>
+      <a href="/projects/frost-fitness/proxy/rollback.html">Worker Rollback Procedures</a>
+    </details>
+    <details class="nav-subsection" open>
+      <summary>Frost Rocks</summary>
+      <a href="/projects/frost-rocks/index.html">Overview</a>
+      <a href="/projects/frost-rocks/WORK.html">Work Index</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-001-local-first-field-record.html">FR-ADR-001 Local-First Field Record</a>
+      <a href="/projects/frost-rocks/decisions/FR-ADR-002-multi-trip-without-capture-switching.html">FR-ADR-002 Multi-Trip Without Capture Switching</a>
+      <a href="/projects/frost-rocks/BACKLOG.html">Backlog</a>
+      <a href="/projects/frost-rocks/design.html">Design</a>
+      <a href="/projects/frost-rocks/design-process.html">Design Process</a>
+      <a href="/projects/frost-rocks/strategy.html">Strategy</a>
+      <a href="/projects/frost-rocks/competitive-landscape.html">Competitive Landscape</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-AND-PLACES-TARGET-MODEL.html">Multi-Trip &amp; Places Target Model</a>
+      <a href="/projects/frost-rocks/tracks/multi-trip/DOOR-COUNTY-MULTI-TRIP-DESIGN-SPEC.html">Door County Multi-Trip Final Design Spec</a>
+      <a href="/projects/frost-rocks/DOOR-COUNTY-MULTI-TRIP-IMPLEMENTATION-PLAN-2026-08-01.html">Door County Multi-Trip Implementation Plan</a>
+      <a href="/projects/frost-rocks/FULL-MULTI-TRIP-REAL-MAPS-IMPLEMENTATION-PLAN-2026-08-13.html">Full Multi-Trip + Real Maps Implementation Plan</a>
+      <a href="/projects/frost-rocks/RECOVERY-IMPORT-PR-SCOPE-2026-09-05.html">Recovery Import PR Scope</a>
+      <a href="/projects/frost-rocks/PR-DR2-RESTORE-DIAGNOSTICS-SCOPE-2026-09-06.html">DR2 Restore Diagnostics Scope</a>
+      <a aria-current="page" href="/projects/frost-rocks/PR-DR2.1-LAUNCH-BOOTSTRAP-HOTFIX-SCOPE-2026-09-06.html">DR2.1 Launch Bootstrap Scope</a>
+      <a href="/projects/frost-rocks/PR-DR3-RESTORED-PHOTO-DURABILITY-HOTFIX-SCOPE-2026-09-07.html">DR3 Restored Photo Durability Scope</a>
+      <a href="/projects/frost-rocks/DEFERRED-POST-RESTORE-EXIT-FLOW-2026-09-07.html">Deferred Post-Restore Exit Flow</a>
+      <a href="/projects/frost-rocks/assets/map/README-DOOR-COUNTY-MAP.html">Door County Static Field Map</a>
+      <a href="/projects/frost-rocks/MULTI-TRIP-P1-DOOR-COUNTY-DELTA-SPEC.html">Multi-Trip P1 Door County Delta Spec</a>
+      <a href="/projects/frost-rocks/archive/finland/index.html">Finland Prototype Archive</a>
+      <a href="/projects/frost-rocks/VISION-ROADMAP.html">Vision Roadmap</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-EXTERNAL-LEARNING-SOURCES.html">External Learning Sources Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-LEARNING-BOUNDARY.html">Learning Boundary Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-KNOWLEDGE-CAPTURE-PROGRESSION.html">Knowledge Capture Progression Product Note</a>
+      <a href="/projects/frost-rocks/PRODUCT-NOTE-JUST-RIGHT-LEARNING-CONTENT.html">Just-Right Learning Content Product Note</a>
+      <a href="/projects/frost-rocks/FIELD-FIXES-IMPLEMENTATION-PLAN-2026-07-21.html">Field Fixes Implementation Plan</a>
+      <a href="/projects/frost-rocks/REVIEW-NOTE-ZOOM-CRASH-2026-07-21.html">Review Zoom Crash Note</a>
+      <a href="/projects/frost-rocks/AI-TUTOR-DESIGN-BRIEF.html">AI Tutor Design Brief</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-1-2026-07-22.html">WoZ D3 Pilot 1 Log</a>
+      <a href="/projects/frost-rocks/D3-WEDGE-SPEC.html">D3 Wedge Spec</a>
+      <a href="/projects/frost-rocks/D3-IMPLEMENTATION-PLAN-2026-07-22.html">D3 Implementation Plan</a>
+      <a href="/projects/frost-rocks/BACKLOG-PRIORITY-2026-07-22.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/FROST-ROCKS-PRD-V1.1-PRS-16-20.html">PRD v1.1 PRs 16-20</a>
+      <a href="/projects/frost-rocks/FOUNDATION-V1.1-IMPLEMENTATION-PLAN-2026-07-22.html">Foundation v1.1 Implementation Plan</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-2-2026-07-23.html">WoZ D3 Pilot 2 Log</a>
+      <a href="/projects/frost-rocks/WOZ-D3-PILOT-3-2026-07-23.html">WoZ D3 Pilot 3 Log</a>
+      <a href="/projects/frost-rocks/DESIGN-NOTE-TUTOR-GROUNDING-AND-HALLUCINATION.html">Tutor Grounding And Anti-Hallucination Note</a>
+      <a href="/projects/frost-rocks/VOICE-GUIDE-FIELD-DON-V1.html">Tutor Voice Guide — Field Don v1</a>
+      <a href="/projects/frost-rocks/published-html/index.html">Published HTML</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/index.html">Finland v0</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v0/review.html">Finland v0 Review</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/a-field-guide/index.html">— A · Rugged Field Guide</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/b-nordic-minimal/index.html">— B · Nordic Minimal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/c-analog-journal/index.html">— C · Analog Journal</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/d-knowledge-graph/index.html">— D · Knowledge Graph</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/index.html">— Finland v1 · Visual Direction Explore</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v1-explore/review.html">— Finland v1 Explore · Review &amp;amp; Rationale</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/index.html">— Finland v2 (Composite)</a>
+      <a href="/projects/frost-rocks/published-html/archive/finland/finland-v2-composite/review.html">— Finland v2 Composite · Review Record</a>
+      <a href="/projects/frost-rocks/published-html/backlog-priority-2026-07-22/index.html">Backlog Priority</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/index.html">— Door County multi-trip v1</a>
+      <a href="/projects/frost-rocks/published-html/door-county-multi-trip-v1/review.html">Door County multi-trip v1 — review notes</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/index.html">— Multi-Trip Prototypes (v0 explore)</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p1.html">P1 · Trip Header Dropdown — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p2.html">P2 · Trips in Review — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p3.html">P3 · Trips Nav Tab — Frost Rocks Multi-Trip</a>
+      <a href="/projects/frost-rocks/published-html/multi-trip-v0-explore/p4.html">P4 · Bookshelf Home — Frost Rocks Multi-Trip</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Playbooks</summary>
+      <a href="/projects/_playbooks/ASPEN-MOBILE-APP-PLAYBOOK.html">Aspen Mobile App Playbook</a>
+      <a href="/projects/_playbooks/CASSIAN-IOS-E2E-TESTING-PLAN.html">Cassian iOS E2E Testing Plan</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Ice Age Trail</summary>
+      <a href="/projects/ice-age-trail/index.html">Overview</a>
+      <a href="/projects/ice-age-trail/kickoff-brief.html">Kickoff Brief</a>
+      <a href="/projects/ice-age-trail/deployment-spike.html">Deployment Spike</a>
+      <a href="/projects/ice-age-trail/call-source-log-2026-07-10.html">2026-07-10 Source Log</a>
+      <a href="/projects/ice-age-trail/call-notes-gemini-2026-07-10.html">2026-07-10 Gemini Notes</a>
+      <a href="/projects/ice-age-trail/architecture-options-2026-07-11.html">Architecture Options</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Structured Intake Assistant</summary>
+      <a href="/projects/structured-intake-assistant/index.html">Overview</a>
+      <a href="/projects/structured-intake-assistant/status.html">Status</a>
+      <a href="/projects/structured-intake-assistant/project-intake.html">Intake</a>
+      <a href="/projects/structured-intake-assistant/source-log.html">Source Log</a>
+      <a href="/projects/structured-intake-assistant/EMR-LANDSCAPE.html">EMR Landscape</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Toothbud Dental</summary>
+      <a href="/projects/toothbud-dental/index.html">Overview</a>
+      <a href="/projects/toothbud-dental/status.html">ToothBud Dental Status</a>
+      <a href="/projects/toothbud-dental/project-intake.html">ToothBud Dental Intake</a>
+      <a href="/projects/toothbud-dental/luc-interview-prep.html">ToothBud Dental Luc Interview Prep</a>
+      <a href="/projects/toothbud-dental/agent-work-orders.html">ToothBud Dental Agent Work Orders</a>
+      <a href="/projects/toothbud-dental/arya-opendental-architecture.html">ToothBud Dental OpenDental Architecture</a>
+      <a href="/projects/toothbud-dental/petra-competitive-analysis.html">ToothBud Dental Competitive Analysis</a>
+    </details>
+    <details class="nav-subsection">
+      <summary>Aspen Frost Website</summary>
+      <a href="/projects/website/index.html">Overview</a>
+      <a href="/projects/website/positioning-brief.html">Website Positioning Brief</a>
+      <a href="/projects/website/design-system.html">Website Visual Brand Standard</a>
+      <a href="/projects/website/brand-voice-guidelines.html">Website Brand Voice Guidelines</a>
+      <a href="/projects/website/published-html/index.html">Website Published HTML</a>
+      <a href="/projects/website/published-html/agent-roster-draft.html">Aspen Frost Agentic Software - Agent Roster Draft</a>
+      <a href="/projects/website/published-html/aspen-frost-homepage.html">Aspen Frost — agentic software</a>
+      <a href="/projects/website/published-html/positioning-brief.html">Positioning Brief</a>
+    </details>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Product</summary>
+      <a href="/product/index.html">Product Index</a>
+      <a href="/product/project-intake-and-kickoff.html">Project Intake &amp; Kickoff</a>
+      <a href="/product/aspen-frost-strategic-reflections.html">Aspen Frost Strategic Reflections</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Marketing</summary>
+      <a href="/marketing/index.html">Marketing Index</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Operations</summary>
+      <a href="/operations/agent-development/index.html">Agent Development</a>
+      <a href="/operations/agent-development/routine-refresh-2026-09-07.html">Agent Development Routine Refresh</a>
+      <a href="/operations/agent-development/cron-trigger.html">Agent Development Cron Trigger</a>
+      <a href="/operations/interagent-communication-options-2026-07-28.html">Interagent Communication Options</a>
+  </details>
+  <details class="nav-section">
+    <summary class="nav-section-label">Engineering</summary>
+      <a href="/engineering/index.html">Engineering Index</a>
+      <a href="/engineering/pr-delivery-loop-review-2026-09-07.html">PR-to-Release Loop Review</a>
+      <a href="/engineering/software-development-and-testing-principles.html">Software Development and Testing Principles</a>
+      <a href="/engineering/openclaw-runtime-hardening-2026-07-25.html">OpenClaw Runtime Hardening Recommendations</a>
+  </details>
+  <div class="aside-footer">Updated by Aspen automatically.<br>Source: openclaw.</div>
+</aside>
+  <main>
+    <article>
+      <div class="crumb">Projects &middot; Frost Rocks DR2.1 Launch Bootstrap Scope</div>
+      <div class="doc-meta">Last updated: 2026-09-06</div>
+      <h1>Frost Rocks — PR-DR2.1 Launch Bootstrap Hotfix Scope</h1>
+<p><em>Arya (Architecture) | 2026-09-06 | Status: <strong>APPROVED FOR JESSE</strong> — urgent, surgical follow-up to DR2/TestFlight build 28 launch failure.</em></p>
+<p><strong>Trigger:</strong> DR2's TestFlight deployment (Build 28) is the physical-device launch proof. On Andy's existing restored/migrated install, the app does not reach a usable UI. The deployment did its job: it caught a launch-blocking regression before the diagnostic experiment could begin.</p>
+<h2>How to read this doc</h2>
+<p><strong>Door tags:</strong> 🚪➡️🚪 = two-way door (cheap to reverse; default chosen, move on). 🚪🧱 = one-way door (expensive/irreversible; trade-offs laid out, Andy's call).</p>
+<p>Jesse: this is a boot-path fix. Do not pull in a photo, restore-format, map, or navigation behavior theory while the app cannot start. The PR body and diff must tell the same small story.</p>
+<h2>The call</h2>
+<p>Remove database work from the pre-bootstrap diagnostic path and make database initialization <strong>single-flight</strong>.</p>
+<p>The new DR2 root effects can call <code>diagnosticEvent()</code> before the root bootstrap has made the database ready. Each event currently reaches <code>logEvent()</code> → <code>getDb()</code>. <code>getDb()</code> caches only a completed database instance, so concurrent callers can open/migrate independently while the root's own bootstrap is also opening/migrating. If that race rejects the root bootstrap, the current root catches it and keeps <code>dbReady</code> false forever: a blank application.</p>
+<p>This is a 🚪➡️🚪 implementation correction, not a storage-model or public-contract change. The hotfix eliminates the introduced launch race and ensures a future startup error is visible/retryable rather than a blank screen.</p>
+<h2>In scope</h2>
+<h3>1. Single-flight database bootstrap</h3>
+<p>In <code>src/db/database.ts</code>:</p>
+<ul><li>Maintain one in-flight open/migrate promise in addition to the completed <code>_db</code> handle.</li><li>All concurrent <code>getDb()</code> callers must await that one promise and receive the same ready database instance.</li><li>Assign the completed <code>_db</code> only after migrations succeed.</li><li>If opening or migrating fails, clear the in-flight promise so a later retry is possible; do not retain a half-ready handle.</li><li>Preserve existing migration order and transaction semantics exactly. No new migration and no schema/data rewrite belongs here.</li><li>Update the test-only reset seam to reset both the completed handle and in-flight state.</li></ul>
+<h3>2. Diagnostics only after bootstrap</h3>
+<p>In the root layout/diagnostic wiring:</p>
+<ul><li>Do not call <code>diagnosticEvent()</code> or any helper which reaches SQLite until successful database bootstrap has set readiness.</li><li>Mount/apply lifecycle and route diagnostics only after that point. A small child component rendered after <code>dbReady</code> is preferable to a pre-bootstrap root effect.</li><li>Keep the DR2 diagnostic events and shared timeline intact once the app is ready; this is a launch-order correction, not removal of diagnostics.</li><li>If retaining pathname observation needs a router hook, keep it inside the post-ready child. The root must remain able to mount without an instrumentation-side dependency on navigation context.</li></ul>
+<h3>3. Visible startup failure and retry</h3>
+<p>Replace the silent bootstrap catch with a minimal, data-safe startup failure view:</p>
+<ul><li>Plain copy: <strong>“Frost Rocks couldn’t open its field record.”</strong></li><li>A <strong>Try again</strong> action retries database bootstrap without deleting data, resetting migrations, restoring, or changing routes.</li><li>Log the original error to device console only; do not persist raw SQLite error strings or local paths into the diagnostic timeline.</li><li>The normal loading state remains unadorned while bootstrapping is in progress.</li></ul>
+<p>This is deliberately a recovery handle, not a new error-reporting product surface.</p>
+<h2>Explicit non-goals</h2>
+<ul><li>No photo/restore write-path change, archive change, or re-restore flow.</li><li>No map, Trips, interactive-map, gesture, or navigation-stack change.</li><li>No image cache/retry/prefetch work.</li><li>No schema migration, data reset, database deletion, automatic repair, or user-data mutation.</li><li>No broad error/analytics/crash-reporting system.</li></ul>
+<h2>Suggested implementation seams</h2>
+<table><thead><tr><th>Seam</th><th>Responsibility</th></tr></thead><tbody><tr><td><code>src/db/database.ts</code></td><td>single-flight open/migrate promise, failure reset, test reset</td></tr><tr><td><code>app/_layout.tsx</code></td><td>explicit bootstrap state + retry; defer diagnostic mount until ready</td></tr><tr><td><code>src/components/RuntimeDiagnostics.tsx</code> (new, if useful)</td><td>post-ready app-state/pathname observation only</td></tr><tr><td>existing DR2 diagnostic tests</td><td>retain and adapt expected timing; do not weaken filtering/sanitizing assertions</td></tr></tbody></table>
+<p>Names can follow repository conventions. The important division is absolute: database readiness first; diagnostic writes second.</p>
+<h2>Acceptance evidence — required in the PR body</h2>
+<p>- cold launch to the notebook; - force-quit and relaunch to the notebook; - confirm the restored trips/encounters remain present; - open a previously restored encounter photo; and - use <strong>Share diagnostic timeline</strong> successfully.</p>
+<ul><li><strong>Concurrency test:</strong> hold <code>openDatabaseAsync</code>/migration behind a deferred promise, call <code>getDb()</code> at least three times before it resolves, then prove one open, one migration sequence, and the same ready database returned to all callers.</li><li><strong>Failure/retry test:</strong> force opening or migration to fail once; prove no completed/in-flight cache remains and the next <code>getDb()</code> retry can succeed.</li><li><strong>Root startup test:</strong> diagnostics do not write/log before DB readiness; after readiness they start normally. A bootstrap failure renders the retry state, and retry reaches the app without mutating stored rows.</li><li><strong>Regression evidence:</strong> existing DR2 timeline/filter/sanitization tests, recovery tests, <code>npm run typecheck</code>, <code>npm run lint</code>, and targeted suites all pass. Include changed-seam output in the PR body.</li><li><strong>Physical TestFlight proof — required:</strong> without deleting the app, update the affected Build 28 install in place to Build 29. Then:</li></ul>
+<p>Record device model, iOS version, Build 28 → Build 29 upgrade, and a short screen recording. This TestFlight update is the gate; no separate simulation ritual is needed.</p>
+<h2>Review gate</h2>
+<p>🚪🧱 Not approvable without the in-place physical TestFlight upgrade from the failed Build 28 installation. A fresh simulator launch proves little here; the bug belongs at the intersection of the real migrated database, startup ordering, and the device runtime.</p>
+<p><strong>After PR-DR2.1:</strong> resume DR2 evidence collection. Only a captured diagnostic timeline gets to authorize a behavior-changing DR3.</p>
+    </article>
+    <footer>Aspen Frost · docs.aspenfrost.com · gated by Cloudflare Access</footer>
+  </main>
+</body>
+</html>
